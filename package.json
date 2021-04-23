@@ -1,14 +1,20 @@
 {
   "name": "rxz-ui",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.1",
+  "private": false,
+  "main": "lib/rxz-ui.umd.min.js",
+  "author": "ruixiaozi",
+  "email": "admin@ruixiaozi.com",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lib": "vue-cli-service build --target lib --name rxz-ui --dest lib ./src/index.js"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "element-ui": "^2.15.1",
     "vue": "^2.6.11"
   },
   "devDependencies": {
