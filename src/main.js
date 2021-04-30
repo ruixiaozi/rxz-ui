@@ -1,5 +1,8 @@
+/**
+ * 用于测试
+ */
 import Vue from 'vue'
-import App from './App.vue'
+import App from './test/App.vue'
 
 Vue.config.productionTip = false
 

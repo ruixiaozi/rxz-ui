@@ -1,6 +1,6 @@
 {
   "name": "rxz-ui",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "private": false,
   "main": "lib/rxz-ui.umd.min.js",
   "author": "ruixiaozi",
@@ -9,7 +9,10 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "lib": "vue-cli-service build --target lib --name rxz-ui --dest lib ./src/index.js"
+    "lib": "vue-cli-service build --target lib --name rxz-ui --dest lib ./src/index.js",
+    "addreg": "nrm add gzf 'http://npm.01gzf.com'",
+    "usereg": "nrm use gzf",
+    "pub": "nrm use gzf && npm version patch && npm run lib && npm publish"
   },
   "dependencies": {
     "axios": "^0.21.1",
