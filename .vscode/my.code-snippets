@@ -1,0 +1,375 @@
+{
+	// Place your vuepj 工作区 snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	//Vue组件
+	"<vcnt": {
+		"prefix": "<vcnt",
+		"body": [
+			"<!--",
+			"Component: ${1:组件名称}",
+			"* @FileDescription: ${2:该组件的描述信息}",
+			"* @Author: ${3:ruixiaozi}",
+			"* @Email: ${4:admin@ruixiaozi.com}",
+			"* @Date: $CURRENT_YEAR年$CURRENT_MONTH月$CURRENT_DATE日 $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+			"* @Version: ${5:版本}",
+			"-->",
+			"<template>",
+			"  ",
+			"</template>",
+			"",
+			"<script>",
+			"",
+			"export default {",
+			"  // Component name",
+			"  name: '${6:组件名称}',",
+			"  // Component props",
+			"  props: {",
+			"    ",
+			"  },",
+			"  // Locally registered components",
+			"  components: {",
+			"    ",
+			"  },",
+			"  // Component status",
+			"  data () {",
+			"    return {}",
+			"  },",
+			"  // Calculate attribute",
+			"  computed: {",
+			"    ",
+			"  },",
+			"  // Component watch",
+			"  watch: {",
+			"",
+			"  },",
+			"  // Component methods",
+			"  methods: {",
+			"",
+			"  },",
+			"  // Lifecycle hooks",
+			"};",
+			"</script>",
+			"",
+			"<style>",
+			"",
+			"</style>",
+			"",
+		],
+		"description": "<vcnt"
+	},
+	"<vmodule": {
+		"prefix": "<vmodule",
+		"body": [
+			"<!--",
+			"Module: ${1:模块名称}",
+			"* @FileDescription: ${2:该模块的描述信息}",
+			"* @Author: ${3:ruixiaozi}",
+			"* @Email: ${4:admin@ruixiaozi.com}",
+			"* @Date: $CURRENT_YEAR年$CURRENT_MONTH月$CURRENT_DATE日 $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+			"* @Version: ${5:版本}",
+			"-->",
+			"<template>",
+			"  ",
+			"</template>",
+			"",
+			"<script>",
+			"",
+			"export default {",
+			"  // Module name",
+			"  name: '${6:Module名称}',",
+			"  // Module props",
+			"  props: {",
+			"    ",
+			"  },",
+			"  // Locally registered components",
+			"  components: {",
+			"    ",
+			"  },",
+			"  // Module status",
+			"  data () {",
+			"    return {}",
+			"  },",
+			"  // Calculate attribute",
+			"  computed: {",
+			"    ",
+			"  },",
+			"  // Module watch",
+			"  watch: {",
+			"",
+			"  },",
+			"  // Module methods",
+			"  methods: {",
+			"",
+			"  },",
+			"  // Lifecycle hooks",
+			"};",
+			"</script>",
+			"",
+			"<style>",
+			"",
+			"</style>",
+			"",
+		],
+		"description": "<vmodule"
+	},
+	"<vview": {
+		"prefix": "<vview",
+		"body": [
+			"<!--",
+			"View: ${1:页面名称}",
+			"* @FileDescription: ${2:该页面的描述信息}",
+			"* @Author: ${3:ruixiaozi}",
+			"* @Email: ${4:admin@ruixiaozi.com}",
+			"* @Date: $CURRENT_YEAR年$CURRENT_MONTH月$CURRENT_DATE日 $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+			"* @Version: ${5:版本}",
+			"-->",
+			"<template>",
+			"  ",
+			"</template>",
+			"",
+			"<script>",
+			"import axios from 'axios';",
+			"",
+			"export default {",
+			"  // View name",
+			"  name: '${6:页面名称}',",
+			"  // View props",
+			"  props: {",
+			"    ",
+			"  },",
+			"  // Locally registered components",
+			"  components: {",
+			"    ",
+			"  },",
+			"  // View status",
+			"  data () {",
+			"    return {}",
+			"  },",
+			"  // Calculate attribute",
+			"  computed: {",
+			"    ",
+			"  },",
+			"  // View watch",
+			"  watch: {",
+			"",
+			"  },",
+			"  // View methods",
+			"  methods: {",
+			"",
+			"  },",
+			"  // Lifecycle hooks",
+			"  // 路由切换，重新创建组件，（在这里获取数据）",
+			"  beforeRouteEnter (to, from, next) {",
+			"",
+			"    next();",
+			"  },",
+			"  // 路由参数变化（或者重复点击当前路由导致参数变化），（在这里获取数据）",
+			"  beforeRouteUpdate(to, from, next){",
+			"",
+			"    next();",
+			"  },",
+			"};",
+			"</script>",
+			"",
+			"<style>",
+			"",
+			"</style>",
+			"",
+		],
+		"description": "<vview"
+	},
+	"<vvue": {
+		"prefix": "<vvue",
+		"body": [
+			"<!--",
+			"${1:名称}",
+			"* @FileDescription: ${2:描述信息}",
+			"* @Author: ${3:ruixiaozi}",
+			"* @Email: ${4:admin@ruixiaozi.com}",
+			"* @Date: $CURRENT_YEAR年$CURRENT_MONTH月$CURRENT_DATE日 $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+			"* @Version: ${5:版本}",
+			"-->",
+			"<template>",
+			"  ",
+			"</template>",
+			"",
+			"<script>",
+			"",
+			"export default {",
+			"  // name",
+			"  name: '${6:页面名称}',",
+			"  // props",
+			"  props: {",
+			"    ",
+			"  },",
+			"  // Locally registered components",
+			"  components: {",
+			"    ",
+			"  },",
+			"  // status",
+			"  data () {",
+			"    return {}",
+			"  },",
+			"  // Calculate attribute",
+			"  computed: {",
+			"    ",
+			"  },",
+			"  // watch",
+			"  watch: {",
+			"",
+			"  },",
+			"  // methods",
+			"  methods: {",
+			"",
+			"  },",
+			"  // Lifecycle hooks",
+			"};",
+			"</script>",
+			"",
+			"<style>",
+			"",
+			"</style>",
+			"",
+		],
+		"description": "<vvue"
+	},
+
+
+	//Vue顶部注释 vcnt/vmodule/vview/vvue/vprop/vmode/vemit
+	"vcnt": {
+		"prefix": "vcnt",
+		"body": [
+			"<!--",
+			"Component: ${1:组件名称}",
+			"* @FileDescription: ${2:该组件的描述信息}",
+			"* @Author: ${3:ruixiaozi}",
+			"* @Email: ${4:admin@ruixiaozi.com}",
+			"* @Date: $CURRENT_YEAR年$CURRENT_MONTH月$CURRENT_DATE日 $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+			"* @Version: ${5:版本}",
+			"-->"
+		],
+		"description": "vcnt"
+	},
+	"vmodule": {
+		"prefix": "vmodule",
+		"body": [
+			"<!--",
+			"Module: ${1:模块名称}",
+			"* @FileDescription: ${2:该模块的描述信息}",
+			"* @Author: ${3:ruixiaozi}",
+			"* @Email: ${4:admin@ruixiaozi.com}",
+			"* @Date: $CURRENT_YEAR年$CURRENT_MONTH月$CURRENT_DATE日 $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+			"* @Version: ${5:版本}",
+			"-->"
+		],
+		"description": "vmodule"
+	},
+	"vview": {
+		"prefix": "vview",
+		"body": [
+			"<!--",
+			"View: ${1:页面名称}",
+			"* @FileDescription: ${2:该页面的描述信息}",
+			"* @Author: ${3:ruixiaozi}",
+			"* @Email: ${4:admin@ruixiaozi.com}",
+			"* @Date: $CURRENT_YEAR年$CURRENT_MONTH月$CURRENT_DATE日 $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+			"* @Version: ${5:版本}",
+			"-->"
+		],
+		"description": "vview"
+	},
+	"vvue": {
+		"prefix": "vvue",
+		"body": [
+			"<!--",
+			"${1:名称}",
+			"* @FileDescription: ${2:描述信息}",
+			"* @Author: ${3:ruixiaozi}",
+			"* @Email: ${4:admin@ruixiaozi.com}",
+			"* @Date: $CURRENT_YEAR年$CURRENT_MONTH月$CURRENT_DATE日 $CURRENT_HOUR:$CURRENT_MINUTE:$CURRENT_SECOND",
+			"* @Version: ${5:版本}",
+			"-->"
+		],
+		"description": "vvue"
+	},
+	"vprop": {
+		"prefix": "vprop",
+		"body": [
+			"* @prop {${1:类型}} [${2:?}${3:名称}] (${4:默认值})"
+		],
+		"description": "vprop"
+	},
+	"vmode": {
+		"prefix": "vmode",
+		"body": [
+			"* @mode prop:'${1:prop名称}' emit:'${2:emit名称}'"
+		],
+		"description": "vmode"
+	},
+	"vemit": {
+		"prefix": "vemit",
+		"body": [
+			"* @emit '${1:名称}' ${2:功能} [${3:参数列表}]"
+		],
+		"description": "vemit"
+	},
+
+	//Vue方法注释
+	"vfun": {
+		"prefix": "vfun",
+		"body": [
+			"/**",
+			" * ${1:方法名称}",
+			"**/"
+		],
+		"description": "vfun"
+	},
+	"vpara": {
+		"prefix": "vpara",
+		"body": [
+			"@param {${1:类型}} ${2:名称}"
+		],
+		"description": "vpara"
+	},
+	"vreturn": {
+		"prefix": "vreturn",
+		"body": [
+			"@return {${1:类型}}"
+		],
+		"description": "vreturn"
+	},
+
+	//css
+	"?vcss": {
+		"prefix": "?vcss",
+		"body": [
+			"{",
+			"  /* positions */",
+			"",
+			"  /* self attribute */",
+			"",
+			"  /* font and text */",
+			"",
+			"  /* background */",
+			"",
+			"  /* other */",
+			"  ",
+			"}"
+		],
+		"description": "?vcss"
+	}
+}
