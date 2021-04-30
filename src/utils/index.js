@@ -1,8 +1,8 @@
 //日期工具
-import Date from './date'
+import Date from './utils/date'
 export const date = Date;
 
 //字符串工具
-import Str from './str'
+import Str from './utils/str'
 export const str = Str;
 
