@@ -24,4 +24,4 @@ function format(fmt, date) {
 const date = {
   format,
 };
-export default data;
+export default date;

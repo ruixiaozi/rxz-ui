@@ -1,6 +1,6 @@
-import RxzCountDownButton from './RxzCountdownButton/index.js'
+import RxzCountdownButton from './RxzCountdownButton/index.js'
 
-export default {
-  RxzCountDownButton,
-}
+export default [
+    RxzCountdownButton,
+]
 

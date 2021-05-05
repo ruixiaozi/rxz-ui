@@ -12,7 +12,7 @@
     "lib": "vue-cli-service build --target lib --name rxz-ui --dest lib ./src/index.js",
     "addreg": "nrm add gzf 'http://npm.01gzf.com'",
     "usereg": "nrm use gzf",
-    "pub": "nrm use gzf && npm version patch && npm run lib && npm publish"
+    "pub": "npm version patch && npm run lib && npm publish"
   },
   "dependencies": {
     "axios": "^0.21.1",
