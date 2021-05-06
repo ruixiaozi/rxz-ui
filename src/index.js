@@ -1,3 +1,10 @@
+/**
+ * Rxz-ui 基于Vue的UI组件、工具库
+ * @author ruixiaozi
+ * @version 1.0.0
+ * @license MIT
+ */
+
 import Base from '@/components/Base/index.js'
 import Form from '@/components/Form/index.js'
 // ...如果还有话继续添加
