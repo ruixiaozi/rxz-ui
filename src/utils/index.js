@@ -6,3 +6,9 @@ export const date = Date;
 import Str from './utils/str'
 export const str = Str;
 
+//请求工具
+import Request from './utils/request'
+export const request = Request;
+
+
+
