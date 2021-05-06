@@ -1,7 +1,8 @@
 module.exports = {
+  publicPath:"/",
   pages: {
     index: {
-      entry: 'src/test/main.js',
+      entry: 'example/main.js',
       template: 'public/index.html',
       filename: 'index.html',
     },
