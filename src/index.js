@@ -1,5 +1,6 @@
 /**
  * Rxz-ui 基于Vue的UI组件、工具库
+ * @file
  * @author ruixiaozi
  * @version 1.0.0
  * @license MIT

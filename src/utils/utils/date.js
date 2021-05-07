@@ -1,4 +1,18 @@
-//日期格式化
+/**
+ * 日期工具集
+ * @file
+ * @author ruixiaozi
+ * @version 1.0.0
+ * @license MIT
+ */
+
+/**
+ * 格式化日期 方法
+ * @function
+ * @param {String} fmt 格式字符串
+ * @param {Date} date 日期对象
+ * @returns 格式化后的日期字符串
+ */
 function format(fmt, date) {
   let ret;
   const opt = {

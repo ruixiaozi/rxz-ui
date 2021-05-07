@@ -1,3 +1,11 @@
+/**
+ * 工具库索引文件
+ * @file
+ * @author ruixiaozi
+ * @version 1.0.0
+ * @license MIT
+ */
+
 //日期工具
 import Date from './utils/date'
 export const date = Date;
