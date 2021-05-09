@@ -8,20 +8,16 @@ Component: RxzButton
 -->
 <template>
   <button
-    class="el-button"
+    class="rxz-button"
     @click="handleClick"
-    :disabled="buttonDisabled || loading"
+    :disabled="disabled || loading"
     :autofocus="autofocus"
     :type="nativeType"
     :class="[
-      type ? 'el-button--' + type : '',
-      buttonSize ? 'el-button--' + buttonSize : '',
+      type ? 'rxz-button-' + type : '',
       {
-        'is-disabled': buttonDisabled,
+        'is-disabled': disabled,
         'is-loading': loading,
-        'is-plain': plain,
-        'is-round': round,
-        'is-circle': circle
       }
     ]"
   >
