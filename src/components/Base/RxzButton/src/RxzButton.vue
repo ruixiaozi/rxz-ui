@@ -8,26 +8,21 @@ Component: RxzButton
 -->
 <template>
   <button
-    class="el-button"
+    class="rxz-button"
     @click="handleClick"
-    :disabled="buttonDisabled || loading"
-    :autofocus="autofocus"
     :type="nativeType"
+    :disabled="disabled || loading"
     :class="[
-      type ? 'el-button--' + type : '',
-      buttonSize ? 'el-button--' + buttonSize : '',
-      {
-        'is-disabled': buttonDisabled,
-        'is-loading': loading,
-        'is-plain': plain,
-        'is-round': round,
-        'is-circle': circle
-      }
+      type ? 'rxz-button-' + type : '',
+      {'is-disabled': disabled},
+      {'is-loading': loading}
     ]"
   >
-    <i class="el-icon-loading" v-if="loading"></i>
-    <i :class="icon" v-if="icon && !loading"></i>
+    <i class="fa fa-spinner fa-spin" v-if="loading"></i>
+
+    <!-- 如果有内容才显示插槽内容 -->
     <span v-if="$slots.default"><slot></slot></span>
+    <span v-else>RxzButton</span>
   </button>
 </template>
 

@@ -21,6 +21,7 @@ import * as utils from './utils/index.js';
 
 //全局引入样式
 import '@/style/normalize.css';
+import '@/style/font-awesome.min.css';
 
 const install = function (Vue) {
   components.map(component => {
