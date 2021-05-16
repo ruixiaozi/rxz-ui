@@ -33,6 +33,22 @@ export default {
   name: 'RxzButton',
   // Component props
   props: {
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    loading: {
+      type: Boolean,
+      default: false
+    },
+    type: {
+      type: String,
+      default: "primary"
+    },
+    width:{
+      type: String,
+      default: ""
+    }
 
   },
   // Locally registered components
@@ -45,7 +61,9 @@ export default {
   },
   // Calculate attribute
   computed: {
-
+    nativeType(){
+      return "";
+    }
   },
   // Component watch
   watch: {
@@ -53,12 +71,16 @@ export default {
   },
   // Component methods
   methods: {
+    handleClick(){
 
+    }
   },
   // Lifecycle hooks
 };
 </script>
 
 <style lang="scss" scoped>
+.rxz-button{
 
+}
 </style>
