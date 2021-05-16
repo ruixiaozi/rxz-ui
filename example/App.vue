@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-
+    <rxz-button>test</rxz-button>
 
   </div>
 </template>
@@ -10,7 +10,8 @@
 
 export default {
   name: 'App',
-  components: {
+  components:
+  {
 
   }
 }
