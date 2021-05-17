@@ -17,6 +17,11 @@ Component: RxzButton
       {'is-disabled': disabled},
       {'is-loading': loading}
     ]"
+    :style="[
+      {width: width},
+      {height: height},
+      {back}
+    ]"
   >
     <i class="fa fa-spinner fa-spin" v-if="loading"></i>
 
@@ -33,21 +38,28 @@ export default {
   name: 'RxzButton',
   // Component props
   props: {
+    //是否可用
     disabled: {
       type: Boolean,
       default: false
     },
+    //是否加载中
     loading: {
       type: Boolean,
       default: false
     },
+    //类型
     type: {
       type: String,
-      default: "primary"
+      default: "default"
     },
-    width:{
+    width: {
       type: String,
-      default: ""
+      default: "100px"
+    },
+    height: {
+      type: String,
+      default: "40px"
     }
 
   },
@@ -71,8 +83,8 @@ export default {
   },
   // Component methods
   methods: {
-    handleClick(){
-
+    handleClick(event){
+      this.$emit("click",event);
     }
   },
   // Lifecycle hooks
