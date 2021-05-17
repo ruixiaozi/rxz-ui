@@ -20,7 +20,7 @@ Component: RxzButton
     :style="[
       {width: width},
       {height: height},
-      {back}
+      {padding: padding}
     ]"
   >
     <i class="fa fa-spinner fa-spin" v-if="loading"></i>
@@ -55,11 +55,15 @@ export default {
     },
     width: {
       type: String,
-      default: "100px"
+      default: "auto"
     },
     height: {
       type: String,
       default: "40px"
+    },
+    padding:{
+      type: String,
+      default: "5px 20px"
     }
 
   },
@@ -93,6 +97,32 @@ export default {
 
 <style lang="scss" scoped>
 .rxz-button{
+  transition: all 0.1s;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 
+  &.rxz-button-default{
+    border: 1px solid #d5e7fc;
+    color: #000000;
+    background-color: #FFFFFF;
+    &:hover{
+      background-color: #ECF5FF;
+      color: #409eff;
+    }
+  }
+
+  //主要按钮
+  &.rxz-button-primary{
+    background-color: #409eff;
+    &:hover{
+      background-color: #5baaf8;
+    }
+  }
+
+  &.rxz-button-success{
+
+  }
 }
 </style>
