@@ -5,7 +5,7 @@
 
 ### 依赖
 
-vue/axios/
+vue/axios/font awesome
 
 ## 开源协议
 

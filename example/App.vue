@@ -5,7 +5,7 @@
     <rxz-button type="info2">test</rxz-button>
     <rxz-button type="primary">test</rxz-button>
 
-    <rxz-button type="success"> test</rxz-button>
+    <rxz-button type="success" loading> test</rxz-button>
 
   </div>
 </template>

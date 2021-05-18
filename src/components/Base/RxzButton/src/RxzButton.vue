@@ -31,7 +31,7 @@ Component: RxzButton
       css,
     ]"
   >
-    <i class="fa fa-spinner fa-spin" v-if="loading"></i>
+    <rxz-icon v-if="loading" name="spinner" spinner></rxz-icon>
 
     <!-- 如果有内容才显示插槽内容 -->
     <span v-if="$slots.default"><slot></slot></span>
@@ -40,6 +40,7 @@ Component: RxzButton
 </template>
 
 <script>
+import RxzIcon from '../../RxzIcon/src/RxzIcon.vue';
 
 export default {
   // Component name
@@ -112,6 +113,7 @@ export default {
   },
   // Locally registered components
   components: {
+    RxzIcon
 
   },
   // Component status
