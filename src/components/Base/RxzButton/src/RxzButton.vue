@@ -10,17 +10,25 @@ Component: RxzButton
   <button
     class="rxz-button"
     @click="handleClick"
+    @mouseover="isHover = true"
+    @mouseout="isHover = false"
     :type="nativeType"
     :disabled="disabled || loading"
     :class="[
       type ? 'rxz-button-' + type : '',
       {'is-disabled': disabled},
-      {'is-loading': loading}
+      {'is-loading': loading},
+      ...cls
     ]"
     :style="[
       {width: width},
       {height: height},
-      {padding: padding}
+      {padding: padding},
+      {'border-radius': borderRadius},
+      {'background-color':
+        (isHover ? CPTHoverBgColor : bgColor )
+      },
+      css,
     ]"
   >
     <i class="fa fa-spinner fa-spin" v-if="loading"></i>
@@ -53,17 +61,52 @@ export default {
       type: String,
       default: "default"
     },
+    /**
+     * button
+     * reset
+     * submit
+     */
+    nativeType: {
+      type: String,
+      default: 'button'
+    },
+    //cls class列表
+    cls: {
+      type: Array,
+      default: ()=>{
+        return []
+      }
+    },
+    //CSS属性
+    css: {
+      type: Object,
+      default: ()=>{
+        return {}
+      }
+    },
     width: {
       type: String,
       default: "auto"
     },
     height: {
       type: String,
-      default: "40px"
+      default: "auto"
     },
-    padding:{
+    padding: {
       type: String,
-      default: "5px 20px"
+      default: "10px 20px"
+    },
+    borderRadius: {
+      type: String,
+      default: "5px"
+    },
+    bgColor: {
+      type: String,
+      default: "unset"
+    },
+    hoverBgColor: {
+      type: String,
+      default: "unset"
     }
 
   },
@@ -73,12 +116,22 @@ export default {
   },
   // Component status
   data () {
-    return {}
+    return {
+      isHover:false
+    }
   },
   // Calculate attribute
   computed: {
-    nativeType(){
-      return "";
+    /**
+     * 计算HoverBgColor
+     * @function
+     * @author ruixiaozi
+     * @description 如果传入了hoverBgColor参数则使用hoverBgColor，否则使用bgColor的值
+     */
+    CPTHoverBgColor(){
+      return (this.hoverBgColor && this.hoverBgColor != "unset") ?
+              this.hoverBgColor :
+              this.bgColor;
     }
   },
   // Component watch
@@ -100,9 +153,11 @@ export default {
   transition: all 0.1s;
   color: white;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
+  //默认颜色
+  background-color: #409eff;
 
+  //默认按钮
   &.rxz-button-default{
     border: 1px solid #d5e7fc;
     color: #000000;
@@ -121,8 +176,24 @@ export default {
     }
   }
 
+  //成功按钮
   &.rxz-button-success{
-
+    background-color: #67c23a;
+    &:hover{
+      background-color: #82c561;
+    }
   }
+
+  //信息按钮
+  &.rxz-button-info{
+    background-color: #767677;
+    &:hover{
+      background-color: #989899;
+    }
+  }
+
+
+
+
 }
 </style>
