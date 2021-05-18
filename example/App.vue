@@ -1,13 +1,12 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <rxz-button >test</rxz-button>
+    <rxz-button bgColor="red" hoverBgColor="green">test</rxz-button>
     <rxz-button type="info2">test</rxz-button>
     <rxz-button type="primary">test</rxz-button>
 
-    <rxz-button type="success">test</rxz-button>
+    <rxz-button type="success"> test</rxz-button>
 
-    <rxz-button type="info" width="200px">test</rxz-button>
   </div>
 </template>
 

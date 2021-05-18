@@ -26,7 +26,7 @@ Component: RxzButton
       {padding: padding},
       {'border-radius': borderRadius},
       {'background-color':
-        (isHover ? CPTHoverBgColor : bgColor )
+        (isHover ? CPTHoverBgColor : CPTBgColor )
       },
       css,
     ]"
@@ -123,15 +123,25 @@ export default {
   // Calculate attribute
   computed: {
     /**
+     * 计算BgColor
+     * @function
+     * @author ruixiaozi
+     * @description 如果传入了bgColor参数则使用bgColor，否则使用false值
+     */
+    CPTBgColor(){
+      return (this.bgColor && this.bgColor != "unset") ?
+              this.bgColor : false;
+    },
+    /**
      * 计算HoverBgColor
      * @function
      * @author ruixiaozi
-     * @description 如果传入了hoverBgColor参数则使用hoverBgColor，否则使用bgColor的值
+     * @description 如果传入了hoverBgColor参数则使用hoverBgColor，否则使用CPTBgColor的值
      */
     CPTHoverBgColor(){
       return (this.hoverBgColor && this.hoverBgColor != "unset") ?
               this.hoverBgColor :
-              this.bgColor;
+              this.CPTBgColor;
     }
   },
   // Component watch
@@ -151,16 +161,15 @@ export default {
 <style lang="scss" scoped>
 .rxz-button{
   transition: all 0.1s;
-  color: white;
+  color: #000000;
   border: none;
   cursor: pointer;
   //默认颜色
-  background-color: #409eff;
+  background-color: #d5e7fc;
 
   //默认按钮
   &.rxz-button-default{
     border: 1px solid #d5e7fc;
-    color: #000000;
     background-color: #FFFFFF;
     &:hover{
       background-color: #ECF5FF;
@@ -170,6 +179,7 @@ export default {
 
   //主要按钮
   &.rxz-button-primary{
+    color: #FFFFFF;
     background-color: #409eff;
     &:hover{
       background-color: #5baaf8;
@@ -178,6 +188,7 @@ export default {
 
   //成功按钮
   &.rxz-button-success{
+    color: #FFFFFF;
     background-color: #67c23a;
     &:hover{
       background-color: #82c561;
@@ -186,6 +197,7 @@ export default {
 
   //信息按钮
   &.rxz-button-info{
+    color: #FFFFFF;
     background-color: #767677;
     &:hover{
       background-color: #989899;
