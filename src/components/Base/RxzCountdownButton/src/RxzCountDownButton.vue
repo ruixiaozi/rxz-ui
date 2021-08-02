@@ -7,17 +7,17 @@ Component: RxzCountdownButton
 * @Version: 1.0.1
 -->
 <template>
-  <el-button :disabled="isStart" :type="type" :size="size" @click="click">
+  <rxz-button :disabled="isStart" :type="type"  @click="click">
     <!-- //倒计时显示的文字 -->
     <slot name="countdownValue" v-if="isStart"></slot>
     <span v-if="isStart">({{sec}}s)</span>
     <!--  //普通显示的文字 -->
     <slot name="value" v-if="!isStart"></slot>
-  </el-button>
+  </rxz-button>
 </template>
 
 <script>
-
+import { RxzButton } from "@/components/Base/RxzButton/index.js";
 export default {
   // Component name
   name: 'RxzCountdownButton',
@@ -37,15 +37,12 @@ export default {
       type: String,
       default: 'primary'
     },
-    size:{
-      type: String,
-      default: 'mini'
-    }
+
 
   },
   // Locally registered components
   components: {
-
+    RxzButton
   },
   // Component status
   data () {
