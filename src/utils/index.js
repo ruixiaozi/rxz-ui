@@ -18,5 +18,6 @@ export const str = Str;
 import Request from './utils/request'
 export const request = Request;
 
-
-
+//dayjs
+import Dayjs from 'dayjs';
+export const dayjs = Dayjs;
