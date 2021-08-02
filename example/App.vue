@@ -4,7 +4,10 @@
     <rxz-button bgColor="red" hoverBgColor="green">test</rxz-button>
     <rxz-button type="info2">test</rxz-button>
     <rxz-button type="primary">test</rxz-button>
-
+    <rxz-count-down-button type="primary" v-model="isStart" :seconds="4">
+      <div slot="countdownValue">2</div>
+      1
+    </rxz-count-down-button>
     <rxz-button type="success" loading> test</rxz-button>
 
   </div>
@@ -14,6 +17,11 @@
 export default {
   name: "App",
   components: {},
+  data(){
+    return {
+      isStart:true
+    }
+  }
 };
 </script>
 

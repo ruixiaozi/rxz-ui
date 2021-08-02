@@ -1,5 +1,5 @@
 <!--
-Component: RxzCountdownButton
+Component: RxzCountDownButton
 * @FileDescription: 倒计时按钮
 * @Author: ruixiaozi
 * @Email: admin@ruixiaozi.com
@@ -11,17 +11,21 @@ Component: RxzCountdownButton
     <!-- //倒计时显示的文字 -->
     <slot name="countdownValue" v-if="isStart"></slot>
     <span v-if="isStart">({{sec}}s)</span>
-    <!--  //普通显示的文字 -->
-    <slot name="value" v-if="!isStart"></slot>
+    <!--  //普通显示的文字(默认插槽) -->
+    <slot v-if="!isStart"></slot>
   </rxz-button>
 </template>
 
 <script>
-import { RxzButton } from "@/components/Base/RxzButton/index.js";
+import RxzButton from "@/components/Base/RxzButton/index.js";
 export default {
   // Component name
-  name: 'RxzCountdownButton',
+  name: 'RxzCountDownButton',
   // Component props
+  model: {
+    prop: 'isStart',
+    event: 'update:isStart'
+  },
   props: {
     //是否开始
     isStart:{
@@ -58,15 +62,7 @@ export default {
   // Component watch
   watch: {
     isStart(n,o){
-      if(n == true){
-        this.timer = setInterval(this.countDown,1000);
-        this.sec = this.seconds;
-      }
-      else{
-        if(this.timer){
-          clearInterval(this.timer);
-        }
-      }
+      this.operate(n);
     }
   },
   // Component methods
@@ -78,9 +74,23 @@ export default {
     },
     click(){
       this.$emit("click");
+    },
+    operate(isStart){
+      if(isStart){
+        this.timer = setInterval(this.countDown,1000);
+        this.sec = this.seconds;
+      }
+      else{
+        if(this.timer){
+          clearInterval(this.timer);
+        }
+      }
     }
   },
   // Lifecycle hooks
+  mounted(){
+    this.operate(this.isStart);
+  }
 };
 </script>
 

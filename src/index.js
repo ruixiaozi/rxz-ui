@@ -8,11 +8,13 @@
 
 import Base from '@/components/Base/index.js'
 import Form from '@/components/Form/index.js'
+import Layout from '@/components/Layout/index.js'
 // ...如果还有话继续添加
 
 const components = [
   ...Base,
   ...Form,
+  ...Layout,
   // ...如果还有的话继续添加
 ]
 
@@ -40,5 +42,6 @@ export default {
   install,
   ...Base,
   ...Form,
+  ...Layout,
   // ...如果还有话继续添加
 }

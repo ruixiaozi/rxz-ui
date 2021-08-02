@@ -40,7 +40,7 @@ Component: RxzButton
 </template>
 
 <script>
-import RxzIcon from '../../RxzIcon/src/RxzIcon.vue';
+import RxzIcon from '@/components/Base/RxzIcon/index.js';
 
 export default {
   // Component name
