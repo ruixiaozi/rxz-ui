@@ -8,12 +8,26 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
     "lib": "vue-cli-service build --target lib --name rxz-ui --dest lib ./src/index.js",
-    "addreg": "nrm add gzf 'http://npm.01gzf.com'",
-    "usereg": "nrm use gzf",
-    "pub": "npm version patch && npm run lib && npm publish"
+    "pub": "npm version patch && npm run lib && npm publish",
+    "pb": "npm run lib && npm publish"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ruixiaozi/rxz-ui.git"
+  },
+  "keywords": [
+    "vue",
+    "ui",
+    "lib",
+    "components",
+    "utils"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ruixiaozi/rxz-ui/issues"
+  },
+  "homepage": "https://github.com/ruixiaozi/rxz-ui#readme",
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
