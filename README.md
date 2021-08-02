@@ -26,7 +26,7 @@ Copyright (c) 2021 Ruixiaozi
    then in Vue project `main.js`:
 
    ```
-   import rxzUI from "@/index"
+   import rxzUI from "rxz-ui"
    Vue.use(rxzUI);
    ```
 
