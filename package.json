@@ -1,6 +1,6 @@
 {
   "name": "rxz-ui",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "private": false,
   "main": "lib/rxz-ui.umd.min.js",
   "author": "ruixiaozi",
