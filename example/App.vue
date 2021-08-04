@@ -5,7 +5,7 @@
         <img alt="Vue logo" src="./assets/logo.png" />
         <rxz-button bgColor="red" hoverBgColor="green">test</rxz-button>
         <rxz-button type="info2">test</rxz-button>
-        <rxz-button type="primary">test</rxz-button>
+        <rxz-button type="primary" :disabled="true">test</rxz-button>
         <rxz-count-down-button type="primary" v-model="isStart" :seconds="4">
           <div slot="countdownValue">2</div>
           1

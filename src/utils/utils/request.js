@@ -34,4 +34,4 @@ const request = {
   http:Axios,
 
 }
-export default Axios;
+export default request;

@@ -16,8 +16,7 @@ Component: RxzButton
     :disabled="disabled || loading"
     :class="[
       type ? 'rxz-button-' + type : '',
-      {'is-disabled': disabled},
-      {'is-loading': loading},
+      {'is-disabled': disabled || loading},
       ...cls
     ]"
     :style="[
@@ -169,6 +168,37 @@ export default {
   //默认颜色
   background-color: #d5e7fc;
 
+  //不可用中的样式
+  &.is-disabled{
+    //禁止出发hover等效果
+
+    position: relative;
+    cursor: not-allowed !important;
+
+
+
+    //添加一个蒙版，变成不可用样式
+    &:before {
+      content: "";
+      position: absolute;
+      left: -1px;
+      top: -1px;
+      right: -1px;
+      bottom: -1px;
+      border-radius: inherit;
+      background-color: hsla(0,0%,100%,.35);
+
+    }
+  }
+
+  @mixin bt-style($color) {
+    color: #FFFFFF;
+    background-color: $color;
+    &:hover{
+      background-color: lighten($color,10%);
+    }
+  }
+
   //默认按钮
   &.rxz-button-default{
     border: 1px solid #d5e7fc;
@@ -181,29 +211,17 @@ export default {
 
   //主要按钮
   &.rxz-button-primary{
-    color: #FFFFFF;
-    background-color: #409eff;
-    &:hover{
-      background-color: #5baaf8;
-    }
+    @include bt-style(#409eff);
   }
 
   //成功按钮
   &.rxz-button-success{
-    color: #FFFFFF;
-    background-color: #67c23a;
-    &:hover{
-      background-color: #82c561;
-    }
+    @include bt-style(#67c23a);
   }
 
   //信息按钮
   &.rxz-button-info{
-    color: #FFFFFF;
-    background-color: #767677;
-    &:hover{
-      background-color: #989899;
-    }
+    @include bt-style(#767677);
   }
 
 
