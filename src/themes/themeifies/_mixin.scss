@@ -1,0 +1,38 @@
+/*
+混入方案
+*/
+@use "../themes";
+@import "./getter";
+
+//遍历主题map
+@mixin themeify {
+  @each $theme-name, $theme-map in themes.$themes {
+      //!global 把局部变量强升为全局变量
+      //会加到混入的那个文件的全局
+      $theme-map: $theme-map !global;
+
+      //& sass嵌套里的父容器标识   @content是混合器插槽，像vue的slot
+      //将默认样式混入
+      @if $theme-name == "default"{
+        &{
+          @content;
+        }
+      }
+      @else{
+        //判断data-theme的属性值  #{}是sass的插值表达式
+        [data-theme="#{$theme-name}"] & {
+          @content;
+        }
+      }
+  }
+}
+
+//混入主题颜色（背景色和文字颜色）
+@mixin theme_color($type,$isHover) {
+  @include themeify {
+    $bgColor: getBgcolor($type,$isHover);
+    background-color: $bgColor;
+    color: getTextColor($type, $bgColor);
+
+  }
+}

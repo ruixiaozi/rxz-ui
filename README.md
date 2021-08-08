@@ -46,6 +46,7 @@ Copyright (c) 2021 Ruixiaozi
 
 + vue
 + axios
-+ font awesome
++ font-awesome
 + dayjs
++ normalize
 

@@ -5,22 +5,31 @@ $themes:(
   //默认主题
   default:(
     background_color:(
-      primary:#409eff,
+      default:#FFFFFF,
+      primary:#1483f1,
       success:#67c23a,
       information:#767677
     ),
     text_color:(
+      default:#000000,
       primary:#ffffff,
-      success:#67c23a,
-      information:#767677
+      success:#ffffff,
+      information:#ffffff
     )
   ),
   //Red主题
   th-red:(
     background_color:(
+      default:#FFFFFF,
       primary:#e40404,
       success:#e40404,
       information:#e40404
+    ),
+    text_color:(
+      default:#000000,
+      primary:#ffffff,
+      success:#ffffff,
+      information:#ffffff
     )
   )
 

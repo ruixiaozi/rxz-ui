@@ -164,20 +164,31 @@ export default {
 @use "~@/themes/themeify";
 .rxz-button{
   transition: all 0.1s;
-  color: #000000;
-  border: none;
   cursor: pointer;
-  //默认颜色
-  background-color: #d5e7fc;
+  //默认样式，有边框
+  border: 1px solid #d5e7fc;
+  @include themeify.theme_color("default",false);
+  &:hover{
+    @include themeify.theme_color("default",true);
+  }
+
+
+  //不同类型的按钮样式（使用主题类型颜色）
+  @each $type in "primary","success","information"{
+    &.rxz-button-#{$type}{
+      border: none;
+      @include themeify.theme_color($type,false);
+      &:hover{
+        @include themeify.theme_color($type,true);
+      }
+    }
+  }
 
   //不可用中的样式
   &.is-disabled{
     //禁止出发hover等效果
-
     position: relative;
     cursor: not-allowed !important;
-
-
 
     //添加一个蒙版，变成不可用样式
     &:before {
@@ -195,26 +206,7 @@ export default {
 
 
 
-  //默认按钮
-  &.rxz-button-default{
-    border: 1px solid #d5e7fc;
-    background-color: #FFFFFF;
-    &:hover{
-      background-color: #ECF5FF;
-      color: #409eff;
-    }
-  }
 
-  //不同类型的按钮样式（使用主题类型颜色）
-  @each $type in "primary","success","information"{
-    &.rxz-button-#{$type}{
-      color: #FFFFFF;
-      @include themeify.background_color($type,false);
-      &:hover{
-        @include themeify.background_color($type,10%);
-      }
-    }
-  }
 
 
 
