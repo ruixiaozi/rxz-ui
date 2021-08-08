@@ -1,0 +1,47 @@
+@use "./themes";
+@use "sass:map";
+
+//遍历主题map
+@mixin themeify {
+  @each $theme-name, $theme-map in themes.$themes {
+      //!global 把局部变量强升为全局变量
+      //会加到混入的那个文件的全局
+      $theme-map: $theme-map !global;
+
+      //& sass嵌套里的父容器标识   @content是混合器插槽，像vue的slot
+      //将默认样式混入
+      @if $theme-name == "default"{
+        &{
+          @content;
+        }
+      }
+      @else{
+        //判断data-theme的属性值  #{}是sass的插值表达式
+        [data-theme="#{$theme-name}"] & {
+          @content;
+        }
+      }
+  }
+
+
+}
+
+
+//获取背景颜色
+@mixin background_color($color,$lighten) {
+  @include themeify {
+    $background_color : map.get($theme-map,"background_color");
+    $this_bg_color : map.get($background_color,$color);
+    @if $lighten {
+      background-color: lighten($this_bg_color,$lighten)!important;
+    }
+    @else{
+      background-color: $this_bg_color!important;
+    }
+
+
+
+  }
+}
+
+

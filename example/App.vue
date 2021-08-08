@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <rxz-theme >
     <rxz-center-layout>
       <div style="border: 1px solid">
         <img alt="Vue logo" src="./assets/logo.png" />
@@ -14,6 +15,7 @@
         <div>123</div>
       </div>
     </rxz-center-layout>
+    </rxz-theme>
   </div>
 </template>
 

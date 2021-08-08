@@ -57,6 +57,7 @@ export default {
       default: false
     },
     //类型
+    //"primary","success","information"
     type: {
       type: String,
       default: "default"
@@ -160,6 +161,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use "~@/themes/themeify";
 .rxz-button{
   transition: all 0.1s;
   color: #000000;
@@ -191,13 +193,7 @@ export default {
     }
   }
 
-  @mixin bt-style($color) {
-    color: #FFFFFF;
-    background-color: $color;
-    &:hover{
-      background-color: lighten($color,10%);
-    }
-  }
+
 
   //默认按钮
   &.rxz-button-default{
@@ -209,20 +205,18 @@ export default {
     }
   }
 
-  //主要按钮
-  &.rxz-button-primary{
-    @include bt-style(#409eff);
+  //不同类型的按钮样式（使用主题类型颜色）
+  @each $type in "primary","success","information"{
+    &.rxz-button-#{$type}{
+      color: #FFFFFF;
+      @include themeify.background_color($type,false);
+      &:hover{
+        @include themeify.background_color($type,10%);
+      }
+    }
   }
 
-  //成功按钮
-  &.rxz-button-success{
-    @include bt-style(#67c23a);
-  }
 
-  //信息按钮
-  &.rxz-button-info{
-    @include bt-style(#767677);
-  }
 
 
 

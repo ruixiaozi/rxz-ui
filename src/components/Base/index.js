@@ -10,11 +10,13 @@
 import RxzCountdownButton from './RxzCountdownButton/index.js'
 import RxzButton from './RxzButton/index.js';
 import RxzIcon from './RxzIcon/index.js';
+import RxzTheme from './RxzTheme/index.js';
+
 
 export default [
     RxzCountdownButton,
     RxzButton,
     RxzIcon,
-
+    RxzTheme,
 ]
 
