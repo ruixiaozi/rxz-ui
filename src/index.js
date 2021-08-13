@@ -7,13 +7,13 @@
  */
 
 import Base from '@/components/Base/index.js'
-import Form from '@/components/Form/index.js'
+import Table from '@/components/Table/index.js'
 import Layout from '@/components/Layout/index.js'
 // ...如果还有话继续添加
 
 const components = [
   ...Base,
-  ...Form,
+  ...Table,
   ...Layout,
   // ...如果还有的话继续添加
 ]
@@ -41,7 +41,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
   install,
   ...Base,
-  ...Form,
+  ...Table,
   ...Layout,
   // ...如果还有话继续添加
 }

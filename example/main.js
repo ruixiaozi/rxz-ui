@@ -6,6 +6,8 @@ import App from './App.vue'
 
 Vue.config.productionTip = false
 
+
+
 import rxzUI from "@/index"
 Vue.use(rxzUI);
 

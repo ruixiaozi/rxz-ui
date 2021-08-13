@@ -27,6 +27,9 @@ Component: RxzButton
       {'background-color':
         (isHover ? CPTHoverBgColor : CPTBgColor )
       },
+      {
+        color:(isHover ? CPTHoverTextColor: CPTTextColor)
+      },
       css,
     ]"
   >
@@ -87,7 +90,7 @@ export default {
     },
     width: {
       type: String,
-      default: "auto"
+      default: "fit-content"
     },
     height: {
       type: String,
@@ -108,7 +111,16 @@ export default {
     hoverBgColor: {
       type: String,
       default: "unset"
+    },
+    textColor: {
+      type: String,
+      default: "unset"
+    },
+    hoverTextColor: {
+      type: String,
+      default: "unset"
     }
+
 
   },
   // Locally registered components
@@ -144,6 +156,27 @@ export default {
       return (this.hoverBgColor && this.hoverBgColor != "unset") ?
               this.hoverBgColor :
               this.CPTBgColor;
+    },
+    /**
+     * 计算TextColor
+     * @function
+     * @author ruixiaozi
+     * @description 如果传入了textColor参数则使用textColor，否则使用false值
+     */
+    CPTTextColor(){
+      return (this.textColor && this.textColor != "unset") ?
+              this.textColor : false;
+    },
+    /**
+     * 计算HoverTextColor
+     * @function
+     * @author ruixiaozi
+     * @description 如果传入了hoverTextColor参数则使用hoverTextColor，否则使用CPTTextColor的值
+     */
+    CPTHoverTextColor(){
+      return (this.hoverTextColor && this.hoverTextColor != "unset") ?
+              this.hoverTextColor :
+              this.CPTTextColor;
     }
   },
   // Component watch
@@ -165,6 +198,7 @@ export default {
 .rxz-button{
   transition: all 0.1s;
   cursor: pointer;
+
   //默认样式，有边框
   border: 1px solid #d5e7fc;
   @include themeify.theme_color("default",false);
@@ -178,20 +212,20 @@ export default {
     &.rxz-button-#{$type}{
       border: none;
       @include themeify.theme_color($type,false);
-      &:hover{
+      &:not(.is-disabled):hover{
         @include themeify.theme_color($type,true);
       }
     }
   }
 
-  //不可用中的样式
+  //不可用的样式
   &.is-disabled{
     //禁止出发hover等效果
     position: relative;
     cursor: not-allowed !important;
 
     //添加一个蒙版，变成不可用样式
-    &:before {
+    &::before {
       content: "";
       position: absolute;
       left: -1px;
@@ -199,7 +233,7 @@ export default {
       right: -1px;
       bottom: -1px;
       border-radius: inherit;
-      background-color: hsla(0,0%,100%,.35);
+      background-color: hsla(0,0%,100%,.55);
 
     }
   }
