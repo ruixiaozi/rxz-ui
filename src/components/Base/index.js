@@ -11,6 +11,7 @@ import RxzCountdownButton from './RxzCountdownButton/index.js'
 import RxzButton from './RxzButton/index.js';
 import RxzIcon from './RxzIcon/index.js';
 import RxzTheme from './RxzTheme/index.js';
+import RxzDialog from './RxzDialog/index.js';
 
 
 export default [
@@ -18,5 +19,6 @@ export default [
     RxzButton,
     RxzIcon,
     RxzTheme,
+    RxzDialog
 ]
 
