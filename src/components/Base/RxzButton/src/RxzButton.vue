@@ -16,7 +16,7 @@ Component: RxzButton
     :disabled="disabled || loading"
     :class="[
       type ? 'rxz-button-' + type : '',
-      {'is-disabled': disabled || loading},
+      {'rxz-button-is-disabled': disabled || loading},
       ...cls
     ]"
     :style="[
@@ -219,7 +219,7 @@ export default {
   }
 
   //不可用的样式
-  &.is-disabled{
+  &.rxz-button-is-disabled{
     //禁止出发hover等效果
     position: relative;
     cursor: not-allowed !important;

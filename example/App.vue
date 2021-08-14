@@ -20,7 +20,23 @@
     </rxz-theme>
     <rxz-dialog :visible.sync="isVisible">
       <template slot="title">sdf</template>
-      <div>sdfasdfasdf</div>
+      <div>我爱尸毒方剂束带结发克拉斯记得发我爱尸毒方剂束带结发克拉斯记得发我爱尸毒方剂束带结发克拉斯记得发我爱尸毒方剂束带结发克拉斯记得发我爱尸毒方剂束带结发克拉斯记得发</div>
+<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
+<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
+<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
+<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
+<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
+<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
+<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
+<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
+<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
+<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
+<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
+<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
+<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
+<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
+<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
+
     </rxz-dialog>
   </div>
 </template>

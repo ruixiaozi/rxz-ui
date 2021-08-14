@@ -8,7 +8,10 @@ Component: RxzCenterLayout
 -->
 <template>
   <div class="rxz-center-layout">
-    <div class="content">
+    <div class="rxz-center-layout-content" :class="[
+      {'no-scroll':!isScroll},
+      {'show-shadow':showShadow}
+    ]">
       <slot></slot>
     </div>
   </div>
@@ -21,7 +24,16 @@ export default {
   name: 'RxzCenterLayout',
   // Component props
   props: {
-
+    //超出最大高度是否滚动
+    //不滚动：内部最大高度也是这个布局的最大高度
+    isScroll:{
+      type:Boolean,
+      default:true
+    },
+    showShadow: {
+      tyep:Boolean,
+      default:false
+    }
   },
   // Locally registered components
   components: {
@@ -59,17 +71,24 @@ export default {
   justify-content: center;
   align-items: center;
 
-  .content {
-    //包裹内容
+  &-content {
+    position: relative;
     //最大100%，超出出现滚动条
-    height: fit-content;
-    width: fit-content;
-
     max-height: 100%;
     max-width: 100%;
     overflow: auto;
 
-
+    //这样内部的高度最大也只有max-height
+    //由内部去控制滚动等
+    &.no-scroll{
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    //显示阴影
+    &.show-shadow{
+      box-shadow: 0px 0px 5px 2px rgb(0 0 0 / 20%);
+    }
 
   }
 }

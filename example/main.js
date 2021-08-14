@@ -9,6 +9,7 @@ Vue.config.productionTip = false
 
 
 import rxzUI from "@/index"
+
 Vue.use(rxzUI);
 
 new Vue({
