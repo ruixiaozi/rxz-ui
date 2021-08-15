@@ -16,6 +16,7 @@
           <rxz-button type="success" loading> test</rxz-button>
           <div>123</div>
         </div>
+
       </rxz-center-layout>
     </rxz-theme>
     <rxz-dialog :visible.sync="isVisible">
