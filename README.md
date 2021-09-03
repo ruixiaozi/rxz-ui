@@ -49,4 +49,5 @@ Copyright (c) 2021 Ruixiaozi
 + font-awesome
 + dayjs
 + normalize
++ echarts
 

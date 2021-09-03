@@ -14,7 +14,7 @@
             1
           </rxz-count-down-button>
           <rxz-button type="success" loading> test</rxz-button>
-          <div>123</div>
+          <div style="width:200px;height:200px" v-rxz-echarts:e1="op">123</div>
         </div>
 
       </rxz-center-layout>
@@ -49,7 +49,20 @@ export default {
   data() {
     return {
       isStart: true,
-      isVisible: false
+      isVisible: false,
+      op:{
+        xAxis: {
+            type: 'category',
+            data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            data: [150, 230, 224, 218, 135, 147, 260],
+            type: 'line'
+        }]
+    }
     };
   },
 };

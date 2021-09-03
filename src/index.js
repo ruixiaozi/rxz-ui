@@ -25,9 +25,15 @@ import * as utils from './utils/index.js';
 import '@/style/normalize.css';
 import '@/style/font-awesome.min.css';
 
+import directives from '@/directives/index.js'
+
 const install = function (Vue) {
-  components.map(component => {
+  components.forEach(component => {
     Vue.component(component.name, component);
+  })
+
+  directives.forEach(directive=>{
+    Vue.directive(directive.name,directive);
   })
 
   Vue.prototype.$rxz = utils;
