@@ -19,7 +19,7 @@ const components = [
 ]
 
 //引入工具类
-import * as utils from './utils/index.js';
+import utils from './utils/index.js';
 
 //全局引入样式
 import '@/style/normalize.css';

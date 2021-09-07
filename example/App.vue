@@ -65,6 +65,10 @@ export default {
     }
     };
   },
+  mounted(){
+    let a =this.$rxz.object.deepClone({a:1,b:{c:[1,2,3]}});
+    console.log(a);
+  }
 };
 </script>
 

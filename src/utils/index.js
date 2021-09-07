@@ -7,18 +7,24 @@
  */
 
 //日期工具
-import Date from './utils/date'
-export const date = Date;
+import date from './utils/date'
 
 //字符串工具
-import Str from './utils/str'
-export const str = Str;
+import str from './utils/str'
 
 //请求工具
-import Request from './utils/request'
-export const request = Request;
-
+import request from './utils/request'
 //dayjs
-import Dayjs from 'dayjs';
-export const dayjs = Dayjs;
+import dayjs from 'dayjs';
+
+import object from './utils/object'
+
+export default {
+  date,
+  str,
+  request,
+  dayjs,
+  object
+}
+
 

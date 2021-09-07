@@ -12,6 +12,7 @@ import rxzUI from "@/index"
 
 Vue.use(rxzUI);
 
+
 new Vue({
   render: h => h(App),
 }).$mount('#app')
