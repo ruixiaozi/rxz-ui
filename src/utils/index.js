@@ -19,12 +19,18 @@ import dayjs from 'dayjs';
 
 import object from './utils/object'
 
+import array from './utils/array'
+
+import reg from './utils/reg'
+
 export default {
   date,
   str,
   request,
   dayjs,
-  object
+  object,
+  array,
+  reg
 }
 
 

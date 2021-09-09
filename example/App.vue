@@ -66,8 +66,8 @@ export default {
     };
   },
   mounted(){
-    let a =this.$rxz.object.deepClone({a:1,b:{c:[1,2,3]}});
-    console.log(a);
+    let arr = [1,3,7,2,5,4,2];
+    console.log(this.$rxz.array.sort(arr,"desc"));
   }
 };
 </script>
