@@ -2,6 +2,7 @@
   <div id="app">
     <rxz-theme>
       <rxz-center-layout>
+        <rxz-loading :loading="false" class="loading-test">
         <div style="border: 1px solid">
           <img alt="Vue logo" src="./assets/logo.png" />
           <rxz-button bgColor="red" hoverBgColor="green" textColor="white"
@@ -16,27 +17,12 @@
           <rxz-button type="success" loading> test</rxz-button>
           <div style="width:200px;height:200px" v-rxz-echarts:e1="op">123</div>
         </div>
-
+        </rxz-loading>
       </rxz-center-layout>
     </rxz-theme>
     <rxz-dialog :visible.sync="isVisible">
       <template slot="title">sdf</template>
-      <div>我爱尸毒方剂束带结发克拉斯记得发我爱尸毒方剂束带结发克拉斯记得发我爱尸毒方剂束带结发克拉斯记得发我爱尸毒方剂束带结发克拉斯记得发我爱尸毒方剂束带结发克拉斯记得发</div>
-<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
-<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
-<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
-<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
-<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
-<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
-<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
-<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
-<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
-<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
-<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
-<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
-<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
-<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
-<div>sdfasdfasasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
+      <div>我爱尸毒方剂aasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
 
     </rxz-dialog>
   </div>
@@ -77,5 +63,9 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  .loading-test{
+    width: 400px;
+    height: 300px;
+  }
 }
 </style>
