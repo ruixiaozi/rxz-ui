@@ -8,7 +8,11 @@ Component: RxzLoading
 -->
 <template>
   <div class="rxz-loading">
-    <div class="rxz-loading-loading" v-if="loading">
+    <div class="rxz-loading-loading" v-if="loading"
+      :style="{
+        'background-color':bgColor,
+        'color':color
+      }">
       <span class="rxz-loading-loading-text">{{text}}</span> <rxz-icon name="spinner" spinner></rxz-icon>
     </div>
     <slot v-else></slot>
@@ -29,6 +33,16 @@ export default {
     text:{
       type:String,
       default:"加载中"
+    },
+    //遮罩颜色
+    bgColor:{
+      type:String,
+      default:"#0000002F"
+    },
+    //文字和图标颜色
+    color:{
+      type:String,
+      default:"#FFFFFF"
     }
   },
   // Locally registered components
@@ -62,11 +76,11 @@ export default {
   &-loading{
     width: 100%;
     height: 100%;
-    background-color: rgba($color: #000000, $alpha: 0.2);
+    //background-color: rgba($color: #000000, $alpha: 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
+    //color: white;
     &-text{
       margin: 0px 5px;
     }

@@ -2,7 +2,7 @@
   <div id="app">
     <rxz-theme>
       <rxz-center-layout>
-        <rxz-loading :loading="false" class="loading-test">
+        <rxz-loading :loading="true" class="loading-test">
         <div style="border: 1px solid">
           <img alt="Vue logo" src="./assets/logo.png" />
           <rxz-button bgColor="red" hoverBgColor="green" textColor="white"
