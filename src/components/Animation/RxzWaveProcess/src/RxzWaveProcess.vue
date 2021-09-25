@@ -28,7 +28,7 @@ Component: RxzWaveProcess
     <div class="rxz-wave-process-info"
       :style="{
         ...infoCss
-      }">{{process}}</div>
+      }">{{process}}%</div>
   </div>
 
 </template>
