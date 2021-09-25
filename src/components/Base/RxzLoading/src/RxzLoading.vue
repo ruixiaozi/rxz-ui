@@ -15,7 +15,10 @@ Component: RxzLoading
       }">
       <span class="rxz-loading-loading-text">{{text}}</span> <rxz-icon name="spinner" spinner></rxz-icon>
     </div>
-    <slot v-else></slot>
+    <div class="rxz-loading-body" v-else>
+      <slot></slot>
+    </div>
+
   </div>
 </template>
 
@@ -85,6 +88,10 @@ export default {
       margin: 0px 5px;
     }
 
+  }
+  &-body{
+    width: 100%;
+    height: 100%;
   }
 }
 </style>
