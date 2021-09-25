@@ -2,7 +2,7 @@
   <div id="app">
     <rxz-theme>
       <rxz-center-layout>
-        <rxz-loading :loading="true" class="loading-test">
+        <rxz-loading :loading="false" class="loading-test">
         <div style="border: 1px solid">
           <img alt="Vue logo" src="./assets/logo.png" />
           <rxz-button bgColor="red" hoverBgColor="green" textColor="white"
@@ -14,6 +14,7 @@
             <span slot="countdownValue">2</span>
             1
           </rxz-count-down-button>
+          <rxz-wave-process :process="20.5"></rxz-wave-process>
           <rxz-button type="success" loading> test</rxz-button>
           <div style="width:200px;height:200px" v-rxz-echarts:e1="op">123</div>
         </div>
