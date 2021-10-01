@@ -1,6 +1,6 @@
 {
   "name": "rxz-ui",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "private": false,
   "main": "lib/rxz-ui.umd.min.js",
   "author": "ruixiaozi",
@@ -9,8 +9,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lib": "vue-cli-service build --target lib --name rxz-ui --dest lib ./src/index.js",
-    "pub": "npm version patch && npm run lib && npm publish",
-    "pb": "npm run lib && npm publish"
+    "pub": "npm run lib && npm publish"
   },
   "repository": {
     "type": "git",

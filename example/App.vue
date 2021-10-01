@@ -1,26 +1,16 @@
 <template>
   <div id="app">
-    <rxz-theme>
-      <rxz-center-layout>
-        <rxz-loading :loading="false" class="loading-test">
-        <div style="border: 1px solid">
-          <img alt="Vue logo" src="./assets/logo.png" />
-          <rxz-button bgColor="red" hoverBgColor="green" textColor="white"
-            >test</rxz-button
-          >
-          <rxz-button type="info2" @click="isVisible=true">test</rxz-button>
-          <rxz-button type="primary" :disabled="true">test</rxz-button>
-          <rxz-count-down-button type="primary" v-model="isStart" :seconds="40">
-            <span slot="countdownValue">2</span>
-            1
-          </rxz-count-down-button>
-          <rxz-wave-process :process="20.5"></rxz-wave-process>
-          <rxz-button type="success" loading> test</rxz-button>
-          <div style="width:200px;height:200px" v-rxz-echarts:e1="op">123</div>
-        </div>
-        </rxz-loading>
-      </rxz-center-layout>
-    </rxz-theme>
+
+    <div style="border:1px solid #000;overflow:hidden">
+      <rxz-flip-card  :isFront="isFront" @mouseover="isFront=false" @mouseout="isFront=true">
+        <template v-slot:front>
+          <div style="background-color:red;width:100%;height:100%">front</div>
+        </template>
+        <template v-slot:back>
+          <div style="background-color:green;width:100%;height:100%">back</div>
+        </template>
+      </rxz-flip-card>
+    </div>
     <rxz-dialog :visible.sync="isVisible">
       <template slot="title">sdf</template>
       <div>我爱尸毒方剂aasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
@@ -37,6 +27,7 @@ export default {
     return {
       isStart: true,
       isVisible: false,
+      isFront:true,
       op:{
         xAxis: {
             type: 'category',
@@ -64,6 +55,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
   .loading-test{
     width: 400px;
     height: 300px;

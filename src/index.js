@@ -10,6 +10,7 @@ import Base from '@/components/Base/index.js'
 import Table from '@/components/Table/index.js'
 import Layout from '@/components/Layout/index.js'
 import Animation from '@/components/Animation/index.js'
+import Card from '@/components/Card/index.js'
 // ...如果还有话继续添加
 
 const components = [
@@ -17,6 +18,7 @@ const components = [
   ...Table,
   ...Layout,
   ...Animation,
+  ...Card,
   // ...如果还有的话继续添加
 ]
 
@@ -52,5 +54,6 @@ export default {
   ...Table,
   ...Layout,
   ...Animation,
+  ...Card,
   // ...如果还有话继续添加
 }
