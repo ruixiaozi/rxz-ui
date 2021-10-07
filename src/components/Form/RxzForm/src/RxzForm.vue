@@ -7,7 +7,7 @@ Component: RxzForm
 * @Version: 1.0.11
 -->
 <template>
-  <form class="rxz-form" action="">
+  <form class="rxz-form" >
     <slot></slot>
   </form>
 </template>

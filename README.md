@@ -1,8 +1,8 @@
 # rxz-ui
 
-rxz-ui is a Vue based UI component and tool library, which is compatible with multi terminal device UI.
+rxz-ui is a Vue based UI component and tool library, which is compatible with multi terminal device.
 
-rxz-ui是一个基于Vue的UI组件、工具库，兼容多端设备UI。
+rxz-ui是一个基于Vue的UI组件、工具库，兼容多端设备。
 
 [![npm version](https://badge.fury.io/js/rxz-ui.svg)](https://badge.fury.io/js/rxz-ui)
 
@@ -17,30 +17,7 @@ Copyright (c) 2021 Ruixiaozi
 
 # Documentation
 
-1. Installation
-
-   ```
-   npm i rxz-ui -S
-   ```
-
-   then in Vue project `main.js`:
-
-   ```
-   import rxzUI from "rxz-ui"
-   Vue.use(rxzUI);
-   ```
-
-2. Use UI-componet
-
-   ```
-   <rxz-button bgColor="red" hoverBgColor="green">test</rxz-button>
-   ```
-
-3. Use Utils
-
-   ```
-   this.$rxz.dayjs();
-   ```
+[https://www.ruixiaozi.com/rxz-ui/](https://www.ruixiaozi.com/rxz-ui/)
 
 # Support
 

@@ -69,7 +69,7 @@ export default {
       type: String,
       default: "3000"
     },
-    //宽度（只对center有效）
+    //宽度
     width: {
       type: String,
       default: "400px",

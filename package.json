@@ -9,7 +9,9 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lib": "vue-cli-service build --target lib --name rxz-ui --dest lib ./src/index.js",
-    "pub": "npm run lib && npm publish"
+    "pub": "npm run lib && npm publish",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "repository": {
     "type": "git",
@@ -43,7 +45,8 @@
     "eslint-plugin-vue": "^6.2.2",
     "sass": "^1.37.5",
     "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "vuepress": "^1.8.2"
   },
   "eslintConfig": {
     "root": true,
