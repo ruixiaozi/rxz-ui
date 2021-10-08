@@ -6,8 +6,8 @@
  * @license MIT
  */
 
- import rxzEcharts from './rxz-echarts'
+import RxzEcharts from './rxz-echarts'
 
- export default [
-   rxzEcharts,
- ];
+export default [
+  RxzEcharts,
+];

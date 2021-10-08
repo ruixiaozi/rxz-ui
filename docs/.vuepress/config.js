@@ -47,6 +47,7 @@ module.exports = {
           sidebarDepth: 1,
           collapsable: false,
           children: [
+            'animation/rxzwaveprocess',
           ]
         },
         {
@@ -54,6 +55,7 @@ module.exports = {
           sidebarDepth: 1,
           collapsable: false,
           children: [
+            'card/rxzflipcard',
           ]
         },
         {
@@ -70,6 +72,38 @@ module.exports = {
           children: [
           ]
         },
+      ],
+      '/directives/':[
+        '',
+        {
+          title: '第三方库封装',
+          sidebarDepth: 1,
+          collapsable: false,
+          children: [
+            'others/rxzecharts',
+          ]
+        }
+      ],
+      '/utils/':[
+        '',
+        {
+          title: '数组',
+          sidebarDepth: 1,
+          path:'/utils/array/',
+          collapsable: false,
+          children: [
+            'array/sort',
+          ]
+        },
+        {
+          title: '日期时间',
+          sidebarDepth: 1,
+          path:'/utils/date/',
+          collapsable: false,
+          children: [
+            'date/format',
+          ]
+        }
       ]
     }
 
