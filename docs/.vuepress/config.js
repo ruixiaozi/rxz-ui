@@ -103,6 +103,34 @@ module.exports = {
           children: [
             'date/format',
           ]
+        },
+        {
+          title: '对象操作',
+          sidebarDepth: 1,
+          path:'/utils/object/',
+          collapsable: false,
+          children: [
+            'object/base',
+          ]
+        },
+        {
+          title: '字符串',
+          sidebarDepth: 1,
+          path:'/utils/string/',
+          collapsable: false,
+          children: [
+            'string/logical',
+          ]
+        },
+        {
+          title: '第三方库封装',
+          sidebarDepth: 1,
+          path:'/utils/others/',
+          collapsable: false,
+          children: [
+            'others/axios',
+            'others/dayjs',
+          ]
         }
       ]
     }
