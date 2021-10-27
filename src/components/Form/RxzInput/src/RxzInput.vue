@@ -54,8 +54,8 @@ export default {
   watch: {},
   // Component methods
   methods: {
-    input(v){
-      this.$emit("input",v);
+    input(e){
+      this.$emit("input",e.target.value);
     }
 
   },

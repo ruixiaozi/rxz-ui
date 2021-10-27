@@ -8,8 +8,8 @@ Component: RxzFormItem
 -->
 <template>
   <div class="rxz-form-item">
-    <rxz-label >
-      <slot name="label"></slot>
+    <rxz-label :width="labelWidth">
+      <slot name="label">{{label}}</slot>
     </rxz-label>
     <div class="rxz-form-item-content">
       <slot></slot>
@@ -26,8 +26,16 @@ export default {
   name: 'RxzFormItem',
   // Component props
   props: {
-
+    label:{
+      type:String,
+      default:""
+    },
+    validateProp:{
+      type:String,
+      default:""
+    }
   },
+  inject: ['labelWidth'],
   // Locally registered components
   components: {
     RxzLabel
@@ -55,6 +63,8 @@ export default {
 <style lang="scss" scoped>
 .rxz-form-item{
   width: 100%;
-
+  display: flex;
+  //align-items: center;
+  margin-bottom: 20px;
 }
 </style>

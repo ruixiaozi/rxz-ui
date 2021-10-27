@@ -58,5 +58,9 @@ export default {
 <style lang="scss" scoped>
 .rxz-label{
   display: inline-block;
+  font-size: 14px;
+  color: #4c4d50;
+  padding-right: 10px;
+  line-height: 35px;
 }
 </style>

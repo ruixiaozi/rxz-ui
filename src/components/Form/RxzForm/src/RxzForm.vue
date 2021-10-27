@@ -17,15 +17,23 @@ Component: RxzForm
 export default {
   // Component name
   name: 'RxzForm',
-  model:{
-    prop: 'data',
-    event: 'update:data'
-  },
   // Component props
   props: {
-    data:{
+    //验证规则对象
+    validate:{
       type:Object,
       default:()=>{return {}}
+    },
+    labelWidth:{
+      type:String,
+      default:"100px"
+    }
+
+  },
+  provide(){
+    return {
+      labelWidth:this.labelWidth,
+      validate:this.validate
     }
   },
   // Locally registered components
@@ -38,15 +46,6 @@ export default {
   },
   // Calculate attribute
   computed: {
-    //表单数据
-    formData:{
-      get(){
-        return this.data;
-      },
-      set(value){
-        this.$emit("update:data",value);
-      }
-    }
   },
   // Component watch
   watch: {

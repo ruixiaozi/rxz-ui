@@ -12,9 +12,18 @@
       </rxz-flip-card>
     </div>
     <br/>
-    <div>
-      <rxz-input></rxz-input>
-    </div>
+    <rxz-form :validate="validate" labelWidth="200px">
+      <rxz-form-item validateProp="test" label="活动名称2">
+        <rxz-input v-model="test"></rxz-input>
+      </rxz-form-item>
+      <rxz-form-item label="活动名称2">
+        <rxz-input v-model="test"></rxz-input>
+      </rxz-form-item>
+      <rxz-form-item label="活动名称2">
+        <rxz-input v-model="test"></rxz-input>
+      </rxz-form-item>
+
+    </rxz-form>
     <rxz-dialog :visible.sync="isVisible">
       <template slot="title">sdf</template>
       <div>rxz</div>
@@ -29,6 +38,21 @@ export default {
   components: {},
   data() {
     return {
+      validate:{
+        bind:this.test,
+        property:{
+          a:['required'],
+          b:['required',{max:10,min:0}],
+          c:['required',{handle:function(v){
+            return false;
+          }}]
+        }
+      },
+      test:{
+        a:'',
+        b:0,
+        c:''
+      },
       isStart: true,
       isVisible: false,
       isFront:true,
