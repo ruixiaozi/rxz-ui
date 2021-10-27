@@ -1,36 +1,39 @@
 <!--
-Component: RxzFormItem
-* @FileDescription: 表单项组件
+Component: RxzLabel
+* @FileDescription: 标签
 * @Author: ruixiaozi
 * @Email: admin@ruixiaozi.com
-* @Date: 2021年10月03日 19:26:01
-* @Version: 1.0.19
+* @Date: 2021年10月11日 10:02:49
+* @Version: 1.0.20
 -->
 <template>
-  <div class="rxz-form-item">
-    <rxz-label >
-      <slot name="label"></slot>
-    </rxz-label>
-    <div class="rxz-form-item-content">
-      <slot></slot>
-      <div class="rxz-form-item-content-error"></div>
-    </div>
-
+  <div class="rxz-label" :style="{
+      'text-align':textAlign,
+      width:width
+    }">
+    <slot></slot>
   </div>
 </template>
 
 <script>
-import  RxzLabel  from "@/components/Form/RxzLabel";
+
 export default {
   // Component name
-  name: 'RxzFormItem',
+  name: 'RxzLabel',
   // Component props
   props: {
-
+    textAlign:{
+      type:String,
+      default:"right"
+    },
+    width:{
+      type:String,
+      default:"100px"
+    }
   },
   // Locally registered components
   components: {
-    RxzLabel
+
   },
   // Component status
   data () {
@@ -53,8 +56,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.rxz-form-item{
-  width: 100%;
-
+.rxz-label{
+  display: inline-block;
 }
 </style>

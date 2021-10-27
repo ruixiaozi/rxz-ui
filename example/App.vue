@@ -11,9 +11,13 @@
         </template>
       </rxz-flip-card>
     </div>
+    <br/>
+    <div>
+      <rxz-input></rxz-input>
+    </div>
     <rxz-dialog :visible.sync="isVisible">
       <template slot="title">sdf</template>
-      <div>我爱尸毒方剂aasdfaasdfaasdfaasdfaasdfaasdfaasdfadf</div>
+      <div>rxz</div>
 
     </rxz-dialog>
   </div>

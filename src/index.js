@@ -11,6 +11,7 @@ import Table from '@/components/Table/index.js'
 import Layout from '@/components/Layout/index.js'
 import Animation from '@/components/Animation/index.js'
 import Card from '@/components/Card/index.js'
+import Form from '@/components/Form/index.js'
 // ...如果还有话继续添加
 
 const components = [
@@ -19,6 +20,7 @@ const components = [
   ...Layout,
   ...Animation,
   ...Card,
+  ...Form,
   // ...如果还有的话继续添加
 ]
 

@@ -8,9 +8,15 @@
 
 //导入Form下所有组件
 import RxzForm from './RxzForm/index'
-
+import RxzFormItem from './RxzFormItem/index'
+import RxzInput from './RxzInput/index'
+import RxzLabel from './RxzLabel/index'
 
 export default [
-  RxzForm
+  RxzForm,
+  RxzFormItem,
+  RxzInput,
+  RxzLabel,
+
 ]
 
