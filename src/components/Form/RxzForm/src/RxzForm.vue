@@ -19,8 +19,12 @@ export default {
   name: 'RxzForm',
   // Component props
   props: {
+    data:{
+      type:Object,
+      default:()=>{return {}}
+    },
     //验证规则对象
-    validate:{
+    validatas:{
       type:Object,
       default:()=>{return {}}
     },
@@ -33,7 +37,7 @@ export default {
   provide(){
     return {
       labelWidth:this.labelWidth,
-      validate:this.validate
+      rxzForm:this,
     }
   },
   // Locally registered components
@@ -42,7 +46,9 @@ export default {
   },
   // Component status
   data () {
-    return {}
+    return {
+      fields: []
+    }
   },
   // Calculate attribute
   computed: {
@@ -53,6 +59,29 @@ export default {
   },
   // Component methods
   methods: {
+    addField(field){
+      if (field) this.fields.push(field);
+    },
+    removeField(field){
+      if (field.prop) this.fields.splice(this.fields.indexOf(field), 1);
+    },
+    reset() {
+      this.fields.forEach(field => field.resetField())
+    },
+    submit(cb){
+      return new Promise(resolve => {
+        let valid = true, count = 0;
+        this.fields.forEach(field => {
+          field.validate('', error => {
+            if (error) valid = false;
+            if (++count === this.fields.length) {
+              resolve(valid);
+              if (typeof cb === 'function') cb(valid);
+            }
+          })
+        })
+      })
+    }
 
   },
   // Lifecycle hooks

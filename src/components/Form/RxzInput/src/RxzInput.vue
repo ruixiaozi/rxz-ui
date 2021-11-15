@@ -14,7 +14,8 @@ Component: RxzInput
       :placeholder="placeholder"
       class="rxz-input-native"
       :value="value"
-      @input="input"
+      @input="handleInput"
+      @blur="handleBlur"
     />
   </div>
 </template>
@@ -42,6 +43,7 @@ export default {
       default:""
     }
   },
+  inject:['rxzFormItem'],
   // Locally registered components
   components: {},
   // Component status
@@ -54,8 +56,14 @@ export default {
   watch: {},
   // Component methods
   methods: {
-    input(e){
-      this.$emit("input",e.target.value);
+
+    handleInput(e) {
+      const value = e.target.value;
+      this.$emit('input', value);
+      this.rxzFormItem && this.rxzFormItem.onFieldChange();
+    },
+    handleBlur() {
+      this.rxzFormItem && this.rxzFormItem.onFieldBlur();
     }
 
   },

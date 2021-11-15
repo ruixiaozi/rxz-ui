@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/ruixiaozi/rxz-ui#readme",
   "dependencies": {
+    "async-validator": "^4.0.7",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "dayjs": "^1.10.6",

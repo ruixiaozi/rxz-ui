@@ -11,7 +11,7 @@ Component: RxzLabel
       'text-align':textAlign,
       width:width
     }">
-    <slot></slot>
+    <span v-if="isRequired">*</span><slot></slot>
   </div>
 </template>
 
@@ -29,6 +29,10 @@ export default {
     width:{
       type:String,
       default:"100px"
+    },
+    isRequired:{
+      type:Boolean,
+      default:false
     }
   },
   // Locally registered components

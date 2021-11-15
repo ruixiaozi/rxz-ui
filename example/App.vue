@@ -12,9 +12,11 @@
       </rxz-flip-card>
     </div>
     <br/>
-    <rxz-form :validate="validate" labelWidth="200px">
-      <rxz-form-item validateProp="test" label="活动名称2">
-        <rxz-input v-model="test"></rxz-input>
+    <rxz-form v-model="test" :validate="validate" labelWidth="200px">
+      <rxz-form-item attr="a" label="活动名称2">
+        <template v-slot:default="data">
+          <rxz-input v-model="data"></rxz-input>
+        </template>
       </rxz-form-item>
       <rxz-form-item label="活动名称2">
         <rxz-input v-model="test"></rxz-input>
