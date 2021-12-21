@@ -11,7 +11,7 @@ Component: RxzLabel
       'text-align':textAlign,
       width:width
     }">
-    <span v-if="isRequired">*</span><slot></slot>
+    <span v-if="isRequired" class="rxz-label-required">*</span><slot></slot>
   </div>
 </template>
 
@@ -66,5 +66,17 @@ export default {
   color: #4c4d50;
   padding-right: 10px;
   line-height: 35px;
+  vertical-align: middle;
+  &-required{
+    color: red;
+    font-size: 14px;
+    height: 10px;
+    width: 20px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 35px;
+  }
 }
 </style>

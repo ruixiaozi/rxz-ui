@@ -17,6 +17,8 @@ import request from './utils/request'
 //dayjs
 import dayjs from 'dayjs';
 
+import _ from 'lodash'
+
 import object from './utils/object'
 
 import array from './utils/array'
@@ -30,7 +32,8 @@ export default {
   dayjs,
   object,
   array,
-  reg
+  reg,
+  _,
 }
 
 

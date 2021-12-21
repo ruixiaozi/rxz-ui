@@ -34,7 +34,11 @@
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "dayjs": "^1.10.6",
+    "dplayer": "^1.26.0",
     "echarts": "^5.2.0",
+    "flv.js": "^1.6.2",
+    "hls.js": "^1.1.2",
+    "lodash": "^4.17.21",
     "vue": "^2.6.14"
   },
   "devDependencies": {

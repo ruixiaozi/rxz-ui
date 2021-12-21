@@ -12,19 +12,16 @@
       </rxz-flip-card>
     </div>
     <br/>
-    <rxz-form v-model="test" :validate="validate" labelWidth="200px">
-      <rxz-form-item attr="a" label="活动名称2">
-        <template v-slot:default="data">
-          <rxz-input v-model="data"></rxz-input>
-        </template>
+    <rxz-form :data="test" :validatas="validates" labelWidth="100px">
+      <rxz-form-item attr="a" label="活动名称1">
+        <rxz-input v-model="test.a"></rxz-input>
       </rxz-form-item>
-      <rxz-form-item label="活动名称2">
-        <rxz-input v-model="test"></rxz-input>
+       <rxz-form-item attr="b" label="活动名称2">
+        <rxz-input v-model="test.b"></rxz-input>
       </rxz-form-item>
-      <rxz-form-item label="活动名称2">
-        <rxz-input v-model="test"></rxz-input>
+       <rxz-form-item attr="c" label="活动名称3">
+        <rxz-input v-model="test.c"></rxz-input>
       </rxz-form-item>
-
     </rxz-form>
     <rxz-dialog :visible.sync="isVisible">
       <template slot="title">sdf</template>
@@ -40,19 +37,18 @@ export default {
   components: {},
   data() {
     return {
-      validate:{
-        bind:this.test,
-        property:{
-          a:['required'],
-          b:['required',{max:10,min:0}],
-          c:['required',{handle:function(v){
-            return false;
-          }}]
-        }
+      validates:{
+        a:[
+          {required:true,trigger:'blur',message:"必须填写a"}
+        ],
+        b:[
+          {required:true,trigger:'blur',message:"必须填写b"}
+        ],
+
       },
       test:{
         a:'',
-        b:0,
+        b:"",
         c:''
       },
       isStart: true,

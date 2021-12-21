@@ -12,8 +12,8 @@ Component: RxzFormItem
       <slot name="label">{{label}}</slot>
     </rxz-label>
     <div class="rxz-form-item-content">
-      <slot :data="formData"></slot>
-      <div v-if="isShowMes" class="rxz-form-item-content-error">{{message}}</div>
+      <slot ></slot>
+      <div  class="rxz-form-item-content-error">{{message}}</div>
     </div>
 
   </div>
@@ -139,6 +139,15 @@ export default {
   width: 100%;
   display: flex;
   //align-items: center;
-  margin-bottom: 20px;
+
+  &-content{
+
+    &-error{
+      color: red;
+      font-size: 12px;
+      padding: 3px;
+      height: 16px;
+    }
+  }
 }
 </style>

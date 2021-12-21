@@ -7,7 +7,9 @@
  */
 
 import RxzEcharts from './rxz-echarts'
+import RxzDplayer from './rxz-dplayer';
 
 export default [
   RxzEcharts,
+  RxzDplayer,
 ];
