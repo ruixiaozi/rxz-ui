@@ -39,7 +39,8 @@
     "flv.js": "^1.6.2",
     "hls.js": "^1.1.2",
     "lodash": "^4.17.21",
-    "vue": "^2.6.14"
+    "vue": "^2.6.14",
+    "vue-video-player": "^5.0.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

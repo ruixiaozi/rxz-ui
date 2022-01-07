@@ -50,26 +50,27 @@ export default {
 
     el.dataset.dplayerKey = key;
 
+    function switchUrl(dp,url){
+      dp.switchVideo(
+        {url: url}
+      );
+
+      var timer = setInterval(() => {
+        if(dp.video.paused){
+          dp.play();
+        }
+        else if(timer){
+          clearInterval(timer);
+          timer = null
+        }
+      }, 200);
+
+    }
+
     //保存dplayer表
     dplayerTable[key] = {
       instance: dp,
-      debounceSwitchUrl:utils._.debounce(this.switchUrl,200),
-      switchUrl(dp,url){
-        dp.switchVideo(
-          {url: url}
-        );
-
-        var timer = setInterval(() => {
-          if(dp.video.paused){
-            dp.play();
-          }
-          else if(timer){
-            clearInterval(timer);
-            timer = null
-          }
-        }, 200);
-
-      },
+      debounceSwitchUrl:utils._.debounce(switchUrl,200)
 
     };
 
