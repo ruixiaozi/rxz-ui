@@ -1,0 +1,63 @@
+rules:
+  /:
+    /packages:
+      /**.ts:
+        - file
+        - (index|((?:[A-Z][a-z]*)+))
+      /**.scss:
+        - file
+        - PascalCaseWithABB
+      /**.vue:
+        - file
+        - PascalCaseWithABB
+      /**.json:
+          - file
+          - camelCaseWithABB
+      /index.ts:
+        - file
+      /components:
+        /**:
+          - dir
+          - (i18n|((?:[A-Z][a-z]*)+))
+      /definition:
+        /*.ts:
+          - file
+          - camelCaseWithABB
+      /i18n:
+        - dir
+
+# 例外，支持中间用*匹配任意字符，**匹配任意路径
+exceptions:
+  - /.husky
+  - /.vscode
+  - /lib
+  - /build
+  - /docs
+  - /example
+  - /node_modules
+  - /public
+  - /tests
+  - /typings
+  - /.browserslistrc
+  - /.commitlintrc.json
+  - /.dirlintrc.yml
+  - /.editorconfig
+  - /.eslintignore
+  - /.npmignore
+  - /.eslintrc.js
+  - /.git
+  - /.gitignore
+  - /.lintstagedrc.json
+  - /LICENSE
+  - /package-lock.json
+  - /package.json
+  - /README.md
+  - /tsconfig.json
+  - /CHANGELOG.md
+  - /.nvmrc
+  - /babel.config.js
+  - /jest.config.js
+  - /vue.config.js
+  - /packages/fonts
+  - /packages/style
+

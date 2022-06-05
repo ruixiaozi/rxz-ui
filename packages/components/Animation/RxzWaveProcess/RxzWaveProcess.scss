@@ -1,0 +1,44 @@
+@keyframes wave {
+  50% {
+    transform: translate(-50%, -101%) rotate(500deg);
+  }
+  100% {
+    transform: translate(-50%, -101%) rotate(1000deg);
+  }
+}
+
+.rxz-wave-process {
+  overflow: hidden;
+  position: relative;
+
+  &-water {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  &-wave {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: 0;
+    left: 50%;
+    border-radius: 40%;
+    transform: translate(-50%, -101%) rotate(0);
+    animation: wave 20s linear infinite;
+    z-index: 20;
+  }
+
+  &-info {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
