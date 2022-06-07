@@ -1,0 +1,57 @@
+@use "~@/themes/themeify";
+
+.rxz-button {
+  transition: all 0.1s;
+  cursor: pointer;
+
+  // 默认样式，有边框
+  border: 1px solid #d5e7fc;
+  @include themeify.theme_color("default", false);
+
+  &:hover {
+    @include themeify.theme_color("default", true);
+  }
+
+
+  // 不同类型的按钮样式（使用主题类型颜色）
+  @each $type in "primary", "success", "information" {
+    &.rxz-button-#{$type} {
+      border: none;
+      @include themeify.theme_color($type, false);
+
+      &:not(.is-disabled):hover {
+        @include themeify.theme_color($type, true);
+      }
+    }
+  }
+
+  // 不可用的样式
+  &.rxz-button-is-disabled {
+    // 禁止出发hover等效果
+    position: relative;
+    cursor: not-allowed !important;
+
+    // 添加一个蒙版，变成不可用样式
+    &::before {
+      content: "";
+      position: absolute;
+      left: -1px;
+      top: -1px;
+      right: -1px;
+      bottom: -1px;
+      border-radius: inherit;
+      background-color: hsla(0, 0%, 100%, .55);
+
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+}

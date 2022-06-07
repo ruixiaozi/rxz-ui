@@ -60,4 +60,5 @@ exceptions:
   - /vue.config.js
   - /packages/fonts
   - /packages/style
+  - /packages/themes
 

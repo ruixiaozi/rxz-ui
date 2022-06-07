@@ -16,9 +16,9 @@
       { height: height },
       { padding: padding },
       { 'border-radius': borderRadius },
-      { 'background-color': isHover ? hoverBgColorCPT : bgColor },
+      { 'background-color': isHover ? hoverBgColorCPT : bgColorCPT },
       {
-        color: isHover ? hoverTextColorCPT : textColor,
+        color: isHover ? hoverTextColorCPT : textColorCTP,
       },
       css,
     ]"

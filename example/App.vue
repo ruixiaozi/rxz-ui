@@ -3,7 +3,12 @@
   <RxzWaveProcess :process="20"></RxzWaveProcess>
   <RxzIcon></RxzIcon>
   <RxzLoading></RxzLoading>
-  <div>{{ $t('test') }}</div>
+  <RxzCountdownButton
+    v-model="isStart"
+    :seconds="10"
+    @click="handleClick"
+  ></RxzCountdownButton>
+  <div>{{ $t("test") }}</div>
 </template>
 
 <script lang="ts">
@@ -18,7 +23,15 @@ const en = require('./assets/i18n/en/common.json');
     },
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+
+  isStart = true;
+
+  handleClick(): void {
+    console.log(123);
+  }
+
+}
 </script>
 
 <style lang="scss">

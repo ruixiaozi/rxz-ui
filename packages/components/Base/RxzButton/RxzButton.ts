@@ -67,12 +67,22 @@ export class RxzButton extends Vue {
 
   isHover = false;
 
-  get hoverBgColorCPT(): string {
-    return this.hoverBgColor === 'unset' ? this.bgColor : this.hoverBgColor;
+  get bgColorCPT(): string | undefined {
+    return (this.bgColor && this.bgColor !== 'unset')
+      ? this.bgColor : undefined;
   }
 
-  get hoverTextColorCPT(): string {
-    return this.hoverTextColor === 'unset' ? this.textColor : this.hoverTextColor;
+  get hoverBgColorCPT(): string | undefined {
+    return this.hoverBgColor === 'unset' ? this.bgColorCPT : this.hoverBgColor;
+  }
+
+  get textColorCTP(): string | undefined {
+    return (this.textColor && this.textColor !== 'unset')
+      ? this.textColor : undefined;
+  }
+
+  get hoverTextColorCPT(): string | undefined {
+    return this.hoverTextColor === 'unset' ? this.textColorCTP : this.hoverTextColor;
   }
 
   @Emit('click')

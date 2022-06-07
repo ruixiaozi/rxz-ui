@@ -43,6 +43,8 @@
     "vue-property-decorator": "^10.0.0-rc.3"
   },
   "devDependencies": {
+    "dirlint": "1.0.1",
+    "eslint-config-brisk": "1.0.3",
     "@commitlint/cli": "16.2.1",
     "@commitlint/config-conventional": "16.2.1",
     "@rollup/plugin-node-resolve": "^13.3.0",
@@ -58,8 +60,6 @@
     "@vue/eslint-config-typescript": "^7.0.0",
     "@vue/test-utils": "^2.0.0-0",
     "eslint": "^6.7.2",
-    "dirlint": "1.0.1",
-    "eslint-config-brisk": "1.0.3",
     "eslint-plugin-vue": "^7.0.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.0",
