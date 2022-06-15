@@ -28,4 +28,5 @@ Copyright (c) 2021 Ruixiaozi
 + dayjs
 + normalize
 + echarts
-
++ rxjs
++ lodash

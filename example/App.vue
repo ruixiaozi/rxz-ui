@@ -8,11 +8,15 @@
     :seconds="10"
     @click="handleClick"
   ></RxzCountdownButton>
+  <RxzForm :formConfig="formConfig" v-model="data" >
+    <RxzFormItem></RxzFormItem>
+  </RxzForm>
   <div>{{ $t("test") }}</div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
+import { Watch } from 'vue-property-decorator';
 const zh = require('./assets/i18n/zh/common.json');
 const en = require('./assets/i18n/en/common.json');
 @Options({
@@ -27,8 +31,28 @@ export default class App extends Vue {
 
   isStart = true;
 
+  formConfig = {
+    test: {
+      validators: ['1'],
+      default: 1,
+    },
+  };
+
+  data: any = {
+    a1: 3,
+  };
+
   handleClick(): void {
     console.log(123);
+  }
+
+  formDataChange(value: any): void {
+    console.log('change', value);
+  }
+
+  @Watch('data')
+  dataChange(val: any): void {
+    console.log('change', val);
   }
 
 }

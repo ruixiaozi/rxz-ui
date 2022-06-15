@@ -1,5 +1,8 @@
 import { Options, Vue } from 'vue-class-component';
-import { Prop, Provide } from 'vue-property-decorator';
+import { Model, Prop, Provide } from 'vue-property-decorator';
+import { RxzFormConfig } from './RxzFormInterFace';
+import { Subject } from 'rxjs';
+import { defaultsDeep } from 'lodash';
 
 /**
  * Component: RxzForm
@@ -13,56 +16,59 @@ import { Prop, Provide } from 'vue-property-decorator';
 export class RxzForm extends Vue {
 
   @Prop({ type: Object, default: () => ({}) })
-  data!: any;
-
-  @Prop({ type: Object, default: () => ({}) })
-  validatas!: any;
+  @Provide({ reactive: true })
+  formConfig!: RxzFormConfig;
 
   @Prop({ type: String, default: '100px' })
+  @Provide({ reactive: true })
   labelWidth!: string;
 
-  @Provide({ to: 'labelWidth' })
-  labelWidthProvide = this.labelWidth;
+  // 表单数据，v-model绑定，绑定得值可以覆盖初始默认值
+  @Model('modelValue', { type: Object, default: () => ({}) })
+  @Provide({ reactive: true })
+  formData!: any;
 
   @Provide()
-  rxzForm = this;
+  onCheck: Subject<any> = new Subject();
 
-  fields: any[] = [];
-
-  addField(field: any):void {
-    if (field) {
-      this.fields.push(field);
-    }
-  }
-
-  removeField(field: any):void {
-    if (field.prop) {
-      this.fields.splice(this.fields.indexOf(field), 1);
-    }
+  created(): void {
+    const reData = this.createFormData(this.formConfig);
+    this.formData = defaultsDeep(this.formData, reData);
   }
 
   reset():void {
-    this.fields.forEach((field) => field.resetField());
+    const reData = this.createFormData(this.formConfig);
+    this.formData = reData;
   }
 
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  submit(cb: Function):Promise<boolean> {
-    return new Promise((resolve) => {
-      let valid = true, count = 0;
-      this.fields.forEach((field) => {
-        field.validate('', (error: any) => {
-          if (error) {
-            valid = false;
-          }
-          if (++count === this.fields.length) {
-            resolve(valid);
-            if (typeof cb === 'function') {
-              cb(valid);
-            }
-          }
-        });
-      });
-    });
+  // 根据config递归创建初始值
+  createFormData(rxzFormConfig: RxzFormConfig): any {
+    if (!rxzFormConfig) {
+      return {};
+    }
+    const re = Object.entries(rxzFormConfig).reduce(
+      (data, [key, value]) => {
+        if (Array.isArray(value)) {
+          data[key] = value.map((item) => this.createFormData(item));
+          return data;
+        }
+        if (value?.validators) {
+          data[key] = value.default ?? null;
+          return data;
+        }
+        data[key] = this.createFormData(value as RxzFormConfig);
+        return data;
+      },
+      {} as any,
+    );
+    return re;
+  }
+
+  check(): any {
+    // 执行校验，将校验结果返回，并通知子组件
+    const res = {};
+    this.onCheck.next(res);
+    return res;
   }
 
 }
