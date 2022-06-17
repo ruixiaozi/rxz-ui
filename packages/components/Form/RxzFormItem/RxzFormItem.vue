@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div>
+    <slot :itemData="itemFormData"></slot>
+  </div>
 </template>
 
 <script lang="ts">

@@ -2,6 +2,7 @@
   <img alt="Vue logo" src="./assets/logo.png" />
   <RxzWaveProcess :process="20"></RxzWaveProcess>
   <RxzIcon></RxzIcon>
+   <div>{{ $t("test") }}</div>
   <RxzLoading></RxzLoading>
   <RxzCountdownButton
     v-model="isStart"
@@ -9,9 +10,22 @@
     @click="handleClick"
   ></RxzCountdownButton>
   <RxzForm :formConfig="formConfig" v-model="data" >
-    <RxzFormItem></RxzFormItem>
+    <RxzFormItem name="test" v-slot:default="{itemData}">
+      <p>{{itemData}}</p>
+      <RxzInput></RxzInput>
+    </RxzFormItem>
+    <RxzFormItem name="inner">
+      <RxzFormItem name="innerTest" v-slot:default="{itemData}">
+        <p>{{itemData}}</p>
+        <RxzInput></RxzInput>
+      </RxzFormItem>
+      <RxzFormItem name="innerTest2" v-slot:default="{itemData}">
+        <p>{{itemData}}</p>
+        <RxzInput></RxzInput>
+      </RxzFormItem>
+    </RxzFormItem>
   </RxzForm>
-  <div>{{ $t("test") }}</div>
+
 </template>
 
 <script lang="ts">
@@ -36,10 +50,24 @@ export default class App extends Vue {
       validators: ['1'],
       default: 1,
     },
+    inner: {
+      innerTest: {
+        validators: ['2'],
+        default: 2,
+      },
+      innerTest2: {
+        validators: ['3'],
+        default: 3,
+      },
+    },
   };
 
   data: any = {
-    a1: 3,
+    test: 3,
+    inner: {
+      innerTest: 4,
+      innerTest2: 5,
+    },
   };
 
   handleClick(): void {
@@ -50,7 +78,7 @@ export default class App extends Vue {
     console.log('change', value);
   }
 
-  @Watch('data')
+  @Watch('data', { deep: true })
   dataChange(val: any): void {
     console.log('change', val);
   }

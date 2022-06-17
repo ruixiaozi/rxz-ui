@@ -1,7 +1,7 @@
 import { Subject } from 'rxjs';
 import { Options, Vue } from 'vue-class-component';
-import { Inject, Watch } from 'vue-property-decorator';
-import { RxzFormConfig } from '../RxzForm/RxzFormInterFace';
+import { Inject, Prop, Provide } from 'vue-property-decorator';
+import { RxzFormConfig, RxzFormItemConfig } from '../RxzForm/RxzFormInterFace';
 
 /**
  * Component: RxzFormItem
@@ -15,27 +15,38 @@ import { RxzFormConfig } from '../RxzForm/RxzFormInterFace';
 export class RxzFormItem extends Vue {
 
   @Inject()
-  formConfig!: RxzFormConfig;
+  readonly formConfig!: RxzFormConfig;
 
   @Inject()
-  labelWidth!: string;
+  readonly labelWidth!: string;
 
   @Inject()
-  formData!: any;
+  @Provide({ to: 'parentData', reactive: true })
+  readonly formData!: any;
 
   @Inject()
-  onCheck!: Subject<any>;
+  readonly onCheck!: Subject<any>;
 
-  created() {
-    console.log(this.formConfig);
-    console.log(this.labelWidth);
-    console.log('data', JSON.stringify(this.formData));
-    console.log(this.onCheck);
+  @Prop({ type: String, default: '' })
+  @Provide({ to: 'name', reactive: true })
+  readonly name!: string;
+
+  @Provide({ to: 'formConfig', reactive: true })
+  get itemFormConfig(): RxzFormItemConfig | RxzFormConfig | RxzFormConfig[] | null {
+    if (!this.formConfig) {
+      return null;
+    }
+    return this.formConfig[this.name] ?? null;
   }
 
-  @Watch('formData')
-  dataChange(val: any): void {
-    console.log('changeitem', val);
+  // 继续向下传递
+  @Provide({ to: 'formData', reactive: true })
+  get itemFormData(): any {
+    if (!this.formData) {
+      return null;
+    }
+    return this.formData[this.name] ?? null;
   }
+
 
 }
