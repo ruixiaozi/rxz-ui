@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <RxzFlex class="rxz-form-item" direction="horizontal" gutter="5px" align="flex-start">
     <slot :itemData="itemFormData"></slot>
-  </div>
+  </RxzFlex>
 </template>
 
 <script lang="ts">

@@ -1,0 +1,21 @@
+.rxz-flex {
+  display: flex;
+  justify-content: var(--justify);
+  align-items: var(--align);
+
+
+
+  &.vertical {
+    flex-direction: column;
+  }
+
+  &.horizontal {
+    flex-direction: row;
+
+    ::v-deep > *:not(:last-child) {
+      margin-right: var(--gutter);
+    }
+  }
+
+
+}

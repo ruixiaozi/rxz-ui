@@ -1,5 +1,5 @@
 <template>
-  <input type="text" v-model="inputValue" />
+  <input type="text" v-bind="$attrs" v-model="inputValue" />
 </template>
 
 <script lang="ts">

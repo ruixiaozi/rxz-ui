@@ -1,0 +1,18 @@
+.rxz-label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  &-asterisk {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background-image: url('~@/images/asterisk.svg');
+    background-size: 100%;
+    opacity: 1;
+  }
+
+  &-content {
+    white-space:nowrap;
+  }
+}

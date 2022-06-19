@@ -1,5 +1,6 @@
 import { Options, Vue } from 'vue-class-component';
 import { Inject, Model } from 'vue-property-decorator';
+import { isNil as _isNil } from 'lodash';
 
 /**
  * Component: RxzInput
@@ -23,24 +24,18 @@ export class RxzInput extends Vue {
 
   // 如果在formitem下，则屏蔽v-model
   get inputValue(): any {
-    if (this.name) {
+    if (!_isNil(this.name)) {
       return this.parentData?.[this.name] || '';
     }
     return this.value;
   }
 
   set inputValue(val: any) {
-    console.log(this.name);
-    if (this.name) {
+    if (!_isNil(this.name)) {
       this.parentData && (this.parentData[this.name] = val);
-    } else {
-      this.value = val;
+      return;
     }
-  }
-
-  created() {
-    console.log(this.name);
-    console.log(this.parentData);
+    this.value = val;
   }
 
 }

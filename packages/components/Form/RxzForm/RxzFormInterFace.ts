@@ -2,9 +2,11 @@ export type Validator = (value: any, formData?: any, key?: string) => string | u
 
 export interface RxzFormItemConfig {
   default?: any;
-  validators: Validator[];
+  validators: any[];
 }
 
 export interface RxzFormConfig {
-  [key: string]: RxzFormItemConfig | RxzFormConfig | RxzFormConfig[];
+  [key: string | number]: RxzFormItemConfig | RxzFormConfig;
 }
+
+export type RxzLabelWidth = string | 'auto' | 'fit-content';

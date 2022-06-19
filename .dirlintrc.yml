@@ -23,6 +23,8 @@ rules:
         /*.ts:
           - file
           - camelCaseWithABB
+      /directives:
+        - dir
       /i18n:
         - dir
 
@@ -61,4 +63,5 @@ exceptions:
   - /packages/fonts
   - /packages/style
   - /packages/themes
+  - /packages/images
 

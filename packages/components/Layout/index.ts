@@ -1,8 +1,9 @@
 import { App } from 'vue';
 import RxzCenterLayout from './RxzCenterLayout';
+import RxzFlex from './RxzFlex';
 
 // Layout组件列表
-const layoutComponents = [RxzCenterLayout];
+const layoutComponents = [RxzCenterLayout, RxzFlex];
 
 export default {
   install(app: App): void {
