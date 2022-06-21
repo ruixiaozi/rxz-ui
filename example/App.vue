@@ -10,7 +10,7 @@
   <RxzButton @click="handleAdd()">add</RxzButton>
   <RxzForm :formConfig="formConfig" v-model="data" >
     <RxzFormItem name="test">
-      <RxzLabel>一级表单：</RxzLabel>
+      <RxzLabel>一2级表单：</RxzLabel>
       <RxzInput></RxzInput>
     </RxzFormItem>
     <RxzFormItem name="test2"  v-slot:default="{itemData}">
