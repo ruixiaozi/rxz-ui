@@ -18,8 +18,8 @@
 </template>
 
 <script lang="ts">
-import { RxzDialog } from './RxzDialog';
-export default RxzDialog;
+import { RxzDialogCnt } from './RxzDialog.component';
+export default RxzDialogCnt;
 </script>
 
 <style lang="scss" scoped>

@@ -16,8 +16,8 @@
 </template>
 
 <script lang="ts">
-import { RxzFormItem } from './RxzFormItem';
-export default RxzFormItem;
+import { RxzFormItemCnt } from './RxzFormItem.component';
+export default RxzFormItemCnt;
 </script>
 
 <style lang="scss" scoped>

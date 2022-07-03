@@ -1,3 +1,4 @@
+import { install } from '@/common';
 import { App } from 'vue';
 import { RxzFlipCard } from './RxzFlipCard';
 
@@ -7,9 +8,9 @@ const cardComponents = [RxzFlipCard];
 export * from './RxzFlipCard';
 
 export const CardComponents = {
-  install(app: App): void {
+  install: install((app: App) => {
     cardComponents.forEach((component) => {
       app.use(component);
     });
-  },
+  }),
 };

@@ -19,7 +19,7 @@ import { RxzFormConfig, RxzFormItemConfig, RxzLabelWidth } from '../RxzForm/RxzF
     RxzIcon,
   },
 })
-export class RxzFormItem extends Vue {
+export class RxzFormItemCnt extends Vue {
 
   @Prop({ type: Object, default: () => ({}) })
   readonly errorTip!: StringMap;
@@ -113,9 +113,7 @@ export class RxzFormItem extends Vue {
   @Watch('formData', { deep: true })
   watchFormData(val: any) {
     const currentConfig = this.formConfig[this.name];
-    console.log();
     if (Array.isArray(currentConfig?.validators) && currentConfig?.validators.length) {
-      console.log(11);
       for (const item of currentConfig.validators) {
         const validateRes = item(val[this.name]);
         if (validateRes && this.errorTip?.[validateRes]) {

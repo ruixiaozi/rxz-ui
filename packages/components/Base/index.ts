@@ -5,6 +5,7 @@ import { RxzLoading } from './RxzLoading';
 import { RxzCountdownButton } from './RxzCountdownButton';
 import { RxzDialog } from './RxzDialog';
 import { RxzTheme } from './RxzTheme';
+import { install } from '@/common';
 
 export * from './RxzIcon';
 export * from './RxzButton';
@@ -24,9 +25,9 @@ const baseComponents = [
 ];
 
 export const BaseComponents = {
-  install(app: App): void {
+  install: install((app: App) => {
     baseComponents.forEach((component) => {
       app.use(component);
     });
-  },
+  }),
 };

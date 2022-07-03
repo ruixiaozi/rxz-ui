@@ -22,7 +22,7 @@ const en = require('./i18n/en.json');
     },
   },
 })
-export class RxzDialog extends Vue {
+export class RxzDialogCnt extends Vue {
 
   @Prop({ type: Boolean, default: true })
   readonly loading!: boolean;

@@ -1,3 +1,4 @@
+import { install } from '@/common';
 import { App } from 'vue';
 import { RxzWaveProcess } from './RxzWaveProcess';
 
@@ -7,9 +8,9 @@ const animationComponents = [RxzWaveProcess];
 export * from './RxzWaveProcess';
 
 export const AnimationComponents = {
-  install(app: App): void {
+  install: install((app: App) => {
     animationComponents.forEach((component) => {
       app.use(component);
     });
-  },
+  }),
 };

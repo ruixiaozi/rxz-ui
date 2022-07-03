@@ -19,8 +19,8 @@
 </template>
 
 <script lang="ts">
-import { RxzFlipCard } from './RxzFlipCard';
-export default RxzFlipCard;
+import { RxzFlipCardCnt } from './RxzFlipCard.component';
+export default RxzFlipCardCnt;
 </script>
 
 <style lang="scss" scoped>

@@ -34,8 +34,8 @@
 </template>
 
 <script lang="ts">
-import { RxzWaveProcess } from './RxzWaveProcess';
-export default RxzWaveProcess;
+import { RxzWaveProcessCnt } from './RxzWaveProcess.component';
+export default RxzWaveProcessCnt;
 </script>
 
 <style lang="scss" scoped>

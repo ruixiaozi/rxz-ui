@@ -32,8 +32,8 @@
 </template>
 
 <script lang="ts">
-import { RxzButton } from './RxzButton';
-export default RxzButton;
+import { RxzButtonCnt } from './RxzButton.component';
+export default RxzButtonCnt;
 </script>
 
 <style lang="scss" scoped>

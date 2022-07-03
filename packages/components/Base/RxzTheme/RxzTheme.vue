@@ -5,8 +5,8 @@
 </template>
 
 <script lang="ts">
-import { RxzTheme } from './RxzTheme';
-export default RxzTheme;
+import { RxzThemeCnt } from './RxzTheme.component';
+export default RxzThemeCnt;
 </script>
 
 <style lang="scss" scoped>

@@ -22,7 +22,7 @@ const en = require('./i18n/en.json');
     },
   },
 })
-export class RxzLoading extends Vue {
+export class RxzLoadingCnt extends Vue {
 
   @Prop({ type: Boolean, default: true })
   loading!: boolean;

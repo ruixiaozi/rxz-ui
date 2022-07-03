@@ -11,7 +11,7 @@ import { isNil as _isNil } from 'lodash';
 @Options({
   name: 'RxzInput',
 })
-export class RxzInput extends Vue {
+export class RxzInputCnt extends Vue {
 
   @Inject()
   readonly parentData!: any;

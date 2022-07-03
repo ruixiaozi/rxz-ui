@@ -6,13 +6,14 @@ import Directives from './directives';
 // 全局引入样式
 import '@/style/normalize.css';
 import '@/style/font-awesome.min.css';
+import { install } from './common';
 
 export * from './components';
 
 export const RxzUI = {
-  install(app: App): void{
+  install: install((app: App) => {
     app.use(i18n);
     app.use(Directives);
     app.use(Components);
-  },
+  }),
 };

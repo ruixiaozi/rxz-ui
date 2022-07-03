@@ -30,7 +30,7 @@ const tsTpl = (name, version = '1.0.0', des = '') => `import { Options, Vue } fr
 @Options({
   name: '${name}',
 })
-export class ${name} extends Vue {
+export class ${name}Cnt extends Vue {
 
 }
 `;
@@ -40,8 +40,8 @@ const vueTpl = (name) => `<template>
 </template>
 
 <script lang="ts">
-import { ${name} } from './${name}';
-export default ${name};
+import { ${name}Cnt } from './${name}.component';
+export default ${name}Cnt;
 </script>
 
 <style lang="scss" scoped>
@@ -49,16 +49,17 @@ export default ${name};
 </style>
 `;
 
-const indexTpl = (name) => `import { App } from 'vue';
+const indexTpl = (name) => `import { install } from '@/common';
+import { App } from 'vue';
 import _${name} from './${name}.vue';
 
 export * from './${name}.declare';
 
 export const ${name} = {
   ..._${name},
-  install(app: App): void {
+  install: install((app: App) => {
     app.component(_${name}.name, _${name});
-  },
+  }),
 };
 `;
 
@@ -89,7 +90,7 @@ function insertStrNextLine(source, searchStr, str) {
 function generateComponent(name, needUpdate = 'true', version = '1.0.0', des = '') {
   const dir = path.join(__currentDir, name);
   const scssPath = path.join(dir, `${name}.scss`);
-  const tsPath = path.join(dir, `${name}.ts`);
+  const tsPath = path.join(dir, `${name}.component.ts`);
   const declarePath = path.join(dir, `${name}.declare.ts`);
   const vuePath = path.join(dir, `${name}.vue`);
   const indexPath = path.join(dir, 'index.ts');

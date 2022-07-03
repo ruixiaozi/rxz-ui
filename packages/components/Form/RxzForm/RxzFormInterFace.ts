@@ -6,7 +6,7 @@ export interface RxzFormItemConfig {
 }
 
 export interface RxzFormConfig {
-  [key: string | number]: RxzFormItemConfig | RxzFormConfig;
+  [key: string ]: RxzFormItemConfig | RxzFormConfig;
 }
 
 export type RxzLabelWidth = string | 'auto' | 'fit-content';

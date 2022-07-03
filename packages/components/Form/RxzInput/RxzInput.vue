@@ -3,8 +3,8 @@
 </template>
 
 <script lang="ts">
-import { RxzInput } from './RxzInput';
-export default RxzInput;
+import { RxzInputCnt } from './RxzInput.component';
+export default RxzInputCnt;
 </script>
 
 <style lang="scss" scoped>

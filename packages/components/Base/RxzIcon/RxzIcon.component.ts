@@ -11,7 +11,7 @@ import { Prop } from 'vue-property-decorator';
 @Options({
   name: 'RxzIcon',
 })
-export class RxzIcon extends Vue {
+export class RxzIconCnt extends Vue {
 
   @Prop({ type: String, default: 'info-circle' })
   readonly name!: string;

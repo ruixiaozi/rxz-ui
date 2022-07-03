@@ -10,7 +10,7 @@ import { Prop } from 'vue-property-decorator';
 @Options({
   name: 'RxzFlipCard',
 })
-export class RxzFlipCard extends Vue {
+export class RxzFlipCardCnt extends Vue {
 
   @Prop({ type: String, default: '100px' })
   width!: string;

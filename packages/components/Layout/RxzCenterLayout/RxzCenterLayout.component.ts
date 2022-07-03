@@ -10,7 +10,7 @@ import { Prop } from 'vue-property-decorator';
 @Options({
   name: 'RxzCenterLayout',
 })
-export class RxzCenterLayout extends Vue {
+export class RxzCenterLayoutCnt extends Vue {
 
   @Prop({ type: Boolean, default: true })
   isScroll!: boolean;

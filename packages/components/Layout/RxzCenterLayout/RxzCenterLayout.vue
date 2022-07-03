@@ -10,8 +10,8 @@
 </template>
 
 <script lang="ts">
-import { RxzCenterLayout } from './RxzCenterLayout';
-export default RxzCenterLayout;
+import { RxzCenterLayoutCnt } from './RxzCenterLayout.component';
+export default RxzCenterLayoutCnt;
 </script>
 
 <style lang="scss" scoped>

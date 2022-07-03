@@ -13,8 +13,8 @@
 </template>
 
 <script lang="ts">
-import { RxzLabel } from './RxzLabel';
-export default RxzLabel;
+import { RxzLabelCnt } from './RxzLabel.component';
+export default RxzLabelCnt;
 </script>
 
 <style lang="scss" scoped>

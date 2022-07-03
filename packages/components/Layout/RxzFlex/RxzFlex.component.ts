@@ -11,7 +11,7 @@ import { Prop } from 'vue-property-decorator';
 @Options({
   name: 'RxzFlex',
 })
-export class RxzFlex extends Vue {
+export class RxzFlexCnt extends Vue {
 
   @Prop({ type: String, default: DIRECTION_ENUM.horizontal })
   direction!: DIRECTION_ENUM;

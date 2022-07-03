@@ -1,9 +1,10 @@
+import { install } from '@/common';
 import { App } from 'vue';
 import _RxzFormItem from './RxzFormItem.vue';
 
 export const RxzFormItem = {
   ..._RxzFormItem,
-  install(app: App): void {
+  install: install((app: App) => {
     app.component(_RxzFormItem.name, _RxzFormItem);
-  },
+  }),
 };

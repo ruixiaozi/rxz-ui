@@ -3,7 +3,6 @@
   "version": "2.0.0",
   "private": false,
   "main": "lib/rxz-ui.umd.min.js",
-  "module": "lib/rxz-ui.esm.js",
   "typings": "lib/index.d.ts",
   "author": "ruixiaozi",
   "email": "admin@ruixiaozi.com",
@@ -38,6 +37,7 @@
   },
   "homepage": "https://github.com/ruixiaozi/rxz-ui#readme",
   "dependencies": {
+    "@tanbo/vue-di-plugin": "^1.0.5",
     "core-js": "^3.6.5",
     "lodash": "^4.17.21",
     "rxjs": "^6.5.4",

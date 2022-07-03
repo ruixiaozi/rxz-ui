@@ -10,7 +10,7 @@ import { Prop } from 'vue-property-decorator';
 @Options({
   name: 'RxzTheme',
 })
-export class RxzTheme extends Vue {
+export class RxzThemeCnt extends Vue {
 
   @Prop({ type: String, default: 'default' })
   theme!: string;

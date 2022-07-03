@@ -20,7 +20,7 @@ import { uniqueId as _uniqueId } from 'lodash';
     'rxz-overflow': new RxzOverflow(),
   },
 })
-export class RxzLabel extends Vue {
+export class RxzLabelCnt extends Vue {
 
   @Ref('labelContentSpan')
   readonly labelContentSpan!: HTMLSpanElement;

@@ -1,4 +1,4 @@
-import { RxzButton } from '../RxzButton/RxzButton';
+import { RxzButton } from '../RxzButton';
 import { BUTTON_TYPE_ENUM } from '@/definition';
 import { Options, Vue } from 'vue-class-component';
 import { Emit, Model, Prop, Watch } from 'vue-property-decorator';
@@ -15,7 +15,7 @@ import { Emit, Model, Prop, Watch } from 'vue-property-decorator';
     RxzButton,
   },
 })
-export class RxzCountdownButton extends Vue {
+export class RxzCountdownButtonCnt extends Vue {
 
   @Model('modelValue', { type: Boolean, default: false })
   isStart!: boolean;

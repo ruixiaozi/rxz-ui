@@ -3,7 +3,8 @@ import { Model, Prop, Provide, Watch } from 'vue-property-decorator';
 import { RxzFormConfig, RxzLabelWidth } from './RxzFormInterFace';
 import { Subject } from 'rxjs';
 import { defaultsDeep } from 'lodash';
-import { LabelBaseModule } from '../RxzLabel/RxzLabel.module';
+import { RxzLabelService } from '../RxzLabel/RxzLabel.service';
+import { InjectService } from '@/common';
 
 /**
  * Component: RxzForm
@@ -14,21 +15,17 @@ import { LabelBaseModule } from '../RxzLabel/RxzLabel.module';
 @Options({
   name: 'RxzForm',
 })
-export class RxzForm extends Vue {
+export class RxzFormCnt extends Vue {
+
+  @InjectService(RxzLabelService)
+  private rxzLabelService!: RxzLabelService;
 
   // label
   @Prop({ type: String, default: 'auto' })
   labelWidth!: RxzLabelWidth;
 
-  // label基础模块
-  labelBaseModule = setup(() => LabelBaseModule(this.$props));
-
-
-  /* 声明周期钩子 */
-  created(): void {
-    // 初始化label
-    this.labelBaseModule.updateSubCurLabelWidth('defaults', '0px');
-  }
+  // label基础功能
+  private _labelBase = setup(() => this.rxzLabelService.getLabelBase(this.$props));
 
   /* 组件参数 */
   @Prop({ type: Object, default: () => ({}), required: true })

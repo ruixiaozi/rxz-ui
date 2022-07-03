@@ -18,7 +18,7 @@ export default [
     output: [
       {
         format: 'es',
-        file: pkg.module,
+        file: 'lib/rxz-ui.esm.js',
       },
     ],
     plugins: [

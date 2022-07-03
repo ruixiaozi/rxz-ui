@@ -18,8 +18,8 @@
 </template>
 
 <script lang="ts">
-import { RxzLoading } from './RxzLoading';
-export default RxzLoading;
+import { RxzLoadingCnt } from './RxzLoading.component';
+export default RxzLoadingCnt;
 </script>
 
 <style lang="scss" scoped>

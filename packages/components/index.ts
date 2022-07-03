@@ -4,6 +4,7 @@ import { BaseComponents } from './Base';
 import { LayoutComponents } from './Layout';
 import { CardComponents } from './Card';
 import { FormComponents } from './Form';
+import { install } from '@/common';
 
 export * from './Animation';
 export * from './Base';
@@ -22,10 +23,10 @@ const components = [
 ];
 
 export const Components = {
-  install(app: App): void{
+  install: install((app: App) => {
     // 遍历注册所有组件
     components.forEach((component) => {
       app.use(component);
     });
-  },
+  }),
 };

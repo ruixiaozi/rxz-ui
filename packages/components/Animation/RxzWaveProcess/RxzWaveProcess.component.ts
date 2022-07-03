@@ -11,7 +11,7 @@ import { Prop } from 'vue-property-decorator';
 @Options({
   name: 'RxzWaveProcess',
 })
-export class RxzWaveProcess extends Vue {
+export class RxzWaveProcessCnt extends Vue {
 
   @Prop({ type: Number, default: 0 })
   readonly process!: number;

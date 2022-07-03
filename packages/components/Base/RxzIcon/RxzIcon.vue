@@ -14,8 +14,8 @@
 </template>
 
 <script lang="ts">
-import { RxzIcon } from './RxzIcon';
-export default RxzIcon;
+import { RxzIconCnt } from './RxzIcon.component';
+export default RxzIconCnt;
 </script>
 
 <style lang="scss" scoped>

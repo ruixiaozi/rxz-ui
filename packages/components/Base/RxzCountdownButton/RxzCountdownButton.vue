@@ -9,8 +9,8 @@
 </template>
 
 <script lang="ts">
-import { RxzCountdownButton } from './RxzCountdownButton';
-export default RxzCountdownButton;
+import { RxzCountdownButtonCnt } from './RxzCountdownButton.component';
+export default RxzCountdownButtonCnt;
 </script>
 
 <style lang="scss" scoped>

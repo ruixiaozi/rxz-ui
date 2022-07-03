@@ -8,8 +8,8 @@
 </template>
 
 <script lang="ts">
-import { RxzFlex } from './RxzFlex';
-export default RxzFlex;
+import { RxzFlexCnt } from './RxzFlex.component';
+export default RxzFlexCnt;
 </script>
 
 <style lang="scss" scoped>

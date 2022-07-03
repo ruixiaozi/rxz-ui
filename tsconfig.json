@@ -7,15 +7,17 @@
     "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
+    "declaration": true,
     "baseUrl": ".",
     "types": [
       "webpack-env",
       "jest",
-      "./typings/components.d.ts"
+      "typings/components.d.ts",
     ],
     "paths": {
       "@/*": [

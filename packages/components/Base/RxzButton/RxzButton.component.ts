@@ -14,11 +14,8 @@ import { RxzIcon } from '../RxzIcon';
   components: {
     RxzIcon,
   },
-  setup(this) {
-    console.log(123);
-  },
 })
-export class RxzButton extends Vue {
+export class RxzButtonCnt extends Vue {
 
   @Prop({ type: Boolean, default: false })
   readonly disabled!: boolean;

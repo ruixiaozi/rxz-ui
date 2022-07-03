@@ -5,9 +5,8 @@
 </template>
 
 <script lang="ts">
-import { RxzForm } from './RxzForm';
-console.log(JSON.stringify(RxzForm));
-export default RxzForm;
+import { RxzFormCnt } from './RxzForm.component';
+export default RxzFormCnt;
 </script>
 
 <style lang="scss" scoped>
