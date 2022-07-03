@@ -2,7 +2,7 @@ export type Validator = (value: any, formData?: any, key?: string) => string | u
 
 export interface RxzFormItemConfig {
   default?: any;
-  validators: any[];
+  validators: Validator[];
 }
 
 export interface RxzFormConfig {

@@ -1,9 +1,9 @@
 import { App } from 'vue';
-import RxzWaveProcess from './RxzWaveProcess.vue';
+import _RxzWaveProcess from './RxzWaveProcess.vue';
 
-export default {
-  ...RxzWaveProcess,
+export const RxzWaveProcess = {
+  ..._RxzWaveProcess,
   install(app: App): void {
-    app.component(RxzWaveProcess.name, RxzWaveProcess);
+    app.component(_RxzWaveProcess.name, _RxzWaveProcess);
   },
 };

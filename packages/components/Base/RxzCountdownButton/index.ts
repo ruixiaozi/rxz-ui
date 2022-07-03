@@ -1,9 +1,9 @@
 import { App } from 'vue';
-import RxzCountdownButton from './RxzCountdownButton.vue';
+import _RxzCountdownButton from './RxzCountdownButton.vue';
 
-export default {
-  ...RxzCountdownButton,
+export const RxzCountdownButton = {
+  ..._RxzCountdownButton,
   install(app: App): void {
-    app.component(RxzCountdownButton.name, RxzCountdownButton);
+    app.component(_RxzCountdownButton.name, _RxzCountdownButton);
   },
 };

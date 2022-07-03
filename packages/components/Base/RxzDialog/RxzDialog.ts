@@ -1,4 +1,4 @@
-import { RxzIcon } from '../RxzIcon/RxzIcon';
+import { RxzIcon } from '../RxzIcon';
 import { Options, Vue } from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
 const zh = require('./i18n/zh.json');

@@ -1,4 +1,4 @@
-import RxzIcon from '@/components/Base/RxzIcon';
+import { RxzIcon } from '@/components/Base/RxzIcon';
 import { RxzOverflow } from '@/directives/RxzOverflow';
 import { Options, Vue } from 'vue-class-component';
 import { Inject, Prop, Ref } from 'vue-property-decorator';
@@ -52,7 +52,7 @@ export class RxzLabel extends Vue {
     }
 
     const { validators } = this.formConfig as RxzFormItemConfig;
-    return validators.some((item) => item === '1');
+    return validators.some((item) => item);
   }
 
   mounted() {

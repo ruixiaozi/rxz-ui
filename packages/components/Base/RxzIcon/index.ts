@@ -1,9 +1,9 @@
 import { App } from 'vue';
-import RxzIcon from './RxzIcon.vue';
+import _RxzIcon from './RxzIcon.vue';
 
-export default {
-  ...RxzIcon,
+export const RxzIcon = {
+  ..._RxzIcon,
   install(app: App): void {
-    app.component(RxzIcon.name, RxzIcon);
+    app.component(_RxzIcon.name, _RxzIcon);
   },
 };

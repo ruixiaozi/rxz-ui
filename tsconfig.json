@@ -14,7 +14,8 @@
     "baseUrl": ".",
     "types": [
       "webpack-env",
-      "jest"
+      "jest",
+      "./typings/components.d.ts"
     ],
     "paths": {
       "@/*": [
@@ -40,6 +41,7 @@
     "tests/**/*.tsx",
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "global.d.ts",
   ]
 }

@@ -1,9 +1,9 @@
 import { App } from 'vue';
-import RxzCenterLayout from './RxzCenterLayout.vue';
+import _RxzCenterLayout from './RxzCenterLayout.vue';
 
-export default {
-  ...RxzCenterLayout,
+export const RxzCenterLayout = {
+  ..._RxzCenterLayout,
   install(app: App): void {
-    app.component(RxzCenterLayout.name, RxzCenterLayout);
+    app.component(_RxzCenterLayout.name, _RxzCenterLayout);
   },
 };

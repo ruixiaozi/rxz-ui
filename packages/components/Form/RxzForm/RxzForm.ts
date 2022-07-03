@@ -1,8 +1,9 @@
-import { Options, Vue } from 'vue-class-component';
+import { Options, setup, Vue } from 'vue-class-component';
 import { Model, Prop, Provide, Watch } from 'vue-property-decorator';
 import { RxzFormConfig, RxzLabelWidth } from './RxzFormInterFace';
 import { Subject } from 'rxjs';
 import { defaultsDeep } from 'lodash';
+import { LabelBaseModule } from '../RxzLabel/RxzLabel.module';
 
 /**
  * Component: RxzForm
@@ -15,28 +16,29 @@ import { defaultsDeep } from 'lodash';
 })
 export class RxzForm extends Vue {
 
-  @Prop({ type: Object, default: () => ({}) })
-  @Provide({ reactive: true })
-  formConfig!: RxzFormConfig;
-
+  // label
   @Prop({ type: String, default: 'auto' })
-  @Provide({ reactive: true })
   labelWidth!: RxzLabelWidth;
 
-  // 子item实际标签宽度
-  @Provide({ to: 'curLebelWidth', reactive: true })
-  subCurLabelWidth: string = '0px';
+  // label基础模块
+  labelBaseModule = setup(() => LabelBaseModule(this.$props));
 
-  private allSubLabelWidt = new Map<string, number>();
+
+  /* 声明周期钩子 */
+  created(): void {
+    // 初始化label
+    this.labelBaseModule.updateSubCurLabelWidth('defaults', '0px');
+  }
+
+  /* 组件参数 */
+  @Prop({ type: Object, default: () => ({}), required: true })
+  @Provide({ reactive: true })
+  formConfig!: RxzFormConfig;
 
   // 表单数据，v-model绑定，绑定得值可以覆盖初始默认值
   @Model('modelValue', { type: Object, default: () => ({}) })
   @Provide({ reactive: true })
   formData!: any;
-
-
-  @Provide()
-  onCheck: Subject<any> = new Subject();
 
   @Watch('formConfig', { immediate: true, deep: true })
   formConfigChange() {
@@ -44,30 +46,13 @@ export class RxzForm extends Vue {
     this.formData = defaultsDeep(this.formData, reData);
   }
 
+  // 检查事件
+  @Provide()
+  onCheck: Subject<any> = new Subject();
 
-  created(): void {
-    // 初始化label
-    this.updateSubCurLabelWidth('defaults', '0px');
-  }
-
-  @Provide({ to: 'updateCurLabelWidth' })
-  updateSubCurLabelWidth(key: string, width: string) {
-    if (this.labelWidth !== 'auto') {
-      this.subCurLabelWidth = String(this.labelWidth);
-      return;
-    }
-    this.allSubLabelWidt.set(key, parseFloat(width));
-    const maxWidth = Math.max(...this.allSubLabelWidt.values());
-    this.subCurLabelWidth = `${maxWidth}px`;
-  }
-
-  reset():void {
-    const reData = this.createFormData(this.formConfig);
-    this.formData = reData;
-  }
 
   // 根据config递归创建初始值
-  createFormData(rxzFormConfig: RxzFormConfig): any {
+  private createFormData(rxzFormConfig: RxzFormConfig): any {
     if (!rxzFormConfig) {
       return {};
     }
@@ -85,11 +70,17 @@ export class RxzForm extends Vue {
     return re;
   }
 
+  /* 公共方法 */
   check(): any {
     // 执行校验，将校验结果返回，并通知子组件
     const res = {};
     this.onCheck.next(res);
     return res;
+  }
+
+  reset():void {
+    const reData = this.createFormData(this.formConfig);
+    this.formData = reData;
   }
 
 }

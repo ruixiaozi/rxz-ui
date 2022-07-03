@@ -8,8 +8,9 @@
     :seconds="10"
   ></RxzCountdownButton>
   <RxzButton @click="handleAdd()">add</RxzButton>
-  <RxzForm :formConfig="formConfig" v-model="data" >
-    <RxzFormItem name="test">
+
+  <RxzForm :form-config="formConfig" v-model="data" >
+    <RxzFormItem name="test" :errorTip="{empty: '123'}">
       <RxzLabel>一2级表单：</RxzLabel>
       <RxzInput></RxzInput>
     </RxzFormItem>
@@ -38,7 +39,6 @@
           <RxzInput></RxzInput>
         </RxzFormItem>
       </RxzFlex>
-
     </RxzFormItem>
   </RxzForm>
   <RxzFlex gutter="20px">
@@ -49,6 +49,7 @@
 </template>
 
 <script lang="ts">
+import { Validator } from '@/components/Form/RxzForm/RxzFormInterFace';
 import { Options, Vue } from 'vue-class-component';
 const zh = require('./assets/i18n/zh/common.json');
 const en = require('./assets/i18n/en/common.json');
@@ -64,28 +65,35 @@ export default class App extends Vue {
 
   isStart = true;
 
-  formConfig = {
+  validate: Validator = (value) => {
+    console.log(value);
+    if (!value) {
+      return 'empty';
+    }
+  };
+
+  formConfig: any = {
     test: {
-      validators: ['1'],
+      validators: [this.validate],
       default: 1,
     },
     test2: {
-      validators: ['1'],
+      validators: [],
       default: 1,
     },
     inner: [
       {
-        validators: ['1'],
+        validators: [],
         default: 2,
       },
     ],
     inner2: {
       innerTest: {
-        validators: ['1'],
+        validators: [],
         default: 2,
       },
       innerTest2: {
-        validators: ['3'],
+        validators: [],
         default: 3,
       },
     },
@@ -104,7 +112,7 @@ export default class App extends Vue {
 
   handleAdd() {
     this.formConfig.inner.push({
-      validators: ['1'],
+      validators: [this.validate],
       default: 25,
     });
   }

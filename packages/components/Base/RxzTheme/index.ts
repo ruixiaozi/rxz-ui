@@ -1,9 +1,9 @@
 import { App } from 'vue';
-import RxzTheme from './RxzTheme.vue';
+import _RxzTheme from './RxzTheme.vue';
 
-export default {
-  ...RxzTheme,
+export const RxzTheme = {
+  ..._RxzTheme,
   install(app: App): void {
-    app.component(RxzTheme.name, RxzTheme);
+    app.component(_RxzTheme.name, _RxzTheme);
   },
 };

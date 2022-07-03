@@ -1,9 +1,9 @@
 import { App } from 'vue';
-import RxzFlipCard from './RxzFlipCard.vue';
+import _RxzFlipCard from './RxzFlipCard.vue';
 
-export default {
-  ...RxzFlipCard,
+export const RxzFlipCard = {
+  ..._RxzFlipCard,
   install(app: App): void {
-    app.component(RxzFlipCard.name, RxzFlipCard);
+    app.component(_RxzFlipCard.name, _RxzFlipCard);
   },
 };

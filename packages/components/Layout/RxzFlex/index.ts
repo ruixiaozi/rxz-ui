@@ -1,9 +1,9 @@
 import { App } from 'vue';
-import RxzFlex from './RxzFlex.vue';
+import _RxzFlex from './RxzFlex.vue';
 
-export default {
-  ...RxzFlex,
+export const RxzFlex = {
+  ..._RxzFlex,
   install(app: App): void {
-    app.component(RxzFlex.name, RxzFlex);
+    app.component(_RxzFlex.name, _RxzFlex);
   },
 };

@@ -3,7 +3,7 @@ rules:
     /packages:
       /**.ts:
         - file
-        - (index|((?:[A-Z][a-z]*)+))
+        - (index|((?:[A-Z][a-z]*)+)(\.declare|\.module){0,1})
       /**.scss:
         - file
         - PascalCaseWithABB
@@ -15,6 +15,8 @@ rules:
           - camelCaseWithABB
       /index.ts:
         - file
+      /common:
+        - dir
       /components:
         /**:
           - dir
@@ -64,4 +66,6 @@ exceptions:
   - /packages/style
   - /packages/themes
   - /packages/images
+  - /script
+  - /global.d.ts
 

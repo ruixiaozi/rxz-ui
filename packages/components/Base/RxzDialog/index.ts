@@ -1,9 +1,9 @@
 import { App } from 'vue';
-import RxzDialog from './RxzDialog.vue';
+import _RxzDialog from './RxzDialog.vue';
 
-export default {
-  ...RxzDialog,
+export const RxzDialog = {
+  ..._RxzDialog,
   install(app: App): void {
-    app.component(RxzDialog.name, RxzDialog);
+    app.component(_RxzDialog.name, _RxzDialog);
   },
 };

@@ -1,9 +1,9 @@
 import { App } from 'vue';
-import RxzLoading from './RxzLoading.vue';
+import _RxzLoading from './RxzLoading.vue';
 
-export default {
-  ...RxzLoading,
+export const RxzLoading = {
+  ..._RxzLoading,
   install(app: App): void {
-    app.component(RxzLoading.name, RxzLoading);
+    app.component(_RxzLoading.name, _RxzLoading);
   },
 };

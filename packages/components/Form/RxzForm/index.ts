@@ -1,9 +1,11 @@
 import { App } from 'vue';
-import RxzForm from './RxzForm.vue';
+import _RxzForm from './RxzForm.vue';
 
-export default {
-  ...RxzForm,
+export * from './RxzForm.declare';
+
+export const RxzForm = {
+  ..._RxzForm,
   install(app: App): void {
-    app.component(RxzForm.name, RxzForm);
+    app.component(_RxzForm.name, _RxzForm);
   },
 };

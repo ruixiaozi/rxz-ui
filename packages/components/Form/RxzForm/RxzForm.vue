@@ -6,6 +6,7 @@
 
 <script lang="ts">
 import { RxzForm } from './RxzForm';
+console.log(JSON.stringify(RxzForm));
 export default RxzForm;
 </script>
 

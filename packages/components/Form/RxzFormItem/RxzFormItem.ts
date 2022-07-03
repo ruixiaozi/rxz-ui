@@ -1,7 +1,9 @@
-import RxzFlex from '@/components/Layout/RxzFlex';
+import { RxzIcon } from '@/components/Base/RxzIcon';
+import { RxzFlex } from '@/components/Layout/RxzFlex';
+import { StringMap } from '@/definition';
 import { Subject } from 'rxjs';
 import { Options, Vue } from 'vue-class-component';
-import { Inject, Prop, Provide } from 'vue-property-decorator';
+import { Inject, Prop, Provide, Watch } from 'vue-property-decorator';
 import { RxzFormConfig, RxzFormItemConfig, RxzLabelWidth } from '../RxzForm/RxzFormInterFace';
 
 /**
@@ -14,12 +16,18 @@ import { RxzFormConfig, RxzFormItemConfig, RxzLabelWidth } from '../RxzForm/RxzF
   name: 'RxzFormItem',
   components: {
     RxzFlex,
+    RxzIcon,
   },
 })
 export class RxzFormItem extends Vue {
 
+  @Prop({ type: Object, default: () => ({}) })
+  readonly errorTip!: StringMap;
+
+  tip = '';
+
   @Inject()
-  readonly formConfig!: RxzFormItemConfig | RxzFormConfig | RxzFormConfig[] | null;
+  readonly formConfig!: any;
 
   // 上级labelWidth
   @Inject({ from: 'labelWidth' })
@@ -102,5 +110,21 @@ export class RxzFormItem extends Vue {
     this.updateSubCurLabelWidth('defaults', '0px');
   }
 
+  @Watch('formData', { deep: true })
+  watchFormData(val: any) {
+    const currentConfig = this.formConfig[this.name];
+    console.log();
+    if (Array.isArray(currentConfig?.validators) && currentConfig?.validators.length) {
+      console.log(11);
+      for (const item of currentConfig.validators) {
+        const validateRes = item(val[this.name]);
+        if (validateRes && this.errorTip?.[validateRes]) {
+          this.tip = this.errorTip?.[validateRes];
+          return;
+        }
+      }
+      this.tip = '';
+    }
+  }
 
 }

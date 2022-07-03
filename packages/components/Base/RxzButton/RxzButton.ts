@@ -1,7 +1,7 @@
 import { BUTTON_TYPE_ENUM, NATIVE_BUTTON_TYPE_ENUM, StringMap } from '@/definition';
 import { Options, Vue } from 'vue-class-component';
 import { Emit, Prop } from 'vue-property-decorator';
-import RxzIcon from '../RxzIcon';
+import { RxzIcon } from '../RxzIcon';
 
 /**
  * Component: RxzButton
@@ -13,6 +13,9 @@ import RxzIcon from '../RxzIcon';
   name: 'RxzButton',
   components: {
     RxzIcon,
+  },
+  setup(this) {
+    console.log(123);
   },
 })
 export class RxzButton extends Vue {

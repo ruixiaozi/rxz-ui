@@ -1,9 +1,9 @@
 import { App } from 'vue';
-import RxzButton from './RxzButton.vue';
+import _RxzButton from './RxzButton.vue';
 
-export default {
-  ...RxzButton,
+export const RxzButton = {
+  ..._RxzButton,
   install(app: App): void {
-    app.component(RxzButton.name, RxzButton);
+    app.component(_RxzButton.name, _RxzButton);
   },
 };

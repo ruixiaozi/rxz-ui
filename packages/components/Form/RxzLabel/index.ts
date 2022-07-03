@@ -1,9 +1,9 @@
 import { App } from 'vue';
-import RxzLabel from './RxzLabel.vue';
+import _RxzLabel from './RxzLabel.vue';
 
-export default {
-  ...RxzLabel,
+export const RxzLabel = {
+  ..._RxzLabel,
   install(app: App): void {
-    app.component(RxzLabel.name, RxzLabel);
+    app.component(_RxzLabel.name, _RxzLabel);
   },
 };
