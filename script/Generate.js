@@ -31,7 +31,25 @@ const tsTpl = (name, version = '1.0.0', des = '') => `import { Options, Vue } fr
   name: '${name}',
 })
 export class ${name}Cnt extends Vue {
+  // props and provide
 
+  // injects
+
+  // refs
+
+  // injectServices
+
+  // setup
+
+  // entity
+
+  // computes
+
+  // watchs
+
+  // hooks
+
+  // methods
 }
 `;
 
@@ -138,11 +156,89 @@ function generateComponent(name, needUpdate = 'true', version = '1.0.0', des = '
   }
 }
 
+
+const serviceTpl = (name, version = '1.0.0', des = '') => `iimport { Injectable } from '@tanbo/vue-di-plugin';
+
+/**
+ * Service: ${name}Service
+ * @description: ${des || name}
+ * @author: ruixiaozi
+ * @since: ${version}
+ */
+@Injectable({
+  provideIn: 'root',
+})
+export class ${name}Service{
+
+}
+`;
+
+function generateService(name, version = '1.0.0', des = '') {
+  const dir = path.join(__currentDir, name);
+  const servicePath = path.join(dir, `${name}.service.ts`);
+
+  if (fs.existsSync(servicePath)) {
+    console.log('service is exist');
+    return;
+  }
+
+  fs.writeFileSync(servicePath, serviceTpl(name, version, des));
+  createFileSuccess(servicePath);
+}
+
+function generateDeclare(name, needUpdate = 'true') {
+  const dir = path.join(__currentDir, name);
+  const declarePath = path.join(dir, `${name}.declare.ts`);
+  const indexPath = path.join(dir, 'index.ts');
+
+  if (needUpdate === 'true' && !fs.existsSync(indexPath)) {
+    console.log('index is not exist');
+    return;
+  }
+
+  if (fs.existsSync(declarePath)) {
+    console.log('declare is exist');
+    return;
+  }
+
+  fs.writeFileSync(declarePath, tsDeclareTpl(name));
+  createFileSuccess(declarePath);
+
+  if (needUpdate === 'true') {
+    const indexRes = fs.readFileSync(indexPath).toString();
+    let nIndexRes = insertStrNextLine(indexRes, 'import ', `\nexport * from './${name}.declare';`);
+    fs.writeFileSync(indexPath, nIndexRes);
+    updateFileSuccess(indexPath);
+
+    const cntDeclarePath = path.join(__dirname, '../typings/components.d.ts');
+    const declareRes = fs.readFileSync(cntDeclarePath).toString();
+    let nDeclareRes = insertStrNextLine(
+      declareRes,
+      'GlobalComponents {',
+      `    ${name}: typeof import('../packages/index')['${name}Declare'],`,
+    );
+    fs.writeFileSync(cntDeclarePath, nDeclareRes);
+    updateFileSuccess(cntDeclarePath);
+  }
+}
+
 switch (cmd) {
   case 'c':
   case 'component':
     if (param) {
       generateComponent(param, ...options);
+    }
+    break;
+  case 'd':
+  case 'declare':
+    if (param) {
+      generateDeclare(param, ...options);
+    }
+    break;
+  case 's':
+  case 'service':
+    if (param) {
+      generateService(param, ...options);
     }
     break;
   default:

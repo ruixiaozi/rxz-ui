@@ -1,10 +1,13 @@
+import { InjectService } from '@/common';
 import { RxzIcon } from '@/components/Base/RxzIcon';
 import { RxzFlex } from '@/components/Layout/RxzFlex';
 import { StringMap } from '@/definition';
+import { uniqueId } from 'lodash';
 import { Subject } from 'rxjs';
-import { Options, Vue } from 'vue-class-component';
+import { Options, Vue, setup } from 'vue-class-component';
 import { Inject, Prop, Provide, Watch } from 'vue-property-decorator';
-import { RxzFormConfig, RxzFormItemConfig, RxzLabelWidth } from '../RxzForm/RxzFormInterFace';
+import { RxzFormConfig, RxzFormItemConfig } from '../RxzForm/RxzFormInterFace';
+import { RxzLabelService } from '../RxzLabel/RxzLabel.service';
 
 /**
  * Component: RxzFormItem
@@ -21,61 +24,23 @@ import { RxzFormConfig, RxzFormItemConfig, RxzLabelWidth } from '../RxzForm/RxzF
 })
 export class RxzFormItemCnt extends Vue {
 
+  @InjectService(RxzLabelService)
+  private rxzLabelService!: RxzLabelService;
+
   @Prop({ type: Object, default: () => ({}) })
   readonly errorTip!: StringMap;
+
+  // formItem唯一值
+  @Provide({ reactive: true })
+  formItemKey = uniqueId('_formItem');
+
+  // 标签宽度，用于错误提示left距离
+  labelWidthPx: any = setup(() => this.rxzLabelService.getLabelWidthPx(this.formItemKey));
 
   tip = '';
 
   @Inject()
   readonly formConfig!: any;
-
-  // 上级labelWidth
-  @Inject({ from: 'labelWidth' })
-  readonly paraentLabelWidth!: RxzLabelWidth;
-
-  @Provide({ reactive: true })
-  get isFixedWidth() {
-    return this.paraentLabelWidth !== 'auto' && this.paraentLabelWidth !== 'fit-content';
-  }
-
-  // 非必须
-  @Prop({ type: String })
-  labelWidth?: RxzLabelWidth;
-
-  // 默认继承上级labelWidth
-  @Provide({ to: 'labelWidth', reactive: true })
-  get nextLabelWidth(): RxzLabelWidth {
-    if (this.labelWidth) {
-      return this.labelWidth;
-    }
-    return this.paraentLabelWidth;
-  }
-
-  // 当前层级实际标签宽度
-  @Inject()
-  @Provide({ to: 'realLebelWidth', reactive: true })
-  readonly curLebelWidth!: string;
-
-  @Inject()
-  @Provide({ to: 'updateRealLabelWidth', reactive: true })
-  readonly updateCurLabelWidth!: (key: string, width: string) => void;
-
-  // 子item实际标签宽度
-  @Provide({ to: 'curLebelWidth', reactive: true })
-  subCurLabelWidth: string = '0px';
-
-  private allSubLabelWidt = new Map<string, number>();
-
-  @Provide({ to: 'updateCurLabelWidth' })
-  updateSubCurLabelWidth(key: string, width: string) {
-    if (this.nextLabelWidth !== 'auto') {
-      this.subCurLabelWidth = String(this.nextLabelWidth);
-      return;
-    }
-    this.allSubLabelWidt.set(key, parseFloat(width));
-    const maxWidth = Math.max(...this.allSubLabelWidt.values());
-    this.subCurLabelWidth = `${maxWidth}px`;
-  }
 
   @Inject()
   @Provide({ to: 'parentData', reactive: true })
@@ -105,10 +70,6 @@ export class RxzFormItemCnt extends Vue {
     return this.formData[this.name] ?? null;
   }
 
-  created() {
-    // 初始化label
-    this.updateSubCurLabelWidth('defaults', '0px');
-  }
 
   @Watch('formData', { deep: true })
   watchFormData(val: any) {

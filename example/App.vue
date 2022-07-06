@@ -9,16 +9,16 @@
   ></RxzCountdownButton>
   <RxzButton @click="handleAdd()">add</RxzButton>
 
-  <RxzForm :form-config="formConfig" v-model="data" >
-    <RxzFormItem name="test" :errorTip="{empty: '123'}">
+  <RxzForm label-width="fit-content" :form-config="formConfig" v-model="data" >
+    <RxzFormItem name="test" :errorTip="{empty: '1211111111111111111111111111111111111113'}">
       <RxzLabel>一2级表单：</RxzLabel>
       <RxzInput></RxzInput>
     </RxzFormItem>
-    <RxzFormItem name="test2"  v-slot:default="{itemData}">
+    <RxzFormItem name="test2" :errorTip="{empty: '2313'}"  v-slot:default="{itemData}">
       <RxzLabel>一级表{{itemData}}：</RxzLabel>
       <RxzInput></RxzInput>
     </RxzFormItem>
-    <RxzFormItem name="inner" labelWidth="fit-content">
+    <RxzFormItem name="inner" >
       <RxzLabel>子表单1：</RxzLabel>
       <RxzFlex direction="vertical">
         <RxzFormItem v-for="(item, inx) in formConfig.inner" :name="inx" :key="inx" v-slot:default="{itemData}">
@@ -78,7 +78,7 @@ export default class App extends Vue {
       default: 1,
     },
     test2: {
-      validators: [],
+      validators: [this.validate],
       default: 1,
     },
     inner: [

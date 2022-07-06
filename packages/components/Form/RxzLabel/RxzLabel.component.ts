@@ -3,7 +3,6 @@ import { RxzOverflow } from '@/directives/RxzOverflow';
 import { Options, Vue } from 'vue-class-component';
 import { Inject, Prop, Ref } from 'vue-property-decorator';
 import { RxzFormConfig, RxzFormItemConfig } from '../RxzForm/RxzFormInterFace';
-import { uniqueId as _uniqueId } from 'lodash';
 
 /**
  * Component: RxzLabel
@@ -22,27 +21,34 @@ import { uniqueId as _uniqueId } from 'lodash';
 })
 export class RxzLabelCnt extends Vue {
 
-  @Ref('labelContentSpan')
-  readonly labelContentSpan!: HTMLSpanElement;
+  // props and provide
+  @Prop({ type: Boolean, default: false })
+  readonly required!: boolean;
 
+  // injects
   @Inject()
   readonly formConfig!: RxzFormItemConfig | RxzFormConfig | RxzFormConfig[] | null;
 
   @Inject()
-  readonly isFixedWidth!: boolean;
-
-  @Prop({ type: Boolean, default: false })
-  readonly required!: boolean;
-
-  @Prop({ type: String, default: () => _uniqueId('label_') })
-  readonly key!: string;
+  readonly formItemKey!: string;
 
   @Inject()
-  readonly realLebelWidth!: string;
+  readonly formLabelWidth!: string;
 
   @Inject()
-  readonly updateRealLabelWidth!: (key: string, width: string) => void;
+  readonly updateFormLabelWidth!: (key: string, width: string) => void;
 
+  // refs
+  @Ref('labelContentSpan')
+  readonly labelContentSpan!: HTMLSpanElement;
+
+  // injectServices
+
+  // setup
+
+  // entity
+
+  // computes
   get isRequired() {
     if (this.required) {
       return true;
@@ -55,6 +61,9 @@ export class RxzLabelCnt extends Vue {
     return validators.some((item) => item);
   }
 
+  // watchs
+
+  // hooks
   mounted() {
     this.updateWidth();
   }
@@ -63,8 +72,9 @@ export class RxzLabelCnt extends Vue {
     this.updateWidth();
   }
 
+  // methods
   updateWidth() {
-    !this.isFixedWidth && this.updateRealLabelWidth(this.key, `${this.labelContentSpan.offsetWidth + 14}px`);
+    this.updateFormLabelWidth(this.formItemKey, `${this.labelContentSpan.offsetWidth + 15}px`);
   }
 
 

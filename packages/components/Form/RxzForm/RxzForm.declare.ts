@@ -17,5 +17,4 @@ export class RxzFormDeclare {
     (e: 'update:modelValue', ...args: any[]): any;
   }
 
-
 }

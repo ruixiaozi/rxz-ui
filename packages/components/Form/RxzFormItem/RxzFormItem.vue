@@ -8,10 +8,10 @@
     >
       <slot :itemData="itemFormData"></slot>
     </RxzFlex>
-    <span v-if="tip" class="error-tip">
+    <div v-if="tip" class="error-tip" :style="{ marginLeft:  labelWidthPx}">
       <RxzIcon name="exclamation-circle"></RxzIcon>
       {{ tip }}
-    </span>
+    </div>
   </div>
 </template>
 

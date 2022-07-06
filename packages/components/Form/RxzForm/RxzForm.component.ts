@@ -17,17 +17,10 @@ import { InjectService } from '@/common';
 })
 export class RxzFormCnt extends Vue {
 
-  @InjectService(RxzLabelService)
-  private rxzLabelService!: RxzLabelService;
-
-  // label
+  // props and provide
   @Prop({ type: String, default: 'auto' })
   labelWidth!: RxzLabelWidth;
 
-  // label基础功能
-  private _labelBase = setup(() => this.rxzLabelService.getLabelBase(this.$props));
-
-  /* 组件参数 */
   @Prop({ type: Object, default: () => ({}), required: true })
   @Provide({ reactive: true })
   formConfig!: RxzFormConfig;
@@ -37,16 +30,47 @@ export class RxzFormCnt extends Vue {
   @Provide({ reactive: true })
   formData!: any;
 
+  // 检查事件
+  @Provide()
+  onCheck: Subject<any> = new Subject();
+
+  // injects
+
+  // refs
+
+  // injectServices
+  @InjectService(RxzLabelService)
+  private rxzLabelService!: RxzLabelService;
+
+  // setup
+  // 提供表单标签宽度
+  private _provideFormLabelWidth = setup(() => this.rxzLabelService.provideFormLabelWidth(this.$props));
+
+  // entity
+
+  // computes
+
+  // watchs
   @Watch('formConfig', { immediate: true, deep: true })
   formConfigChange() {
     const reData = this.createFormData(this.formConfig);
     this.formData = defaultsDeep(this.formData, reData);
   }
 
-  // 检查事件
-  @Provide()
-  onCheck: Subject<any> = new Subject();
+  // hooks
 
+  // methods
+  check(): any {
+    // 执行校验，将校验结果返回，并通知子组件
+    const res = {};
+    this.onCheck.next(res);
+    return res;
+  }
+
+  reset():void {
+    const reData = this.createFormData(this.formConfig);
+    this.formData = reData;
+  }
 
   // 根据config递归创建初始值
   private createFormData(rxzFormConfig: RxzFormConfig): any {
@@ -65,19 +89,6 @@ export class RxzFormCnt extends Vue {
       {} as any,
     );
     return re;
-  }
-
-  /* 公共方法 */
-  check(): any {
-    // 执行校验，将校验结果返回，并通知子组件
-    const res = {};
-    this.onCheck.next(res);
-    return res;
-  }
-
-  reset():void {
-    const reData = this.createFormData(this.formConfig);
-    this.formData = reData;
   }
 
 }

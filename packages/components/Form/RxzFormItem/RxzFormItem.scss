@@ -1,11 +1,14 @@
-.rxz-form-item:not(:last-child) {
-  padding-bottom: 20px;
+.rxz-form-item {
+  padding-bottom: 16px;
 
 
 }
 
 .error-tip {
-  position: absolute;
-  left: 20px;
+  position: relative;
   color: red;
+  text-align: left;
+  margin-top: -10px;
+  padding-left: 5px;
+  margin-bottom: 5px;
 }
