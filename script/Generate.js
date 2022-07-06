@@ -174,7 +174,7 @@ export class ${name}Service{
 `;
 
 function generateService(name, version = '1.0.0', des = '') {
-  const dir = path.join(__currentDir, name);
+  const dir = path.join(__currentDir);
   const servicePath = path.join(dir, `${name}.service.ts`);
 
   if (fs.existsSync(servicePath)) {
@@ -187,7 +187,7 @@ function generateService(name, version = '1.0.0', des = '') {
 }
 
 function generateDeclare(name, needUpdate = 'true') {
-  const dir = path.join(__currentDir, name);
+  const dir = path.join(__currentDir);
   const declarePath = path.join(dir, `${name}.declare.ts`);
   const indexPath = path.join(dir, 'index.ts');
 

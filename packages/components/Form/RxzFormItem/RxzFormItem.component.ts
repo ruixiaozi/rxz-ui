@@ -24,21 +24,21 @@ import { RxzLabelService } from '../RxzLabel/RxzLabel.service';
 })
 export class RxzFormItemCnt extends Vue {
 
-  @InjectService(RxzLabelService)
-  private rxzLabelService!: RxzLabelService;
-
+  // props and provide
+  // 校验错误提示
   @Prop({ type: Object, default: () => ({}) })
   readonly errorTip!: StringMap;
+
+  // 表单对应的字段名称
+  @Prop({ type: [String, Number], default: '' })
+  @Provide({ to: 'name', reactive: true })
+  readonly name!: string | number;
 
   // formItem唯一值
   @Provide({ reactive: true })
   formItemKey = uniqueId('_formItem');
 
-  // 标签宽度，用于错误提示left距离
-  labelWidthPx: any = setup(() => this.rxzLabelService.getLabelWidthPx(this.formItemKey));
-
-  tip = '';
-
+  // injects
   @Inject()
   readonly formConfig!: any;
 
@@ -49,10 +49,20 @@ export class RxzFormItemCnt extends Vue {
   @Inject()
   readonly onCheck!: Subject<any>;
 
-  @Prop({ type: [String, Number], default: '' })
-  @Provide({ to: 'name', reactive: true })
-  readonly name!: string | number;
+  // refs
 
+  // injectServices
+  @InjectService(RxzLabelService)
+  private rxzLabelService!: RxzLabelService;
+
+  // setup
+  // 标签宽度，用于错误提示left距离
+  labelWidthPx: any = setup(() => this.rxzLabelService.getLabelWidthPx(this.formItemKey));
+
+  // entity
+  tip = '';
+
+  // computes
   // 继续向下传递
   @Provide({ to: 'formConfig', reactive: true })
   get itemFormConfig(): RxzFormItemConfig | RxzFormConfig | RxzFormConfig[] | null {
@@ -70,7 +80,7 @@ export class RxzFormItemCnt extends Vue {
     return this.formData[this.name] ?? null;
   }
 
-
+  // watchs
   @Watch('formData', { deep: true })
   watchFormData(val: any) {
     const currentConfig = this.formConfig[this.name];
@@ -85,5 +95,9 @@ export class RxzFormItemCnt extends Vue {
       this.tip = '';
     }
   }
+
+  // hooks
+
+  // methods
 
 }
