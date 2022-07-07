@@ -19,7 +19,7 @@ const tsDeclareTpl = (name) => `export class ${name}Declare {
 }
 `;
 
-const tsTpl = (name, version = '1.0.0', des = '') => `import { Options, Vue } from 'vue-class-component';
+const tsTpl = (name, version = '2.0.0', des = '') => `import { Options, Vue } from 'vue-class-component';
 
 /**
  * Component: ${name}
@@ -105,7 +105,7 @@ function insertStrNextLine(source, searchStr, str) {
   return `${source.substring(0, inx) + str}\n${source.substring(inx)}`;
 }
 
-function generateComponent(name, needUpdate = 'true', version = '1.0.0', des = '') {
+function generateComponent(name, needUpdate = 'true', version = '2.0.0', des = '') {
   const dir = path.join(__currentDir, name);
   const scssPath = path.join(dir, `${name}.scss`);
   const tsPath = path.join(dir, `${name}.component.ts`);
@@ -157,7 +157,7 @@ function generateComponent(name, needUpdate = 'true', version = '1.0.0', des = '
 }
 
 
-const serviceTpl = (name, version = '1.0.0', des = '') => `iimport { Injectable } from '@tanbo/vue-di-plugin';
+const serviceTpl = (name, version = '2.0.0', des = '') => `import { Injectable } from '@tanbo/vue-di-plugin';
 
 /**
  * Service: ${name}Service
@@ -173,7 +173,7 @@ export class ${name}Service{
 }
 `;
 
-function generateService(name, version = '1.0.0', des = '') {
+function generateService(name, version = '2.0.0', des = '') {
   const dir = path.join(__currentDir);
   const servicePath = path.join(dir, `${name}.service.ts`);
 

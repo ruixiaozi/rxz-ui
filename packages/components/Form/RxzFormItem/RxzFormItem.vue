@@ -6,7 +6,7 @@
       gutter="5px"
       align="flex-start"
     >
-      <slot :itemData="itemFormData"></slot>
+      <slot :itemData="formData?.[name]"></slot>
     </RxzFlex>
     <div v-if="tip" class="error-tip" :style="{ marginLeft:  labelWidthPx}">
       <RxzIcon name="exclamation-circle"></RxzIcon>

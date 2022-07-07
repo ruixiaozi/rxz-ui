@@ -18,28 +18,6 @@
       <RxzLabel>一级表{{itemData}}：</RxzLabel>
       <RxzInput></RxzInput>
     </RxzFormItem>
-    <RxzFormItem name="inner" >
-      <RxzLabel>子表单1：</RxzLabel>
-      <RxzFlex direction="vertical">
-        <RxzFormItem v-for="(item, inx) in formConfig.inner" :name="inx" :key="inx" v-slot:default="{itemData}">
-          <RxzLabel>{{itemData}}</RxzLabel>
-          <RxzInput></RxzInput>
-        </RxzFormItem>
-      </RxzFlex>
-    </RxzFormItem>
-    <RxzFormItem name="inner2" labelWidth="100px">
-      <RxzLabel>子表单2：</RxzLabel>
-      <RxzFlex>
-         <RxzFormItem name="innerTest" v-slot:default="{itemData}">
-          <RxzLabel>{{itemData}}</RxzLabel>
-          <RxzInput></RxzInput>
-        </RxzFormItem>
-        <RxzFormItem name="innerTest2" v-slot:default="{itemData}">
-          <RxzLabel>{{itemData}}</RxzLabel>
-          <RxzInput></RxzInput>
-        </RxzFormItem>
-      </RxzFlex>
-    </RxzFormItem>
   </RxzForm>
   <RxzFlex gutter="20px">
     <div>123</div>
@@ -81,32 +59,11 @@ export default class App extends Vue {
       validators: [this.validate],
       default: 1,
     },
-    inner: [
-      {
-        validators: [],
-        default: 2,
-      },
-    ],
-    inner2: {
-      innerTest: {
-        validators: [],
-        default: 2,
-      },
-      innerTest2: {
-        validators: [],
-        default: 3,
-      },
-    },
   };
 
   data: any = {
     test: 3,
     test2: 1,
-    inner: [1],
-    inner2: {
-      innerTest: 4,
-      innerTest2: 5,
-    },
   };
 
 

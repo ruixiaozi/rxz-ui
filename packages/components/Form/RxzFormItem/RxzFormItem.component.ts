@@ -3,10 +3,8 @@ import { RxzIcon } from '@/components/Base/RxzIcon';
 import { RxzFlex } from '@/components/Layout/RxzFlex';
 import { StringMap } from '@/definition';
 import { uniqueId } from 'lodash';
-import { Subject } from 'rxjs';
 import { Options, Vue, setup } from 'vue-class-component';
 import { Inject, Prop, Provide, Watch } from 'vue-property-decorator';
-import { RxzFormConfig, RxzFormItemConfig } from '../RxzForm/RxzFormInterFace';
 import { RxzLabelService } from '../RxzLabel/RxzLabel.service';
 
 /**
@@ -43,11 +41,7 @@ export class RxzFormItemCnt extends Vue {
   readonly formConfig!: any;
 
   @Inject()
-  @Provide({ to: 'parentData', reactive: true })
   readonly formData!: any;
-
-  @Inject()
-  readonly onCheck!: Subject<any>;
 
   // refs
 
@@ -63,22 +57,6 @@ export class RxzFormItemCnt extends Vue {
   tip = '';
 
   // computes
-  // 继续向下传递
-  @Provide({ to: 'formConfig', reactive: true })
-  get itemFormConfig(): RxzFormItemConfig | RxzFormConfig | RxzFormConfig[] | null {
-    if (!this.formConfig || (this.formConfig as RxzFormItemConfig).validators) {
-      return null;
-    }
-    return (this.formConfig as any)[this.name] ?? null;
-  }
-
-  @Provide({ to: 'formData', reactive: true })
-  get itemFormData(): any {
-    if (!this.formData) {
-      return null;
-    }
-    return this.formData[this.name] ?? null;
-  }
 
   // watchs
   @Watch('formData', { deep: true })

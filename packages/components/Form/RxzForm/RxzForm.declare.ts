@@ -6,13 +6,13 @@ export class RxzFormDeclare {
 
   declare $props: {
     // 表格配置
-    formConfig: RxzFormConfig,
+    formConfig?: RxzFormConfig,
     // v-model绑定的值
-    modelValue: any,
+    modelValue?: any,
+    name?: string,
     labelWidth?: RxzLabelWidth;
   };
 
-  // vscode error ignore
   declare $emit: {
     (e: 'update:modelValue', ...args: any[]): any;
   }
