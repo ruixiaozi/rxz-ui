@@ -2,7 +2,7 @@ import { RxzIcon } from '@/components/Base/RxzIcon';
 import { RxzOverflow } from '@/directives/RxzOverflow';
 import { Options, Vue } from 'vue-class-component';
 import { Inject, Prop, Ref } from 'vue-property-decorator';
-import { RxzFormConfig, RxzFormItemConfig } from '../RxzForm/RxzFormInterFace';
+import { RxzFormItemConfig } from '../RxzForm/RxzForm.declare';
 
 /**
  * Component: RxzLabel
@@ -27,7 +27,10 @@ export class RxzLabelCnt extends Vue {
 
   // injects
   @Inject()
-  readonly formConfig!: RxzFormItemConfig | RxzFormConfig | RxzFormConfig[] | null;
+  readonly formConfig!: any;
+
+  @Inject()
+  readonly name!: string;
 
   @Inject()
   readonly formItemKey!: string;
@@ -53,11 +56,12 @@ export class RxzLabelCnt extends Vue {
     if (this.required) {
       return true;
     }
-    if (!this.formConfig || !(this.formConfig as RxzFormItemConfig).validators) {
+    const config = this.formConfig?.[this.name || ''];
+    if (!config || !(config as RxzFormItemConfig).validators) {
       return false;
     }
 
-    const { validators } = this.formConfig as RxzFormItemConfig;
+    const { validators } = config as RxzFormItemConfig;
     return validators.some((item) => item);
   }
 

@@ -1,3 +1,5 @@
+export type RxzLabelWidth = string | 'auto' | 'fit-content';
+
 export class RxzLabelDeclare {
 
   declare name: 'RxzLabel';
@@ -12,3 +14,4 @@ export class RxzLabelDeclare {
   }
 
 }
+

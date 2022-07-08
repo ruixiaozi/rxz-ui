@@ -20,7 +20,10 @@ export class RxzLabelService {
   provideFormLabelWidth(props: any) {
     // 用于保存子label的实际宽度
     const allSubLabelWidth = ref(new Map<string, number>([['defaults', 0]]));
-    const labelWidth = toRef(props, 'labelWidth');
+    const labelWidthProp = toRef(props, 'labelWidth');
+    const parentLabelWidth = inject<any>('labelWidth');
+
+    const labelWidth = computed(() => labelWidthProp.value || parentLabelWidth?.value || 'auto');
 
     // 定义当前的表单labelwidth
     const formLabelWidth = computed(() => {
@@ -44,6 +47,7 @@ export class RxzLabelService {
     provide('allSubLabelWidth', allSubLabelWidth);
     provide('formLabelWidth', formLabelWidth);
     provide('updateFormLabelWidth', updateFormLabelWidth);
+    provide('labelWidth', labelWidth);
     return {};
   }
 

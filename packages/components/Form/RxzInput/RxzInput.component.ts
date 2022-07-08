@@ -13,15 +13,26 @@ import { isNil as _isNil } from 'lodash';
 })
 export class RxzInputCnt extends Vue {
 
+  // props and provide
+  @Model('modelValue')
+  value!: any;
+
+  // injects
   @Inject()
   readonly formData!: any;
 
   @Inject()
-  readonly name!: any;
+  readonly name!: string | number;
 
-  @Model('modelValue')
-  value!: any;
+  // refs
 
+  // injectServices
+
+  // setup
+
+  // entity
+
+  // computes
   // 如果在formitem下，则屏蔽v-model
   get inputValue(): any {
     if (!_isNil(this.name)) {
@@ -37,5 +48,11 @@ export class RxzInputCnt extends Vue {
     }
     this.value = val;
   }
+
+  // watchs
+
+  // hooks
+
+  // methods
 
 }

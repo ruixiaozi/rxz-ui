@@ -1,7 +1,7 @@
 import { Injectable } from '@tanbo/vue-di-plugin';
 import { provide, toRef, watchEffect, inject, Ref } from 'vue';
-import { RxzFormConfig } from './RxzFormInterFace';
 import { defaultsDeep as _defaultsDeep } from 'lodash';
+import { RxzFormConfig } from './RxzForm.declare';
 
 /**
  * Service: RxzFormService

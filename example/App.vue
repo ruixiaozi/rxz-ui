@@ -9,7 +9,7 @@
   ></RxzCountdownButton>
   <RxzButton @click="handleAdd()">add</RxzButton>
 
-  <RxzForm label-width="fit-content" :form-config="formConfig" v-model="data" >
+  <RxzForm :form-config="formConfig" v-model="data" >
     <RxzFormItem name="test" :errorTip="{empty: '1211111111111111111111111111111111111113'}">
       <RxzLabel>一2级表单：</RxzLabel>
       <RxzInput></RxzInput>
@@ -17,6 +17,29 @@
     <RxzFormItem name="test2" :errorTip="{empty: '2313'}"  v-slot:default="{itemData}">
       <RxzLabel>一级表{{itemData}}：</RxzLabel>
       <RxzInput></RxzInput>
+    </RxzFormItem>
+    <RxzForm label-width="fit-content" name="inner" direction="horizontal">
+      <RxzFormItem name="inner1" :errorTip="{empty: '444'}"  v-slot:default="{itemData}">
+        <RxzLabel>er级表{{itemData}}：</RxzLabel>
+        <RxzInput></RxzInput>
+      </RxzFormItem>
+      <RxzFormItem name="inner2" :errorTip="{empty: '555'}">
+        <RxzLabel>er级表222：</RxzLabel>
+        <RxzInput></RxzInput>
+      </RxzFormItem>
+    </RxzForm>
+    <RxzFormItem >
+      <RxzLabel :required="true">我是子：</RxzLabel>
+      <RxzForm label-width="fit-content" name="inners" >
+        <RxzFormItem name="inners1" :errorTip="{empty: '444'}"  v-slot:default="{itemData}">
+          <RxzLabel>er1级表{{itemData}}：</RxzLabel>
+          <RxzInput></RxzInput>
+        </RxzFormItem>
+        <RxzFormItem name="inners2" :errorTip="{empty: '555'}">
+          <RxzLabel>er1级表222：</RxzLabel>
+          <RxzInput></RxzInput>
+        </RxzFormItem>
+    </RxzForm>
     </RxzFormItem>
   </RxzForm>
   <RxzFlex gutter="20px">
@@ -27,7 +50,7 @@
 </template>
 
 <script lang="ts">
-import { Validator } from '@/components/Form/RxzForm/RxzFormInterFace';
+import { Validator } from '@/definition';
 import { Options, Vue } from 'vue-class-component';
 const zh = require('./assets/i18n/zh/common.json');
 const en = require('./assets/i18n/en/common.json');
@@ -44,7 +67,6 @@ export default class App extends Vue {
   isStart = true;
 
   validate: Validator = (value) => {
-    console.log(value);
     if (!value) {
       return 'empty';
     }
@@ -59,11 +81,35 @@ export default class App extends Vue {
       validators: [this.validate],
       default: 1,
     },
+    inner: {
+      inner1: {
+        validators: [this.validate],
+        default: 1,
+      },
+      inner2: {
+        validators: [this.validate],
+        default: 1,
+      },
+    },
+    inners: {
+      inners1: {
+        validators: [this.validate],
+        default: 1,
+      },
+      inners2: {
+        validators: [this.validate],
+        default: 1,
+      },
+    },
   };
 
   data: any = {
     test: 3,
     test2: 1,
+    inner: {
+      inner1: 50,
+      inner2: 30,
+    },
   };
 
 

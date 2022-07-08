@@ -1,9 +1,12 @@
+import { RxzFlex } from '@/components/Layout/RxzFlex';
 import { Options, setup, Vue } from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
-import { RxzFormConfig, RxzLabelWidth } from './RxzFormInterFace';
 import { RxzLabelService } from '../RxzLabel/RxzLabel.service';
 import { InjectService } from '@/common';
 import { RxzFormService } from './RxzForm.service';
+import { DIRECTION_ENUM } from '@/definition';
+import { RxzLabelWidth } from '../RxzLabel/RxzLabel.declare';
+import { RxzFormConfig } from './RxzForm.declare';
 
 /**
  * Component: RxzForm
@@ -13,11 +16,14 @@ import { RxzFormService } from './RxzForm.service';
  */
 @Options({
   name: 'RxzForm',
+  components: {
+    RxzFlex,
+  },
 })
 export class RxzFormCnt extends Vue {
 
   // props and provide
-  @Prop({ type: String, default: 'auto' })
+  @Prop({ type: String, default: '' })
   labelWidth!: RxzLabelWidth;
 
   @Prop({ type: Object, default: () => ({}) })
@@ -30,6 +36,10 @@ export class RxzFormCnt extends Vue {
   // 表单数据，v-model绑定，绑定得值可以覆盖初始默认值
   @Prop({ type: Object, default: () => ({}) })
   readonly modelValue!: any;
+
+  // 表单下item的排列方式
+  @Prop({ type: String, default: DIRECTION_ENUM.vertical })
+  direction!: DIRECTION_ENUM;
 
   // injects
 

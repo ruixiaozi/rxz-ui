@@ -1,6 +1,8 @@
 <template>
   <form class="rxz-form" >
-    <slot></slot>
+    <RxzFlex :direction="direction">
+      <slot></slot>
+    </RxzFlex>
   </form>
 </template>
 
