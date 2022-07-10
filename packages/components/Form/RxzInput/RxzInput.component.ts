@@ -24,6 +24,9 @@ export class RxzInputCnt extends Vue {
   @Inject()
   readonly name!: string | number;
 
+  @Inject()
+  readonly check!: { (): boolean };
+
   // refs
 
   // injectServices
@@ -54,5 +57,9 @@ export class RxzInputCnt extends Vue {
   // hooks
 
   // methods
+  handleBlur(event: any) {
+    this.check();
+    this.$emit('blur', event);
+  }
 
 }

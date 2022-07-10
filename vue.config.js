@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 
 module.exports = {
@@ -17,5 +16,9 @@ module.exports = {
   chainWebpack: (config) => {
     // 新增一个 @ 指向 packages 目录, 方便示例代码中使用
     config.resolve.alias.set('@', path.resolve('packages'));
+    return {
+      devtool: 'source-map',
+    };
   },
+
 };

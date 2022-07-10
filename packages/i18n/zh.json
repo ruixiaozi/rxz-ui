@@ -1,1 +1,10 @@
-{}
+{
+  "validator_required": "输入不能为空。",
+  "validator_regexp": "输入不符合要求。",
+  "validator_max": "输入值不能超过{0}。",
+  "validator_min": "输入值不能小于{0}。",
+  "validator_range": "输入值为{0}-{1}",
+  "validator_max_length": "输入长度不能超过{0}个字符。",
+  "validator_min_length": "输入长度不能少于{0}个字符。",
+  "validator_range_length": "输入长度为{0}-{1}个字符"
+}

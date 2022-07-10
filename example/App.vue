@@ -9,8 +9,8 @@
   ></RxzCountdownButton>
   <RxzButton @click="handleAdd()">add</RxzButton>
 
-  <RxzForm :form-config="formConfig" v-model="data" >
-    <RxzFormItem name="test" :errorTip="{empty: '1211111111111111111111111111111111111113'}">
+  <RxzForm :form-config="formConfig" v-model="data" ref="form">
+    <RxzFormItem name="test" :errorTip="{'test': '1211111111111111111111111111111111111113'}">
       <RxzLabel>一2级表单：</RxzLabel>
       <RxzInput></RxzInput>
     </RxzFormItem>
@@ -30,7 +30,7 @@
     </RxzForm>
     <RxzFormItem >
       <RxzLabel :required="true">我是子：</RxzLabel>
-      <RxzForm label-width="fit-content" name="inners" >
+      <RxzForm  name="inners" >
         <RxzFormItem name="inners1" :errorTip="{empty: '444'}"  v-slot:default="{itemData}">
           <RxzLabel>er1级表{{itemData}}：</RxzLabel>
           <RxzInput></RxzInput>
@@ -50,8 +50,10 @@
 </template>
 
 <script lang="ts">
-import { Validator } from '@/definition';
+import { RxzFormCnt } from '@/components/Form/RxzForm/RxzForm.component';
+import { RxzValidators } from '@/definition';
 import { Options, Vue } from 'vue-class-component';
+import { Ref } from 'vue-property-decorator';
 const zh = require('./assets/i18n/zh/common.json');
 const en = require('./assets/i18n/en/common.json');
 @Options({
@@ -66,58 +68,57 @@ export default class App extends Vue {
 
   isStart = true;
 
-  validate: Validator = (value) => {
-    if (!value) {
-      return 'empty';
-    }
-  };
+  @Ref('form')
+  readonly form!: RxzFormCnt;
 
   formConfig: any = {
     test: {
-      validators: [this.validate],
-      default: 1,
+      validators: [RxzValidators.required],
+      default: '',
     },
     test2: {
-      validators: [this.validate],
-      default: 1,
+      validators: [RxzValidators.maxLength(5)],
+      default: 'asdfafs',
     },
     inner: {
       inner1: {
-        validators: [this.validate],
-        default: 1,
+        validators: [RxzValidators.min(5), RxzValidators.max(10)],
+        default: 50,
       },
       inner2: {
-        validators: [this.validate],
+        validators: [],
         default: 1,
       },
     },
     inners: {
       inners1: {
-        validators: [this.validate],
+        validators: [],
         default: 1,
       },
       inners2: {
-        validators: [this.validate],
+        validators: [],
         default: 1,
       },
     },
   };
 
   data: any = {
-    test: 3,
-    test2: 1,
-    inner: {
-      inner1: 50,
-      inner2: 30,
-    },
+
   };
 
 
   handleAdd() {
-    this.formConfig.inner.push({
-      validators: [this.validate],
+    const res = this.form.check();
+    console.log(res);
+
+    /* this.formConfig.inner.push({
+      validators: [],
       default: 25,
-    });
+    }); */
+  }
+
+  handleBlur() {
+    console.log(11231231);
   }
 
 }

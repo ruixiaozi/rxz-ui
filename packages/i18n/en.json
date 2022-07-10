@@ -1,1 +1,4 @@
-{}
+{
+  "validator_required": "The input cannot be null.",
+  "validator_regexp": "The input is invalid."
+}

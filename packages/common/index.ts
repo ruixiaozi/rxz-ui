@@ -1,9 +1,11 @@
+import { i18n } from '@/i18n';
 import { useReflectiveInjector } from '@tanbo/vue-di-plugin';
 import { App } from 'vue';
 
 export const install = (cbk: {(app: App):void}) => (app: any) => {
   if (!app.$rxz) {
     app.$rxz = true;
+    app.use(i18n);
   }
   cbk(app);
 };

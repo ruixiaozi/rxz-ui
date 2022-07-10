@@ -1,4 +1,4 @@
-import { DIRECTION_ENUM, Validator } from '@/definition';
+import { RxzErrorTip, Validator } from '@/definition';
 import { RxzLabelWidth } from '../RxzLabel/RxzLabel.declare';
 
 
@@ -11,6 +11,15 @@ export interface RxzFormConfig {
   [key: string ]: RxzFormItemConfig | RxzFormConfig;
 }
 
+export type RxzCheckRes = {
+  tip: RxzErrorTip;
+  param: any;
+} | null | { [key: string]: RxzCheckRes };
+
+export type RxzCheck = () => RxzCheckRes;
+export interface RxzChecks {
+  [key: string]: RxzCheck;
+}
 
 export class RxzFormDeclare {
 
@@ -26,7 +35,7 @@ export class RxzFormDeclare {
     // 表单下labelWidht
     labelWidth?: RxzLabelWidth;
     // 表单下item的排列方式
-    direction?: DIRECTION_ENUM;
+    direction?: string;
   };
 
   declare $emit: {

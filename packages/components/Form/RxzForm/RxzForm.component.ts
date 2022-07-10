@@ -24,10 +24,10 @@ export class RxzFormCnt extends Vue {
 
   // props and provide
   @Prop({ type: String, default: '' })
-  labelWidth!: RxzLabelWidth;
+  readonly labelWidth!: RxzLabelWidth;
 
   @Prop({ type: Object, default: () => ({}) })
-  formConfig!: RxzFormConfig;
+  readonly formConfig!: RxzFormConfig;
 
   // 表单对应的字段名称
   @Prop({ type: [String, Number], default: '' })
@@ -39,7 +39,7 @@ export class RxzFormCnt extends Vue {
 
   // 表单下item的排列方式
   @Prop({ type: String, default: DIRECTION_ENUM.vertical })
-  direction!: DIRECTION_ENUM;
+  readonly direction!: DIRECTION_ENUM;
 
   // injects
 
@@ -58,6 +58,9 @@ export class RxzFormCnt extends Vue {
 
   // 提供表单服务
   private _provideForm = setup(() => this.rxzFormService.generateForm(this.$props, this.$emit));
+
+  // check方法
+  check: any = setup(() => this.rxzFormService.generateCheck(this.$props));
 
   // entity
 

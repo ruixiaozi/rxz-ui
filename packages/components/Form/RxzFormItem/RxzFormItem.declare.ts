@@ -1,5 +1,6 @@
 import { StringMap } from '@/definition';
 
+
 export class RxzFormItemDeclare {
 
   declare name: 'RxzFormItem';
