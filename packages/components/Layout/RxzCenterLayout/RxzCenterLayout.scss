@@ -1,0 +1,33 @@
+.rxz-center-layout {
+  // 绝对定位，充满父容器
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  // 对内容区域进行flex布局
+  // 实现垂直\水平居中
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &-content {
+    position: relative;
+    // 最大100%，超出出现滚动条
+    max-height: 100%;
+    max-width: 100%;
+    overflow: auto;
+
+    // 这样内部的高度最大也只有max-height
+    // 由内部去控制滚动等
+    &.no-scroll {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    // 显示阴影
+    &.show-shadow {
+      box-shadow: 0px 0px 5px 2px rgb(0 0 0 / 20%);
+    }
+
+  }
+}

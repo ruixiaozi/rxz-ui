@@ -1,0 +1,4 @@
+ {
+   "packages/**/*.js": "eslint --ext .js",
+   "packages/**/*.ts": "eslint --ext .ts"
+ }
