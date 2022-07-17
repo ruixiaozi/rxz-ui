@@ -13,6 +13,7 @@ import { Prop } from 'vue-property-decorator';
 })
 export class RxzWaveProcessCnt extends Vue {
 
+  // props and provide
   @Prop({ type: Number, default: 0 })
   readonly process!: number;
 
@@ -44,6 +45,17 @@ export class RxzWaveProcessCnt extends Vue {
   })
   readonly infoCss!: StringMap;
 
+  // injects
+
+  // refs
+
+  // injectServices
+
+  // setup
+
+  // entity
+
+  // computes
   get waterBackgroudImage(): string {
     const re = `linear-gradient(-180deg, ${this.waterColor} 13%, ${this.waterColor} 100%)`;
     return re;
@@ -52,5 +64,11 @@ export class RxzWaveProcessCnt extends Vue {
   get waveTop(): string {
     return `${100 - this.process}%`;
   }
+
+  // watchs
+
+  // hooks
+
+  // methods
 
 }

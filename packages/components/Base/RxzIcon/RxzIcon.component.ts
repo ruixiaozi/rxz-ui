@@ -13,6 +13,7 @@ import { Prop } from 'vue-property-decorator';
 })
 export class RxzIconCnt extends Vue {
 
+  // props and provide
   @Prop({ type: String, default: 'info-circle' })
   readonly name!: string;
 
@@ -39,6 +40,17 @@ export class RxzIconCnt extends Vue {
   @Prop({ type: Object, default: () => ({}) })
   readonly css!: StringMap;
 
+  // injects
+
+  // refs
+
+  // injectServices
+
+  // setup
+
+  // entity
+
+  // computes
   get sizeCPT(): string {
     switch (this.size) {
       case ICON_SIZE_ENUM.normal:
@@ -56,5 +68,10 @@ export class RxzIconCnt extends Vue {
     }
   }
 
+  // watchs
+
+  // hooks
+
+  // methods
 
 }

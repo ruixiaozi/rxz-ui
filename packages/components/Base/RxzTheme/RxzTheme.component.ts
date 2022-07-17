@@ -12,7 +12,26 @@ import { Prop } from 'vue-property-decorator';
 })
 export class RxzThemeCnt extends Vue {
 
+  // props and provide
   @Prop({ type: String, default: 'default' })
   theme!: string;
+
+  // injects
+
+  // refs
+
+  // injectServices
+
+  // setup
+
+  // entity
+
+  // computes
+
+  // watchs
+
+  // hooks
+
+  // methods
 
 }

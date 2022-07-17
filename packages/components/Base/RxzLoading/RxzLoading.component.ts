@@ -24,6 +24,7 @@ const en = require('./i18n/en.json');
 })
 export class RxzLoadingCnt extends Vue {
 
+  // props and provide
   @Prop({ type: Boolean, default: true })
   loading!: boolean;
 
@@ -35,5 +36,23 @@ export class RxzLoadingCnt extends Vue {
 
   @Prop({ type: String, default: '#FFFFFF' })
   color!: string;
+
+  // injects
+
+  // refs
+
+  // injectServices
+
+  // setup
+
+  // entity
+
+  // computes
+
+  // watchs
+
+  // hooks
+
+  // methods
 
 }

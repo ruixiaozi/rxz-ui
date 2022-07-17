@@ -12,6 +12,7 @@ import { Prop } from 'vue-property-decorator';
 })
 export class RxzFlipCardCnt extends Vue {
 
+  // props and provide
   @Prop({ type: String, default: '100px' })
   width!: string;
 
@@ -23,5 +24,23 @@ export class RxzFlipCardCnt extends Vue {
 
   @Prop({ type: Boolean, default: true })
   isFront!: boolean;
+
+  // injects
+
+  // refs
+
+  // injectServices
+
+  // setup
+
+  // entity
+
+  // computes
+
+  // watchs
+
+  // hooks
+
+  // methods
 
 }

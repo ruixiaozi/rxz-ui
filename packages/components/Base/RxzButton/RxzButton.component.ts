@@ -17,6 +17,7 @@ import { RxzIcon } from '../RxzIcon';
 })
 export class RxzButtonCnt extends Vue {
 
+  // props and provide
   @Prop({ type: Boolean, default: false })
   readonly disabled!: boolean;
 
@@ -65,8 +66,18 @@ export class RxzButtonCnt extends Vue {
   @Prop({ type: String, default: 'unset' })
   readonly hoverTextColor!: string;
 
+  // injects
+
+  // refs
+
+  // injectServices
+
+  // setup
+
+  // entity
   isHover = false;
 
+  // computes
   get bgColorCPT(): string | undefined {
     return (this.bgColor && this.bgColor !== 'unset')
       ? this.bgColor : undefined;
@@ -85,6 +96,11 @@ export class RxzButtonCnt extends Vue {
     return this.hoverTextColor === 'unset' ? this.textColorCTP : this.hoverTextColor;
   }
 
+  // watchs
+
+  // hooks
+
+  // methods
   @Emit('click')
   handleClick(event: Event): Event {
     return event;
