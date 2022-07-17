@@ -13,6 +13,7 @@ import { Prop } from 'vue-property-decorator';
 })
 export class RxzFlexCnt extends Vue {
 
+  // props and provide
   @Prop({ type: String, default: DIRECTION_ENUM.horizontal })
   direction!: DIRECTION_ENUM;
 
@@ -26,5 +27,23 @@ export class RxzFlexCnt extends Vue {
   // 当前方向的对齐方式
   @Prop({ type: String, default: FLEX_ALIGN_ENUM.start })
   justify!: FLEX_ALIGN_ENUM;
+
+  // injects
+
+  // refs
+
+  // injectServices
+
+  // setup
+
+  // entity
+
+  // computes
+
+  // watchs
+
+  // hooks
+
+  // methods
 
 }

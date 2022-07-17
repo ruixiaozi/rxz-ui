@@ -12,10 +12,29 @@ import { Prop } from 'vue-property-decorator';
 })
 export class RxzCenterLayoutCnt extends Vue {
 
+  // props and provide
   @Prop({ type: Boolean, default: true })
   isScroll!: boolean;
 
   @Prop({ type: Boolean, default: false })
   showShadow!: boolean;
+
+  // injects
+
+  // refs
+
+  // injectServices
+
+  // setup
+
+  // entity
+
+  // computes
+
+  // watchs
+
+  // hooks
+
+  // methods
 
 }

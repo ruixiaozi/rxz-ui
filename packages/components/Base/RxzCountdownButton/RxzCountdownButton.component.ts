@@ -17,7 +17,8 @@ import { Emit, Model, Prop, Watch } from 'vue-property-decorator';
 })
 export class RxzCountdownButtonCnt extends Vue {
 
-  @Model('modelValue', { type: Boolean, default: false })
+  // props and provide
+  @Model('modelValue', { type: Boolean })
   isStart!: boolean;
 
   @Prop({ type: Number, default: 60 })
@@ -26,19 +27,32 @@ export class RxzCountdownButtonCnt extends Vue {
   @Prop({ type: String, default: BUTTON_TYPE_ENUM.primary })
   readonly type!: BUTTON_TYPE_ENUM;
 
+  // injects
+
+  // refs
+
+  // injectServices
+
+  // setup
+
+  // entity
   timer: any = null;
 
   sec: number = 0;
+  // computes
 
+  // watchs
   @Watch('isStart', { immediate: true })
   onSsStartChanged(val: boolean): void {
     this.operate(val);
   }
 
+  // hooks
   mounted(): void {
     this.sec = this.seconds;
   }
 
+  // methods
   countDown(): void {
     if (--this.sec <= 0) {
       this.isStart = false;
@@ -58,6 +72,5 @@ export class RxzCountdownButtonCnt extends Vue {
       clearInterval(this.timer);
     }
   }
-
 
 }
