@@ -26,7 +26,7 @@ export class RxzCountdownButtonCnt extends Vue {
   @Prop({ type: String, default: BUTTON_TYPE_ENUM.primary })
   readonly type!: BUTTON_TYPE_ENUM;
 
-  timer: number | null = null;
+  timer: any = null;
 
   sec: number = 0;
 
