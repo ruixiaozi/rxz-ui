@@ -1,18 +1,20 @@
-# 使用组件
+# 总览
 
-在您的vue模板中使用：
++ 基础组件
+  + [RxzButton 按钮](./base/rxzbutton.html)
+  + [RxzCountDownButton 倒计时按钮](./base/rxzcountdownbutton.html)
+  + [RxzDialog 对话框](./base/rxzdialog.html)
+  + [RxzIcon 图标](./base/rxzicon.html)
+  + [RxzLoading 加载](./base/rxzloading.html)
 
-App.vue
++ 视图组件
+  + [RxzCenterLayout 居中视图](./layout/rxzcenterlayout.html)
 
-```
-<template>
-  <rxz-button type="primary">测试按钮</rxz-button>
-</template>
-<script>
-export default {
-}
-</script>
-<style lang="scss">
-</style>
-```
++ 动画组件
+  + [RxzWaveProcess 水波进度](./animation/rxzwaveprocess.html)
 
++ 卡片组件
+  + [RxzFlipCard 翻转卡片](./card/rxzflipcard.html)
+
++ 表单组件
++ 表格组件

@@ -1,7 +1,8 @@
 ---
 home: true
-heroText: RXZ-UI
-tagline: 一个基于Vue的UI组件、工具库，兼容多端设备
+heroImage: /img/logo.svg
+heroText: RxzUI 2
+tagline: 一个基于Vue3的UI组件、工具库，兼容多端设备
 actionText: 开始使用 →
 actionLink: /guide/
 features:

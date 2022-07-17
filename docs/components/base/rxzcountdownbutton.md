@@ -1,11 +1,13 @@
-# RxzCountDownButton 倒计时按钮
+# RxzCountdownButton 倒计时按钮
 
-```
+<TestRxzCountdownButton></TestRxzCountdownButton>
+
+``` vue
 <template>
-  <rxz-count-down-button v-model="isStart" :seconds="10">
+  <rxz-countdown-button v-model="isStart" :seconds="10">
     <template v-slot:countdownValue>等待中</template>
     按钮
-  </rxz-count-down-button>
+  </rxz-countdown-button>
 </template>
 <script>
 export default {
@@ -14,7 +16,6 @@ export default {
       isStart:true
     }
   },
-
 };
 </script>
 ```
@@ -38,4 +39,3 @@ export default {
 | 插槽名称       | 描述                       |
 | -------------- | -------------------------- |
 | countdownValue | 倒计时过程中按钮显示的文字 |
-

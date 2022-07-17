@@ -14,15 +14,18 @@ const messages = {
  * @returns {string}
  */
 function getLocal() {
+  const _localStorage = typeof localStorage === 'undefined' ? null : localStorage;
+  const _navigator = typeof navigator === 'undefined' ? null : navigator;
+
   // 如果缓存中存在，则直接返回
-  const myLocale = localStorage.getItem('my_locale');
+  const myLocale = _localStorage?.getItem('my_locale');
   if (myLocale) {
     return myLocale;
   }
   // 否则读取当前网页语言
-  const localName = navigator.language.indexOf('zh') === -1 ? 'en' : 'zh';
+  const localName = _navigator?.language.indexOf('zh') === -1 ? 'en' : 'zh';
   // 设置缓存
-  localStorage.setItem('my_locale', localName);
+  _localStorage?.setItem('my_locale', localName);
   return localName;
 }
 

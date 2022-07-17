@@ -1,7 +1,9 @@
-import { defaultTheme } from 'vuepress';
+import { defaultTheme } from 'vuepress-webpack';
+import { webpackBundler } from '@vuepress/bundler-webpack';
+import path from 'path';
 
 module.exports = {
-  title: 'RXZ-UI',
+  title: 'RxzUI 2',
   base: '/rxz-ui/',
   description: '一个基于Vue的UI组件、工具库，兼容多端设备UI',
   theme: defaultTheme({
@@ -137,6 +139,16 @@ module.exports = {
         }
       ]
     }
-  } as any)
-
+  } as any),
+  bundler: webpackBundler({
+    postcss: {},
+    vue: {},
+    chainWebpack: (config) => {
+      // 新增一个 @ 指向 packages 目录, 方便示例代码中使用
+      config.resolve.alias.set('@', path.resolve('packages'));
+      return {
+        devtool: 'source-map',
+      };
+    },
+  }),
 }

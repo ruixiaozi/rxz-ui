@@ -8,29 +8,30 @@
 npm i rxz-ui -S
 ```
 
-## 引入RXZ-UI
+## 引入RxzUI
 
-在 main.js 中写入以下内容：
+在 main.js/main.ts 中写入以下内容：
 
 ```
-import Vue from 'vue';
-import RxzUI from 'rxz-ui';
+import { createApp } from 'vue'
+import { RxzUI } from 'rxz-ui';
 import 'rxz-ui/lib/rxz-ui.css';
 import App from './App.vue';
 
-Vue.use(RxzUI);
-
-new Vue({
-  el: '#app',
-  render: h => h(App)
-});
+const app = createApp(App);
+app.use(RxzUI);
+app.mount('#app');
 ```
 
 ## Hello World
 
 在模板文件中使用：
 
+---
+
+<rxz-button type="primary" bgColor="#ffcccc" hoverBgColor="#ffffcc">Hello World</rxz-button>
+
 ```
-<rxz-button type="primary" bgColor="red" hoverBgColor="green">Hello World</rxz-button>
+<rxz-button type="primary" bgColor="#ffcccc" hoverBgColor="#ffffcc">Hello World</rxz-button>
 ```
 
