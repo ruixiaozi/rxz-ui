@@ -1,5 +1,7 @@
 # RxzButton 按钮
 
+<rxz-button>默认按钮</rxz-button>
+
 ```
 <rxz-button>默认按钮</rxz-button>
 ```
@@ -11,8 +13,8 @@
 | -------------- | ------- | ---------------- | ----------------------------------- | ----------- | ---- |
 | disabled       | Boolean | 是否禁用         | true/false                          | false       |      |
 | loading        | Boolean | 是否加载状态     | true/false                          | false       |      |
-| type           | String  | 按钮类型         | default/primary/success/information | default     |      |
-| nativeType     | String  | 原生按钮类型     | button/reset/submit                 | button      |      |
+| type           | String \| BUTTON_TYPE_ENUM  | 按钮类型         | default/primary/success/information | default     |      |
+| nativeType     | String \| NATIVE_BUTTON_TYPE_ENUM  | 原生按钮类型     | button/reset/submit                 | button      |      |
 | cls            | Array   | class列表        | -                                   | []          |      |
 | css            | Object  | CSS属性          | -                                   | {}          |      |
 | width          | String  | 宽度             | -                                   | fit-content |      |
@@ -32,6 +34,14 @@
 
 ## Example 案例
 
+### 1. 类型  
+---
+
+<rxz-button type="default">默认按钮</rxz-button>
+<rxz-button type="primary">主要按钮</rxz-button>
+<rxz-button type="success">成功按钮</rxz-button>
+<rxz-button type="information">通知按钮</rxz-button>
+
 ```
 <rxz-button type="default">默认按钮</rxz-button>
 <rxz-button type="primary">主要按钮</rxz-button>
@@ -39,7 +49,12 @@
 <rxz-button type="information">通知按钮</rxz-button>
 ```
 
+### 2. 禁用  
 ---
+<rxz-button type="default" disabled>默认按钮</rxz-button>
+<rxz-button type="primary" disabled>主要按钮</rxz-button>
+<rxz-button type="success" disabled>成功按钮</rxz-button>
+<rxz-button type="information" disabled>通知按钮</rxz-button>
 
 ```
 <rxz-button type="default" disabled>默认按钮</rxz-button>
@@ -48,8 +63,12 @@
 <rxz-button type="information" disabled>通知按钮</rxz-button>
 ```
 
-
+### 3. 加载 
 ---
+<rxz-button type="default" loading>默认按钮</rxz-button>
+<rxz-button type="primary" loading>主要按钮</rxz-button>
+<rxz-button type="success" loading>成功按钮</rxz-button>
+<rxz-button type="information" loading>通知按钮</rxz-button>
 
 ```
 <rxz-button type="default" loading>默认按钮</rxz-button>
