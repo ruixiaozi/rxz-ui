@@ -18,7 +18,6 @@ export default {
 };
 </script>
 ```
-<test-rxz-count-down-button />
 
 ## Attribute 属性
 

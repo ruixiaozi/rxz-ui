@@ -21,3 +21,5 @@ pnpm-debug.log*
 *.sln
 *.sw?
 global.d.ts
+docs/.vuepress/.cache
+docs/.vuepress/.temp

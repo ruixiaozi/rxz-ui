@@ -6,7 +6,6 @@
  <rxz-icon name="bell"></rxz-icon>
 ```
 
-<rxz-icon name="bell"></rxz-icon>
 
 ## Attribute 属性
 
@@ -26,8 +25,6 @@
  <rxz-icon name="spinner" spinner></rxz-icon>
 ```
 
-<rxz-icon name="spinner" spinner></rxz-icon>
-
 ---
 
 ```
@@ -35,8 +32,6 @@
 <rxz-icon name="arrows-h" rotate="90"></rxz-icon>
 ```
 
-<rxz-icon name="arrows-h"></rxz-icon>
-<rxz-icon name="arrows-h" rotate="90"></rxz-icon>
 
 ---
 
@@ -49,10 +44,4 @@
 <rxz-icon name="bell" size="big4"></rxz-icon>
 ```
 
-<rxz-icon name="bell"></rxz-icon>
-<rxz-icon name="bell" size="normal"></rxz-icon>
-<rxz-icon name="bell" size="big"></rxz-icon>
-<rxz-icon name="bell" size="big2"></rxz-icon>
-<rxz-icon name="bell" size="big3"></rxz-icon>
-<rxz-icon name="bell" size="big4"></rxz-icon>
 

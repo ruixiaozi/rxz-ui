@@ -40,7 +40,6 @@ export default {
 </style>
 ```
 
-<test-rxz-echarts/>
 
 ## Description 描述
 
