@@ -38,8 +38,6 @@ export default {
 </style>
 ```
 
-<test-rxz-loading/>
-
 ## Attribute 属性
 
 | 参数    | 类型    | 描述           | 可选值     | 默认值     | 必须 |

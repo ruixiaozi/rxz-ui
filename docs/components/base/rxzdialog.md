@@ -23,8 +23,6 @@ export default {
 </script>
 ```
 
-<test-rxz-dialog/>
-
 ## Attribute 属性
 
 | 参数           | 类型    | 描述                     | 可选值     | 默认值   | 必须 |

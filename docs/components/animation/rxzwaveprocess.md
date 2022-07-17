@@ -4,7 +4,6 @@
 <rxz-wave-process :process="25"></rxz-wave-process>
 ```
 
-<rxz-wave-process :process="25"></rxz-wave-process>
 
 ## Attribute 属性
 

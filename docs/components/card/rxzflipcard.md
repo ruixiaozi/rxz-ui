@@ -35,7 +35,6 @@ export default {
 </style>
 ```
 
-<test-rxz-flip-card/>
 
 ## Attribute 属性
 

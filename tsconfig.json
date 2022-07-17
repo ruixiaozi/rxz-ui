@@ -16,8 +16,7 @@
     "baseUrl": ".",
     "types": [
       "webpack-env",
-      "jest",
-      "typings/components.d.ts",
+      "jest"
     ],
     "paths": {
       "@/*": [
@@ -32,6 +31,8 @@
     ]
   },
   "include": [
+    "docs/.vuepress/**/*.ts",
+    "docs/.vuepress/**/*.vue",
     "example/**/*.ts",
     "example/**/*.tsx",
     "example/**/*.vue",
@@ -40,7 +41,7 @@
     "packages/**/*.vue",
     "typings/**/*.ts",
     "tests/**/*.ts",
-    "tests/**/*.tsx",
+    "tests/**/*.tsx"
   ],
   "exclude": [
     "node_modules",

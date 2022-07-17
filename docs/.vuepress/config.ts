@@ -1,10 +1,13 @@
+import { defaultTheme } from 'vuepress';
+
 module.exports = {
   title: 'RXZ-UI',
   base: '/rxz-ui/',
   description: '一个基于Vue的UI组件、工具库，兼容多端设备UI',
-  themeConfig: {
+  theme: defaultTheme({
+    // 默认主题配置
     logo: '/img/logo.svg',
-    nav: [
+    navbar: [
       { text: '指南', link: '/guide/' },
       { text: '组件', link: '/components/' },
       { text: '指令', link: '/directives/' },
@@ -15,58 +18,58 @@ module.exports = {
     //displayAllHeaders: true, // 默认值：false
     sidebar: {
       '/guide/': [
-        '',
-        'component',
-        'directive',
-        'utils'
+        '/guide/README.md',
+        '/guide/component.md',
+        '/guide/directive.md',
+        '/guide/utils.md'
       ],
       '/components/':[
-        '',
+        '/components/README.md',
         {
-          title: '基础组件',
+          text: '基础组件',
           sidebarDepth: 1,
           collapsable: false,
           children: [
-            'base/rxzbutton',
-            'base/rxzcountdownbutton',
-            'base/rxzdialog',
-            'base/rxzicon',
-            'base/rxzloading',
+            '/components/base/rxzbutton.md',
+            '/components/base/rxzcountdownbutton.md',
+            '/components/base/rxzdialog.md',
+            '/components/base/rxzicon.md',
+            '/components/base/rxzloading.md',
           ]
         },
         {
-          title: '视图组件',
+          text: '视图组件',
           sidebarDepth: 1,
           collapsable: false,
           children: [
-            'layout/rxzcenterlayout'
+            '/components/layout/rxzcenterlayout'
           ]
         },
         {
-          title: '动画组件',
+          text: '动画组件',
           sidebarDepth: 1,
           collapsable: false,
           children: [
-            'animation/rxzwaveprocess',
+            '/components/animation/rxzwaveprocess',
           ]
         },
         {
-          title: '卡片组件',
+          text: '卡片组件',
           sidebarDepth: 1,
           collapsable: false,
           children: [
-            'card/rxzflipcard',
+            '/components/card/rxzflipcard',
           ]
         },
         {
-          title: '表单组件',
+          text: '表单组件',
           sidebarDepth: 1,
           collapsable: false,
           children: [
           ]
         },
         {
-          title: '表格组件',
+          text: '表格组件',
           sidebarDepth: 1,
           collapsable: false,
           children: [
@@ -74,66 +77,66 @@ module.exports = {
         },
       ],
       '/directives/':[
-        '',
+        '/directives/README.md',
         {
-          title: '第三方库封装',
+          text: '第三方库封装',
           sidebarDepth: 1,
           collapsable: false,
           children: [
-            'others/rxzecharts',
+            '/directives/others/rxzecharts',
           ]
         }
       ],
       '/utils/':[
-        '',
+        '/utils/README.md',
         {
-          title: '数组',
+          text: '数组',
           sidebarDepth: 1,
           path:'/utils/array/',
           collapsable: false,
           children: [
-            'array/sort',
+            '/utils/array/sort',
           ]
         },
         {
-          title: '日期时间',
+          text: '日期时间',
           sidebarDepth: 1,
           path:'/utils/date/',
           collapsable: false,
           children: [
-            'date/format',
+            '/utils/date/format',
           ]
         },
         {
-          title: '对象操作',
+          text: '对象操作',
           sidebarDepth: 1,
           path:'/utils/object/',
           collapsable: false,
           children: [
-            'object/base',
+            '/utils/object/base',
           ]
         },
         {
-          title: '字符串',
+          text: '字符串',
           sidebarDepth: 1,
           path:'/utils/string/',
           collapsable: false,
           children: [
-            'string/logical',
+            '/utils/string/logical',
           ]
         },
         {
-          title: '第三方库封装',
+          text: '第三方库封装',
           sidebarDepth: 1,
           path:'/utils/others/',
           collapsable: false,
           children: [
-            'others/axios',
-            'others/dayjs',
+            '/utils/others/axios',
+            '/utils/others/dayjs',
           ]
         }
       ]
     }
+  } as any)
 
-  }
 }

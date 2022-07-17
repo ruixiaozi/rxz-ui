@@ -4,7 +4,6 @@
 <rxz-button>默认按钮</rxz-button>
 ```
 
-<rxz-button>默认按钮</rxz-button>
 
 ## Attribute 属性
 
@@ -40,11 +39,6 @@
 <rxz-button type="information">通知按钮</rxz-button>
 ```
 
-<rxz-button type="default">默认按钮</rxz-button>
-<rxz-button type="primary">主要按钮</rxz-button>
-<rxz-button type="success">成功按钮</rxz-button>
-<rxz-button type="information">通知按钮</rxz-button>
-
 ---
 
 ```
@@ -54,10 +48,6 @@
 <rxz-button type="information" disabled>通知按钮</rxz-button>
 ```
 
-<rxz-button type="default" disabled>默认按钮</rxz-button>
-<rxz-button type="primary" disabled>主要按钮</rxz-button>
-<rxz-button type="success" disabled>成功按钮</rxz-button>
-<rxz-button type="information" disabled>通知按钮</rxz-button>
 
 ---
 
@@ -68,7 +58,3 @@
 <rxz-button type="information" loading>通知按钮</rxz-button>
 ```
 
-<rxz-button type="default" loading>默认按钮</rxz-button>
-<rxz-button type="primary" loading>主要按钮</rxz-button>
-<rxz-button type="success" loading>成功按钮</rxz-button>
-<rxz-button type="information" loading>通知按钮</rxz-button>
