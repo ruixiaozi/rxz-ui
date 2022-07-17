@@ -2,7 +2,7 @@
 
 <rxz-button>默认按钮</rxz-button>
 
-```
+``` vue
 <rxz-button>默认按钮</rxz-button>
 ```
 
@@ -42,7 +42,7 @@
 <rxz-button type="success">成功按钮</rxz-button>
 <rxz-button type="information">通知按钮</rxz-button>
 
-```
+``` vue
 <rxz-button type="default">默认按钮</rxz-button>
 <rxz-button type="primary">主要按钮</rxz-button>
 <rxz-button type="success">成功按钮</rxz-button>
@@ -56,7 +56,7 @@
 <rxz-button type="success" disabled>成功按钮</rxz-button>
 <rxz-button type="information" disabled>通知按钮</rxz-button>
 
-```
+``` vue
 <rxz-button type="default" disabled>默认按钮</rxz-button>
 <rxz-button type="primary" disabled>主要按钮</rxz-button>
 <rxz-button type="success" disabled>成功按钮</rxz-button>
@@ -70,10 +70,38 @@
 <rxz-button type="success" loading>成功按钮</rxz-button>
 <rxz-button type="information" loading>通知按钮</rxz-button>
 
-```
+``` vue
 <rxz-button type="default" loading>默认按钮</rxz-button>
 <rxz-button type="primary" loading>主要按钮</rxz-button>
 <rxz-button type="success" loading>成功按钮</rxz-button>
 <rxz-button type="information" loading>通知按钮</rxz-button>
 ```
 
+### 4. cleck事件 
+---
+<rxz-button type="primary" @click="handleClick">主要按钮</rxz-button>
+
+``` vue
+<template>
+  <rxz-button type="primary" @click="handleClick">主要按钮</rxz-button>
+</template>
+<script>
+export default {
+  methods: {
+    handleClick() {
+      console.log('test click');
+    }
+  },
+}
+</script>
+```
+
+<script>
+export default {
+  methods: {
+    handleClick() {
+      console.log('test click');
+    }
+  },
+}
+</script>

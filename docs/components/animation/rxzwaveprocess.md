@@ -2,7 +2,7 @@
 
 <rxz-wave-process :process="25"></rxz-wave-process>
 
-```
+``` vue
 <rxz-wave-process :process="25"></rxz-wave-process>
 ```
 
@@ -26,7 +26,7 @@
 
 <rxz-wave-process :process="10" width="200px" height="200px" borderRadius="100px"></rxz-wave-process>
 
-```
+``` vue
 <rxz-wave-process :process="10" width="200px" height="200px" borderRadius="100px"></rxz-wave-process>
 ```
 
@@ -35,7 +35,7 @@
 
 <rxz-wave-process :process="20" waterColor="#ccffff" emptyColor="#ffffcc"></rxz-wave-process>
 
-```
+``` vue
 <rxz-wave-process :process="20" waterColor="#ccffff" emptyColor="#ffffcc"></rxz-wave-process>
 ```
 
@@ -44,7 +44,7 @@
 
 <rxz-wave-process :process="20" :infoCss="{ 'color': '#ffcccc', 'font-size': '12px', 'font-weight': 'bold' }"></rxz-wave-process>
 
-```
+``` vue
 <rxz-wave-process 
   :process="20" 
   :infoCss="{ 'color': '#ffcccc', 'font-size': '12px', 'font-weight': 'bold' }">
