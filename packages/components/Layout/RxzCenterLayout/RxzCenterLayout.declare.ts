@@ -4,7 +4,7 @@ export class RxzCenterLayoutDeclare {
 
   declare $props: {
     isScroll?: boolean;
-    showShadow?: string;
+    showShadow?: boolean;
   };
 
   declare $emit: {
