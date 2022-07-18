@@ -1,9 +1,11 @@
 # RxzLoading 加载
 
-```
+<TestRxzLoading></TestRxzLoading>
+
+``` vue
 <template>
   <div class="container">
-    <rxz-loading :loading="loading" text="正在加载">
+    <rxz-loading :loading="loading">
       <div class="content">
         我是内容
       </div>
@@ -12,15 +14,15 @@
 </template>
 <script>
 export default {
-  data () {
+  data() {
     return {
-      loading:true
+      loading: true
     }
   },
-  mounted(){
-    setTimeout(()=>{
+  mounted() {
+    setTimeout(() => {
       this.loading = false;
-    },3000);
+    }, 3000);
   }
 };
 </script>
@@ -43,7 +45,7 @@ export default {
 | 参数    | 类型    | 描述           | 可选值     | 默认值     | 必须 |
 | ------- | ------- | -------------- | ---------- | ---------- | ---- |
 | loading | Boolean | 是否正在加载   | true/false | true       |      |
-| text    | String  | 加载文字       | -          | 加载中     |      |
+| text    | String  | 加载文字（默认会显示加载中）       | -          | ''     |      |
 | bgColor | String  | 遮罩颜色       | -          | \#0000002F |      |
 | color   | String  | 文字和图标颜色 | -          | \#FFFFFF   |      |
 

@@ -1,4 +1,4 @@
-import { createI18n } from 'vue-i18n';
+import { createI18n as _createI18n } from 'vue-i18n';
 const zh = require('./zh.json');
 const en = require('./en.json');
 // 国际化语言资源
@@ -30,7 +30,7 @@ function getLocal() {
 }
 
 // 创建i18n实例
-export const i18n = createI18n({
+export const createI18n = () => _createI18n({
   locale: getLocal(),
   messages,
 });

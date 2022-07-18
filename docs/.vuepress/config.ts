@@ -14,7 +14,14 @@ module.exports = {
       { text: '组件', link: '/components/' },
       { text: '指令', link: '/directives/' },
       { text: '工具集', link: '/utils/' },
-      { text: 'GitHub', link: 'https://github.com/ruixiaozi/rxz-ui',target:'_blank' },
+      {
+        text: '2.x.x',
+        children: [
+          { text: '1.x.x', link: 'https://www.ruixiaozi.com/rxz-ui-1/', target:'_blank' },
+        ]
+      },
+      { text: 'NPM', link: 'https://www.npmjs.com/package/rxz-ui', target:'_blank' },
+      { text: 'GitHub', link: 'https://github.com/ruixiaozi/rxz-ui', target:'_blank' },
     ],
 
     //displayAllHeaders: true, // 默认值：false

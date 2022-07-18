@@ -1,19 +1,39 @@
 <template>
-  <div class="rxz-loading">
-    <div
-      class="rxz-loading-loading"
-      v-if="loading"
-      :style="{
-        'background-color': bgColor,
-        color: color,
-      }"
-    >
-      <span class="rxz-loading-loading-text">{{ text || $t("loading") }}</span>
-      <RxzIcon name="spinner" spinner></RxzIcon>
-    </div>
-    <div class="rxz-loading-body" v-else>
-      <slot></slot>
-    </div>
+  <!-- 全屏遮罩 -->
+  <div class="rxz-dialog" v-show="isShow"
+    :style="[{ zIndex }]">
+    <rxz-center-layout :isScroll="false" :showShadow="true">
+      <div class="rxz-dialog-content"
+        :style="[
+          {'width':width}
+        ]"
+        >
+        <div class="rxz-dialog-content-title"
+          :style="[
+            {height:titleHeight},
+            {color:titleColor},
+            {'background-color':titleBgColor},
+            {padding:padding}
+          ]">
+          <span @click="isShow = false">
+            <rxz-icon :style="[
+              {color:titleColor},
+              {'font-size':closeFontSize}
+            ]" v-show="isShowClose" name="close" class="rxz-dialog-content-title-close" />
+          </span>
+          <slot name="title"></slot>
+        </div>
+        <div class="rxz-dialog-content-body"
+          :style="[
+            {'background-color':bodyBgColor},
+            {'margin-top':titleHeight},
+            {padding:padding}
+          ]"
+         >
+          <slot ></slot>
+        </div>
+      </div>
+    </rxz-center-layout>
   </div>
 </template>
 

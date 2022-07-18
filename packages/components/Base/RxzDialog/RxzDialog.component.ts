@@ -1,8 +1,7 @@
 import { RxzIcon } from '../RxzIcon';
+import { RxzCenterLayout } from '../../Layout/RxzCenterLayout';
 import { Options, Vue } from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
-const zh = require('./i18n/zh.json');
-const en = require('./i18n/en.json');
 
 /**
  * Component: RxzDialog
@@ -14,28 +13,42 @@ const en = require('./i18n/en.json');
   name: 'RxzDialog',
   components: {
     RxzIcon,
-  },
-  i18n: {
-    messages: {
-      zh,
-      en,
-    },
+    RxzCenterLayout,
   },
 })
 export class RxzDialogCnt extends Vue {
 
   // props and provide
+  // 是否显示（支持v-model）
   @Prop({ type: Boolean, default: true })
-  readonly loading!: boolean;
+  readonly visible!: boolean;
 
-  @Prop({ type: String, default: '' })
-  readonly text!: string;
+  @Prop({ type: Number, default: 3000 })
+  readonly zIndex!: number;
 
-  @Prop({ type: String, default: '#0000002F' })
-  readonly bgColor!: string;
+  @Prop({ type: String, default: '400px' })
+  readonly width!: string;
+
+  @Prop({ type: String, default: '50px' })
+  readonly titleHeight!: string;
+
+  @Prop({ type: Boolean, default: true })
+  readonly isShowClose!: boolean;
 
   @Prop({ type: String, default: '#FFFFFF' })
-  readonly color!: string;
+  readonly titleBgColor!: string;
+
+  @Prop({ type: String, default: '#000000' })
+  readonly titleColor!: string;
+
+  @Prop({ type: String, default: '#FFFFFF' })
+  readonly bodyBgColor!: string;
+
+  @Prop({ type: String, default: '10px' })
+  readonly padding!: string;
+
+  @Prop({ type: String, default: '14px' })
+  readonly closeFontSize!: string;
 
   // injects
 
@@ -54,5 +67,12 @@ export class RxzDialogCnt extends Vue {
   // hooks
 
   // methods
+  get isShow() {
+    return this.visible;
+  }
+
+  set isShow(value) {
+    this.$emit('update:visible', value);
+  }
 
 }

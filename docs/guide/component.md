@@ -4,7 +4,7 @@
 
 App.vue
 
-```
+``` vue
 <template>
   <rxz-button type="primary">测试按钮</rxz-button>
 </template>
