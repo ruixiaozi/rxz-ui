@@ -4,7 +4,15 @@ export class RxzOverflow implements ObjectDirective {
 
   name = 'rxz-overflow';
 
-  updated(el: HTMLElement, binding: DirectiveBinding<any>): void {
+  mounted = (el: HTMLElement, binding: DirectiveBinding<any>) => {
+    this.resolveEl(el, binding);
+  }
+
+  updated = (el: HTMLElement, binding: DirectiveBinding<any>) => {
+    this.resolveEl(el, binding);
+  }
+
+  private resolveEl(el: HTMLElement, binding: DirectiveBinding<any>) {
     if (binding.value === undefined || binding.value) {
       el.style.overflow = 'hidden';
       el.style.whiteSpace = 'nowrap';

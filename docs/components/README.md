@@ -6,9 +6,11 @@
   + [RxzDialog 对话框](./base/rxzdialog.html)
   + [RxzIcon 图标](./base/rxzicon.html)
   + [RxzLoading 加载](./base/rxzloading.html)
+  + [RxzTheme 主题](./base/rxztheme.html)
 
 + 视图组件
   + [RxzCenterLayout 居中视图](./layout/rxzcenterlayout.html)
+  + [RxzFlex 弹性布局](./layout/rxzflex.html)
 
 + 动画组件
   + [RxzWaveProcess 水波进度](./animation/rxzwaveprocess.html)

@@ -13,7 +13,6 @@ module.exports = {
       { text: '指南', link: '/guide/' },
       { text: '组件', link: '/components/' },
       { text: '指令', link: '/directives/' },
-      { text: '工具集', link: '/utils/' },
       {
         text: '2.x.x',
         children: [
@@ -30,7 +29,6 @@ module.exports = {
         '/guide/README.md',
         '/guide/component.md',
         '/guide/directive.md',
-        '/guide/utils.md'
       ],
       '/components/':[
         '/components/README.md',
@@ -44,6 +42,7 @@ module.exports = {
             '/components/base/rxzdialog.md',
             '/components/base/rxzicon.md',
             '/components/base/rxzloading.md',
+            '/components/base/rxztheme.md',
           ]
         },
         {
@@ -51,7 +50,8 @@ module.exports = {
           sidebarDepth: 1,
           collapsable: false,
           children: [
-            '/components/layout/rxzcenterlayout'
+            '/components/layout/rxzcenterlayout',
+            '/components/layout/rxzflex'
           ]
         },
         {
@@ -88,63 +88,14 @@ module.exports = {
       '/directives/':[
         '/directives/README.md',
         {
-          text: '第三方库封装',
+          text: '基础指令',
           sidebarDepth: 1,
           collapsable: false,
           children: [
-            '/directives/others/rxzecharts',
+            '/directives/base/rxzoverflow',
           ]
         }
       ],
-      '/utils/':[
-        '/utils/README.md',
-        {
-          text: '数组',
-          sidebarDepth: 1,
-          path:'/utils/array/',
-          collapsable: false,
-          children: [
-            '/utils/array/sort',
-          ]
-        },
-        {
-          text: '日期时间',
-          sidebarDepth: 1,
-          path:'/utils/date/',
-          collapsable: false,
-          children: [
-            '/utils/date/format',
-          ]
-        },
-        {
-          text: '对象操作',
-          sidebarDepth: 1,
-          path:'/utils/object/',
-          collapsable: false,
-          children: [
-            '/utils/object/base',
-          ]
-        },
-        {
-          text: '字符串',
-          sidebarDepth: 1,
-          path:'/utils/string/',
-          collapsable: false,
-          children: [
-            '/utils/string/logical',
-          ]
-        },
-        {
-          text: '第三方库封装',
-          sidebarDepth: 1,
-          path:'/utils/others/',
-          collapsable: false,
-          children: [
-            '/utils/others/axios',
-            '/utils/others/dayjs',
-          ]
-        }
-      ]
     }
   } as any),
   bundler: webpackBundler({
