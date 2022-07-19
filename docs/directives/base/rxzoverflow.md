@@ -10,9 +10,9 @@
 </div>
 ```
 
-## Attribute 属性
+## Description 描述
 
-| 参数       | 类型    | 描述                 | 可选值     | 默认值 | 必须 |
-| ---------- | ------- | -------------------- | ---------- | ------ | ---- |
-| isScroll   | Boolean | 超出最大高度是否滚动 | true/false | true   |      |
-| showShadow | Boolean | 是否显示阴影         | true/false | false  |      |
++ 指令名称：v-rxz-overflow
++ 参数：无
++ 值：真/假值，默认为真
++ 修饰符：无
