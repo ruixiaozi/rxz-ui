@@ -2,8 +2,6 @@
 
 在您的vue模板中使用：
 
-App.vue
-
 ``` vue
 <template>
   <rxz-button type="primary">测试按钮</rxz-button>

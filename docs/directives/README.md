@@ -1,17 +1,4 @@
-# 使用指令
+# 总览
 
-使用方法如下：
-
-App.vue
-
-```
-<template>
-  <div v-rxz-echarts></div>
-</template>
-<script>
-export default {
-}
-</script>
-<style lang="scss">
-</style>
-```
++ 基础指令
+  + [rxz-overflow 溢出指令](./base/rxzoverflow.html)

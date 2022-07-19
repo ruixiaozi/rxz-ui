@@ -1,6 +1,10 @@
 # RxzFlipCard 翻转卡片
 
-```
+<TestRxzFlipCard></TestRxzFlipCard>
+
+<br/>
+
+``` vue
 <template>
   <rxz-flip-card :isFront="isFront" @mouseover="isFront = false" @mouseout="isFront = true">
     <template v-slot:front>
@@ -15,7 +19,7 @@
 export default {
   data () {
     return {
-      isFront:true
+      isFront: true
     }
   }
 };

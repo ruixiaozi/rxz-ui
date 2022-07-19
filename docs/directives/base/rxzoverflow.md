@@ -1,23 +1,13 @@
-# RxzCenterLayout 居中视图
+# rxz-overflow 溢出指令
 
-<TestRxzCenterLayout></TestRxzCenterLayout>
+<div style="width: 100px" v-rxz-overflow>  
+  我的名字叫rxz-overflow
+</div>
 
 ``` vue
-<template>
-  <div class="container">
-    <rxz-center-layout :showShadow="true">
-      <p>我是内容</p>
-    </rxz-center-layout>
-  </div>
-</template>
-<style lang="scss" scoped>
-.container{
-  position: relative;
-  width: 400px;
-  height: 400px;
-  border: solid 1px lightgray;
-}
-</style>
+<div style="width: 100px" v-rxz-overflow>  
+  我的名字叫rxz-overflow
+</div>
 ```
 
 ## Attribute 属性
