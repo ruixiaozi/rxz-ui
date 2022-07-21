@@ -8,8 +8,8 @@
   "email": "admin@ruixiaozi.com",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
+    "docs:dev": "vuepress-webpack dev docs",
+    "docs:build": "vuepress-webpack build docs",
     "build": "npm run build:clean && npm run build:lib && npm run build:esm-bundle && rimraf lib/demo.html",
     "build:clean": "rimraf lib",
     "build:lib": "vue-cli-service build --target lib --name rxz-ui --dest lib packages/index.ts",

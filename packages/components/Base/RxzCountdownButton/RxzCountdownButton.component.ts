@@ -36,13 +36,13 @@ export class RxzCountdownButtonCnt extends Vue {
   // setup
 
   // entity
-  timer: any = null;
+  timer: any;
 
   sec: number = 0;
   // computes
 
   // watchs
-  @Watch('isStart', { immediate: true })
+  @Watch('isStart')
   onSsStartChanged(val: boolean): void {
     this.operate(val);
   }
@@ -50,6 +50,7 @@ export class RxzCountdownButtonCnt extends Vue {
   // hooks
   mounted(): void {
     this.sec = this.seconds;
+    this.operate(this.isStart);
   }
 
   // methods
@@ -66,7 +67,9 @@ export class RxzCountdownButtonCnt extends Vue {
 
   operate(isStart: boolean): void {
     if (isStart) {
-      this.timer = setInterval(this.countDown, 1000);
+      this.timer = setInterval(() => {
+        this.countDown();
+      }, 1000);
       this.sec = this.seconds;
     } else if (this.timer) {
       clearInterval(this.timer);
