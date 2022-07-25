@@ -23,6 +23,7 @@ import { RxzFormConfig } from './RxzForm.declare';
 export class RxzFormCnt extends Vue {
 
   // props and provide
+  // default是auto，但是先继承父亲表单的labelwidth，具体见setup
   @Prop({ type: String, default: '' })
   readonly labelWidth!: RxzLabelWidth;
 

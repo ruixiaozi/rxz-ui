@@ -1,4 +1,10 @@
 {
   "validator_required": "The input cannot be null.",
-  "validator_regexp": "The input is invalid."
+  "validator_regexp": "The input is invalid.",
+  "validator_max": "The input value cannot exceed {0}.",
+  "validator_min": "The input value cannot be less than {0}.",
+  "validator_range": "The input values are {0}-{1}.",
+  "validator_max_length": "The value contains a maximum of {0} characters.",
+  "validator_min_length": "The input length cannot be less than {0} characters.",
+  "validator_range_length": "The value contains {0}-{1} characters."
 }
