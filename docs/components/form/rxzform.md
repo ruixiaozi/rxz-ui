@@ -67,6 +67,12 @@ export default {
 | ----------------- | --- | ------ |
 | update:modelValue | 更新  | 更新值    |
 
+## Slot 具名插槽
+
+| 插槽名称       | 描述                       |   
+| -------------- | -------------------------- |
+| default | 表单内容 |
+
 ## 内置数据结构
 
 1. RxzCheckRes = { tip: RxzErrorTip; param: any; } | null | { [key: string]:RxzCheckRes};
@@ -138,6 +144,182 @@ export default {
     </rxz-form-item>
     <rxz-form-item name="test1" :error-tip="{'required': 'error required'}">
       <rxz-label>Label1：</rxz-label>
+      <rxz-input></rxz-input>
+    </rxz-form-item>
+  </rxz-form>
+</template>
+<script>
+import { RxzValidators } from 'rxz-ui';
+export default {
+  data () {
+    return {
+      formConfig: {
+        test: {
+          validators: [RxzValidators.required],
+          default: '',
+        },
+        test1: {
+          validators: [RxzValidators.required],
+          default: 'test1',
+        },
+      },
+      data: {}
+    }
+  },
+}
+</script>
+```
+
+### 2. 子表单
+
+---
+
+<TestRxzFormExp3></TestRxzFormExp3>
+
+
+``` vue
+<template>
+  <rxz-form :form-config="formConfig" v-model="data">
+    <rxz-form-item name="test" :error-tip="{'required': 'error required'}">
+      <rxz-label>Label：</rxz-label>
+      <rxz-input></rxz-input>
+    </rxz-form-item>
+    <rxz-form-item>
+      <rxz-label>Label1：</rxz-label>
+      <rxz-form name="inner">
+        <rxz-form-item name="innerTest" :error-tip="{'required': 'error required'}">
+          <rxz-label>innerLabel：</rxz-label>
+          <rxz-input></rxz-input>
+        </rxz-form-item>
+      </rxz-form>
+    </rxz-form-item>
+  </rxz-form>
+</template>
+<script>
+import { RxzValidators } from 'rxz-ui';
+export default {
+  data () {
+    return {
+      formConfig: {
+        test: {
+          validators: [RxzValidators.required],
+          default: '',
+        },
+        inner: {
+          innerTest:  {
+            validators: [RxzValidators.required],
+            default: 'test1',
+          },
+        }
+      },
+      data: {}
+    }
+  },
+}
+</script>
+```
+
+### 3. labelWidth
+
+---
+
+1. fit-content
+
+---
+
+<TestRxzFormExp4></TestRxzFormExp4>
+
+``` vue
+<template>
+  <rxz-form :form-config="formConfig" v-model="data" labelWidth="fit-content">
+    <rxz-form-item name="test" :error-tip="{'required': 'error required'}">
+      <rxz-label>testLabel：</rxz-label>
+      <rxz-input></rxz-input>
+    </rxz-form-item>
+    <rxz-form-item name="test1" :error-tip="{'required': 'error required'}">
+      <rxz-label>Label：</rxz-label>
+      <rxz-input></rxz-input>
+    </rxz-form-item>
+  </rxz-form>
+</template>
+<script>
+import { RxzValidators } from 'rxz-ui';
+export default {
+  data () {
+    return {
+      formConfig: {
+        test: {
+          validators: [RxzValidators.required],
+          default: '',
+        },
+        test1: {
+          validators: [RxzValidators.required],
+          default: 'test1',
+        },
+      },
+      data: {}
+    }
+  },
+}
+</script>
+```
+
+2. auto
+
+---
+
+<TestRxzFormExp5></TestRxzFormExp5>
+
+``` vue
+<template>
+  <rxz-form :form-config="formConfig" v-model="data" labelWidth="auto">
+    <rxz-form-item name="test" :error-tip="{'required': 'error required'}">
+      <rxz-label>testLabel：</rxz-label>
+      <rxz-input></rxz-input>
+    </rxz-form-item>
+    <rxz-form-item name="test1" :error-tip="{'required': 'error required'}">
+      <rxz-label>Label：</rxz-label>
+      <rxz-input></rxz-input>
+    </rxz-form-item>
+  </rxz-form>
+</template>
+<script>
+import { RxzValidators } from 'rxz-ui';
+export default {
+  data () {
+    return {
+      formConfig: {
+        test: {
+          validators: [RxzValidators.required],
+          default: '',
+        },
+        test1: {
+          validators: [RxzValidators.required],
+          default: 'test1',
+        },
+      },
+      data: {}
+    }
+  },
+}
+</script>
+```
+
+3. 实际像素
+
+---
+
+<TestRxzFormExp6></TestRxzFormExp6>
+
+``` vue
+<template>
+  <rxz-form :form-config="formConfig" v-model="data" labelWidth="100px">
+    <rxz-form-item name="test" :error-tip="{'required': 'error required'}">
+      <rxz-label>testLabel：</rxz-label>
+      <rxz-input></rxz-input>
+    </rxz-form-item>
+    <rxz-form-item name="test1" :error-tip="{'required': 'error required'}">
+      <rxz-label>Label：</rxz-label>
       <rxz-input></rxz-input>
     </rxz-form-item>
   </rxz-form>

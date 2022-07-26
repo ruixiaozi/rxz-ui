@@ -76,6 +76,7 @@ module.exports = {
           collapsable: false,
           children: [
             '/components/form/rxzform',
+            '/components/form/rxzformitem',
             '/components/form/rxzvalidators',
           ]
         },
