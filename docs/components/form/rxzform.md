@@ -69,9 +69,9 @@ export default {
 
 ## Slot 具名插槽
 
-| 插槽名称       | 描述                       |   
-| -------------- | -------------------------- |
-| default | 表单内容 |
+| 插槽名称    | 描述   | 作用域对象           |
+| ------- | ---- | --------------- |
+| default | 表单内容 | {formData: any} |
 
 ## 内置数据结构
 
@@ -96,7 +96,6 @@ export default {
 ---
 
 <TestRxzFormExp1></TestRxzFormExp1>
-
 
 ```vue
 <template>
@@ -135,7 +134,7 @@ export default {
 
 <TestRxzFormExp2></TestRxzFormExp2>
 
-``` vue
+```vue
 <template>
   <rxz-form :form-config="formConfig" v-model="data" direction="horizontal" labelWidth="fit-content">
     <rxz-form-item name="test" :error-tip="{'required': 'error required'}">
@@ -176,8 +175,7 @@ export default {
 
 <TestRxzFormExp3></TestRxzFormExp3>
 
-
-``` vue
+```vue
 <template>
   <rxz-form :form-config="formConfig" v-model="data">
     <rxz-form-item name="test" :error-tip="{'required': 'error required'}">
@@ -229,7 +227,7 @@ export default {
 
 <TestRxzFormExp4></TestRxzFormExp4>
 
-``` vue
+```vue
 <template>
   <rxz-form :form-config="formConfig" v-model="data" labelWidth="fit-content">
     <rxz-form-item name="test" :error-tip="{'required': 'error required'}">
@@ -270,7 +268,7 @@ export default {
 
 <TestRxzFormExp5></TestRxzFormExp5>
 
-``` vue
+```vue
 <template>
   <rxz-form :form-config="formConfig" v-model="data" labelWidth="auto">
     <rxz-form-item name="test" :error-tip="{'required': 'error required'}">
@@ -311,7 +309,7 @@ export default {
 
 <TestRxzFormExp6></TestRxzFormExp6>
 
-``` vue
+```vue
 <template>
   <rxz-form :form-config="formConfig" v-model="data" labelWidth="100px">
     <rxz-form-item name="test" :error-tip="{'required': 'error required'}">

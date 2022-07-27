@@ -13,6 +13,8 @@ import TestRxzFormExp4 from './components/form/TestRxzFormExp4.vue';
 import TestRxzFormExp5 from './components/form/TestRxzFormExp5.vue';
 import TestRxzFormExp6 from './components/form/TestRxzFormExp6.vue';
 import TestRxzFormItem from './components/formitem/TestRxzFormItem.vue';
+import TestRxzFormItemExp1 from './components/formitem/TestRxzFormItemExp1.vue';
+import TestRxzFormItemExp2 from './components/formitem/TestRxzFormItemExp2.vue';
 
 export default defineClientConfig({
   enhance({ app, router, siteData }) {
@@ -30,6 +32,8 @@ export default defineClientConfig({
     app.component('TestRxzFormExp5', TestRxzFormExp5);
     app.component('TestRxzFormExp6', TestRxzFormExp6);
     app.component('TestRxzFormItem', TestRxzFormItem);
+    app.component('TestRxzFormItemExp1', TestRxzFormItemExp1);
+    app.component('TestRxzFormItemExp2', TestRxzFormItemExp2);
   },
   setup() {},
   rootComponents: [],

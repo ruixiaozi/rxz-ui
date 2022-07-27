@@ -58,7 +58,7 @@ export class RxzFormCnt extends Vue {
   private _provideFormLabelWidth = setup(() => this.rxzLabelService.provideFormLabelWidth(this.$props));
 
   // 提供表单服务
-  private _provideForm = setup(() => this.rxzFormService.generateForm(this.$props, this.$emit));
+  formData = setup(() => this.rxzFormService.generateForm(this.$props, this.$emit));
 
   // check方法
   check: any = setup(() => this.rxzFormService.generateCheck(this.$props));

@@ -73,3 +73,57 @@ export default {
 
 ## Example 案例
 
+### 1. 动态表单项
+
+---
+
+<TestRxzFormItemExp1></TestRxzFormItemExp1>
+
+``` vue
+<template>
+  <rxz-button @click="add()">add</rxz-button>
+  <rxz-form :form-config="formConfig" v-model="data">
+    <rxz-form-item>
+      <rxz-label>sub：</rxz-label>
+      <rxz-form name="arrayTest" v-slot:default="{formData}">
+        <rxz-form-item :name="key" v-for="(item, key) in formData" :key="key">
+          <rxz-label>label{{key}}：</rxz-label>
+          <rxz-input></rxz-input>
+        </rxz-form-item>
+      </rxz-form>
+    </rxz-form-item>
+  </rxz-form>
+</template>
+<script>
+import { RxzValidators } from 'rxz-ui';
+export default {
+  data () {
+    return {
+      formConfig: {
+        arrayTest: [
+          {
+            validators: [RxzValidators.required],
+            default: '0',
+          },
+        ]
+      },
+      data: {}
+    }
+  },
+  methods: {
+    add() {
+      this.formConfig.arrayTest.push({
+        validators: [RxzValidators.required],
+        default: this.formConfig.arrayTest.length,
+      },)
+    }
+  }
+}
+</script>
+```
+
+### 2. 自定义错误信息
+
+---
+
+<TestRxzFormItemExp2></TestRxzFormItemExp2>
