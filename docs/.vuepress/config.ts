@@ -75,6 +75,10 @@ module.exports = {
           sidebarDepth: 1,
           collapsable: false,
           children: [
+            '/components/form/rxzform',
+            '/components/form/rxzformitem',
+            '/components/form/rxzlabel',
+            '/components/form/rxzvalidators',
           ]
         },
         {
@@ -82,6 +86,7 @@ module.exports = {
           sidebarDepth: 1,
           collapsable: false,
           children: [
+
           ]
         },
       ],

@@ -1,7 +1,7 @@
 <template>
   <form class="rxz-form" >
     <RxzFlex :direction="direction">
-      <slot></slot>
+      <slot :formData="formData"></slot>
     </RxzFlex>
   </form>
 </template>

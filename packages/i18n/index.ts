@@ -1,4 +1,5 @@
 import { createI18n as _createI18n } from 'vue-i18n';
+import { merge as _merge } from 'lodash';
 const zh = require('./zh.json');
 const en = require('./en.json');
 // 国际化语言资源
@@ -30,7 +31,10 @@ function getLocal() {
 }
 
 // 创建i18n实例
-export const createI18n = () => _createI18n({
-  locale: getLocal(),
-  messages,
-});
+export const createI18n = (localMessage = {}) => {
+  const mergeMessages = typeof localMessage === 'object' ? _merge(messages, localMessage) : messages;
+  return _createI18n({
+    locale: getLocal(),
+    messages: mergeMessages,
+  });
+};

@@ -1,0 +1,24 @@
+# RxzLabel 标签
+
+<TestRxzLabel></TestRxzLabel>
+
+```vue
+<template>
+  <rxz-form>
+    <rxz-form-item>
+      <rxz-label>Label：</rxz-label>
+      <span>test</span>
+    </rxz-form-item>
+    <rxz-form-item>
+      <rxz-label required>Label：</rxz-label>
+      <span>test</span>
+    </rxz-form-item>
+  </rxz-form>
+</template>
+```
+
+## Attribute 属性
+
+| 参数       | 类型      | 描述        | 可选值        | 默认值   | 必须  |
+| -------- | ------- | --------- | ---------- | ----- | --- |
+| required | Boolean | 是否显示必须的星号 | true/false | false |     |

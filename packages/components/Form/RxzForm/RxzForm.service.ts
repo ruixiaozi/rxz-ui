@@ -29,7 +29,7 @@ export class RxzFormService {
       provide('formConfig', ref(formConfig));
       provide('formData', ref(formData));
 
-      return {};
+      return formData;
     }
     const formConfig = toRef(props, 'formConfig');
     const modelValue = toRef(props, 'modelValue');
@@ -40,7 +40,7 @@ export class RxzFormService {
 
     provide('formConfig', formConfig);
     provide('formData', modelValue);
-    return {};
+    return modelValue;
   }
 
   generateCheck(props: any, onCheck?: Subject<any>) {

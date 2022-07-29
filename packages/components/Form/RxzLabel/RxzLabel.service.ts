@@ -23,6 +23,7 @@ export class RxzLabelService {
     const labelWidthProp = toRef(props, 'labelWidth');
     const parentLabelWidth = inject<any>('labelWidth');
 
+    // 先获取当前的，如果没有再继承父表单的，最后默认值'auto'
     const labelWidth = computed(() => labelWidthProp.value || parentLabelWidth?.value || 'auto');
 
     // 定义当前的表单labelwidth

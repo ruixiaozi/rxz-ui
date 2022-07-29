@@ -2,10 +2,14 @@ import { createI18n } from '@/i18n';
 import { useReflectiveInjector } from '@tanbo/vue-di-plugin';
 import { App } from 'vue';
 
-export const install = (cbk: {(app: App):void}) => (app: any) => {
+export interface RxzOption {
+  i18n?: any;
+}
+
+export const install = (cbk: {(app: App):void}) => (app: any, { i18n = {} }: RxzOption = {}) => {
   if (!app.$rxz) {
     app.$rxz = true;
-    app.use(createI18n());
+    app.use(createI18n(i18n));
   }
   cbk(app);
 };
