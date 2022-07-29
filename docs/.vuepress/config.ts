@@ -77,6 +77,7 @@ module.exports = {
           children: [
             '/components/form/rxzform',
             '/components/form/rxzformitem',
+            '/components/form/rxzlabel',
             '/components/form/rxzvalidators',
           ]
         },

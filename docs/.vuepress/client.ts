@@ -1,5 +1,6 @@
 import { defineClientConfig } from '@vuepress/client';
 import { RxzUI } from '@/index';
+import { RxzOption } from '@/common';
 import TestRxzCountdownButton from './components/TestRxzCountdownButton.vue';
 import TestRxzDialog from './components/TestRxzDialog.vue';
 import TestRxzLoading from './components/TestRxzLoading.vue';
@@ -15,10 +16,22 @@ import TestRxzFormExp6 from './components/form/TestRxzFormExp6.vue';
 import TestRxzFormItem from './components/formitem/TestRxzFormItem.vue';
 import TestRxzFormItemExp1 from './components/formitem/TestRxzFormItemExp1.vue';
 import TestRxzFormItemExp2 from './components/formitem/TestRxzFormItemExp2.vue';
+import TestRxzLabel from './components/label/TestRxzLabel.vue';
 
 export default defineClientConfig({
   enhance({ app, router, siteData }) {
-    app.use(RxzUI);
+    app.use(RxzUI, {
+      i18n: {
+        zh: {
+          max_custom: '最大值为{0}',
+          custom_validator: '最小值为{min}'
+        },
+        en: {
+          max_custom: 'max value is {0}',
+          custom_validator: 'min value is {min}'
+        },
+      }
+    } as RxzOption);
     app.component('TestRxzCountdownButton', TestRxzCountdownButton);
     app.component('TestRxzDialog', TestRxzDialog);
     app.component('TestRxzLoading', TestRxzLoading);
@@ -34,6 +47,7 @@ export default defineClientConfig({
     app.component('TestRxzFormItem', TestRxzFormItem);
     app.component('TestRxzFormItemExp1', TestRxzFormItemExp1);
     app.component('TestRxzFormItemExp2', TestRxzFormItemExp2);
+    app.component('TestRxzLabel', TestRxzLabel);
   },
   setup() {},
   rootComponents: [],

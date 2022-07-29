@@ -15,12 +15,16 @@ export default {
         required: '不能为空',
         max: {
           isI18N: true,
-          label: 'test'
+          label: 'max_custom'
+        },
+        customValidator: {
+          isI18N: true,
+          label: 'custom_validator'
         }
       },
       formConfig: {
         test: {
-          validators: [RxzValidators.required, RxzValidators.max(10)],
+          validators: [RxzValidators.required, RxzValidators.max(10), this.customValidator(1)],
           default: 0,
         },
       },
@@ -28,15 +32,19 @@ export default {
       }
     }
   },
-  i18n: {
-    messages: {
-      zh: {
-        test: '最大值为{0}'
-      },
-      en: {
-        test: 'max value is {0}'
-      },
-    },
+  methods: {
+    customValidator(min) {
+      return (value) => {
+        if (value < min) {
+          return {
+            customValidator: {
+              min: min
+            }
+          }
+        }
+        return null;
+      };
+    }
   }
 }
 </script>

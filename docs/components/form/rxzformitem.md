@@ -48,6 +48,8 @@ export default {
 ## 内置数据结构
 
 1. RxzErrorTip = { [key: string]: string | { isI18N: boolean; label: string; } };
+
+   其中key匹配校验器返回的错误key，[内置校验器](./rxzvalidators.html)自带了错误提示，自定义RxzErrorTip可以覆盖内置错误提示。
    
    如果是i18n的话，则会调用国际化进行转换，同时支持字符串中用`{0}`, `{1}`, `{key}`这样的占位符，校验器返回的错误对象中的值能够自动替换：
    
@@ -122,8 +124,82 @@ export default {
 </script>
 ```
 
-### 2. 自定义错误信息
+### 2. 自定义错误信息&校验器
 
 ---
 
 <TestRxzFormItemExp2></TestRxzFormItemExp2>
+
+1. 引入国际化
+
+``` ts
+...
+app.use(RxzUI, {
+  i18n: {
+    zh: {
+      max_custom: '最大值为{0}',
+      custom_validator: '最小值为{min}'
+    },
+    en: {
+      max_custom: 'max value is {0}',
+      custom_validator: 'min value is {min}'
+    },
+  }
+} as RxzOption);
+...
+```
+
+2. 自定义错误信息
+
+``` vue
+<template>
+  <rxz-form :form-config="formConfig" v-model="data">
+    <rxz-form-item name="test" :error-tip="errorTips">
+      <rxz-label>Label：</rxz-label>
+      <rxz-input></rxz-input>
+    </rxz-form-item>
+  </rxz-form>
+</template>
+<script>
+import { RxzValidators } from 'rxz-ui';
+export default {
+  data () {
+    return {
+      errorTips: {
+        required: '不能为空',
+        max: {
+          isI18N: true,
+          label: 'max_custom'
+        },
+        customValidator: {
+          isI18N: true,
+          label: 'custom_validator'
+        }
+      },
+      formConfig: {
+        test: {
+          validators: [RxzValidators.required, RxzValidators.max(10), this.customValidator(1)],
+          default: 0,
+        },
+      },
+      data: {
+      }
+    }
+  },
+  methods: {
+    customValidator(min) {
+      return (value) => {
+        if (value < min) {
+          return {
+            customValidator: {
+              min: min
+            }
+          }
+        }
+        return null;
+      };
+    }
+  }
+}
+</script>
+```
