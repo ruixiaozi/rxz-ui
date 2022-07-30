@@ -1,9 +1,10 @@
 import { Injectable } from '@tanbo/vue-di-plugin';
-import { provide, toRef, watchEffect, inject, Ref, ref } from 'vue';
+import { provide, toRef, watchEffect, inject, Ref, ref, computed } from 'vue';
 import {
   defaultsDeep as _defaultsDeep,
   toPairs as _toPairs,
   fromPairs as _fromPairs,
+  isNil as _isNil,
 } from 'lodash';
 import { RxzCheck, RxzChecks, RxzFormConfig } from './RxzForm.declare';
 import { RxzValidators } from '@/definition';
@@ -72,6 +73,36 @@ export class RxzFormService {
     }
     provide('checks', checks);
     return currentCheck;
+  }
+
+  generateFormValue(props: any, emit: any) {
+    const formData = inject<Ref<any>>('formData');
+    const name = inject<Ref<any>>('name');
+    const check = inject<any>('check');
+    const modelValue = toRef(props, 'modelValue');
+    const isFormValue = !_isNil(name?.value) && formData?.value;
+    const formValue = computed({
+      get() {
+        if (isFormValue && !_isNil(formData.value[name?.value])) {
+          return formData.value[name?.value];
+        }
+        return modelValue.value;
+      },
+      set(val) {
+        if (isFormValue && !_isNil(formData.value[name?.value])) {
+          formData.value[name?.value] = val;
+          return;
+        }
+        emit('update:modelValue', val);
+      },
+    });
+    return {
+      value: formValue,
+      valueChange: () => {
+        check?.call();
+      },
+      isFormValue,
+    };
   }
 
   private checkError(props: any, onCheck: Subject<any>): RxzCheck {

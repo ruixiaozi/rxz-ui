@@ -36,3 +36,9 @@
 
   }
 }
+
+@mixin border($status) {
+  @include themeify {
+    border-color: getAttrByType("border_color", $status);
+  }
+}

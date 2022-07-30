@@ -1,6 +1,7 @@
-import { Options, Vue } from 'vue-class-component';
-import { Inject, Model } from 'vue-property-decorator';
-import { isNil as _isNil } from 'lodash';
+import { Options, setup, Vue } from 'vue-class-component';
+import { Model } from 'vue-property-decorator';
+import { InjectService } from '@/common';
+import { RxzFormService } from '../RxzForm/RxzForm.service';
 
 /**
  * Component: RxzInput
@@ -18,39 +19,20 @@ export class RxzInputCnt extends Vue {
   value!: any;
 
   // injects
-  @Inject()
-  readonly formData!: any;
-
-  @Inject()
-  readonly name!: string | number;
-
-  @Inject()
-  readonly check!: { (): boolean };
 
   // refs
 
   // injectServices
+  @InjectService(RxzFormService)
+  private rxzFormService!: RxzFormService;
 
   // setup
+  // 支持表单绑定，则需要将formValue的value绑定组件的值，会自动和v-model关联
+  formValue = setup(() => this.rxzFormService.generateFormValue(this.$props, this.$emit));
 
   // entity
 
   // computes
-  // 如果在formitem下，则屏蔽v-model
-  get inputValue(): any {
-    if (!_isNil(this.name)) {
-      return this.formData?.[this.name] || '';
-    }
-    return this.value;
-  }
-
-  set inputValue(val: any) {
-    if (!_isNil(this.name)) {
-      this.formData && (this.formData[this.name] = val);
-      return;
-    }
-    this.value = val;
-  }
 
   // watchs
 
@@ -58,7 +40,7 @@ export class RxzInputCnt extends Vue {
 
   // methods
   handleBlur(event: any) {
-    this.check();
+    this.formValue.valueChange();
     this.$emit('blur', event);
   }
 

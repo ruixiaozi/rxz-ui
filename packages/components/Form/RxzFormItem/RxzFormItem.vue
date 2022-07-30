@@ -1,18 +1,11 @@
 <template>
-  <div>
-    <RxzFlex
-      class="rxz-form-item"
-      direction="horizontal"
-      gutter="5px"
-      align="flex-start"
-    >
-      <slot :itemData="formData?.[name]"></slot>
-    </RxzFlex>
-    <div v-if="tip" class="error-tip" :style="{ marginLeft:  labelWidthPx}">
+  <div class="rxz-form-item">
+    <slot :itemData="formData?.[name]"></slot>
+  </div>
+  <div v-if="tip" class="error-tip" :style="{ marginLeft:  labelWidthPx}">
       <RxzIcon name="exclamation-circle"></RxzIcon>
       {{ tip }}
     </div>
-  </div>
 </template>
 
 <script lang="ts">
