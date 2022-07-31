@@ -83,13 +83,13 @@ export class RxzFormService {
     const isFormValue = !_isNil(name?.value) && formData?.value;
     const formValue = computed({
       get() {
-        if (isFormValue && !_isNil(formData.value[name?.value])) {
-          return formData.value[name?.value];
+        if (isFormValue && !_isNil(formData?.value?.[name?.value])) {
+          return formData?.value?.[name?.value];
         }
         return modelValue.value;
       },
       set(val) {
-        if (isFormValue && !_isNil(formData.value[name?.value])) {
+        if (isFormValue && formData?.value && !_isNil(formData?.value?.[name?.value])) {
           formData.value[name?.value] = val;
           return;
         }
