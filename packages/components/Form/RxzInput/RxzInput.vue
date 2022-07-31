@@ -1,5 +1,14 @@
 <template>
-  <input type="text" v-bind="$attrs" @blur="handleBlur" v-model="inputValue" />
+  <input
+    class="rxz-input"
+    :class="{
+      'rxz-form-value': formValue.isFormValue
+    }"
+    type="text"
+    v-bind="$attrs"
+    @blur="handleBlur"
+    v-model="formValue.value"
+  />
 </template>
 
 <script lang="ts">

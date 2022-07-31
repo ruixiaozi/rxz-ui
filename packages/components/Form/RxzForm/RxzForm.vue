@@ -1,5 +1,8 @@
 <template>
-  <form class="rxz-form" >
+  <!-- 作为子表单时，属于formValue -->
+  <form class="rxz-form" :class="{
+      'rxz-form-value': name !== null && name !== undefined
+    }">
     <RxzFlex :direction="direction">
       <slot :formData="formData"></slot>
     </RxzFlex>

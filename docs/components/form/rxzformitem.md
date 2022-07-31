@@ -83,13 +83,12 @@ export default {
 
 ``` vue
 <template>
-  <rxz-button @click="add()">add</rxz-button>
+  <rxz-button @click="add()" style="margin-bottom: 8px">add</rxz-button>
   <rxz-form :form-config="formConfig" v-model="data">
     <rxz-form-item>
       <rxz-label>sub：</rxz-label>
       <rxz-form name="arrayTest" v-slot:default="{formData}">
         <rxz-form-item :name="key" v-for="(item, key) in formData" :key="key">
-          <rxz-label>label{{key}}：</rxz-label>
           <rxz-input></rxz-input>
         </rxz-form-item>
       </rxz-form>

@@ -79,6 +79,7 @@ module.exports = {
             '/components/form/rxzformitem',
             '/components/form/rxzlabel',
             '/components/form/rxzvalidators',
+            '/components/form/rxzinput',
           ]
         },
         {

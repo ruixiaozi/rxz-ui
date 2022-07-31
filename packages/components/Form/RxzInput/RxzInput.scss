@@ -1,0 +1,19 @@
+@use "~@/themes/themeify";
+
+.rxz-input {
+  padding: 8px;
+  background-image: none;
+  outline: none;
+  border-width: 1.5px;
+  border-style: solid;
+  border-radius: 5px;
+  @include themeify.border('default');
+
+  &:hover {
+    @include themeify.border('hover');
+  }
+
+  &:focus {
+    @include themeify.border('focus');
+  }
+}

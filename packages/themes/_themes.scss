@@ -15,7 +15,12 @@ $themes:(
       primary:#ffffff,
       success:#ffffff,
       information:#ffffff
-    )
+    ),
+    border_color:(
+      default: #d4d3d3,
+      hover: #b3b2b2,
+      focus: #1483f1,
+    ),
   ),
   // Red主题
   th-red:(
@@ -30,7 +35,12 @@ $themes:(
       primary:#ffffff,
       success:#ffffff,
       information:#ffffff
-    )
+    ),
+    border_color:(
+      default: #767677,
+      hover: #e40404,
+      focus: #e40404,
+    ),
   )
 
 );
