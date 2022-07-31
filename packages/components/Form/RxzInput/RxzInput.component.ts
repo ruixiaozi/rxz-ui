@@ -15,7 +15,7 @@ import { RxzFormService } from '../RxzForm/RxzForm.service';
 export class RxzInputCnt extends Vue {
 
   // props and provide
-  @Model('modelValue')
+  @Model('modelValue', { required: false, default: '' })
   value!: any;
 
   // injects
