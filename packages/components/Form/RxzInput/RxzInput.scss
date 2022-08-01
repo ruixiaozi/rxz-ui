@@ -1,19 +1,64 @@
 @use "~@/themes/themeify";
 
 .rxz-input {
-  padding: 8px;
-  background-image: none;
-  outline: none;
-  border-width: 1.5px;
-  border-style: solid;
-  border-radius: 5px;
-  @include themeify.border('default');
+  position: relative;
 
-  &:hover {
-    @include themeify.border('hover');
+  input {
+    box-sizing: border-box;
+    padding: 8px;
+    background-image: none;
+    outline: none;
+    border-width: 1.5px;
+    border-style: solid;
+    border-radius: 5px;
+    width: 100%;
+    transition: border-color .2s;
+
+    @include themeify.themeify {
+      border-color: themeify.getBorderColor("default", false);
+    }
+
+    &:focus {
+      @include themeify.themeify {
+        border-color: themeify.getBorderColor("focus", false) !important;
+      }
+    }
   }
 
-  &:focus {
-    @include themeify.border('focus');
+  &:hover input {
+    @include themeify.themeify {
+      border-color: themeify.getBorderColor("default", true);
+    }
+  }
+
+  &-vmid {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &-in-front {
+    display: flex;
+    left: 8px;
+  }
+
+  &-in-rear {
+    display: flex;
+    right: 8px;
+  }
+
+  &-clear {
+    transition: color .2s;
+    cursor: pointer;
+
+    @include themeify.themeify {
+      color: themeify.getTextColor("light", false);
+    }
+
+    &:hover {
+      @include themeify.themeify {
+        color: themeify.getTextColor("light", true);
+      }
+    }
   }
 }

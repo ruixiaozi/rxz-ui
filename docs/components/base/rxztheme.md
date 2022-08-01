@@ -1,13 +1,13 @@
 # RxzTheme 主题
 
 <rxz-theme theme="th-red">
-  <rxz-button type="primary">默认按钮</rxz-button>
+  <rxz-button type="primary">主要按钮</rxz-button>
 </rxz-theme>
 
 ``` vue
 <template>
-  <rxz-theme theme='th-red'>
-    <rxz-button>默认按钮</rxz-button>
+  <rxz-theme theme="th-red">
+    <rxz-button type="primary">主要按钮</rxz-button>
   </rxz-theme>
 </template>
 ```

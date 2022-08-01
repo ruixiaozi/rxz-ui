@@ -28,17 +28,11 @@
 }
 
 //混入主题颜色（背景色和文字颜色）
-@mixin theme_color($type,$isHover) {
+@mixin button_color($type, $isHover) {
   @include themeify {
-    $bgColor: getBgcolor($type,$isHover);
+    $bgColor: getColor($type, $isHover);
     background-color: $bgColor;
-    color: getTextColor($type, $bgColor);
-
+    color: getTextColorByBg($bgColor);
   }
 }
 
-@mixin border($status) {
-  @include themeify {
-    border-color: getAttrByType("border_color", $status);
-  }
-}

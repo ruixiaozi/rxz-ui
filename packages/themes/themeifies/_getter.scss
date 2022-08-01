@@ -7,41 +7,57 @@
 @use "./func";
 
 // 获取指定属性类型的值
-@function getAttrByType($attrName,$type){
+@function getAttr($attrName, $type){
   // $theme-map为全局变量，指向当前主题的属性值(_mixin.scss文件中)
-  $attrValues : map.get($theme-map,$attrName);
-  $value : map.get($attrValues,$type);
+  $attrValues : map.get($theme-map, $attrName);
+  $value : map.get($attrValues, $type);
   @return $value;
 }
 
 // transition，true则实现过度颜色
-@function getBgcolor($type,$transition){
-  $this_bg_color : getAttrByType("background_color",$type);
+@function getColor($type, $transition){
+  $this_color : getAttr("color", $type);
   @if $transition {
-    @return  func.transitionColor($this_bg_color);
+    @return func.transitionColor($this_color);
   }
   @else{
-    @return $this_bg_color;
+    @return $this_color;
   }
 }
 
-// 根据背景色来确认文字颜色(保证文字颜色和背景颜色的亮度不同，一个亮一个暗)
-@function getTextColor($type,$bgColor){
-  $this_text_color : getAttrByType("text_color",$type);
+// transition，true则实现过度颜色
+@function getBorderColor($type, $transition){
+  $this_color : getAttr("border_color", $type);
+  @if $transition {
+    @return func.transitionColor($this_color);
+  }
+  @else{
+    @return $this_color;
+  }
+}
+
+// transition，true则实现过度颜色
+@function getTextColor($type, $transition){
+  $this_color : getAttr("text_color", $type);
+  @if $transition {
+    @return func.transitionColor($this_color);
+  }
+  @else{
+    @return $this_color;
+  }
+}
+
+// 根据背景色来确认文字颜色
+@function getTextColorByBg($bgColor){
   $bgLighteness: color.lightness($bgColor);
-  $textLighteness: color.lightness($this_text_color);
 
   // 两个颜色都是亮色，文字颜色变暗
-  @if $bgLighteness >= 50% and $textLighteness >= 50% {
-    @return color.adjust($this_text_color, $lightness: 25%);
-  }
-  // 两个颜色都是暗色，文字颜色变亮
-  @else if $bgLighteness < 50% and $textLighteness < 50%{
-    @return color.adjust($this_text_color, $lightness: 75%);
+  @if $bgLighteness >= 60% {
+    @return getAttr("text_color", "darkest");
   }
   // 亮度不同，则直接返回文字颜色
   @else{
-    @return $this_text_color;
+    @return getAttr("text_color", "brightest");
   }
 
 }

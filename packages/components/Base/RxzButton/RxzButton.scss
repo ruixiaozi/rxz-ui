@@ -6,10 +6,12 @@
 
   // 默认样式，有边框
   border: 1px solid #d5e7fc;
-  @include themeify.theme_color("default", false);
+
+
+  @include themeify.button_color("default", false);
 
   &:hover {
-    @include themeify.theme_color("default", true);
+    @include themeify.button_color("default", true);
   }
 
 
@@ -17,10 +19,10 @@
   @each $type in "primary", "success", "information" {
     &.rxz-button-#{$type} {
       border: none;
-      @include themeify.theme_color($type, false);
+      @include themeify.button_color($type, false);
 
       &:not(.is-disabled):hover {
-        @include themeify.theme_color($type, true);
+        @include themeify.button_color($type, true);
       }
     }
   }
