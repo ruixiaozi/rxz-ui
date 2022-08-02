@@ -26,10 +26,10 @@ export class RxzInputCnt extends Vue {
   @Prop({ type: Boolean, default: false })
   disabled!: boolean;
 
-  @Prop({ type: Boolean, default: true })
+  @Prop({ type: Boolean, default: false })
   clear!: boolean;
 
-  @Prop({ type: String, default: '200px' })
+  @Prop({ type: String, default: '250px' })
   width!: string;
 
 
@@ -67,7 +67,9 @@ export class RxzInputCnt extends Vue {
 
   // hooks
   mounted() {
-    this.updatePadding();
+    setTimeout(() => {
+      this.updatePadding();
+    }, 100);
   }
 
   updated() {

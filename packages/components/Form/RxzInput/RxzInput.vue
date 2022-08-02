@@ -3,33 +3,32 @@
     class="rxz-input"
     :style="{
       'width': width,
-
     }"
     :class="{
-      'rxz-form-value': formValue.isFormValue
+      'rxz-form-value': formValue.isFormValue,
+      'is-disabled': disabled,
     }"
   >
     <input
       :style="{
         'padding-left': `${paddingLeft}px`,
-        'padding-right': `${paddingRight}px`
+        'padding-right': `${paddingRight}px`,
       }"
       type="text"
       v-bind="$attrs"
       @blur="handleBlur"
       v-model="formValue.value"
+      :disabled="disabled"
       ref="input"
     />
     <div class="rxz-input-in-front rxz-input-vmid" ref="infront">
       <slot name="infront"></slot>
     </div>
-
     <div class="rxz-input-in-rear rxz-input-vmid" ref="inrear">
       <rxz-icon v-if="showClear" name="times-circle" class="rxz-input-clear" @click="clearText()"></rxz-icon>
       <slot name="inrear"></slot>
     </div>
   </div>
-
 </template>
 
 <script lang="ts">

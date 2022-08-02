@@ -2,6 +2,7 @@
 
 .rxz-input {
   position: relative;
+  display: flex;
 
   input {
     box-sizing: border-box;
@@ -25,25 +26,32 @@
     }
   }
 
-  &:hover input {
+  &:not(.is-disabled):hover input {
     @include themeify.themeify {
       border-color: themeify.getBorderColor("default", true);
     }
   }
 
+  &.is-disabled * {
+    cursor: not-allowed !important;
+  }
+
   &-vmid {
     position: absolute;
     top: 50%;
+    display: flex;
     transform: translateY(-50%);
+
+    ::v-deep > *:not(:last-child) {
+      margin-right: 5px;
+    }
   }
 
   &-in-front {
-    display: flex;
     left: 8px;
   }
 
   &-in-rear {
-    display: flex;
     right: 8px;
   }
 
