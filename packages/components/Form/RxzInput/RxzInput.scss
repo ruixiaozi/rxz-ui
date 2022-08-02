@@ -1,19 +1,72 @@
 @use "~@/themes/themeify";
 
 .rxz-input {
-  padding: 8px;
-  background-image: none;
-  outline: none;
-  border-width: 1.5px;
-  border-style: solid;
-  border-radius: 5px;
-  @include themeify.border('default');
+  position: relative;
+  display: flex;
 
-  &:hover {
-    @include themeify.border('hover');
+  input {
+    box-sizing: border-box;
+    padding: 8px;
+    background-image: none;
+    outline: none;
+    border-width: 1.5px;
+    border-style: solid;
+    border-radius: 5px;
+    width: 100%;
+    transition: border-color .2s;
+
+    @include themeify.themeify {
+      border-color: themeify.getBorderColor("default", false);
+    }
+
+    &:focus {
+      @include themeify.themeify {
+        border-color: themeify.getBorderColor("focus", false) !important;
+      }
+    }
   }
 
-  &:focus {
-    @include themeify.border('focus');
+  &:not(.is-disabled):hover input {
+    @include themeify.themeify {
+      border-color: themeify.getBorderColor("default", true);
+    }
+  }
+
+  &.is-disabled * {
+    cursor: not-allowed !important;
+  }
+
+  &-vmid {
+    position: absolute;
+    top: 50%;
+    display: flex;
+    transform: translateY(-50%);
+
+    ::v-deep > *:not(:last-child) {
+      margin-right: 5px;
+    }
+  }
+
+  &-in-front {
+    left: 8px;
+  }
+
+  &-in-rear {
+    right: 8px;
+  }
+
+  &-clear {
+    transition: color .2s;
+    cursor: pointer;
+
+    @include themeify.themeify {
+      color: themeify.getTextColor("light", false);
+    }
+
+    &:hover {
+      @include themeify.themeify {
+        color: themeify.getTextColor("light", true);
+      }
+    }
   }
 }

@@ -4,7 +4,7 @@
 $themes:(
   // 默认主题
   default:(
-    background_color:(
+    color:(
       default:#FFFFFF,
       primary:#1483f1,
       success:#67c23a,
@@ -12,19 +12,19 @@ $themes:(
     ),
     text_color:(
       default:#000000,
-      primary:#ffffff,
-      success:#ffffff,
-      information:#ffffff
+      light: #d4d3d3,
+      dark: #b3b2b2,
+      brightest: #e9e9e9,
+      darkest: #000000,
     ),
     border_color:(
       default: #d4d3d3,
-      hover: #b3b2b2,
       focus: #1483f1,
     ),
   ),
   // Red主题
   th-red:(
-    background_color:(
+    color:(
       default:#FFFFFF,
       primary:#e40404,
       success:#e40404,
@@ -32,13 +32,13 @@ $themes:(
     ),
     text_color:(
       default:#000000,
-      primary:#ffffff,
-      success:#ffffff,
-      information:#ffffff
+      light: #d4d3d3,
+      dark: #b3b2b2,
+      brightest: #e9e9e9,
+      darkest: #000000,
     ),
     border_color:(
       default: #767677,
-      hover: #e40404,
       focus: #e40404,
     ),
   )

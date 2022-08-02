@@ -19,6 +19,9 @@ import TestRxzFormItemExp2 from './components/formitem/TestRxzFormItemExp2.vue';
 import TestRxzLabel from './components/label/TestRxzLabel.vue';
 import TestRxzInput from './components/input/TestRxzInput.vue';
 import TestRxzInputExp1 from './components/input/TestRxzInputExp1.vue';
+import TestRxzInputExp2 from './components/input/TestRxzInputExp2.vue';
+import TestRxzInputExp3 from './components/input/TestRxzInputExp3.vue';
+import TestRxzInputExp4 from './components/input/TestRxzInputExp4.vue';
 
 export default defineClientConfig({
   enhance({ app, router, siteData }) {
@@ -52,6 +55,9 @@ export default defineClientConfig({
     app.component('TestRxzLabel', TestRxzLabel);
     app.component('TestRxzInput', TestRxzInput);
     app.component('TestRxzInputExp1', TestRxzInputExp1);
+    app.component('TestRxzInputExp2', TestRxzInputExp2);
+    app.component('TestRxzInputExp3', TestRxzInputExp3);
+    app.component('TestRxzInputExp4', TestRxzInputExp4);
   },
   setup() {},
   rootComponents: [],
