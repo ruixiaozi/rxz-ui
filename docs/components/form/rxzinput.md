@@ -32,6 +32,8 @@ export default {
 | disabled   | Boolean | 禁用              | true/false | false   |     |
 | clear      | Boolean | 可清除             | true/false | false   |     |
 | width      | String  | 宽度（form下占具剩余宽度） | -          | '250px' |     |
+| capslock   | Boolean | 是否显示Capslock状态  | true/false | false   |     |
+| password   | Boolean | 是否为密码框          | true/false | false   |     |
 
 ## Event 事件
 
@@ -131,3 +133,70 @@ export default {
 ---
 
 <TestRxzInputExp4></TestRxzInputExp4>
+
+``` vue
+<template>
+  <rxz-input v-model="data">
+    <template v-slot:infront>
+      <rxz-icon name="user-circle-o"></rxz-icon>
+    </template>
+    <template v-slot:inrear>
+      <rxz-icon name="edit"></rxz-icon>
+    </template>
+  </rxz-input>
+  <p>输入：{{ data }}</p>
+</template>
+<script>
+export default {
+  data () {
+    return {
+      data: ''
+    }
+  },
+}
+</script>
+```
+
+### 5. 显示Capslock状态
+
+---
+
+<TestRxzInputExp5></TestRxzInputExp5>
+
+``` vue
+<template>
+  <rxz-input v-model="data" capslock></rxz-input>
+  <p>输入：{{ data }}</p>
+</template>
+<script>
+export default {
+  data () {
+    return {
+      data: ''
+    }
+  },
+}
+</script>
+```
+
+### 6. 密码框
+
+---
+
+<TestRxzInputExp6></TestRxzInputExp6>
+
+``` vue
+<template>
+  <rxz-input v-model="data" password></rxz-input>
+  <p>输入：{{ data }}</p>
+</template>
+<script>
+export default {
+  data () {
+    return {
+      data: ''
+    }
+  },
+}
+</script>
+```

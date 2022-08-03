@@ -22,6 +22,8 @@ import TestRxzInputExp1 from './components/input/TestRxzInputExp1.vue';
 import TestRxzInputExp2 from './components/input/TestRxzInputExp2.vue';
 import TestRxzInputExp3 from './components/input/TestRxzInputExp3.vue';
 import TestRxzInputExp4 from './components/input/TestRxzInputExp4.vue';
+import TestRxzInputExp5 from './components/input/TestRxzInputExp5.vue';
+import TestRxzInputExp6 from './components/input/TestRxzInputExp6.vue';
 
 export default defineClientConfig({
   enhance({ app, router, siteData }) {
@@ -58,6 +60,8 @@ export default defineClientConfig({
     app.component('TestRxzInputExp2', TestRxzInputExp2);
     app.component('TestRxzInputExp3', TestRxzInputExp3);
     app.component('TestRxzInputExp4', TestRxzInputExp4);
+    app.component('TestRxzInputExp5', TestRxzInputExp5);
+    app.component('TestRxzInputExp6', TestRxzInputExp6);
   },
   setup() {},
   rootComponents: [],

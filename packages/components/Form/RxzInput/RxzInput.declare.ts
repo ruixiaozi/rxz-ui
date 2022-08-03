@@ -9,6 +9,8 @@ export class RxzInputDeclare {
     clear?: boolean;
     disabled?: boolean;
     width?: string;
+    capslock?: boolean;
+    password?: boolean;
   };
 
   declare $emit: {
