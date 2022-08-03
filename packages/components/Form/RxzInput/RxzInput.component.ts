@@ -32,6 +32,11 @@ export class RxzInputCnt extends Vue {
   @Prop({ type: String, default: '250px' })
   width!: string;
 
+  @Prop({ type: Boolean, default: false })
+  capslock!: boolean;
+
+  @Prop({ type: Boolean, default: false })
+  password!: boolean;
 
   // injects
 
@@ -58,9 +63,17 @@ export class RxzInputCnt extends Vue {
 
   paddingRight = 10;
 
+  isCapslock = false;
+
+  openEye = false;
+
   // computes
   get showClear() {
     return this.clear && !(_isNil(this.formValue.value) || this.formValue.value === '');
+  }
+
+  get showCapslock() {
+    return this.capslock && this.isCapslock;
   }
 
   // watchs
@@ -87,9 +100,17 @@ export class RxzInputCnt extends Vue {
     this.paddingRight = this.inrear.offsetWidth + 10;
   }
 
+  updateCapslock(event: KeyboardEvent) {
+    this.isCapslock = event.getModifierState('CapsLock');
+  }
+
   clearText() {
     this.formValue.value = '';
     this.input.focus();
+  }
+
+  changeEye() {
+    this.openEye = !this.openEye;
   }
 
 }

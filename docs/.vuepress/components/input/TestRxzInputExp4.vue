@@ -1,5 +1,5 @@
 <template>
-  <rxz-input v-model="data" clear>
+  <rxz-input v-model="data">
     <template v-slot:infront>
       <rxz-icon name="user-circle-o"></rxz-icon>
     </template>
