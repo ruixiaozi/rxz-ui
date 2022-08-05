@@ -34,6 +34,8 @@ export default {
 | width      | String  | 宽度（form下占具剩余宽度） | -          | '250px' |     |
 | capslock   | Boolean | 是否显示Capslock状态  | true/false | false   |     |
 | password   | Boolean | 是否为密码框          | true/false | false   |     |
+| paste      | Boolean | 是否允许粘贴          | true/false | true    |     |
+| copy       | Boolean | 是否允许复制          | true/false | true    |     |
 
 ## Event 事件
 
@@ -134,7 +136,7 @@ export default {
 
 <TestRxzInputExp4></TestRxzInputExp4>
 
-``` vue
+```vue
 <template>
   <rxz-input v-model="data">
     <template v-slot:infront>
@@ -163,7 +165,7 @@ export default {
 
 <TestRxzInputExp5></TestRxzInputExp5>
 
-``` vue
+```vue
 <template>
   <rxz-input v-model="data" capslock></rxz-input>
   <p>输入：{{ data }}</p>
@@ -185,10 +187,36 @@ export default {
 
 <TestRxzInputExp6></TestRxzInputExp6>
 
-``` vue
+```vue
 <template>
   <rxz-input v-model="data" password></rxz-input>
   <p>输入：{{ data }}</p>
+</template>
+<script>
+export default {
+  data () {
+    return {
+      data: ''
+    }
+  },
+}
+</script>
+```
+
+### 7. 复制粘贴
+
+---
+
+<TestRxzInputExp7></TestRxzInputExp7>
+
+
+
+``` vue
+<template>
+  <p>禁止粘贴：</p>
+  <rxz-input v-model="data" :paste="false"></rxz-input>
+  <p>禁止复制：</p>
+  <rxz-input v-model="data" :copy="false"></rxz-input>
 </template>
 <script>
 export default {

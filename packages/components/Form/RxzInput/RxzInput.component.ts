@@ -38,6 +38,12 @@ export class RxzInputCnt extends Vue {
   @Prop({ type: Boolean, default: false })
   password!: boolean;
 
+  @Prop({ type: Boolean, default: true })
+  paste!: boolean;
+
+  @Prop({ type: Boolean, default: true })
+  copy!: boolean;
+
   // injects
 
   // refs
@@ -111,6 +117,23 @@ export class RxzInputCnt extends Vue {
 
   changeEye() {
     this.openEye = !this.openEye;
+  }
+
+  handleCopy(event: ClipboardEvent) {
+    // 禁止复制或者密码框阻止复制
+    if (!this.copy || this.password) {
+      event.preventDefault();
+      return;
+    }
+    this.$emit('copy', event);
+  }
+
+  handlePaste(event: ClipboardEvent) {
+    if (!this.paste) {
+      event.preventDefault();
+      return;
+    }
+    this.$emit('paste', event);
   }
 
 }
