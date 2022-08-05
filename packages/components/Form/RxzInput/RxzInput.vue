@@ -21,6 +21,8 @@
       :disabled="disabled"
       ref="input"
       @keydown="updateCapslock"
+      @paste="handlePaste"
+      @copy="handleCopy"
     />
     <div class="rxz-input-in-front rxz-input-vmid" ref="infront">
       <slot name="infront"></slot>
