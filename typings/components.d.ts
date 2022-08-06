@@ -1,6 +1,7 @@
 declare module '@vue/runtime-core' {
   // GlobalComponents for Volar
   export interface GlobalComponents {
+    RxzTextarea: typeof import('../packages/index')['RxzTextareaDeclare'],
     RxzSwitch: typeof import('../packages/index')['RxzSwitchDeclare'],
     RxzFlex: typeof import('../packages/index')['RxzFlexDeclare'],
     RxzCenterLayout: typeof import('../packages/index')['RxzCenterLayoutDeclare'],

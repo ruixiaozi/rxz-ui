@@ -16,7 +16,7 @@
     &.disabled {
       cursor: not-allowed !important;
       @include themeify.themeify {
-        color: themeify.getColor("disabled", false);
+        color: themeify.getColor("disabled", true);
       }
     }
 

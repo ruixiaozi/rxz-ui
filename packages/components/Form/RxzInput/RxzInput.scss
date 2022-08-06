@@ -36,6 +36,12 @@
     cursor: not-allowed !important;
   }
 
+  &.is-disabled {
+    @include themeify.themeify {
+      background-color: themeify.getColor("disabled", false) !important;
+    }
+  }
+
   &-vmid {
     position: absolute;
     top: 50%;
