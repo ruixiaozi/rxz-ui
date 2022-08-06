@@ -1,17 +1,13 @@
-export interface RxzRadioItem {
-  label: string;
-  value: any;
-}
-export class RxzRadioDeclare {
+export class RxzSwitchDeclare {
 
-  declare name: 'RxzRadio';
+  declare name: 'RxzSwitch';
 
   declare $props: {
     // v-model绑定的值，如果在表单下，则无效
     modelValue?: any;
-    items?: RxzRadioItem[];
-    direction?: string;
     disabled?: boolean;
+    onText?: string;
+    offText?: string;
   };
 
   declare $emit: {

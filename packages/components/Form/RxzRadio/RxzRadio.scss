@@ -2,6 +2,10 @@
 
 .rxz-radio {
 
+  &.rxz-radio-form {
+    margin-top: 4px;
+  }
+
   &-item {
     cursor: pointer;
 
@@ -12,7 +16,7 @@
     &.disabled {
       cursor: not-allowed !important;
       @include themeify.themeify {
-        color: themeify.getTextColor("dark", false);
+        color: themeify.getColor("disabled", false);
       }
     }
 

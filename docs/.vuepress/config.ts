@@ -81,6 +81,7 @@ module.exports = {
             '/components/form/rxzvalidators',
             '/components/form/rxzinput',
             '/components/form/rxzradio',
+            '/components/form/rxzswitch',
           ]
         },
         {
