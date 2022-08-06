@@ -2,17 +2,20 @@
   <rxz-flex
     :direction="direction"
     class="rxz-radio"
+    :class="{
+      'rxz-radio-form': formValue.isFormValue,
+    }"
   >
     <div v-for="(item, index) in items" :key="index"
       class="rxz-radio-item"
       :class="{
-        'selected': formValue.value === item,
+        'selected': formValue.value?.value === item.value,
         disabled
       }"
       @click="handleSelect(item)"
     >
       <rxz-icon
-        :name="formValue.value === item ? 'dot-circle-o' : 'circle-o'"
+        :name="formValue.value?.value === item.value ? 'dot-circle-o' : 'circle-o'"
       ></rxz-icon>
       <span class="rxz-radio-item-label">{{ item.label }}</span>
     </div>

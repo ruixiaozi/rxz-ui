@@ -96,3 +96,78 @@ export default {
 ---
 
 <TestRxzRadioExp2></TestRxzRadioExp2>
+
+``` vue
+<template>
+  <p>当前选择：{{ data }}</p>
+  <rxz-radio :items="items" v-model="data" disabled></rxz-radio>
+</template>
+<script>
+export default {
+  data () {
+    return {
+      data: null,
+      items: [
+        {
+          label: '选项A',
+          value: 1,
+        },
+        {
+          label: '选项B',
+          value: 2,
+        }
+      ]
+    }
+  },
+  created() {
+    this.data = this.items[0];
+  }
+}
+</script>
+```
+
+### 3. 在form中使用
+
+---
+
+<TestRxzRadioExp3></TestRxzRadioExp3>
+
+``` vue
+<template>
+  <rxz-form :form-config="formConfig" v-model="data">
+    <rxz-form-item name="test" :error-tip="{'required': 'error required'}">
+      <rxz-label>Label：</rxz-label>
+      <rxz-radio :items="items"></rxz-radio>
+    </rxz-form-item>
+  </rxz-form>
+</template>
+<script>
+import { RxzValidators } from '@/definition';
+export default {
+  data () {
+    return {
+      items: [
+        {
+          label: '选项A',
+          value: 1,
+        },
+        {
+          label: '选项B',
+          value: 2,
+        }
+      ],
+      formConfig: {
+        test: {
+          validators: [RxzValidators.required],
+          default: {
+            label: '选项A',
+            value: 1,
+          },
+        },
+      },
+      data: {}
+    }
+  },
+}
+</script>
+```

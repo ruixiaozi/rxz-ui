@@ -28,6 +28,11 @@ import TestRxzInputExp7 from './components/input/TestRxzInputExp7.vue';
 import TestRxzRadio from './components/radio/TestRxzRadio.vue';
 import TestRxzRadioExp1 from './components/radio/TestRxzRadioExp1.vue';
 import TestRxzRadioExp2 from './components/radio/TestRxzRadioExp2.vue';
+import TestRxzRadioExp3 from './components/radio/TestRxzRadioExp3.vue';
+import TestRxzSwitch from './components/switch/TestRxzSwitch.vue';
+import TestRxzSwitchExp1 from './components/switch/TestRxzSwitchExp1.vue';
+import TestRxzSwitchExp2 from './components/switch/TestRxzSwitchExp2.vue';
+import TestRxzSwitchExp3 from './components/switch/TestRxzSwitchExp3.vue';
 
 export default defineClientConfig({
   enhance({ app, router, siteData }) {
@@ -70,6 +75,11 @@ export default defineClientConfig({
     app.component('TestRxzRadio', TestRxzRadio);
     app.component('TestRxzRadioExp1', TestRxzRadioExp1);
     app.component('TestRxzRadioExp2', TestRxzRadioExp2);
+    app.component('TestRxzRadioExp3', TestRxzRadioExp3);
+    app.component('TestRxzSwitch', TestRxzSwitch);
+    app.component('TestRxzSwitchExp1', TestRxzSwitchExp1);
+    app.component('TestRxzSwitchExp2', TestRxzSwitchExp2);
+    app.component('TestRxzSwitchExp3', TestRxzSwitchExp3);
   },
   setup() {},
   rootComponents: [],
