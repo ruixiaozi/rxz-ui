@@ -24,25 +24,25 @@ export class RxzInputCnt extends Vue {
   value!: any;
 
   @Prop({ type: Boolean, default: false })
-  disabled!: boolean;
+  readonly disabled!: boolean;
 
   @Prop({ type: Boolean, default: false })
-  clear!: boolean;
+  readonly clear!: boolean;
 
   @Prop({ type: String, default: '250px' })
-  width!: string;
+  readonly width!: string;
 
   @Prop({ type: Boolean, default: false })
-  capslock!: boolean;
+  readonly capslock!: boolean;
 
   @Prop({ type: Boolean, default: false })
-  password!: boolean;
+  readonly password!: boolean;
 
   @Prop({ type: Boolean, default: true })
-  paste!: boolean;
+  readonly paste!: boolean;
 
   @Prop({ type: Boolean, default: true })
-  copy!: boolean;
+  readonly copy!: boolean;
 
   // injects
 

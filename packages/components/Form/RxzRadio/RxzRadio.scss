@@ -1,0 +1,31 @@
+@use "~@/themes/themeify";
+
+.rxz-radio {
+
+  &-item {
+    cursor: pointer;
+
+    &:not(:last-child) {
+      padding-right: 8px;
+    }
+
+    &.disabled {
+      cursor: not-allowed !important;
+      @include themeify.themeify {
+        color: themeify.getTextColor("dark", false);
+      }
+    }
+
+    &.selected:not(.disabled) {
+      @include themeify.themeify {
+        color: themeify.getColor("primary", false);
+      }
+    }
+
+    &-label {
+      display: inline-block;
+      padding: 4px;
+    }
+
+  }
+}
