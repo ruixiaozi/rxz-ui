@@ -25,6 +25,9 @@ import TestRxzInputExp4 from './components/input/TestRxzInputExp4.vue';
 import TestRxzInputExp5 from './components/input/TestRxzInputExp5.vue';
 import TestRxzInputExp6 from './components/input/TestRxzInputExp6.vue';
 import TestRxzInputExp7 from './components/input/TestRxzInputExp7.vue';
+import TestRxzRadio from './components/radio/TestRxzRadio.vue';
+import TestRxzRadioExp1 from './components/radio/TestRxzRadioExp1.vue';
+import TestRxzRadioExp2 from './components/radio/TestRxzRadioExp2.vue';
 
 export default defineClientConfig({
   enhance({ app, router, siteData }) {
@@ -64,6 +67,9 @@ export default defineClientConfig({
     app.component('TestRxzInputExp5', TestRxzInputExp5);
     app.component('TestRxzInputExp6', TestRxzInputExp6);
     app.component('TestRxzInputExp7', TestRxzInputExp7);
+    app.component('TestRxzRadio', TestRxzRadio);
+    app.component('TestRxzRadioExp1', TestRxzRadioExp1);
+    app.component('TestRxzRadioExp2', TestRxzRadioExp2);
   },
   setup() {},
   rootComponents: [],

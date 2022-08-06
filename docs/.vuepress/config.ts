@@ -80,6 +80,7 @@ module.exports = {
             '/components/form/rxzlabel',
             '/components/form/rxzvalidators',
             '/components/form/rxzinput',
+            '/components/form/rxzradio',
           ]
         },
         {

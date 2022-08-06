@@ -1,3 +1,7 @@
+export interface RxzRadioItem {
+  label: string;
+  value: any;
+}
 export class RxzRadioDeclare {
 
   declare name: 'RxzRadio';
