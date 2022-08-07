@@ -27,7 +27,7 @@ rules:
           - camelCaseWithABB
       /api:
         /common:
-        - dir
+          - dir
         /**:
           - dir
       /directives:
