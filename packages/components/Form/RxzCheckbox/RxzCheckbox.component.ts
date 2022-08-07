@@ -51,22 +51,25 @@ export class RxzCheckboxCnt extends Vue {
 
   // methods
   isSelect(item: RxzCheckboxItem) {
-    return this.formValue.value?.some((selectValue: RxzCheckboxItem) => selectValue.value === item.value);
+    const selectItems = this.formValue.value as RxzCheckboxItem[];
+    return selectItems?.some((selectValue: RxzCheckboxItem) => selectValue.value === item.value);
   }
 
   handleSelect(item: RxzCheckboxItem) {
     if (this.disabled) {
       return;
     }
-    if (!Array.isArray(this.formValue.value)) {
-      this.formValue.value = [];
-    }
-    const index = this.formValue.value.findIndex((selectValue: RxzCheckboxItem) => selectValue.value === item.value);
-    if (index >= 0) {
-      this.formValue.value.splice(index, 1);
+    const selectItems = this.formValue.value as RxzCheckboxItem[];
+    if (!Array.isArray(selectItems)) {
+      this.formValue.value = [item];
       return;
     }
-    this.formValue.value.push(item);
+    const index = selectItems.findIndex((selectValue: RxzCheckboxItem) => selectValue.value === item.value);
+    if (index >= 0) {
+      selectItems.splice(index, 1);
+      return;
+    }
+    selectItems.push(item);
   }
 
 }
