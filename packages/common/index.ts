@@ -2,6 +2,8 @@ import { createI18n } from '@/i18n';
 import { useReflectiveInjector } from '@tanbo/vue-di-plugin';
 import { App } from 'vue';
 
+const injector = useReflectiveInjector();
+
 export interface RxzOption {
   i18n?: any;
 }
@@ -23,9 +25,13 @@ export const InjectService = (service: Class) => (target: any, key?: any, descri
       enumerable: true,
       configurable: false,
       get() {
-        return useReflectiveInjector().get(service);
+        return injector.get(service);
       },
     });
   }
 };
+
+export function getService<T>(service: Class): T {
+  return injector.get(service);
+}
 

@@ -2,7 +2,6 @@ import { defineClientConfig } from '@vuepress/client';
 import { RxzUI } from '@/index';
 import { RxzOption } from '@/common';
 import TestRxzCountdownButton from './components/TestRxzCountdownButton.vue';
-import TestRxzDialog from './components/TestRxzDialog.vue';
 import TestRxzLoading from './components/TestRxzLoading.vue';
 import TestRxzFlipCard from './components/TestRxzFlipCard.vue';
 import TestRxzCenterLayout from './components/TestRxzCenterLayout.vue';
@@ -41,6 +40,7 @@ import TestRxzCheckbox from './components/checkbox/TestRxzCheckbox.vue';
 import TestRxzCheckboxExp1 from './components/checkbox/TestRxzCheckboxExp1.vue';
 import TestRxzCheckboxExp2 from './components/checkbox/TestRxzCheckboxExp2.vue';
 import TestRxzCheckboxExp3 from './components/checkbox/TestRxzCheckboxExp3.vue';
+import TestRxzModal from './components/modal/TestRxzModal.vue';
 
 export default defineClientConfig({
   enhance({ app, router, siteData }) {
@@ -57,7 +57,6 @@ export default defineClientConfig({
       }
     } as RxzOption);
     app.component('TestRxzCountdownButton', TestRxzCountdownButton);
-    app.component('TestRxzDialog', TestRxzDialog);
     app.component('TestRxzLoading', TestRxzLoading);
     app.component('TestRxzFlipCard', TestRxzFlipCard);
     app.component('TestRxzCenterLayout', TestRxzCenterLayout);
@@ -96,6 +95,7 @@ export default defineClientConfig({
     app.component('TestRxzCheckboxExp1', TestRxzCheckboxExp1);
     app.component('TestRxzCheckboxExp2', TestRxzCheckboxExp2);
     app.component('TestRxzCheckboxExp3', TestRxzCheckboxExp3);
+    app.component('TestRxzModal', TestRxzModal);
   },
   setup() {},
   rootComponents: [],
