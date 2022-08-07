@@ -7,6 +7,7 @@ import { RxzLabel } from './RxzLabel';
 import { RxzRadio } from './RxzRadio';
 import { RxzSwitch } from './RxzSwitch';
 import { RxzTextarea } from './RxzTextarea';
+import { RxzCheckbox } from './RxzCheckbox';
 
 export * from './RxzForm';
 export * from './RxzFormItem';
@@ -15,9 +16,11 @@ export * from './RxzLabel';
 export * from './RxzRadio';
 export * from './RxzSwitch';
 export * from './RxzTextarea';
+export * from './RxzCheckbox';
 
 // Form组件列表
 const formComponents = [
+  RxzCheckbox,
   RxzTextarea,
   RxzSwitch,
   RxzRadio,

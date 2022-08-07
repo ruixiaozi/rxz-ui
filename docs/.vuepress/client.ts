@@ -37,6 +37,10 @@ import TestRxzTextarea from './components/textarea/TestRxzTextarea.vue';
 import TestRxzTextareaExp1 from './components/textarea/TestRxzTextareaExp1.vue';
 import TestRxzTextareaExp2 from './components/textarea/TestRxzTextareaExp2.vue';
 import TestRxzTextareaExp3 from './components/textarea/TestRxzTextareaExp3.vue';
+import TestRxzCheckbox from './components/checkbox/TestRxzCheckbox.vue';
+import TestRxzCheckboxExp1 from './components/checkbox/TestRxzCheckboxExp1.vue';
+import TestRxzCheckboxExp2 from './components/checkbox/TestRxzCheckboxExp2.vue';
+import TestRxzCheckboxExp3 from './components/checkbox/TestRxzCheckboxExp3.vue';
 
 export default defineClientConfig({
   enhance({ app, router, siteData }) {
@@ -88,6 +92,10 @@ export default defineClientConfig({
     app.component('TestRxzTextareaExp1', TestRxzTextareaExp1);
     app.component('TestRxzTextareaExp2', TestRxzTextareaExp2);
     app.component('TestRxzTextareaExp3', TestRxzTextareaExp3);
+    app.component('TestRxzCheckbox', TestRxzCheckbox);
+    app.component('TestRxzCheckboxExp1', TestRxzCheckboxExp1);
+    app.component('TestRxzCheckboxExp2', TestRxzCheckboxExp2);
+    app.component('TestRxzCheckboxExp3', TestRxzCheckboxExp3);
   },
   setup() {},
   rootComponents: [],
