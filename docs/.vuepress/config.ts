@@ -83,6 +83,7 @@ module.exports = {
             '/components/form/rxzradio',
             '/components/form/rxzswitch',
             '/components/form/rxztextarea',
+            '/components/form/rxzcheckbox',
           ]
         },
         {

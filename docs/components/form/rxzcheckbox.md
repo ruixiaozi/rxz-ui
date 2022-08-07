@@ -1,11 +1,11 @@
-# RxzRadio 单选按钮
+# RxzCheckbox 复选按钮
 
-<TestRxzRadio></TestRxzRadio>
+<TestRxzCheckbox></TestRxzCheckbox>
 
 ```vue
 <template>
   <p>当前选择：{{ data }}</p>
-  <rxz-radio :items="items" v-model="data"></rxz-radio>
+  <rxz-checkbox :items="items" v-model="data"></rxz-checkbox>
 </template>
 <script>
 export default {
@@ -25,7 +25,7 @@ export default {
     }
   },
   created() {
-    this.data = this.items[0];
+    this.data = [this.items[0]];
   }
 }
 </script>
@@ -42,7 +42,7 @@ export default {
 | 参数         | 类型                       | 描述   | 可选值                 | 默认值        | 必须  |
 | ---------- | ------------------------ | ---- | ------------------- | ---------- | --- |
 | modelValue | any                      | 绑定数据 | -                   | ''         |     |
-| items      | Arrary\<RxzRadioItem\>   | 选择项  | -                   | []         |     |
+| items      | Arrary\<RxzCheckboxItem\>   | 选择项  | -                   | []         |     |
 | direction  | String \| DIRECTION_ENUM | 排列方向 | vertical/horizontal | horizontal |     |
 | disabled   | Boolean                  | 禁用   | true/false          | false      |     |
 
@@ -54,7 +54,7 @@ export default {
 
 ## 内置数据结构
 
-1. RxzRadioItem = { label: string; value: any; }
+1. RxzCheckboxItem = { label: string; value: any; }
 
 ## Example 案例
 
@@ -62,14 +62,14 @@ export default {
 
 ---
 
-<TestRxzRadioExp1></TestRxzRadioExp1>
+<TestRxzCheckboxExp1></TestRxzCheckboxExp1>
 
 ``` vue
 <template>
   <p>当前选择：{{ data }}</p>
-  <rxz-radio :items="items" v-model="data"></rxz-radio>
+  <rxz-checkbox :items="items" v-model="data"></rxz-checkbox>
   <p>--垂直排列--</p>
-  <rxz-radio :items="items" v-model="data" direction="vertical"></rxz-radio>
+  <rxz-checkbox :items="items" v-model="data" direction="vertical"></rxz-checkbox>
 </template>
 <script>
 export default {
@@ -89,7 +89,7 @@ export default {
     }
   },
   created() {
-    this.data = this.items[0];
+    this.data = [this.items[0]];
   }
 }
 </script>
@@ -99,7 +99,7 @@ export default {
 
 ---
 
-<TestRxzRadioExp2></TestRxzRadioExp2>
+<TestRxzCheckboxExp2></TestRxzCheckboxExp2>
 
 ``` vue
 <template>
@@ -134,14 +134,14 @@ export default {
 
 ---
 
-<TestRxzRadioExp3></TestRxzRadioExp3>
+<TestRxzCheckboxExp3></TestRxzCheckboxExp3>
 
 ``` vue
 <template>
   <rxz-form :form-config="formConfig" v-model="data">
     <rxz-form-item name="test" :error-tip="{'required': 'error required'}">
       <rxz-label>Label：</rxz-label>
-      <rxz-radio :items="items"></rxz-radio>
+      <rxz-checkbox :items="items"></rxz-checkbox>
     </rxz-form-item>
   </rxz-form>
 </template>
@@ -163,10 +163,12 @@ export default {
       formConfig: {
         test: {
           validators: [RxzValidators.required],
-          default: {
-            label: '选项A',
-            value: 1,
-          },
+          default: [
+            {
+              label: '选项A',
+              value: 1,
+            }
+          ],
         },
       },
       data: {}
