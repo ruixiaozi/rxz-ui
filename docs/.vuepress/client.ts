@@ -33,6 +33,10 @@ import TestRxzSwitch from './components/switch/TestRxzSwitch.vue';
 import TestRxzSwitchExp1 from './components/switch/TestRxzSwitchExp1.vue';
 import TestRxzSwitchExp2 from './components/switch/TestRxzSwitchExp2.vue';
 import TestRxzSwitchExp3 from './components/switch/TestRxzSwitchExp3.vue';
+import TestRxzTextarea from './components/textarea/TestRxzTextarea.vue';
+import TestRxzTextareaExp1 from './components/textarea/TestRxzTextareaExp1.vue';
+import TestRxzTextareaExp2 from './components/textarea/TestRxzTextareaExp2.vue';
+import TestRxzTextareaExp3 from './components/textarea/TestRxzTextareaExp3.vue';
 
 export default defineClientConfig({
   enhance({ app, router, siteData }) {
@@ -80,6 +84,10 @@ export default defineClientConfig({
     app.component('TestRxzSwitchExp1', TestRxzSwitchExp1);
     app.component('TestRxzSwitchExp2', TestRxzSwitchExp2);
     app.component('TestRxzSwitchExp3', TestRxzSwitchExp3);
+    app.component('TestRxzTextarea', TestRxzTextarea);
+    app.component('TestRxzTextareaExp1', TestRxzTextareaExp1);
+    app.component('TestRxzTextareaExp2', TestRxzTextareaExp2);
+    app.component('TestRxzTextareaExp3', TestRxzTextareaExp3);
   },
   setup() {},
   rootComponents: [],

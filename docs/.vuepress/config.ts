@@ -82,6 +82,7 @@ module.exports = {
             '/components/form/rxzinput',
             '/components/form/rxzradio',
             '/components/form/rxzswitch',
+            '/components/form/rxztextarea',
           ]
         },
         {

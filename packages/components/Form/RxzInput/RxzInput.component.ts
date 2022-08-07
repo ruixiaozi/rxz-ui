@@ -111,11 +111,17 @@ export class RxzInputCnt extends Vue {
   }
 
   clearText() {
+    if (this.disabled) {
+      return;
+    }
     this.formValue.value = '';
     this.input.focus();
   }
 
   changeEye() {
+    if (this.disabled) {
+      return;
+    }
     this.openEye = !this.openEye;
   }
 
