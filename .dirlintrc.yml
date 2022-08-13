@@ -25,6 +25,11 @@ rules:
         /*.ts:
           - file
           - camelCaseWithABB
+      /api:
+        /common:
+          - dir
+        /**:
+          - dir
       /directives:
         - dir
       /i18n:

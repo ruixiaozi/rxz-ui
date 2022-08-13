@@ -1,6 +1,7 @@
-declare module '@vue/runtime-core' {
+declare module 'vue' {
   // GlobalComponents for Volar
   export interface GlobalComponents {
+    RxzContainer: typeof import('../packages/index')['RxzContainerDeclare'],
     RxzTextarea: typeof import('../packages/index')['RxzTextareaDeclare'],
     RxzCheckbox: typeof import('../packages/index')['RxzCheckboxDeclare'],
     RxzSwitch: typeof import('../packages/index')['RxzSwitchDeclare'],
@@ -10,7 +11,6 @@ declare module '@vue/runtime-core' {
     RxzTheme: typeof import('../packages/index')['RxzThemeDeclare'],
     RxzLoading: typeof import('../packages/index')['RxzLoadingDeclare'],
     RxzIcon: typeof import('../packages/index')['RxzIconDeclare'],
-    RxzDialog: typeof import('../packages/index')['RxzDialogDeclare'],
     RxzCountdownButton: typeof import('../packages/index')['RxzCountdownButtonDeclare'],
     RxzButton: typeof import('../packages/index')['RxzButtonDeclare'],
     RxzWaveProcess: typeof import('../packages/index')['RxzWaveProcessDeclare'],
@@ -19,6 +19,14 @@ declare module '@vue/runtime-core' {
     RxzFormItem: typeof import('../packages/index')['RxzFormItemDeclare'],
     RxzForm: typeof import('../packages/index')['RxzFormDeclare'],
     RxzLabel: typeof import('../packages/index')['RxzLabelDeclare'],
+  }
+
+  interface ComponentCustomProperties {
+    $RxzModal: typeof import('../packages/index')['RxzModal'],
+  }
+
+  interface ComponentCustomProps {
+    overflow?: string;
   }
 }
 

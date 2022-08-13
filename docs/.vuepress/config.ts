@@ -11,6 +11,7 @@ module.exports = {
     logo: '/img/logo.svg',
     navbar: [
       { text: '指南', link: '/guide/' },
+      { text: '全局API', link: '/apis/' },
       { text: '组件', link: '/components/' },
       { text: '指令', link: '/directives/' },
       {
@@ -30,6 +31,17 @@ module.exports = {
         '/guide/component.md',
         '/guide/directive.md',
       ],
+      '/apis/':[
+        '/apis/README.md',
+        {
+          text: '弹出层API',
+          sidebarDepth: 1,
+          collapsable: false,
+          children: [
+            '/apis/pop/rxzmodal',
+          ]
+        }
+      ],
       '/components/':[
         '/components/README.md',
         {
@@ -39,7 +51,6 @@ module.exports = {
           children: [
             '/components/base/rxzbutton.md',
             '/components/base/rxzcountdownbutton.md',
-            '/components/base/rxzdialog.md',
             '/components/base/rxzicon.md',
             '/components/base/rxzloading.md',
             '/components/base/rxztheme.md',
@@ -50,7 +61,7 @@ module.exports = {
           sidebarDepth: 1,
           collapsable: false,
           children: [
-            '/components/layout/rxzcenterlayout',
+            '/components/layout/rxzcontainer',
             '/components/layout/rxzflex'
           ]
         },
@@ -103,6 +114,7 @@ module.exports = {
           collapsable: false,
           children: [
             '/directives/base/rxzoverflow',
+            '/directives/base/rxzresizeobserve',
           ]
         }
       ],

@@ -1,0 +1,14 @@
+.rxz-container {
+  // 默认100%
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  &-content {
+    position: absolute;
+    width: fit-content;
+    background-color: white;
+
+  }
+
+}
