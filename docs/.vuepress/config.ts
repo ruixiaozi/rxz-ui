@@ -34,7 +34,7 @@ module.exports = {
       '/apis/':[
         '/apis/README.md',
         {
-          text: '全局API',
+          text: '弹出层API',
           sidebarDepth: 1,
           collapsable: false,
           children: [
@@ -114,6 +114,7 @@ module.exports = {
           collapsable: false,
           children: [
             '/directives/base/rxzoverflow',
+            '/directives/base/rxzresizeobserve',
           ]
         }
       ],

@@ -1,0 +1,94 @@
+.rxz-dialog {
+  // 相对于浏览器定位
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  // 遮罩颜色
+  background-color: rgba(0, 0, 0, 0.2);
+
+  &-container{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+  // 弹窗主体部分
+  &-content {
+    background-color: white;
+    min-height: 100px;
+    overflow-y:auto;
+    overflow-x: hidden;
+    padding: 16px;
+
+    // 标题部分
+    &-title {
+
+      margin: 0 0 16px 0;
+      width: 100%;
+      padding-right: 16px;
+      box-sizing: border-box;
+
+
+      // 关闭按钮
+      &-close {
+        position: absolute;
+        right: 16px;
+        top: 16px;
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background-image: url('~@/images/close.svg');
+        background-size: 100%;
+        cursor: pointer;
+      }
+    }
+
+    // 内容部分
+    &-body {
+
+
+
+    }
+  }
+}
+
+.opacity-anim-enter-active {
+  animation: opacity-anim 0.2s;
+}
+.opacity-anim-leave-active {
+  animation: opacity-anim 0.2s reverse;
+}
+
+.bounce-anim-enter-active {
+  animation: bounce-in 0.3s;
+}
+.bounce-anim-leave-active {
+  animation: opacity-anim 0.2s reverse;
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes opacity-anim {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

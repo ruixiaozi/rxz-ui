@@ -1,7 +1,8 @@
-import { RxzIcon } from '../RxzIcon';
-import { RxzCenterLayout } from '../../Layout/RxzCenterLayout';
+import { RxzContainer } from '../../Layout/RxzContainer/index';
+import { RxzIcon } from '../../Base/RxzIcon';
 import { Options, Vue } from 'vue-class-component';
 import { Emit, Prop } from 'vue-property-decorator';
+import { RxzOverflow } from '@/directives/RxzOverflow';
 
 /**
  * Component: RxzDialog
@@ -13,7 +14,10 @@ import { Emit, Prop } from 'vue-property-decorator';
   name: 'RxzDialog',
   components: {
     RxzIcon,
-    RxzCenterLayout,
+    RxzContainer,
+  },
+  directives: {
+    'rxz-overflow': new RxzOverflow(),
   },
 })
 export class RxzDialogCnt extends Vue {
@@ -27,6 +31,12 @@ export class RxzDialogCnt extends Vue {
 
   @Prop({ type: Boolean, default: true })
   readonly isShowClose!: boolean;
+
+  @Prop({ type: Boolean, default: true })
+  readonly allowOuterClose!: boolean;
+
+  @Prop({ type: String, default: 'opacity' })
+  readonly transition!: 'opacity' | 'bounce';
 
 
   // injects
@@ -50,6 +60,12 @@ export class RxzDialogCnt extends Vue {
   @Emit('close')
   handleClose(event: MouseEvent) {
     return event;
+  }
+
+  handleBackClick(event: MouseEvent) {
+    if (this.allowOuterClose) {
+      this.handleClose(event);
+    }
   }
 
 }

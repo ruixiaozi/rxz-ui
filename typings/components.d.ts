@@ -1,6 +1,7 @@
-declare module '@vue/runtime-core' {
+declare module 'vue' {
   // GlobalComponents for Volar
   export interface GlobalComponents {
+    RxzContainer: typeof import('../packages/index')['RxzContainerDeclare'],
     RxzTextarea: typeof import('../packages/index')['RxzTextareaDeclare'],
     RxzCheckbox: typeof import('../packages/index')['RxzCheckboxDeclare'],
     RxzSwitch: typeof import('../packages/index')['RxzSwitchDeclare'],
@@ -22,6 +23,10 @@ declare module '@vue/runtime-core' {
 
   interface ComponentCustomProperties {
     $RxzModal: typeof import('../packages/index')['RxzModal'],
+  }
+
+  interface ComponentCustomProps {
+    overflow?: string;
   }
 }
 

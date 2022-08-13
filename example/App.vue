@@ -7,8 +7,9 @@
     v-model="isStart"
     :seconds="10"
   ></RxzCountdownButton>
+  <RxzIcon name="sdf" :overflow="123"></RxzIcon>
   <RxzButton @click="handleAdd()">add</RxzButton>
-
+  <div overflow="sdf"></div>
   <RxzForm :form-config="formConfig" v-model="data" ref="form">
     <RxzFormItem name="test" :errorTip="{'test': '1211111111111111111111111111111111111113'}">
       <RxzLabel>一2级表单：</RxzLabel>
@@ -46,6 +47,14 @@
     <div>123</div>
     <div>321</div>
   </RxzFlex>
+
+  <div></div>
+
+
+  <div></div>
+  <div ></div>
+  <rxz-dialog overflow></rxz-dialog>
+  <rxz-dialog></rxz-dialog>
 
 </template>
 
