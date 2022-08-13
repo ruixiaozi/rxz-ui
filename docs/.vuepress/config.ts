@@ -61,7 +61,7 @@ module.exports = {
           sidebarDepth: 1,
           collapsable: false,
           children: [
-            '/components/layout/rxzcenterlayout',
+            '/components/layout/rxzcontainer',
             '/components/layout/rxzflex'
           ]
         },

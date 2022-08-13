@@ -1,6 +1,6 @@
 import { RxzResizeObserve } from '@/directives/RxzResizeObserve';
 import { Options, Vue } from 'vue-class-component';
-import { Prop, Ref } from 'vue-property-decorator';
+import { Emit, Prop, Ref } from 'vue-property-decorator';
 import { RxzContainerPosition } from './RxzContainer.declare';
 
 const rxzResizeObserveD = new RxzResizeObserve();
@@ -20,7 +20,7 @@ const rxzResizeObserveD = new RxzResizeObserve();
 export class RxzContainerCnt extends Vue {
 
   // props and provide
-  @Prop({ type: String, default: RxzContainerPosition.TOP_CENTER })
+  @Prop({ type: String, default: RxzContainerPosition.CENTER })
   position!: RxzContainerPosition;
 
   @Prop({ type: Number, default: 0 })
@@ -29,7 +29,7 @@ export class RxzContainerCnt extends Vue {
   @Prop({ type: Number, default: 0 })
   offsetY!: number;
 
-  // 是否允许位置便宜溢出边界
+  // 是否允许内容溢出边界
   @Prop({ type: Boolean, default: false })
   allowOverflow!: boolean;
 
@@ -128,14 +128,16 @@ export class RxzContainerCnt extends Vue {
   // hooks
 
   // methods
-  resize() {
+  @Emit('resize')
+  resize(event: Event) {
     if (!this.container || !this.content) {
-      return;
+      return event;
     }
     this.containerWidth = this.container.clientWidth;
     this.containerHeight = this.container.clientHeight;
     this.contentWidth = this.content.clientWidth;
     this.contentHeight = this.content.clientHeight;
+    return event;
   }
 
 }

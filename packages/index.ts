@@ -10,6 +10,7 @@ import { install } from './common';
 
 export * from './components';
 export * from './api';
+export * from './definition';
 
 export const RxzUI = {
   install: install((app: App) => {

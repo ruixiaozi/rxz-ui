@@ -3,7 +3,7 @@
     class="rxz-container"
     v-bind="$attrs"
     ref="container"
-    v-rxz-resize-observe="() => resize()"
+    v-rxz-resize-observe="(event) => resize(event)"
     :style="{
       opacity: contentX === null || contentY === null ? 0 : 1
     }"
@@ -15,7 +15,7 @@
         left: `${contentX}px`,
         top: `${contentY}px`,
       }"
-      v-rxz-resize-observe="() => resize()"
+      v-rxz-resize-observe="(event) => resize(event)"
     >
       <slot>Content</slot>
     </div>

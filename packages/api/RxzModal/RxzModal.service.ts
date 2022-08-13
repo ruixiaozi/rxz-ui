@@ -7,6 +7,12 @@ import { RxzModalOptions } from './RxzModal.declare';
 import { RxzDialogCnt } from '@/components/Inner/RxzDialog/RxzDialog.component';
 import { uniqueId as _uniqueId, isString as _isString, omit as _omit } from 'lodash';
 
+/**
+ * Service: RxzModalService
+ * @description: 全局模态框服务
+ * @author: ruixiaozi
+ * @since: 2.0.0
+ */
 @Injectable({
   provideIn: 'root',
 })
@@ -17,6 +23,11 @@ export class RxzModalService {
 
   private modalsMap: Map<string, VNode> = new Map<string, VNode>();
 
+  /**
+   * 创建modal
+   * @param options modal选项
+   * @returns string modal的key
+   */
   create(options?: RxzModalOptions) {
     const modalContainer = document.createElement('div');
     const key = _uniqueId();
@@ -69,6 +80,10 @@ export class RxzModalService {
     return key;
   }
 
+  /**
+   * 关闭modal
+   * @param key modal的key
+   */
   close(key: string) {
     if (this.modalsMap.has(key)) {
       // 关闭dialog，并删除modalsMap中的引用
@@ -81,6 +96,9 @@ export class RxzModalService {
     }
   }
 
+  /**
+   * 关闭所有modal
+   */
   closeAll() {
     this.modalsMap.forEach((item) => {
       const rxzDialogCnt = item.component?.proxy;

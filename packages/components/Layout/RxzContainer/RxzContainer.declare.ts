@@ -15,11 +15,15 @@ export class RxzContainerDeclare {
   declare name: 'RxzContainer';
 
   declare $props: {
-
+    position?: string;
+    offsetX?: number;
+    offsetY?: number;
+    // 是否允许内容溢出边界
+    allowOverflow?: boolean;
   };
 
   declare $emit: {
-    // example: (e: 'test', ...args: any[]): any;
+    (e: 'resize', event: Event): any;
   }
 
 }

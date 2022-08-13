@@ -1,5 +1,11 @@
 import { Injectable } from '@tanbo/vue-di-plugin';
 
+/**
+ * Service: RxzPopupService
+ * @description: 弹出层公共服务
+ * @author: ruixiaozi
+ * @since: 2.0.0
+ */
 @Injectable({
   provideIn: 'root',
 })
