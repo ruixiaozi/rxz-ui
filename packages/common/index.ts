@@ -8,6 +8,10 @@ export interface RxzOption {
   i18n?: any;
 }
 
+export function getService<T>(service: Class<T>): T {
+  return injector.get(service);
+}
+
 export const install = (cbk: {(app: App):void}) => (app: any, { i18n = {} }: RxzOption = {}) => {
   if (!app.$rxz) {
     app.$rxz = true;
@@ -30,8 +34,4 @@ export const InjectService = (service: Class) => (target: any, key?: any, descri
     });
   }
 };
-
-export function getService<T>(service: Class): T {
-  return injector.get(service);
-}
 

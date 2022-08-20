@@ -157,6 +157,36 @@ function generateComponent(name, needUpdate = 'true', version = '2.0.0', des = '
 }
 
 
+const innerIndexTpl = (name) => `import _${name} from './${name}.vue';
+
+export const ${name} = _${name};
+`;
+
+
+function generateInnerComponent(name, version = '2.0.0', des = '') {
+  const dir = path.join(__currentDir, name);
+  const scssPath = path.join(dir, `${name}.scss`);
+  const tsPath = path.join(dir, `${name}.component.ts`);
+  const vuePath = path.join(dir, `${name}.vue`);
+  const indexPath = path.join(dir, 'index.ts');
+
+  if (fs.existsSync(scssPath)) {
+    console.log('component is exist');
+    return;
+  }
+
+  fs.mkdirSync(dir);
+  fs.writeFileSync(scssPath, '');
+  createFileSuccess(scssPath);
+  fs.writeFileSync(tsPath, tsTpl(name, version, des));
+  createFileSuccess(tsPath);
+  fs.writeFileSync(vuePath, vueTpl(name));
+  createFileSuccess(vuePath);
+  fs.writeFileSync(indexPath, innerIndexTpl(name));
+  createFileSuccess(indexPath);
+}
+
+
 const serviceTpl = (name, version = '2.0.0', des = '') => `import { Injectable } from '@tanbo/vue-di-plugin';
 
 /**
@@ -239,6 +269,12 @@ switch (cmd) {
   case 'service':
     if (param) {
       generateService(param, ...options);
+    }
+    break;
+  case 'inc':
+  case 'inner-component':
+    if (param) {
+      generateInnerComponent(param, ...options);
     }
     break;
   default:

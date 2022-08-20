@@ -1,6 +1,5 @@
 <template>
-  <!-- 全屏遮罩 -->
-  <transition :name="`${transition}-anim`" appear>
+  <transition :name="`${transition}-anim`" @afterLeave="handleDestory" appear>
     <div class="rxz-dialog" v-if="isShow" @click="handleBackClick"
       :style="[{ zIndex }]">
       <rxz-container position="TOP_CENTER" :offsetY="150" class="rxz-dialog-container">
@@ -23,7 +22,6 @@
       </rxz-container>
     </div>
   </transition>
-
 </template>
 
 <script lang="ts">

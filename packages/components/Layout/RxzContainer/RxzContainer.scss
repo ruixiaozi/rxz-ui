@@ -3,12 +3,58 @@
   width: 100%;
   height: 100%;
   position: relative;
+  pointer-events: none;
+  display: grid;
 
   &-content {
     position: absolute;
     width: fit-content;
-    background-color: white;
+    pointer-events: auto;
 
+    &.topleft {
+      justify-self: start;
+      align-self: start;
+    }
+
+    &.topcenter {
+      justify-self: center;
+      align-self: start;
+    }
+
+    &.topright {
+      justify-self: end;
+      align-self: start;
+    }
+
+    &.centerleft {
+      justify-self: start;
+      align-self: center;
+    }
+
+    &.center {
+      justify-self: center;
+      align-self: center;
+    }
+
+    &.centerright {
+      justify-self: end;
+      align-self: center;
+    }
+
+    &.bottomleft {
+      justify-self: start;
+      align-self: end;
+    }
+
+    &.bottomcenter {
+      justify-self: center;
+      align-self: end;
+    }
+
+    &.bottomright {
+      justify-self: end;
+      align-self: end;
+    }
   }
 
 }

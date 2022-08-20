@@ -3,6 +3,9 @@ import { RxzIcon } from '../../Base/RxzIcon';
 import { Options, Vue } from 'vue-class-component';
 import { Emit, Prop } from 'vue-property-decorator';
 import { RxzOverflow } from '@/directives/RxzOverflow';
+import { getService } from '@/common';
+
+const rxzOverflowDirective = getService(RxzOverflow);
 
 /**
  * Component: RxzDialog
@@ -17,7 +20,7 @@ import { RxzOverflow } from '@/directives/RxzOverflow';
     RxzContainer,
   },
   directives: {
-    'rxz-overflow': new RxzOverflow(),
+    [rxzOverflowDirective.name]: rxzOverflowDirective,
   },
 })
 export class RxzDialogCnt extends Vue {
@@ -59,6 +62,11 @@ export class RxzDialogCnt extends Vue {
   // methods
   @Emit('close')
   handleClose(event: MouseEvent) {
+    return event;
+  }
+
+  @Emit('destory')
+  handleDestory(event: Event) {
     return event;
   }
 

@@ -10,6 +10,18 @@ export enum RxzContainerPosition {
   BOTTOM_RIGHT='BOTTOM_RIGHT',
 }
 
+export enum RxzContainerSlotEnum {
+  topleft='topleft',
+  topcenter='topcenter',
+  topright='topright',
+  centerleft='centerleft',
+  center='center',
+  centerright='centerright',
+  bottomleft='bottomleft',
+  bottomcenter='bottomcenter',
+  bottomright='bottomright',
+}
+
 export class RxzContainerDeclare {
 
   declare name: 'RxzContainer';

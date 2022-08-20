@@ -1,9 +1,12 @@
+import { getService } from '@/common';
 import { RxzIcon } from '@/components/Base/RxzIcon';
 import { RxzValidators } from '@/definition';
 import { RxzOverflow } from '@/directives/RxzOverflow';
 import { Options, Vue } from 'vue-class-component';
 import { Inject, Prop, Ref } from 'vue-property-decorator';
 import { RxzFormItemConfig } from '../RxzForm/RxzForm.declare';
+
+const rxzOverflowDirective = getService(RxzOverflow);
 
 /**
  * Component: RxzLabel
@@ -17,7 +20,7 @@ import { RxzFormItemConfig } from '../RxzForm/RxzForm.declare';
     RxzIcon,
   },
   directives: {
-    'rxz-overflow': new RxzOverflow(),
+    [rxzOverflowDirective.name]: rxzOverflowDirective,
   },
 })
 export class RxzLabelCnt extends Vue {

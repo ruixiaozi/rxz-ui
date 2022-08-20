@@ -1,7 +1,11 @@
 import { RxzIframeObserve } from '@/components/Inner/RxzIframeObserve';
 import { DirectiveBinding, h, ObjectDirective, render } from 'vue';
 import { isFunction as _isFunction } from 'lodash';
+import { Injectable } from '@tanbo/vue-di-plugin';
 
+@Injectable({
+  provideIn: 'root',
+})
 export class RxzResizeObserve implements ObjectDirective {
 
   name = 'rxz-resize-observe';
