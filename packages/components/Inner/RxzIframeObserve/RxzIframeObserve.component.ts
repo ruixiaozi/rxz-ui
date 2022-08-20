@@ -1,6 +1,5 @@
 import { Options, Vue } from 'vue-class-component';
 import { Emit, Ref } from 'vue-property-decorator';
-import { debounce as _debounce } from 'lodash';
 
 /**
  * Component: RxzIframeObserve
@@ -34,9 +33,8 @@ export class RxzIframeObserveCnt extends Vue {
   // hooks
   mounted() {
     this.$nextTick(() => {
-      const _handleResize = _debounce((event: Event) => this.handleResize(event), 100);
       this.iframe?.contentWindow?.addEventListener('resize', (event: Event) => {
-        _handleResize(event);
+        this.handleResize(event);
       });
     });
   }

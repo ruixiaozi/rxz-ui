@@ -1,9 +1,14 @@
-import { install } from '@/common';
+import { getService, install } from '@/common';
 import { App } from 'vue';
 import { RxzOverflow } from './RxzOverflow';
 import { RxzResizeObserve } from './RxzResizeObserve';
+import { RxzTooltip } from './RxzTooltip';
 
-const directives = [new RxzOverflow(), new RxzResizeObserve()];
+const directives = [
+  getService(RxzOverflow),
+  getService(RxzResizeObserve),
+  getService(RxzTooltip),
+];
 
 export default {
   install: install((app: App) => {

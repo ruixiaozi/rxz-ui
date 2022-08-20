@@ -42,12 +42,16 @@ import TestRxzCheckboxExp3 from './components/checkbox/TestRxzCheckboxExp3.vue';
 import TestRxzContainer from './components/container/TestRxzContainer.vue';
 import TestRxzContainerExp1 from './components/container/TestRxzContainerExp1.vue';
 import TestRxzContainerExp2 from './components/container/TestRxzContainerExp2.vue';
+import TestRxzContainerExp3 from './components/container/TestRxzContainerExp3.vue';
 import TestRxzModal from './components/modal/TestRxzModal.vue';
 import TestRxzModalExp1 from './components/modal/TestRxzModalExp1.vue';
 import TestRxzModalExp2 from './components/modal/TestRxzModalExp2.vue';
 import TestRxzModalExp3 from './components/modal/TestRxzModalExp3.vue';
 import TestRxzModalExp4 from './components/modal/TestRxzModalExp4.vue';
 import TestRxzModalExp5 from './components/modal/TestRxzModalExp5.vue';
+import TestRxzTooltip from './components/tooltip/TestRxzTooltip.vue';
+import TestRxzTooltipExp1 from './components/tooltip/TestRxzTooltipExp1.vue';
+import TestRxzTooltipExp2 from './components/tooltip/TestRxzTooltipExp2.vue';
 
 export default defineClientConfig({
   enhance({ app, router, siteData }) {
@@ -104,12 +108,16 @@ export default defineClientConfig({
     app.component('TestRxzContainer', TestRxzContainer);
     app.component('TestRxzContainerExp1', TestRxzContainerExp1);
     app.component('TestRxzContainerExp2', TestRxzContainerExp2);
+    app.component('TestRxzContainerExp3', TestRxzContainerExp3);
     app.component('TestRxzModal', TestRxzModal);
     app.component('TestRxzModalExp1', TestRxzModalExp1);
     app.component('TestRxzModalExp2', TestRxzModalExp2);
     app.component('TestRxzModalExp3', TestRxzModalExp3);
     app.component('TestRxzModalExp4', TestRxzModalExp4);
     app.component('TestRxzModalExp5', TestRxzModalExp5);
+    app.component('TestRxzTooltip', TestRxzTooltip);
+    app.component('TestRxzTooltipExp1', TestRxzTooltipExp1);
+    app.component('TestRxzTooltipExp2', TestRxzTooltipExp2);
   },
   setup() {},
   rootComponents: [],

@@ -4,9 +4,6 @@
     v-bind="$attrs"
     ref="container"
     v-rxz-resize-observe="(event) => resize(event)"
-    :style="{
-      opacity: contentX === null || contentY === null ? 0 : 1
-    }"
   >
     <div
       class="rxz-container-content"
@@ -14,11 +11,18 @@
       :style="{
         left: `${contentX}px`,
         top: `${contentY}px`,
+        opacity: contentX === null || contentY === null ? 0 : 1
       }"
       v-rxz-resize-observe="(event) => resize(event)"
     >
-      <slot>Content</slot>
+      <slot></slot>
     </div>
+    <template v-for="(slotName, inx) in slotNames">
+      <div v-if="$slots[slotName]" class="rxz-container-content" :class="[slotName]" :key="inx">
+        <slot :name="slotName"></slot>
+      </div>
+    </template>
+
   </div>
 </template>
 

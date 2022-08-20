@@ -1,0 +1,119 @@
+.rxz-popper {
+  box-sizing: border-box;
+  position: absolute;
+
+  &-content {
+    position: relative;
+    max-width: 400px;
+    word-break: break-all;
+    min-width: 1.25em;
+    min-height: 1.25em;
+    padding: 8px;
+    background-color: rgba(0, 0, 0, 0.8);
+
+    color: white;
+    border-radius: 5px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border: 6px solid transparent;
+    }
+
+    &.top::after {
+      top: 100%;
+      left: calc(50% - 6px);
+      border-top-color:rgba(0, 0, 0, 0.8);
+    }
+
+    &.topleft::after {
+      top: 100%;
+      left: 6px;
+      border-top-color:rgba(0, 0, 0, 0.8);
+    }
+
+    &.topright::after {
+      top: 100%;
+      right: 6px;
+      border-top-color:rgba(0, 0, 0, 0.8);
+    }
+
+    &.left::after {
+      top: calc(50% - 6px);
+      left: 100%;
+      border-left-color:rgba(0, 0, 0, 0.8);
+    }
+
+    &.lefttop::after {
+      top: 6px;
+      left: 100%;
+      border-left-color:rgba(0, 0, 0, 0.8);
+    }
+
+    &.leftbottom::after {
+      bottom: 6px;
+      left: 100%;
+      border-left-color:rgba(0, 0, 0, 0.8);
+    }
+
+    &.bottom::after {
+      top: -12px;
+      left: calc(50% - 6px);
+      border-bottom-color:rgba(0, 0, 0, 0.8);
+    }
+
+    &.bottomleft::after {
+      top: -12px;
+      left: 6px;
+      border-bottom-color:rgba(0, 0, 0, 0.8);
+    }
+
+    &.bottomright::after {
+      top: -12px;
+      right: 6px;
+      border-bottom-color:rgba(0, 0, 0, 0.8);
+    }
+
+    &.right::after {
+      top: calc(50% - 6px);
+      left: -12px;
+      border-right-color:rgba(0, 0, 0, 0.8);
+    }
+
+    &.righttop::after {
+      top: 6px;
+      left: -12px;
+      border-right-color:rgba(0, 0, 0, 0.8);
+    }
+
+    &.rightbottom::after {
+      bottom: 6px;
+      left: -12px;
+      border-right-color:rgba(0, 0, 0, 0.8);
+    }
+  }
+
+}
+
+
+.opacity-anim-enter-active {
+  animation: opacity-anim 0.2s;
+}
+.opacity-anim-leave-active {
+  animation: opacity-anim 0.2s reverse;
+}
+
+@keyframes opacity-anim {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,9 +1,10 @@
+import { getService } from '@/common';
 import { RxzResizeObserve } from '@/directives/RxzResizeObserve';
 import { Options, Vue } from 'vue-class-component';
 import { Emit, Prop, Ref } from 'vue-property-decorator';
-import { RxzContainerPosition } from './RxzContainer.declare';
+import { RxzContainerPosition, RxzContainerSlotEnum } from './RxzContainer.declare';
 
-const rxzResizeObserveD = new RxzResizeObserve();
+const rxzResizeObserveDirective = getService(RxzResizeObserve);
 
 /**
  * Component: RxzContainer
@@ -14,7 +15,7 @@ const rxzResizeObserveD = new RxzResizeObserve();
 @Options({
   name: 'RxzContainer',
   directives: {
-    [rxzResizeObserveD.name]: rxzResizeObserveD,
+    [rxzResizeObserveDirective.name]: rxzResizeObserveDirective,
   },
 })
 export class RxzContainerCnt extends Vue {
@@ -54,6 +55,8 @@ export class RxzContainerCnt extends Vue {
   contentWidth = 0;
 
   contentHeight = 0;
+
+  slotNames = Object.values(RxzContainerSlotEnum);
 
   // computes
   get contentX() {
