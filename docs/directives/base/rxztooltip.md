@@ -26,7 +26,7 @@
     </template>
     <template v-slot:centerright>
       <p v-rxz-tooltip:righttop>righttop</p>
-      <p v-rxz-tooltip:right.click>right</p>
+      <p v-rxz-tooltip:right>right</p>
       <p v-rxz-tooltip:rightbottom>rightbottom</p>
     </template>
   </rxz-container>

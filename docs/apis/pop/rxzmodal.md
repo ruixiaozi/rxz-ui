@@ -72,6 +72,8 @@ interface RxzModalOptions {
   contentCntProps?: any;
   // 打开关闭的过度效果，（默认值opacity）
   transition?: 'opacity' | 'bounce';
+  // 是否允许拖拽 (默认值为false)
+  allowDrag?: boolean;
   // 窗口关闭回调
   onClose?: () => void;
 }
@@ -237,4 +239,29 @@ export default {
 }
 </script>
 
+```
+
+### 6. 拖动
+
+---
+
+<TestRxzModalExp6></TestRxzModalExp6>
+
+``` vue
+<template>
+  <rxz-button ref="bt" @click="handleAdd()">打开Modal</rxz-button>
+</template>
+<script>
+export default {
+  methods: {
+    handleAdd() {
+      this.$RxzModal.create({
+        title: '我是标题',
+        content: '我是内容',
+        allowDrag: true,
+      });
+    },
+  }
+}
+</script>
 ```

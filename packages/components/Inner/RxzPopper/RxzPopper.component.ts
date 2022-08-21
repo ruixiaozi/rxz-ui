@@ -34,8 +34,6 @@ export class RxzPopperCnt extends Vue {
   // entity
   isShow = false;
 
-  needUpdate = false;
-
   readonly posMap = {
     [RxzToolTipPos.top]: RxzContainerPosition.BOTTOM_CENTER,
     [RxzToolTipPos.topleft]: RxzContainerPosition.BOTTOM_LEFT,

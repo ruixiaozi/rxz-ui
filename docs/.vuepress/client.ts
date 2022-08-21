@@ -49,6 +49,7 @@ import TestRxzModalExp2 from './components/modal/TestRxzModalExp2.vue';
 import TestRxzModalExp3 from './components/modal/TestRxzModalExp3.vue';
 import TestRxzModalExp4 from './components/modal/TestRxzModalExp4.vue';
 import TestRxzModalExp5 from './components/modal/TestRxzModalExp5.vue';
+import TestRxzModalExp6 from './components/modal/TestRxzModalExp6.vue';
 import TestRxzTooltip from './components/tooltip/TestRxzTooltip.vue';
 import TestRxzTooltipExp1 from './components/tooltip/TestRxzTooltipExp1.vue';
 import TestRxzTooltipExp2 from './components/tooltip/TestRxzTooltipExp2.vue';
@@ -115,6 +116,7 @@ export default defineClientConfig({
     app.component('TestRxzModalExp3', TestRxzModalExp3);
     app.component('TestRxzModalExp4', TestRxzModalExp4);
     app.component('TestRxzModalExp5', TestRxzModalExp5);
+    app.component('TestRxzModalExp6', TestRxzModalExp6);
     app.component('TestRxzTooltip', TestRxzTooltip);
     app.component('TestRxzTooltipExp1', TestRxzTooltipExp1);
     app.component('TestRxzTooltipExp2', TestRxzTooltipExp2);

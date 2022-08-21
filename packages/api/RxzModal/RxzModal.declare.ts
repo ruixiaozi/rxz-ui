@@ -17,6 +17,8 @@ export interface RxzModalOptions {
   contentCntProps?: any;
   // 打开关闭的过度效果
   transition?: 'opacity' | 'bounce';
+  // 是否允许拖拽 (默认值为false)
+  allowDrag?: boolean;
   // 窗口关闭回调
   onClose?: () => void;
 }

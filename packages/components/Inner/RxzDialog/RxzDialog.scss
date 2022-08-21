@@ -22,15 +22,25 @@
     overflow-y:auto;
     overflow-x: hidden;
     padding: 16px;
+    opacity: 1 !important;
 
     // 标题部分
     &-title {
-
-      margin: 0 0 16px 0;
-      width: 100%;
-      padding-right: 16px;
+      margin:0;
+      width: calc(100% + 32px);
       box-sizing: border-box;
+      position: relative;
+      padding: 16px;
+      top: -16px;
+      left: -16px;
 
+      &.allowDrag {
+        cursor: move;
+      }
+
+      &-slot {
+        cursor: auto;
+      }
 
       // 关闭按钮
       &-close {
@@ -46,12 +56,6 @@
       }
     }
 
-    // 内容部分
-    &-body {
-
-
-
-    }
   }
 }
 
