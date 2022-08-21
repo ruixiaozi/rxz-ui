@@ -2,18 +2,33 @@
   <transition :name="`${transition}-anim`" @afterLeave="handleDestory" appear>
     <div class="rxz-dialog" v-if="isShow" @click="handleBackClick"
       :style="[{ zIndex }]">
-      <rxz-container position="TOP_CENTER" :offsetY="150" class="rxz-dialog-container">
+      <rxz-container
+        position="TOP_CENTER"
+        :offsetY="offsetY"
+        :offsetX="offsetX"
+        :allowOverflow="true"
+        class="rxz-dialog-container"
+        >
         <div class="rxz-dialog-content"
           :style="[
-            {'width':width}
+            {'width':width, 'opacity': 1}
           ]"
           @click.stop="() => false"
           >
-          <h4 v-rxz-overflow="true" class="rxz-dialog-content-title">
-            <span @click="handleClose">
+          <h4
+            @mousedown="handleDragStart"
+            v-rxz-overflow="true"
+            class="rxz-dialog-content-title"
+            :class="{
+              allowDrag
+            }"
+            >
+            <span @click.stop="handleClose" >
               <i class="rxz-dialog-content-title-close"  v-show="isShowClose"></i>
             </span>
-            <slot name="title"></slot>
+            <span class="rxz-dialog-content-title-slot" @mousedown.stop="() => {}">
+              <slot name="title" ></slot>
+            </span>
           </h4>
           <div class="rxz-dialog-content-body">
             <slot></slot>
