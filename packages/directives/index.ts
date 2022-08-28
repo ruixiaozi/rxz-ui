@@ -1,5 +1,6 @@
 import { getService, install } from '@/common';
 import { App } from 'vue';
+import { RxzLoadingirective } from './RxzLoadingirective';
 import { RxzOverflowDirective } from './RxzOverflowDirective';
 import { RxzResizeObserveDirective } from './RxzResizeObserveDirective';
 import { RxzTooltipDirective } from './RxzTooltipDirective';
@@ -8,6 +9,7 @@ const directives = [
   getService(RxzOverflowDirective),
   getService(RxzResizeObserveDirective),
   getService(RxzTooltipDirective),
+  getService(RxzLoadingirective),
 ];
 
 export default {

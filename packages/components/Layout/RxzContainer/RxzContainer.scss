@@ -6,10 +6,13 @@
   pointer-events: none;
   display: grid;
 
+  ::v-deep * {
+    pointer-events: auto;
+  }
+
   &-content {
     position: absolute;
     width: fit-content;
-    pointer-events: auto;
 
     &.topleft {
       justify-self: start;
