@@ -116,6 +116,7 @@ module.exports = {
             '/directives/base/rxzoverflow',
             '/directives/base/rxzresizeobserve',
             '/directives/base/rxztooltip',
+            '/directives/base/rxzloading',
           ]
         }
       ],

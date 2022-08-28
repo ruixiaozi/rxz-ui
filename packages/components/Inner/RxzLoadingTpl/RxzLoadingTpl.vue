@@ -1,5 +1,5 @@
 <template>
-  <div class="rxz-loading" :style="[{ zIndex }]">
+  <div class="rxz-loading" :style="[{ zIndex, position: isGlobal ? 'fixed' : 'absolute' }]">
     <div
       class="rxz-loading-container"
       :style="{
