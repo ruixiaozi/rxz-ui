@@ -32,7 +32,7 @@ export const getLocal = () => {
   return localName;
 };
 
-export const getI18n = (value: string, params?: { [key: string | number]: string }): string => {
+export const getI18n = (value: string, params?: Record<string | number, any>): string => {
   if (messages[local]?.[value]) {
     let res = String(messages[local][value]);
     if (params && typeof params === 'object') {
