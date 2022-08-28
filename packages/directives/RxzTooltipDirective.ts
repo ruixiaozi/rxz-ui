@@ -1,5 +1,5 @@
-import { RxzPopperCnt } from './../components/Inner/RxzPopper/RxzPopper.component';
-import { RxzPopper } from './../components/Inner/RxzPopper/index';
+import { RxzPopperCnt } from '../components/Inner/RxzPopper/RxzPopper.component';
+import { RxzPopper } from '../components/Inner/RxzPopper/index';
 import { DirectiveBinding, h, ObjectDirective, VNode } from 'vue';
 import { InjectService } from '@/common';
 import { RxzPopupService } from '@/api/common/RxzPopup.service';
@@ -40,7 +40,7 @@ interface DirectiveParam {
 @Injectable({
   provideIn: 'root',
 })
-export class RxzTooltip implements ObjectDirective {
+export class RxzTooltipDirective implements ObjectDirective {
 
   @InjectService(RxzPopupService)
   private rxzPopupService?: RxzPopupService;

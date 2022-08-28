@@ -109,7 +109,7 @@ export class RxzFormItemCnt extends Vue {
       this.tip = tip;
     } else {
       this.tip = tip.isI18N
-        ? this.$t(tip.label, param)
+        ? this.$i18n(tip.label, param)
         : tip.label;
     }
   }

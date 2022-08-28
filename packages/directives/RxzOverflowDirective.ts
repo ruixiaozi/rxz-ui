@@ -1,16 +1,16 @@
-import { RxzTooltip } from './RxzTooltip';
+import { RxzTooltipDirective } from './RxzTooltipDirective';
 import { DirectiveBinding, ObjectDirective, VNode } from 'vue';
 import { Injectable } from '@tanbo/vue-di-plugin';
 import { InjectService } from '@/common';
 @Injectable({
   provideIn: 'root',
 })
-export class RxzOverflow implements ObjectDirective {
+export class RxzOverflowDirective implements ObjectDirective {
 
   name = 'rxz-overflow';
 
-  @InjectService(RxzTooltip)
-  private toolTip?: RxzTooltip;
+  @InjectService(RxzTooltipDirective)
+  private toolTip?: RxzTooltipDirective;
 
   toolTipConfig: any = {
     arg: 'top',

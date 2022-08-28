@@ -39,6 +39,7 @@ module.exports = {
           collapsable: false,
           children: [
             '/apis/pop/rxzmodal',
+            '/apis/pop/rxzloading',
           ]
         }
       ],
@@ -52,7 +53,6 @@ module.exports = {
             '/components/base/rxzbutton.md',
             '/components/base/rxzcountdownbutton.md',
             '/components/base/rxzicon.md',
-            '/components/base/rxzloading.md',
             '/components/base/rxztheme.md',
           ]
         },

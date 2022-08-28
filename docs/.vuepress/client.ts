@@ -2,7 +2,6 @@ import { defineClientConfig } from '@vuepress/client';
 import { RxzUI } from '@/index';
 import { RxzOption } from '@/common';
 import TestRxzCountdownButton from './components/TestRxzCountdownButton.vue';
-import TestRxzLoading from './components/TestRxzLoading.vue';
 import TestRxzFlipCard from './components/TestRxzFlipCard.vue';
 import TestRxzForm from './components/form/TestRxzForm.vue';
 import TestRxzFormExp1 from './components/form/TestRxzFormExp1.vue';
@@ -50,9 +49,14 @@ import TestRxzModalExp3 from './components/modal/TestRxzModalExp3.vue';
 import TestRxzModalExp4 from './components/modal/TestRxzModalExp4.vue';
 import TestRxzModalExp5 from './components/modal/TestRxzModalExp5.vue';
 import TestRxzModalExp6 from './components/modal/TestRxzModalExp6.vue';
-import TestRxzTooltip from './components/tooltip/TestRxzTooltip.vue';
-import TestRxzTooltipExp1 from './components/tooltip/TestRxzTooltipExp1.vue';
-import TestRxzTooltipExp2 from './components/tooltip/TestRxzTooltipExp2.vue';
+import TestRxzTooltipDirective from './components/tooltip/TestRxzTooltipDirective.vue';
+import TestRxzTooltipDirectiveExp1 from './components/tooltip/TestRxzTooltipDirectiveExp1.vue';
+import TestRxzTooltipDirectiveExp2 from './components/tooltip/TestRxzTooltipDirectiveExp2.vue';
+import TestRxzLoading from './components/loading/TestRxzLoading.vue';
+import TestRxzLoadingExp1 from './components/loading/TestRxzLoadingExp1.vue';
+import TestRxzLoadingExp2 from './components/loading/TestRxzLoadingExp2.vue';
+import TestRxzLoadingExp3 from './components/loading/TestRxzLoadingExp3.vue';
+
 
 export default defineClientConfig({
   enhance({ app, router, siteData }) {
@@ -69,7 +73,6 @@ export default defineClientConfig({
       }
     } as RxzOption);
     app.component('TestRxzCountdownButton', TestRxzCountdownButton);
-    app.component('TestRxzLoading', TestRxzLoading);
     app.component('TestRxzFlipCard', TestRxzFlipCard);
     app.component('TestRxzForm', TestRxzForm);
     app.component('TestRxzFormExp1', TestRxzFormExp1);
@@ -117,9 +120,13 @@ export default defineClientConfig({
     app.component('TestRxzModalExp4', TestRxzModalExp4);
     app.component('TestRxzModalExp5', TestRxzModalExp5);
     app.component('TestRxzModalExp6', TestRxzModalExp6);
-    app.component('TestRxzTooltip', TestRxzTooltip);
-    app.component('TestRxzTooltipExp1', TestRxzTooltipExp1);
-    app.component('TestRxzTooltipExp2', TestRxzTooltipExp2);
+    app.component('TestRxzTooltipDirective', TestRxzTooltipDirective);
+    app.component('TestRxzTooltipDirectiveExp1', TestRxzTooltipDirectiveExp1);
+    app.component('TestRxzTooltipDirectiveExp2', TestRxzTooltipDirectiveExp2);
+    app.component('TestRxzLoading', TestRxzLoading);
+    app.component('TestRxzLoadingExp1', TestRxzLoadingExp1);
+    app.component('TestRxzLoadingExp2', TestRxzLoadingExp2);
+    app.component('TestRxzLoadingExp3', TestRxzLoadingExp3);
   },
   setup() {},
   rootComponents: [],
