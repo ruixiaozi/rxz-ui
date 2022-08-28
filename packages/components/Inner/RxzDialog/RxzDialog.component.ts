@@ -2,10 +2,10 @@ import { RxzContainer } from '../../Layout/RxzContainer/index';
 import { RxzIcon } from '../../Base/RxzIcon';
 import { Options, Vue } from 'vue-class-component';
 import { Emit, Prop } from 'vue-property-decorator';
-import { RxzOverflow } from '@/directives/RxzOverflow';
+import { RxzOverflowDirective } from '@/directives/RxzOverflowDirective';
 import { getService } from '@/common';
 
-const rxzOverflowDirective = getService(RxzOverflow);
+const rxzOverflowDirective = getService(RxzOverflowDirective);
 
 /**
  * Component: RxzDialog

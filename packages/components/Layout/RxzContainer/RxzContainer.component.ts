@@ -1,10 +1,10 @@
 import { getService } from '@/common';
-import { RxzResizeObserve } from '@/directives/RxzResizeObserve';
+import { RxzResizeObserveDirective } from '@/directives/RxzResizeObserveDirective';
 import { Options, Vue } from 'vue-class-component';
 import { Emit, Prop, Ref } from 'vue-property-decorator';
 import { RxzContainerPosition, RxzContainerSlotEnum } from './RxzContainer.declare';
 
-const rxzResizeObserveDirective = getService(RxzResizeObserve);
+const rxzResizeObserveDirective = getService(RxzResizeObserveDirective);
 
 /**
  * Component: RxzContainer

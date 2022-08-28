@@ -6,7 +6,7 @@ import { Injectable } from '@tanbo/vue-di-plugin';
 @Injectable({
   provideIn: 'root',
 })
-export class RxzResizeObserve implements ObjectDirective {
+export class RxzResizeObserveDirective implements ObjectDirective {
 
   name = 'rxz-resize-observe';
 

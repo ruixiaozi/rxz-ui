@@ -1,6 +1,6 @@
 # rxz-tooltip 提示指令
 
-<TestRxzTooltip></TestRxzTooltip>
+<TestRxzTooltipDirective></TestRxzTooltipDirective>
 
 ``` vue
 <template>
@@ -79,7 +79,7 @@
 
 ---
 
-<TestRxzTooltipExp1></TestRxzTooltipExp1>
+<TestRxzTooltipDirectiveExp1></TestRxzTooltipDirectiveExp1>
 
 ```vue
 <template>
@@ -91,7 +91,7 @@
 
 ---
 
-<TestRxzTooltipExp2></TestRxzTooltipExp2>
+<TestRxzTooltipDirectiveExp2></TestRxzTooltipDirectiveExp2>
 
 ```vue
 <template>

@@ -1,14 +1,12 @@
 import { App } from 'vue';
 import { RxzIcon } from './RxzIcon';
 import { RxzButton } from './RxzButton';
-import { RxzLoading } from './RxzLoading';
 import { RxzCountdownButton } from './RxzCountdownButton';
 import { RxzTheme } from './RxzTheme';
 import { install } from '@/common';
 
 export * from './RxzIcon';
 export * from './RxzButton';
-export * from './RxzLoading';
 export * from './RxzCountdownButton';
 export * from './RxzTheme';
 
@@ -16,7 +14,6 @@ export * from './RxzTheme';
 const baseComponents = [
   RxzIcon,
   RxzButton,
-  RxzLoading,
   RxzCountdownButton,
   RxzTheme,
 ];

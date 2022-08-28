@@ -1,12 +1,12 @@
 import { getService } from '@/common';
 import { RxzIcon } from '@/components/Base/RxzIcon';
 import { RxzValidators } from '@/definition';
-import { RxzOverflow } from '@/directives/RxzOverflow';
+import { RxzOverflowDirective } from '@/directives/RxzOverflowDirective';
 import { Options, Vue } from 'vue-class-component';
 import { Inject, Prop, Ref } from 'vue-property-decorator';
 import { RxzFormItemConfig } from '../RxzForm/RxzForm.declare';
 
-const rxzOverflowDirective = getService(RxzOverflow);
+const rxzOverflowDirective = getService(RxzOverflowDirective);
 
 /**
  * Component: RxzLabel

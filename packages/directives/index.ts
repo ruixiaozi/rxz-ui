@@ -1,13 +1,13 @@
 import { getService, install } from '@/common';
 import { App } from 'vue';
-import { RxzOverflow } from './RxzOverflow';
-import { RxzResizeObserve } from './RxzResizeObserve';
-import { RxzTooltip } from './RxzTooltip';
+import { RxzOverflowDirective } from './RxzOverflowDirective';
+import { RxzResizeObserveDirective } from './RxzResizeObserveDirective';
+import { RxzTooltipDirective } from './RxzTooltipDirective';
 
 const directives = [
-  getService(RxzOverflow),
-  getService(RxzResizeObserve),
-  getService(RxzTooltip),
+  getService(RxzOverflowDirective),
+  getService(RxzResizeObserveDirective),
+  getService(RxzTooltipDirective),
 ];
 
 export default {

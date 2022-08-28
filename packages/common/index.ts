@@ -1,4 +1,4 @@
-import { createI18n } from '@/i18n';
+import { RxzI18n } from '@/i18n';
 import { useReflectiveInjector } from '@tanbo/vue-di-plugin';
 import { App } from 'vue';
 
@@ -15,7 +15,7 @@ export function getService<T>(service: Class<T>): T {
 export const install = (cbk: {(app: App):void}) => (app: any, { i18n = {} }: RxzOption = {}) => {
   if (!app.$rxz) {
     app.$rxz = true;
-    app.use(createI18n(i18n));
+    app.use(RxzI18n, { i18n });
   }
   cbk(app);
 };

@@ -1,7 +1,7 @@
 <template>
   <RxzWaveProcess :process="20"></RxzWaveProcess>
   <RxzIcon></RxzIcon>
-   <div>{{ $t("test") }}</div>
+   <div>{{ $i18n("test") }}</div>
   <RxzLoading></RxzLoading>
   <RxzCountdownButton
     v-model="isStart"
@@ -63,16 +63,8 @@ import { RxzFormCnt } from '@/components/Form/RxzForm/RxzForm.component';
 import { RxzValidators } from '@/definition';
 import { Options, Vue } from 'vue-class-component';
 import { Ref } from 'vue-property-decorator';
-const zh = require('./assets/i18n/zh/common.json');
-const en = require('./assets/i18n/en/common.json');
-@Options({
-  i18n: {
-    messages: {
-      zh,
-      en,
-    },
-  },
-})
+
+@Options({})
 export default class App extends Vue {
 
   isStart = true;

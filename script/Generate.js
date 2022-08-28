@@ -245,10 +245,74 @@ function generateDeclare(name, needUpdate = 'true') {
     let nDeclareRes = insertStrNextLine(
       declareRes,
       'GlobalComponents {',
-      `    ${name}: typeof import('../packages/index')['${name}Declare'],`,
+      `    ${name}: typeof import('../packages/index')['${name}Declare'];`,
     );
     fs.writeFileSync(cntDeclarePath, nDeclareRes);
     updateFileSuccess(cntDeclarePath);
+  }
+}
+
+
+const apiIndexTpl = (name) => `import { getService, install } from '@/common';
+import { App } from 'vue';
+import { ${name}Service } from './${name}.service';
+
+export * from './${name}.declare';
+
+const _${name} = getService(${name}Service);
+
+(_${name} as any).install = install((app: App) => {
+  // 注册全局属性
+  app.config.globalProperties.$${name} = _${name};
+});
+
+export const ${name} = _${name};
+
+`;
+
+function generateApi(name, needUpdate = 'true', version = '2.0.0', des = '') {
+  const dir = path.join(__currentDir, name);
+
+  const declarePath = path.join(dir, `${name}.declare.ts`);
+  const indexPath = path.join(dir, 'index.ts');
+  const servicePath = path.join(dir, `${name}.service.ts`);
+  const parentIndexPath = path.join(__currentDir, 'index.ts');
+
+  if (needUpdate === 'true' && !fs.existsSync(parentIndexPath)) {
+    console.log('parent index is not exist');
+    return;
+  }
+
+  if (fs.existsSync(indexPath)) {
+    console.log('api is exist');
+    return;
+  }
+
+  fs.mkdirSync(dir);
+  fs.writeFileSync(declarePath, 'export {};');
+  createFileSuccess(declarePath);
+  fs.writeFileSync(indexPath, apiIndexTpl(name));
+  createFileSuccess(indexPath);
+  fs.writeFileSync(servicePath, serviceTpl(name, version, des));
+  createFileSuccess(servicePath);
+
+  if (needUpdate === 'true') {
+    const res = fs.readFileSync(parentIndexPath).toString();
+    let nRes = insertStrNextLine(res, 'import { ', `import { ${name} } from './${name}';`);
+    nRes = insertStrNextLine(nRes, 'export *', `export * from './${name}';`);
+    nRes = insertStrNextLine(nRes, ' = [', `  ${name},`);
+    fs.writeFileSync(parentIndexPath, nRes);
+    updateFileSuccess(parentIndexPath);
+
+    const apiDeclarePath = path.join(__dirname, '../typings/components.d.ts');
+    const declareRes = fs.readFileSync(apiDeclarePath).toString();
+    let nDeclareRes = insertStrNextLine(
+      declareRes,
+      'ComponentCustomProperties {',
+      `    $${name}: typeof import('../packages/index')['${name}'];`,
+    );
+    fs.writeFileSync(apiDeclarePath, nDeclareRes);
+    updateFileSuccess(apiDeclarePath);
   }
 }
 
@@ -275,6 +339,11 @@ switch (cmd) {
   case 'inner-component':
     if (param) {
       generateInnerComponent(param, ...options);
+    }
+    break;
+  case 'api':
+    if (param) {
+      generateApi(param, ...options);
     }
     break;
   default:

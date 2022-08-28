@@ -1,20 +1,22 @@
-import { createI18n as _createI18n } from 'vue-i18n';
 import { merge as _merge } from 'lodash';
+import { App } from 'vue';
 const zh = require('./zh.json');
 const en = require('./en.json');
 // 国际化语言资源
-const messages = {
+let messages = {
   // 英文
   en,
   // 中文
   zh,
 };
 
+let local = 'en';
+
 /**
  * 获取
  * @returns {string}
  */
-function getLocal() {
+export const getLocal = () => {
   const _localStorage = typeof localStorage === 'undefined' ? null : localStorage;
   const _navigator = typeof navigator === 'undefined' ? null : navigator;
 
@@ -28,13 +30,23 @@ function getLocal() {
   // 设置缓存
   _localStorage?.setItem('my_locale', localName);
   return localName;
-}
+};
 
-// 创建i18n实例
-export const createI18n = (localMessage = {}) => {
-  const mergeMessages = typeof localMessage === 'object' ? _merge(messages, localMessage) : messages;
-  return _createI18n({
-    locale: getLocal(),
-    messages: mergeMessages,
-  });
+export const getI18n = (value: string, params?: { [key: string | number]: string }): string => {
+  if (messages[local]?.[value]) {
+    let res = String(messages[local][value]);
+    if (params && typeof params === 'object') {
+      res = Object.entries(params).reduce((re, [key, param]) => re.replace(`{${key}}`, param), res);
+    }
+    return res;
+  }
+  return value;
+};
+
+export const RxzI18n = {
+  install: (app: App, { i18n = {} }) => {
+    local = getLocal();
+    messages = typeof i18n === 'object' ? _merge(messages, i18n) : messages;
+    app.config.globalProperties.$i18n = getI18n;
+  },
 };
