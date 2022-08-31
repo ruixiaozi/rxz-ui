@@ -1,7 +1,8 @@
-import { BUTTON_TYPE_ENUM, NATIVE_BUTTON_TYPE_ENUM, StringMap } from '@/definition';
+import { BUTTON_TYPE_ENUM, NATIVE_BUTTON_TYPE_ENUM } from './RxzButton.declare';
 import { Options, Vue } from 'vue-class-component';
-import { Emit, Prop } from 'vue-property-decorator';
+import { Prop } from 'vue-property-decorator';
 import { RxzIcon } from '../RxzIcon';
+import chroma from 'chroma-js';
 
 /**
  * Component: RxzButton
@@ -30,18 +31,6 @@ export class RxzButtonCnt extends Vue {
   @Prop({ type: String, default: NATIVE_BUTTON_TYPE_ENUM.button })
   readonly nativeType!: NATIVE_BUTTON_TYPE_ENUM;
 
-  @Prop({
-    type: Array,
-    default: () => [],
-  })
-  readonly cls!: Array<string>;
-
-  @Prop({
-    type: Object,
-    default: () => ({}),
-  })
-  readonly css!: StringMap;
-
   @Prop({ type: String, default: 'fit-content' })
   readonly width!: string;
 
@@ -66,6 +55,12 @@ export class RxzButtonCnt extends Vue {
   @Prop({ type: String, default: 'unset' })
   readonly hoverTextColor!: string;
 
+  @Prop({ type: Boolean, default: false })
+  readonly link!: boolean;
+
+  @Prop({ type: Boolean, default: true })
+  readonly underline!: boolean;
+
   // injects
 
   // refs
@@ -84,7 +79,22 @@ export class RxzButtonCnt extends Vue {
   }
 
   get hoverBgColorCPT(): string | undefined {
-    return this.hoverBgColor === 'unset' ? this.bgColorCPT : this.hoverBgColor;
+    // 如果设置了hover颜色，则直接返回
+    if (this.hoverBgColor !== 'unset') {
+      return this.hoverBgColor;
+    }
+
+    // 如果背景色未设置，hover也返回undefined
+    if (!chroma.valid(this.bgColor)) {
+      return undefined;
+    }
+
+    // 根据背景色来设置hover颜色，亮色降低亮度，暗色增加亮度
+    const colorObj = chroma(this.bgColor);
+    if (colorObj.luminance() >= 0.5) {
+      return colorObj.darken(1).hex();
+    }
+    return colorObj.brighten(1).hex();
   }
 
   get textColorCTP(): string | undefined {
@@ -101,9 +111,5 @@ export class RxzButtonCnt extends Vue {
   // hooks
 
   // methods
-  @Emit('click')
-  handleClick(event: Event): Event {
-    return event;
-  }
 
 }

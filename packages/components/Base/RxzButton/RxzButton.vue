@@ -1,7 +1,8 @@
 <template>
   <button
+    v-if="!link"
     class="rxz-button"
-    @click="handleClick"
+    v-bind="$attrs"
     @mouseover="isHover = true"
     @mouseout="isHover = false"
     :type="nativeType"
@@ -9,7 +10,6 @@
     :class="[
       type ? 'rxz-button-' + type : '',
       { 'rxz-button-is-disabled': disabled || loading },
-      ...cls,
     ]"
     :style="[
       { width: width },
@@ -20,15 +20,33 @@
       {
         color: isHover ? hoverTextColorCPT : textColorCTP,
       },
-      css,
     ]"
   >
     <RxzIcon v-if="loading" name="spinner" spinner></RxzIcon>
-
     <span>
       <slot>RxzButton</slot>
     </span>
   </button>
+  <a
+    v-else
+    v-bind="$attrs"
+    @mouseover="isHover = true"
+    @mouseout="isHover = false"
+    class="rxz-link"
+    :disabled="disabled"
+    :class="[
+      type ? 'rxz-link-' + type : '',
+      { 'rxz-link-is-disabled': disabled},
+    ]"
+    :style="[
+      {
+        color: isHover ? hoverTextColorCPT : textColorCTP,
+        textDecoration: isHover && underline && !disabled ? 'underline' : 'none',
+      },
+    ]"
+    >
+    <slot>RxzLink</slot>
+  </a>
 </template>
 
 <script lang="ts">

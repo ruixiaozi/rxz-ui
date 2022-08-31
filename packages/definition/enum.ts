@@ -6,19 +6,6 @@ export enum ICON_SIZE_ENUM {
   big4,
 }
 
-export enum BUTTON_TYPE_ENUM {
-  default='default',
-  primary='primary',
-  success='success',
-  information='information',
-}
-
-export enum NATIVE_BUTTON_TYPE_ENUM {
-  button='button',
-  reset='reset',
-  submit='submit',
-}
-
 export enum DIRECTION_ENUM {
   vertical='vertical',
   horizontal='horizontal',
