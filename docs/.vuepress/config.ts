@@ -53,7 +53,6 @@ module.exports = {
             '/components/base/rxzbutton.md',
             '/components/base/rxzcountdownbutton.md',
             '/components/base/rxzicon.md',
-            '/components/base/rxztheme.md',
           ]
         },
         {
@@ -117,6 +116,7 @@ module.exports = {
             '/directives/base/rxzresizeobserve',
             '/directives/base/rxztooltip',
             '/directives/base/rxzloading',
+            '/directives/base/rxztheme',
           ]
         }
       ],

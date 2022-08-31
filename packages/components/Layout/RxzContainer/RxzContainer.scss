@@ -6,6 +6,7 @@
   pointer-events: none;
   display: grid;
 
+  // 仅容器pointer-events为null，其他的子元素还原
   ::v-deep * {
     pointer-events: auto;
   }
