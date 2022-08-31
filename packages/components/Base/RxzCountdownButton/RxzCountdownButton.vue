@@ -1,5 +1,5 @@
 <template>
-  <RxzButton :disabled="isStart" :type="type" @click="handleClick">
+  <RxzButton v-bind="$attrs" :disabled="isStart" :type="type">
     <!-- 倒计时显示的文字 -->
     <slot name="countdownValue" v-if="isStart"></slot>
     <span v-if="isStart">({{ sec }}s)</span>

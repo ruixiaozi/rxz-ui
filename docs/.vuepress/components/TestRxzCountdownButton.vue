@@ -1,5 +1,5 @@
 <template>
-  <rxz-countdown-button v-model="isStart" :seconds="10">
+  <rxz-countdown-button v-model="isStart" :seconds="10" @click="handleClick">
     <template v-slot:countdownValue>等待中</template>
     按钮
   </rxz-countdown-button>
@@ -12,6 +12,10 @@ export default {
       isStart:true
     }
   },
-
+  methods: {
+    handleClick() {
+      console.log('click');
+    }
+  }
 };
 </script>

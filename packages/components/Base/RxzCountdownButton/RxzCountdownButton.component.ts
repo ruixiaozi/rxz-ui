@@ -1,7 +1,7 @@
 import { RxzButton } from '../RxzButton';
-import { BUTTON_TYPE_ENUM } from '@/definition';
+import { BUTTON_TYPE_ENUM } from '../RxzButton/RxzButton.declare';
 import { Options, Vue } from 'vue-class-component';
-import { Emit, Model, Prop, Watch } from 'vue-property-decorator';
+import { Model, Prop, Watch } from 'vue-property-decorator';
 
 /**
  * Component: RxzCountdownButton
@@ -58,11 +58,6 @@ export class RxzCountdownButtonCnt extends Vue {
     if (--this.sec <= 0) {
       this.isStart = false;
     }
-  }
-
-  @Emit('click')
-  handleClick(event: Event): Event {
-    return event;
   }
 
   operate(isStart: boolean): void {

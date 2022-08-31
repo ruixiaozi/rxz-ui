@@ -1,4 +1,15 @@
-import { StringMap } from '@/definition';
+export enum BUTTON_TYPE_ENUM {
+  default='default',
+  primary='primary',
+  success='success',
+  information='information',
+}
+
+export enum NATIVE_BUTTON_TYPE_ENUM {
+  button='button',
+  reset='reset',
+  submit='submit',
+}
 
 export class RxzButtonDeclare {
 
@@ -9,8 +20,6 @@ export class RxzButtonDeclare {
     loading?: boolean;
     type?: string;
     nativeType?: string;
-    cls?: Array<string>;
-    css?: StringMap;
     width?: string;
     height?: string;
     padding?: string;
@@ -19,10 +28,11 @@ export class RxzButtonDeclare {
     hoverBgColor?: string;
     textColor?: string;
     hoverTextColor?: string;
+    link?: boolean;
+    underline?: boolean;
   };
 
   declare $emit: {
-    (e: 'click', event: Event): any;
   }
 
 }
