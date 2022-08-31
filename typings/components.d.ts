@@ -7,7 +7,6 @@ declare module 'vue' {
     RxzSwitch: typeof import('../packages/index')['RxzSwitchDeclare'];
     RxzFlex: typeof import('../packages/index')['RxzFlexDeclare'];
     RxzFlipCard: typeof import('../packages/index')['RxzFlipCardDeclare'];
-    RxzTheme: typeof import('../packages/index')['RxzThemeDeclare'];
     RxzIcon: typeof import('../packages/index')['RxzIconDeclare'];
     RxzCountdownButton: typeof import('../packages/index')['RxzCountdownButtonDeclare'];
     RxzButton: typeof import('../packages/index')['RxzButtonDeclare'];

@@ -14,13 +14,40 @@
       // & sass嵌套里的父容器标识   @content是混合器插槽，像vue的slot
       // 将默认样式混入
       @if $theme-name == "default"{
-        &{
+        // 主题属性与父容器属性中间还有多级dom
+        [data-theme="default"] :not([data-theme]) & {
+          @content;
+        }
+
+        // 主题属性与父容器是父子关系
+        [data-theme="default"] > & {
+          @content;
+        }
+
+        // 主题属性就在父容器上，权重更多
+        &[data-theme][data-theme][data-theme="default"] {
+          @content;
+        }
+
+        // 默认
+        & {
           @content;
         }
       }
       @else{
         // 判断data-theme的属性值  #{}是sass的插值表达式
-        [data-theme="#{$theme-name}"] & {
+        // 主题属性与父容器属性中间还有多级dom
+        [data-theme="#{$theme-name}"] :not([data-theme]) & {
+          @content;
+        }
+
+        // 主题属性与父容器是父子关系
+        [data-theme="#{$theme-name}"] > & {
+          @content;
+        }
+
+        // 主题属性就在父容器上，权重更多
+        &[data-theme][data-theme][data-theme="#{$theme-name}"] {
           @content;
         }
       }
