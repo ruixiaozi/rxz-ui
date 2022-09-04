@@ -1,9 +1,9 @@
 <template>
   <div>
-    <rxz-container class="content" v-rxz-loading="showLoading">
+    <div class="content" v-rxz-loading="showLoading">
       我是文本内容
       <rxz-button @click="handleTry">试一下</rxz-button>
-    </rxz-container>
+    </div>
     <rxz-button @click="refresh" type="primary">刷新</rxz-button>
   </div>
 </template>
@@ -29,9 +29,11 @@ export default {
 </script>
 <style scoped>
 .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 200px;
   height: 200px;
-  position: relative;
   margin-bottom: 20px;
 }
 </style>

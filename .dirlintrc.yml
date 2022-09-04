@@ -71,6 +71,7 @@ exceptions:
   - /packages/style
   - /packages/themes
   - /packages/images
+  - /packages/icons
   - /script
   - /global.d.ts
 

@@ -15,7 +15,7 @@
       @click="handleSelect(item)"
     >
       <rxz-icon
-        :name="isSelect(item) ? 'check-square' : 'square-o'"
+        :name="isSelect(item) ? 'checkbox-fill' : 'checkbox-empty'"
       ></rxz-icon>
       <span class="rxz-checkbox-item-label">{{ item.label }}</span>
     </div>

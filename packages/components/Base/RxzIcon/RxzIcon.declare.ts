@@ -1,5 +1,3 @@
-import { StringMap } from '@/definition';
-
 export class RxzIconDeclare {
 
   declare name: 'RxzIcon';
@@ -7,11 +5,9 @@ export class RxzIconDeclare {
   declare $props: {
     name?: string;
     size?: number;
-    isFixedWidth?: boolean;
     spinner?: boolean;
+    step?: number;
     rotate?: string;
-    cls?: Array<string>;
-    css?: StringMap;
   };
 
   declare $emit: {

@@ -3,9 +3,16 @@
 .rxz-button {
   transition: all 0.1s;
   cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 
   // 默认样式，有边框
   border: 1px solid #d5e7fc;
+
+  &-loading {
+    margin-right: 4px
+  }
 
 
   @include themeify.button_color("default", false);

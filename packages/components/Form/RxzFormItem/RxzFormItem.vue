@@ -3,7 +3,7 @@
     <slot :itemData="formData?.[name]"></slot>
   </div>
   <div v-if="tip" class="error-tip" :style="{ marginLeft:  labelWidthPx}">
-      <RxzIcon name="exclamation-circle"></RxzIcon>
+      <RxzIcon name="exclamation"></RxzIcon>
       {{ tip }}
     </div>
 </template>

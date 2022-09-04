@@ -28,9 +28,9 @@
       <slot name="infront"></slot>
     </div>
     <div class="rxz-input-in-rear rxz-input-vmid" ref="inrear">
-      <rxz-icon v-if="showCapslock" name="font" class="rxz-input-capslock"></rxz-icon>
-      <rxz-icon v-if="showClear" name="times-circle" class="rxz-input-clear" @click="clearText()"></rxz-icon>
-      <rxz-icon v-if="password" :name="openEye ? 'eye' : 'eye-slash'" class="rxz-input-eye" @click="changeEye()"></rxz-icon>
+      <rxz-icon v-if="showCapslock" name="capslock" class="rxz-input-capslock"></rxz-icon>
+      <rxz-icon v-if="showClear" name="clear" class="rxz-input-clear" @click="clearText()"></rxz-icon>
+      <rxz-icon v-if="password" :name="openEye ? 'eye' : 'eye-close'" class="rxz-input-eye" @click="changeEye()"></rxz-icon>
       <slot name="inrear"></slot>
     </div>
   </div>

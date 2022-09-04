@@ -15,7 +15,7 @@
       @click="handleSelect(item)"
     >
       <rxz-icon
-        :name="formValue.value?.value === item.value ? 'dot-circle-o' : 'circle-o'"
+        :name="formValue.value?.value === item.value ? 'radio-fill' : 'radio-empty'"
       ></rxz-icon>
       <span class="rxz-radio-item-label">{{ item.label }}</span>
     </div>

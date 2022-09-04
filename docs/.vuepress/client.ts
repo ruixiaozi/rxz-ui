@@ -1,6 +1,7 @@
 import { defineClientConfig } from '@vuepress/client';
 import { RxzUI } from '@/index';
 import { RxzOption } from '@/common';
+import IconDisplay from './components/icon/IconDisplay.vue';
 import TestRxzCountdownButton from './components/TestRxzCountdownButton.vue';
 import TestRxzFlipCard from './components/TestRxzFlipCard.vue';
 import TestRxzForm from './components/form/TestRxzForm.vue';
@@ -73,6 +74,7 @@ export default defineClientConfig({
         },
       }
     } as RxzOption);
+    app.component('IconDisplay', IconDisplay);
     app.component('TestRxzCountdownButton', TestRxzCountdownButton);
     app.component('TestRxzFlipCard', TestRxzFlipCard);
     app.component('TestRxzForm', TestRxzForm);

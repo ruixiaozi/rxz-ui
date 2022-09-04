@@ -1,15 +1,16 @@
 <template>
   <i
-    class="fa"
+    class="rxz-icon"
     :class="[
-      'fa-' + name,
-      'fa-rotate-' + rotate,
-      sizeCPT,
-      { 'fa-fw': isFixedWidth },
-      { 'fa-spin': spinner },
-      ...cls,
+      'rxz-icon-' + name,
     ]"
-    :style="[css]"
+    :style="{
+      width: `${size}px`,
+      height: `${size}px`,
+      fontSize: `${size}px`,
+      transform: `rotate(${realRotate}deg)`
+    }"
+    v-bind="$attrs"
   ></i>
 </template>
 

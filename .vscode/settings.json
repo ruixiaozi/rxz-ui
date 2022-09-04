@@ -20,5 +20,6 @@
         "commandCenter.border": "#15202b99"
     },
     "peacock.color": "#42b883",
-    "window.title": "RXZ-UI"
+    "window.title": "RXZ-UI",
+    "svg.preview.background": "transparent"
 }
