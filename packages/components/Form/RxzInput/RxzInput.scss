@@ -79,13 +79,14 @@
 
   &-capslock {
     @include themeify.themeify {
-      border: 1px solid themeify.getColor("primary", false);
-      padding: 2px;
       color: themeify.getColor("primary", false);
     }
   }
 
   &-eye {
     cursor: pointer;
+    @include themeify.themeify {
+      color: themeify.getColor("primary", false);
+    }
   }
 }

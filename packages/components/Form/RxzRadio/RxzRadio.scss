@@ -8,6 +8,8 @@
 
   &-item {
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
 
     &:not(:last-child) {
       padding-right: 8px;

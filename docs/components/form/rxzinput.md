@@ -140,7 +140,7 @@ export default {
 <template>
   <rxz-input v-model="data">
     <template v-slot:infront>
-      <rxz-icon name="user-circle-o"></rxz-icon>
+      <rxz-icon name="user"></rxz-icon>
     </template>
     <template v-slot:inrear>
       <rxz-icon name="edit"></rxz-icon>

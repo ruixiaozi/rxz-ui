@@ -1,5 +1,6 @@
 import { getService, install } from '@/common';
 import { App } from 'vue';
+import { RxzBadgeDirective } from './RxzBadgeDirective';
 import { RxzLoadingirective } from './RxzLoadingirective';
 import { RxzOverflowDirective } from './RxzOverflowDirective';
 import { RxzResizeObserveDirective } from './RxzResizeObserveDirective';
@@ -12,6 +13,7 @@ const directives = [
   getService(RxzTooltipDirective),
   getService(RxzLoadingirective),
   getService(RxzThemeDirective),
+  getService(RxzBadgeDirective),
 ];
 
 export default {

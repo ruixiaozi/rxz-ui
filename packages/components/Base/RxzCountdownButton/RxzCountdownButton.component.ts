@@ -61,13 +61,14 @@ export class RxzCountdownButtonCnt extends Vue {
   }
 
   operate(isStart: boolean): void {
-    if (isStart) {
+    if (isStart && !this.timer) {
       this.timer = setInterval(() => {
         this.countDown();
       }, 1000);
       this.sec = this.seconds;
     } else if (this.timer) {
       clearInterval(this.timer);
+      this.timer = null;
     }
   }
 

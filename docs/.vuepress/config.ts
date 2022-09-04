@@ -12,6 +12,7 @@ module.exports = {
     navbar: [
       { text: '指南', link: '/guide/' },
       { text: '全局API', link: '/apis/' },
+      { text: 'ICON', link: '/icon/' },
       { text: '组件', link: '/components/' },
       { text: '指令', link: '/directives/' },
       {
@@ -117,6 +118,7 @@ module.exports = {
             '/directives/base/rxztooltip',
             '/directives/base/rxzloading',
             '/directives/base/rxztheme',
+            '/directives/base/rxzbadge',
           ]
         }
       ],

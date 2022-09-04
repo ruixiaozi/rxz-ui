@@ -22,7 +22,7 @@
       },
     ]"
   >
-    <RxzIcon v-if="loading" name="spinner" spinner></RxzIcon>
+    <RxzIcon v-if="loading" class="rxz-button-loading" name="loading" spinner :step="45"></RxzIcon>
     <span>
       <slot>RxzButton</slot>
     </span>
