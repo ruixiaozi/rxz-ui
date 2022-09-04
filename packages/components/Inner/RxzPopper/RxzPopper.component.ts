@@ -2,7 +2,7 @@ import { RxzContainer } from './../../Layout/RxzContainer/index';
 import { RxzContainerPosition } from './../../Layout/RxzContainer/RxzContainer.declare';
 import { Options, Vue } from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
-import { RxzToolTipPos } from '@/directives/RxzTooltipDirective';
+import { RxzToolTipPos } from './RxzPopper.declare';
 
 /**
  * Component: RxzPopper

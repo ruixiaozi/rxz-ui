@@ -1,25 +1,11 @@
 import { RxzPopperCnt } from '../components/Inner/RxzPopper/RxzPopper.component';
-import { RxzPopper } from '../components/Inner/RxzPopper/index';
+import { RxzPopper, RxzToolTipPos } from '../components/Inner/RxzPopper/index';
 import { DirectiveBinding, h, ObjectDirective, VNode } from 'vue';
 import { InjectService } from '@/common';
 import { RxzPopupService } from '@/api/common/RxzPopup.service';
 import { debounce as _debounce, uniqueId as _uniqueId } from 'lodash';
 import { Injectable } from '@tanbo/vue-di-plugin';
 
-export enum RxzToolTipPos {
-  topleft='topleft',
-  top='top',
-  topright='topright',
-  lefttop='lefttop',
-  left='left',
-  leftbottom='leftbottom',
-  bottomleft='bottomleft',
-  bottom='bottom',
-  bottomright='bottomright',
-  righttop='righttop',
-  right='right',
-  rightbottom='rightbottom',
-}
 
 interface ElementPos {
   offsetLeft: number;
