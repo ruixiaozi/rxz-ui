@@ -1,4 +1,5 @@
 import { defineClientConfig } from '@vuepress/client';
+import { defineClientConfig } from '@vuepress/client';
 import { RxzUI } from '@/index';
 import { RxzOption } from '@/common';
 import IconDisplay from './components/icon/IconDisplay.vue';
@@ -50,6 +51,8 @@ import TestRxzModalExp3 from './components/modal/TestRxzModalExp3.vue';
 import TestRxzModalExp4 from './components/modal/TestRxzModalExp4.vue';
 import TestRxzModalExp5 from './components/modal/TestRxzModalExp5.vue';
 import TestRxzModalExp6 from './components/modal/TestRxzModalExp6.vue';
+import TestRxzModalExp7 from './components/modal/TestRxzModalExp7.vue';
+import TestRxzModalExp8 from './components/modal/TestRxzModalExp8.vue';
 import TestRxzTooltipDirective from './components/tooltip/TestRxzTooltipDirective.vue';
 import TestRxzTooltipDirectiveExp1 from './components/tooltip/TestRxzTooltipDirectiveExp1.vue';
 import TestRxzTooltipDirectiveExp2 from './components/tooltip/TestRxzTooltipDirectiveExp2.vue';
@@ -123,6 +126,8 @@ export default defineClientConfig({
     app.component('TestRxzModalExp4', TestRxzModalExp4);
     app.component('TestRxzModalExp5', TestRxzModalExp5);
     app.component('TestRxzModalExp6', TestRxzModalExp6);
+    app.component('TestRxzModalExp7', TestRxzModalExp7);
+    app.component('TestRxzModalExp8', TestRxzModalExp8);
     app.component('TestRxzTooltipDirective', TestRxzTooltipDirective);
     app.component('TestRxzTooltipDirectiveExp1', TestRxzTooltipDirectiveExp1);
     app.component('TestRxzTooltipDirectiveExp2', TestRxzTooltipDirectiveExp2);
@@ -131,6 +136,7 @@ export default defineClientConfig({
     app.component('TestRxzLoadingExp2', TestRxzLoadingExp2);
     app.component('TestRxzLoadingExp3', TestRxzLoadingExp3);
     app.component('TestRxzLoadingDirective', TestRxzLoadingDirective);
+
   },
   setup() {},
   rootComponents: [],

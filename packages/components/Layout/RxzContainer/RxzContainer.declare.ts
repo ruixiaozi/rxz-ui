@@ -30,6 +30,8 @@ export class RxzContainerDeclare {
     position?: string;
     offsetX?: number;
     offsetY?: number;
+    contentW?: string;
+    contentH?: string;
     // 是否允许内容溢出边界
     allowOverflow?: boolean;
   };

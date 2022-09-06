@@ -24,6 +24,8 @@
 | position      | RxzContainerPosition | 默认插槽内容位置               | 见RxzContainerPosition枚举 | RxzContainerPosition.CENTER |     |
 | offsetX       | Number               | 默认插槽内容相对于position的X轴偏移 | -                       | 0                           |     |
 | offsetY       | Number               | 默认插槽内容相对于position的Y轴偏移 | -                       | 0                           |     |
+| contentW      | String               | 内容宽度                   | -                       | undefined                   |     |
+| contentH      | String               | 内容高度                   | -                       | undefined                   |     |
 | allowOverflow | Boolean              | 默认插槽是否允许内容溢出边界         | true/false              | false                       |     |
 
 ## Event 事件
@@ -64,9 +66,11 @@
     BOTTOM_RIGHT='BOTTOM_RIGHT',
    }
    ```
+
 2. RxzContainerSlotEnum
-  ```ts
-  export enum RxzContainerSlotEnum {
+   
+   ```ts
+   export enum RxzContainerSlotEnum {
     topleft='topleft',
     topcenter='topcenter',
     topright='topright',
@@ -76,8 +80,8 @@
     bottomleft='bottomleft',
     bottomcenter='bottomcenter',
     bottomright='bottomright',
-  }
-  ```
+   }
+   ```
 
 ## Example 案例
 

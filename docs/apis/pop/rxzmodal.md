@@ -56,24 +56,26 @@ export default {
 
 ``` ts
 interface RxzModalOptions {
-  // 内容宽度，（默认值'400px'）
+  // 内容宽度
   width?: string;
-  // 是否显示关闭按钮，（默认值true）
+  // 是否显示关闭按钮
   isShowClose?: boolean;
-  // 是否允许点击遮罩关闭，（默认值true）
+  // 是否允许点击遮罩关闭
   allowOuterClose?: boolean;
-  // 标题，可以是字符串、组件、虚拟NODE，（默认值''）
+  // 标题，可以是字符串、组件、虚拟NODE
   title?: string | Component | VNode;
   // 组件的props（事件用onXxx）
   titleCntProps?: any;
-  // 内容，可以是字符串、组件、虚拟NODE，（默认值'Modal'）
+  // 内容，可以是字符串、组件、虚拟NODE
   content?: string | Component | VNode;
   // 组件的props（事件用onXxx）
   contentCntProps?: any;
-  // 打开关闭的过度效果，（默认值opacity）
+  // 打开关闭的过度效果 (默认值为bounce，仅普通弹窗有效)
   transition?: 'opacity' | 'bounce';
   // 是否允许拖拽 (默认值为false)
   allowDrag?: boolean;
+  // 是否为抽屉， (默认值为false)
+  drawer?: boolean;
   // 窗口关闭回调
   onClose?: () => void;
 }
@@ -246,6 +248,56 @@ export default {
 ---
 
 <TestRxzModalExp6></TestRxzModalExp6>
+
+``` vue
+<template>
+  <rxz-button ref="bt" @click="handleAdd()">打开Modal</rxz-button>
+</template>
+<script>
+export default {
+  methods: {
+    handleAdd() {
+      this.$RxzModal.create({
+        title: '我是标题',
+        content: '我是内容',
+        allowDrag: true,
+      });
+    },
+  }
+}
+</script>
+```
+
+### 7. 抽屉
+
+---
+
+<TestRxzModalExp7></TestRxzModalExp7>
+
+``` vue
+<template>
+  <rxz-button ref="bt" @click="handleAdd()">打开Modal</rxz-button>
+</template>
+<script>
+export default {
+  methods: {
+    handleAdd() {
+      this.$RxzModal.create({
+        title: '我是标题',
+        content: '我是内容',
+        allowDrag: true,
+      });
+    },
+  }
+}
+</script>
+```
+
+### 8. 多级抽屉
+
+---
+
+<TestRxzModalExp8></TestRxzModalExp8>
 
 ``` vue
 <template>

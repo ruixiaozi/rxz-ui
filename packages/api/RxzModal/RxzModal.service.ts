@@ -65,10 +65,17 @@ export class RxzModalService {
   }
 
   private createModal(key, options?: RxzModalOptions) {
+    const params = _omit(options, 'title', 'titleCntProps', 'content', 'contentCntProps');
+    if (options?.drawer) {
+      params.transition = 'move' as any;
+    } else if (params.transition === ('move' as any)) {
+      // 非抽屉不能使用move动画
+      params.transition = 'bounce';
+    }
     return h(
       RxzDialog as any,
       {
-        ..._omit(options, 'title', 'titleCntProps', 'content', 'contentCntProps'),
+        ...params,
         zIndex: this.rxzPopupService?.zIndexNext() || 3000,
         onClose: () => {
           options?.onClose?.();

@@ -11,6 +11,8 @@
       :style="{
         left: `${contentX}px`,
         top: `${contentY}px`,
+        width: contentW,
+        height: contentH,
         opacity: contentX === null || contentY === null ? 0 : 1
       }"
       v-rxz-resize-observe="(event) => resize(event)"

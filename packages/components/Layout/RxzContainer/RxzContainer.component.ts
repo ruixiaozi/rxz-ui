@@ -34,6 +34,12 @@ export class RxzContainerCnt extends Vue {
   @Prop({ type: Boolean, default: false })
   allowOverflow!: boolean;
 
+  @Prop({ type: String })
+  contentW?: boolean;
+
+  @Prop({ type: String })
+  contentH?: boolean;
+
   // injects
 
   // refs
