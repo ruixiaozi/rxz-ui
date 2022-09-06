@@ -38,11 +38,14 @@ export class RxzDialogCnt extends Vue {
   @Prop({ type: Boolean, default: true })
   readonly allowOuterClose!: boolean;
 
-  @Prop({ type: String, default: 'opacity' })
-  readonly transition!: 'opacity' | 'bounce';
+  @Prop({ type: String, default: 'bounce' })
+  readonly transition!: 'opacity' | 'bounce' | 'move';
 
   @Prop({ type: Boolean, default: false })
   readonly allowDrag!: boolean;
+
+  @Prop({ type: Boolean, default: false })
+  readonly drawer!: boolean;
 
 
   // injects

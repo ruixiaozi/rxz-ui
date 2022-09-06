@@ -60,17 +60,38 @@
 }
 
 .opacity-anim-enter-active {
-  animation: opacity-anim 0.2s;
+  animation: opacity-anim 0.3s;
 }
 .opacity-anim-leave-active {
-  animation: opacity-anim 0.2s reverse;
+  animation: opacity-anim 0.3s reverse;
 }
 
 .bounce-anim-enter-active {
-  animation: bounce-in 0.3s;
+  animation: opacity-anim 0.3s;
+  .rxz-dialog-content {
+    animation: bounce-in 0.3s;
+  }
+
 }
 .bounce-anim-leave-active {
-  animation: opacity-anim 0.2s reverse;
+  animation: opacity-anim 0.3s reverse;
+  .rxz-dialog-content {
+    animation: bounce-in 0.3s reverse;
+  }
+}
+
+.move-anim-enter-active {
+  animation: opacity-anim 0.3s;
+  .rxz-dialog-content {
+    animation: move-anim 0.3s ;
+  }
+
+}
+.move-anim-leave-active {
+  animation: opacity-anim 0.3s reverse;
+  .rxz-dialog-content {
+    animation: move-anim 0.3s reverse;
+  }
 }
 
 @keyframes bounce-in {
@@ -94,5 +115,14 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes move-anim {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
