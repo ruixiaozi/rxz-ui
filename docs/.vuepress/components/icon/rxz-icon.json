@@ -6,15 +6,19 @@
   "clear",
   "close",
   "edit",
+  "error",
   "exclamation",
   "eye-close",
   "eye",
+  "information",
   "loading",
   "radio-empty",
   "radio-fill",
   "refresh",
   "search",
   "subtract",
+  "success",
   "transfer",
-  "user"
+  "user",
+  "warning"
 ]

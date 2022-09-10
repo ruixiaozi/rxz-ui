@@ -15,10 +15,10 @@
   }
 
 
-  @include themeify.button_color("default", false);
+  @include themeify.theme_color("default", false);
 
   &:not(.rxz-button-is-disabled):hover {
-    @include themeify.button_color("default", true);
+    @include themeify.theme_color("default", true);
   }
 
 
@@ -26,10 +26,10 @@
   @each $type in "primary", "success", "information" {
     &.rxz-button-#{$type} {
       border: none;
-      @include themeify.button_color($type, false);
+      @include themeify.theme_color($type, false);
 
       &:not(.rxz-button-is-disabled):hover {
-        @include themeify.button_color($type, true);
+        @include themeify.theme_color($type, true);
       }
     }
   }

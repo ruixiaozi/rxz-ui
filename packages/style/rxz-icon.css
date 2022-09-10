@@ -1,11 +1,11 @@
 @font-face {
   font-family: "rxz-icon";
-  src: url('../fonts/rxz-icon.eot?t=1662315691619'); /* IE9*/
-  src: url('../fonts/rxz-icon.eot?t=1662315691619#iefix') format('embedded-opentype'), /* IE6-IE8 */
-  url("../fonts/rxz-icon.woff2?t=1662315691619") format("woff2"),
-  url("../fonts/rxz-icon.woff?t=1662315691619") format("woff"),
-  url('../fonts/rxz-icon.ttf?t=1662315691619') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url('../fonts/rxz-icon.svg?t=1662315691619#rxz-icon') format('svg'); /* iOS 4.1- */
+  src: url('../fonts/rxz-icon.eot?t=1662777650246'); /* IE9*/
+  src: url('../fonts/rxz-icon.eot?t=1662777650246#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url("../fonts/rxz-icon.woff2?t=1662777650246") format("woff2"),
+  url("../fonts/rxz-icon.woff?t=1662777650246") format("woff"),
+  url('../fonts/rxz-icon.ttf?t=1662777650246') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('../fonts/rxz-icon.svg?t=1662777650246#rxz-icon') format('svg'); /* iOS 4.1- */
 }
 
 [class^="rxz-icon-"], [class*=" rxz-icon-"] {
@@ -27,15 +27,19 @@
 .rxz-icon-clear:before { content: "\ea05"; }
 .rxz-icon-close:before { content: "\ea06"; }
 .rxz-icon-edit:before { content: "\ea07"; }
-.rxz-icon-exclamation:before { content: "\ea08"; }
-.rxz-icon-eye-close:before { content: "\ea09"; }
-.rxz-icon-eye:before { content: "\ea0a"; }
-.rxz-icon-loading:before { content: "\ea0b"; }
-.rxz-icon-radio-empty:before { content: "\ea0c"; }
-.rxz-icon-radio-fill:before { content: "\ea0d"; }
-.rxz-icon-refresh:before { content: "\ea0e"; }
-.rxz-icon-search:before { content: "\ea0f"; }
-.rxz-icon-subtract:before { content: "\ea10"; }
-.rxz-icon-transfer:before { content: "\ea11"; }
-.rxz-icon-user:before { content: "\ea12"; }
+.rxz-icon-error:before { content: "\ea08"; }
+.rxz-icon-exclamation:before { content: "\ea09"; }
+.rxz-icon-eye-close:before { content: "\ea0a"; }
+.rxz-icon-eye:before { content: "\ea0b"; }
+.rxz-icon-information:before { content: "\ea0c"; }
+.rxz-icon-loading:before { content: "\ea0d"; }
+.rxz-icon-radio-empty:before { content: "\ea0e"; }
+.rxz-icon-radio-fill:before { content: "\ea0f"; }
+.rxz-icon-refresh:before { content: "\ea10"; }
+.rxz-icon-search:before { content: "\ea11"; }
+.rxz-icon-subtract:before { content: "\ea12"; }
+.rxz-icon-success:before { content: "\ea13"; }
+.rxz-icon-transfer:before { content: "\ea14"; }
+.rxz-icon-user:before { content: "\ea15"; }
+.rxz-icon-warning:before { content: "\ea16"; }
 

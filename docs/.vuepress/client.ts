@@ -61,6 +61,9 @@ import TestRxzLoadingExp1 from './components/loading/TestRxzLoadingExp1.vue';
 import TestRxzLoadingExp2 from './components/loading/TestRxzLoadingExp2.vue';
 import TestRxzLoadingExp3 from './components/loading/TestRxzLoadingExp3.vue';
 import TestRxzLoadingDirective from './components/loading/TestRxzLoadingDirective.vue';
+import TestRxzTip from './components/tip/TestRxzTip.vue';
+import TestRxzTipExp1 from './components/tip/TestRxzTipExp1.vue';
+import TestRxzTipExp2 from './components/tip/TestRxzTipExp2.vue';
 
 
 export default defineClientConfig({
@@ -136,6 +139,9 @@ export default defineClientConfig({
     app.component('TestRxzLoadingExp2', TestRxzLoadingExp2);
     app.component('TestRxzLoadingExp3', TestRxzLoadingExp3);
     app.component('TestRxzLoadingDirective', TestRxzLoadingDirective);
+    app.component('TestRxzTip', TestRxzTip);
+    app.component('TestRxzTipExp1', TestRxzTipExp1);
+    app.component('TestRxzTipExp2', TestRxzTipExp2);
 
   },
   setup() {},

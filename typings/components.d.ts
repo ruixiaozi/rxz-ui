@@ -1,6 +1,7 @@
 declare module 'vue' {
   // GlobalComponents for Volar
   export interface GlobalComponents {
+    RxzTip: typeof import('../packages/index')['RxzTipDeclare'],
     RxzContainer: typeof import('../packages/index')['RxzContainerDeclare'];
     RxzTextarea: typeof import('../packages/index')['RxzTextareaDeclare'];
     RxzCheckbox: typeof import('../packages/index')['RxzCheckboxDeclare'];
