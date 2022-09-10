@@ -41,6 +41,7 @@ module.exports = {
           children: [
             '/apis/pop/rxzmodal',
             '/apis/pop/rxzloading',
+            '/apis/pop/rxztips',
           ]
         }
       ],

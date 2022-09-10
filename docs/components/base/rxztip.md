@@ -38,6 +38,13 @@ export enum TIP_TYPE_ENUM {
 }
 ```
 
+## Event 事件
+
+| 事件名称   | 描述                      | 回调参数列表 |
+| ------ | ----------------------- | ------ |
+| show   | 调用show() api触发的事件       | -      |
+| hidden | 调用show() api或者点击关闭触发的事件 | -      |
+
 ## API
 
 1. show(): void 显示提示条
@@ -50,7 +57,6 @@ export enum TIP_TYPE_ENUM {
 ---
 
 <TestRxzTipExp1></TestRxzTipExp1>
-
 
 ```vue
 <template>
@@ -73,7 +79,6 @@ div > * {
 ---
 
 <TestRxzTipExp2></TestRxzTipExp2>
-
 
 ```vue
 <template>

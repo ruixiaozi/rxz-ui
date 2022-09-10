@@ -16,6 +16,8 @@ export class RxzTipDeclare {
   };
 
   declare $emit: {
+    (e: 'show', ...args: any[]): any;
+    (e: 'hidden', ...args: any[]): any;
   }
 
 }

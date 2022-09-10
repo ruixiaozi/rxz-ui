@@ -1,5 +1,4 @@
 import { defineClientConfig } from '@vuepress/client';
-import { defineClientConfig } from '@vuepress/client';
 import { RxzUI } from '@/index';
 import { RxzOption } from '@/common';
 import IconDisplay from './components/icon/IconDisplay.vue';
@@ -64,6 +63,9 @@ import TestRxzLoadingDirective from './components/loading/TestRxzLoadingDirectiv
 import TestRxzTip from './components/tip/TestRxzTip.vue';
 import TestRxzTipExp1 from './components/tip/TestRxzTipExp1.vue';
 import TestRxzTipExp2 from './components/tip/TestRxzTipExp2.vue';
+import TestRxzTips from './components/tip/TestRxzTips.vue';
+import TestRxzTipsExp1 from './components/tip/TestRxzTipsExp1.vue';
+import TestRxzTipsExp2 from './components/tip/TestRxzTipsExp2.vue';
 
 
 export default defineClientConfig({
@@ -142,6 +144,9 @@ export default defineClientConfig({
     app.component('TestRxzTip', TestRxzTip);
     app.component('TestRxzTipExp1', TestRxzTipExp1);
     app.component('TestRxzTipExp2', TestRxzTipExp2);
+    app.component('TestRxzTips', TestRxzTips);
+    app.component('TestRxzTipsExp1', TestRxzTipsExp1);
+    app.component('TestRxzTipsExp2', TestRxzTipsExp2);
 
   },
   setup() {},

@@ -7,7 +7,12 @@
   display: flex;
   align-items: center;
   border-radius: 4px;
+  border: 1px solid #000;
   position: relative;
+
+  @include themeify.themeify {
+    border-color: themeify.getBorderColor("default", true);
+  }
 
   @include themeify.theme_color("default", false);
 
@@ -19,9 +24,10 @@
   }
 
   &-content {
-    margin-left: 8px;
+    margin-left: 4px;
     flex: 1;
     overflow: hidden;
+    font-size: 14px;
   }
 
   &-close {
@@ -30,4 +36,22 @@
     cursor: pointer;
   }
 
+}
+
+.move-anim-enter-active {
+  animation: move-anim 0.3s;
+}
+.move-anim-leave-active {
+  animation: move-anim 0.3s reverse;
+}
+
+@keyframes move-anim {
+  0% {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
