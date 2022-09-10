@@ -4,7 +4,7 @@ export interface RxzModalOptions {
   // 内容宽度
   width?: string;
   // 是否显示关闭按钮
-  isShowClose?: boolean;
+  closable?: boolean;
   // 是否允许点击遮罩关闭
   allowOuterClose?: boolean;
   // 标题，可以是字符串、组件、虚拟NODE

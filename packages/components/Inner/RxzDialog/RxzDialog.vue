@@ -27,7 +27,7 @@
             }"
             >
             <span @click.stop="handleClose" >
-              <i class="rxz-dialog-content-title-close"  v-show="isShowClose"></i>
+              <i class="rxz-dialog-content-title-close"  v-show="closable"></i>
             </span>
             <span class="rxz-dialog-content-title-slot" @mousedown.stop="() => {}">
               <slot name="title" ></slot>

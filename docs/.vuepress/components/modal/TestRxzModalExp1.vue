@@ -9,7 +9,7 @@ export default {
         title: '我是标题',
         content: '我是内容',
         width: '300px',
-        isShowClose: false
+        closable: false
       });
     },
   }

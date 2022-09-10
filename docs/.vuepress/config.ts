@@ -54,6 +54,7 @@ module.exports = {
             '/components/base/rxzbutton.md',
             '/components/base/rxzcountdownbutton.md',
             '/components/base/rxzicon.md',
+            '/components/base/rxztip.md',
           ]
         },
         {

@@ -55,7 +55,7 @@
 }
 
 //混入主题颜色（背景色和文字颜色）
-@mixin button_color($type, $isHover) {
+@mixin theme_color($type, $isHover) {
   @include themeify {
     $bgColor: getColor($type, $isHover);
     background-color: $bgColor;

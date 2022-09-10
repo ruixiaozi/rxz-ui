@@ -33,7 +33,7 @@ export class RxzDialogCnt extends Vue {
   readonly width!: string;
 
   @Prop({ type: Boolean, default: true })
-  readonly isShowClose!: boolean;
+  readonly closable!: boolean;
 
   @Prop({ type: Boolean, default: true })
   readonly allowOuterClose!: boolean;
