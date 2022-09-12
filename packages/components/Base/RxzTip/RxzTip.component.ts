@@ -1,6 +1,6 @@
 import { RxzIcon } from '@/components/Base/RxzIcon';
 import { Options, Vue } from 'vue-class-component';
-import { Prop } from 'vue-property-decorator';
+import { Emit, Prop } from 'vue-property-decorator';
 import { TIP_TYPE_ENUM } from './RxzTip.declare';
 
 /**
@@ -42,10 +42,12 @@ export class RxzTipCnt extends Vue {
   // hooks
 
   // methods
+  @Emit('show')
   show() {
     this.display = true;
   }
 
+  @Emit('hidden')
   hidden() {
     this.display = false;
   }

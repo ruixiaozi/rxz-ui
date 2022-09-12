@@ -5,6 +5,7 @@
   + [RxzButton 按钮](./base/rxzbutton.html)
   + [RxzCountDownButton 倒计时按钮](./base/rxzcountdownbutton.html)
   + [RxzIcon 图标](./base/rxzicon.html)
+  + [RxzTip 提示条](./base/rxztip.html)
 
 + 视图组件
   
