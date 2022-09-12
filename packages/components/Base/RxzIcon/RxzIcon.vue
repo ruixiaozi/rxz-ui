@@ -3,6 +3,7 @@
     class="rxz-icon"
     :class="[
       'rxz-icon-' + name,
+      'rxz-icon-type-' + type,
     ]"
     :style="{
       width: `${size}px`,

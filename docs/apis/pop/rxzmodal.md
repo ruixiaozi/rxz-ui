@@ -4,16 +4,13 @@
 
 ```vue
 <template>
-  <rxz-button ref="bt" @click="handleAdd()">打开Modal</rxz-button>
+  <rxz-button ref="bt" @click="handleOpen()">打开Modal</rxz-button>
 </template>
 <script>
 export default {
   methods: {
-    handleAdd() {
-      this.$RxzModal.create({
-        title: '我是标题',
-        content: '我是内容'
-      });
+    handleOpen() {
+      this.$RxzModal.create();
     },
   }
 }
@@ -70,14 +67,18 @@ interface RxzModalOptions {
   content?: string | Component | VNode;
   // 组件的props（事件用onXxx）
   contentCntProps?: any;
+  // 底部，可以是字符串、组件、虚拟NODE
+  footer?: string | Component | VNode;
+  // 组件的props（事件用onXxx）
+  footerCntProps?: any;
   // 打开关闭的过度效果 (默认值为bounce，仅普通弹窗有效)
   transition?: 'opacity' | 'bounce';
   // 是否允许拖拽 (默认值为false)
   allowDrag?: boolean;
   // 是否为抽屉， (默认值为false)
   drawer?: boolean;
-  // 窗口关闭回调
-  onClose?: () => void;
+  // 窗口关闭回调，返回false，则不关闭
+  onClose?: () => any;
 }
 ```
 
@@ -91,12 +92,12 @@ interface RxzModalOptions {
 
 ``` vue 
 <template>
-  <rxz-button ref="bt" @click="handleAdd()">打开Modal</rxz-button>
+  <rxz-button ref="bt" @click="handleOpen()">打开Modal</rxz-button>
 </template>
 <script>
 export default {
   methods: {
-    handleAdd() {
+    handleOpen() {
       this.$RxzModal.create({
         title: '我是标题',
         content: '我是内容',
@@ -117,12 +118,12 @@ export default {
 
 ``` vue
 <template>
-  <rxz-button ref="bt" @click="handleAdd()">打开Modal</rxz-button>
+  <rxz-button ref="bt" @click="handleOpen()">打开Modal</rxz-button>
 </template>
 <script>
 export default {
   methods: {
-    handleAdd() {
+    handleOpen() {
       this.$RxzModal.create({
         title: '我是标题',
         content: '我是内容',
@@ -145,13 +146,13 @@ export default {
 
 ``` vue
 <template>
-  <rxz-button ref="bt" @click="handleAdd('opacity')">过度效果opacity</rxz-button>
-  <rxz-button ref="bt" @click="handleAdd('bounce')">过度效果bounce</rxz-button>
+  <rxz-button ref="bt" @click="handleOpen('opacity')">过度效果opacity</rxz-button>
+  <rxz-button ref="bt" @click="handleOpen('bounce')">过度效果bounce</rxz-button>
 </template>
 <script>
 export default {
   methods: {
-    handleAdd(transition) {
+    handleOpen(transition) {
       this.$RxzModal.create({
         title: '我是标题',
         content: '我是内容',
@@ -251,12 +252,12 @@ export default {
 
 ``` vue
 <template>
-  <rxz-button ref="bt" @click="handleAdd()">打开Modal</rxz-button>
+  <rxz-button ref="bt" @click="handleOpen()">打开Modal</rxz-button>
 </template>
 <script>
 export default {
   methods: {
-    handleAdd() {
+    handleOpen() {
       this.$RxzModal.create({
         title: '我是标题',
         content: '我是内容',
@@ -276,12 +277,12 @@ export default {
 
 ``` vue
 <template>
-  <rxz-button ref="bt" @click="handleAdd()">打开Modal</rxz-button>
+  <rxz-button ref="bt" @click="handleOpen()">打开Modal</rxz-button>
 </template>
 <script>
 export default {
   methods: {
-    handleAdd() {
+    handleOpen() {
       this.$RxzModal.create({
         title: '我是标题',
         content: '我是内容',
@@ -301,18 +302,72 @@ export default {
 
 ``` vue
 <template>
-  <rxz-button ref="bt" @click="handleAdd()">打开Modal</rxz-button>
+  <rxz-button ref="bt" @click="handleOpen()">打开Modal</rxz-button>
 </template>
 <script>
 export default {
   methods: {
-    handleAdd() {
+    handleOpen() {
       this.$RxzModal.create({
         title: '我是标题',
         content: '我是内容',
         allowDrag: true,
       });
     },
+  }
+}
+</script>
+```
+
+### 9. 底部信息
+
+---
+
+<TestRxzModalExp9></TestRxzModalExp9>
+
+``` vue
+<template>
+  <rxz-button ref="bt" @click="handleOpen()">打开Modal</rxz-button>
+  <rxz-button ref="bt" @click="handleOpenDrawer()">打开抽屉</rxz-button>
+</template>
+<script>
+import { RxzButton, RxzFlex } from 'rxz-ui';
+import { h } from '@vue/runtime-core';
+export default {
+  methods: {
+    handleOpen() {
+      const key = this.$RxzModal.create({
+        title: '我是标题',
+        content: '我是内容',
+        footer: h(RxzFlex, {
+          justify: 'center',
+          gutter: '8px',
+        }, [h(RxzButton, {
+          onClick: () => {
+            this.$RxzModal.close(key);
+          }
+        }, {
+          default: '关闭'
+        })]),
+      });
+    },
+    handleOpenDrawer() {
+      const key = this.$RxzModal.create({
+        title: '我是标题',
+        content: '我是内容',
+        drawer: true,
+        footer: h(RxzFlex, {
+          justify: 'center',
+          gutter: '8px',
+        }, [h(RxzButton, {
+          onClick: () => {
+            this.$RxzModal.close(key);
+          }
+        }, {
+          default: '关闭'
+        })]),
+      });
+    }
   }
 }
 </script>

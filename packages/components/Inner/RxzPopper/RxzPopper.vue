@@ -8,7 +8,6 @@
       >
         <div class="rxz-popper-content" :class="[pos]">
           <slot></slot>
-
         </div>
       </rxz-container>
   </transition>

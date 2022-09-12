@@ -17,6 +17,21 @@
 | spinner | Boolean | 是否旋转                           | true/false | false  |     |
 | step    | Number  | 旋转步长（仅旋转时有效）                   | 非0数字，角度值   | 1      |     |
 | rotate  | String  | 翻转角度                           | -          | 0      |     |
+| type  | String \| ICON_TYPE_ENUM  | 图标类型                           | 参考ICON_TYPE_ENUM        | default      |     |
+
+## 内置数据结构
+
+1. ICON_TYPE_ENUM
+
+```ts
+export enum ICON_TYPE_ENUM {
+  default='default',
+  success='success',
+  information='information',
+  warning='warning',
+  error='error',
+}
+```
 
 ## Example 案例
 

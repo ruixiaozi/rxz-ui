@@ -1,3 +1,10 @@
+export enum ICON_TYPE_ENUM {
+  default='default',
+  success='success',
+  information='information',
+  warning='warning',
+  error='error',
+}
 export class RxzIconDeclare {
 
   declare name: 'RxzIcon';
@@ -8,6 +15,7 @@ export class RxzIconDeclare {
     spinner?: boolean;
     step?: number;
     rotate?: string;
+    type?: string;
   };
 
   declare $emit: {

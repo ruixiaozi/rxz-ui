@@ -52,6 +52,7 @@ import TestRxzModalExp5 from './components/modal/TestRxzModalExp5.vue';
 import TestRxzModalExp6 from './components/modal/TestRxzModalExp6.vue';
 import TestRxzModalExp7 from './components/modal/TestRxzModalExp7.vue';
 import TestRxzModalExp8 from './components/modal/TestRxzModalExp8.vue';
+import TestRxzModalExp9 from './components/modal/TestRxzModalExp9.vue';
 import TestRxzTooltipDirective from './components/tooltip/TestRxzTooltipDirective.vue';
 import TestRxzTooltipDirectiveExp1 from './components/tooltip/TestRxzTooltipDirectiveExp1.vue';
 import TestRxzTooltipDirectiveExp2 from './components/tooltip/TestRxzTooltipDirectiveExp2.vue';
@@ -66,6 +67,10 @@ import TestRxzTipExp2 from './components/tip/TestRxzTipExp2.vue';
 import TestRxzTips from './components/tip/TestRxzTips.vue';
 import TestRxzTipsExp1 from './components/tip/TestRxzTipsExp1.vue';
 import TestRxzTipsExp2 from './components/tip/TestRxzTipsExp2.vue';
+import TestRxzMessageBox from './components/messagebox/TestRxzMessageBox.vue';
+import TestRxzMessageBoxExp1 from './components/messagebox/TestRxzMessageBoxExp1.vue';
+import TestRxzMessageBoxExp2 from './components/messagebox/TestRxzMessageBoxExp2.vue';
+import TestRxzMessageBoxExp3 from './components/messagebox/TestRxzMessageBoxExp3.vue';
 
 
 export default defineClientConfig({
@@ -133,6 +138,7 @@ export default defineClientConfig({
     app.component('TestRxzModalExp6', TestRxzModalExp6);
     app.component('TestRxzModalExp7', TestRxzModalExp7);
     app.component('TestRxzModalExp8', TestRxzModalExp8);
+    app.component('TestRxzModalExp9', TestRxzModalExp9);
     app.component('TestRxzTooltipDirective', TestRxzTooltipDirective);
     app.component('TestRxzTooltipDirectiveExp1', TestRxzTooltipDirectiveExp1);
     app.component('TestRxzTooltipDirectiveExp2', TestRxzTooltipDirectiveExp2);
@@ -147,6 +153,10 @@ export default defineClientConfig({
     app.component('TestRxzTips', TestRxzTips);
     app.component('TestRxzTipsExp1', TestRxzTipsExp1);
     app.component('TestRxzTipsExp2', TestRxzTipsExp2);
+    app.component('TestRxzMessageBox', TestRxzMessageBox);
+    app.component('TestRxzMessageBoxExp1', TestRxzMessageBoxExp1);
+    app.component('TestRxzMessageBoxExp2', TestRxzMessageBoxExp2);
+    app.component('TestRxzMessageBoxExp3', TestRxzMessageBoxExp3);
 
   },
   setup() {},

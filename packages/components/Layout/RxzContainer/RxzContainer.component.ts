@@ -35,10 +35,10 @@ export class RxzContainerCnt extends Vue {
   allowOverflow!: boolean;
 
   @Prop({ type: String })
-  contentW?: boolean;
+  width?: string;
 
   @Prop({ type: String })
-  contentH?: boolean;
+  height?: string;
 
   // injects
 
@@ -89,15 +89,16 @@ export class RxzContainerCnt extends Vue {
     }
 
     if (resX < 0) {
+      this.overflow(resX);
       return 0;
     }
 
     if (resX + this.contentWidth > this.containerWidth) {
+      this.overflow(resX + this.contentWidth - this.containerWidth);
       return this.containerWidth - this.contentWidth;
     }
     return resX;
   }
-
 
   get contentY() {
     if (!this.containerHeight || !this.contentHeight) {
@@ -123,13 +124,31 @@ export class RxzContainerCnt extends Vue {
     }
 
     if (resY < 0) {
+      this.overflow(0, resY);
       return 0;
     }
 
     if (resY + this.contentHeight > this.containerHeight) {
+      this.overflow(0, resY + this.contentHeight - this.containerHeight);
       return this.containerHeight - this.contentHeight;
     }
     return resY;
+  }
+
+  get contentW() {
+    // 如果内容大于容器，则强制内容宽度为容器宽度，内容自己处理overflow
+    if (this.containerWidth <= this.contentWidth) {
+      return `${this.containerWidth}px`;
+    }
+    return this.width;
+  }
+
+  get contentH() {
+    // 如果内容大于容器，则强制内容高度为容器高度，内容自己处理overflow
+    if (this.containerHeight <= this.contentHeight) {
+      return `${this.containerHeight}px`;
+    }
+    return this.height;
   }
 
   // watchs
@@ -147,6 +166,14 @@ export class RxzContainerCnt extends Vue {
     this.contentWidth = this.content.clientWidth;
     this.contentHeight = this.content.clientHeight;
     return event;
+  }
+
+  @Emit('overflow')
+  overflow(diffX = 0, diffY = 0) {
+    return {
+      diffX,
+      diffY,
+    };
   }
 
 }
