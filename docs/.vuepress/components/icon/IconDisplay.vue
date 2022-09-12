@@ -17,7 +17,6 @@ export default {
   created() {
     import('./rxz-icon.json').then((res) => {
       if (res?.default) {
-        console.log(res.default);
         this.icons = res.default;
       }
     })

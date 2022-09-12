@@ -1,6 +1,6 @@
 import { BUTTON_TYPE_ENUM, NATIVE_BUTTON_TYPE_ENUM } from './RxzButton.declare';
 import { Options, Vue } from 'vue-class-component';
-import { Prop } from 'vue-property-decorator';
+import { Prop, Watch } from 'vue-property-decorator';
 import { RxzIcon } from '../RxzIcon';
 import chroma from 'chroma-js';
 
@@ -72,6 +72,8 @@ export class RxzButtonCnt extends Vue {
   // entity
   isHover = false;
 
+  isLoading = false;
+
   // computes
   get bgColorCPT(): string | undefined {
     return (this.bgColor && this.bgColor !== 'unset')
@@ -107,8 +109,15 @@ export class RxzButtonCnt extends Vue {
   }
 
   // watchs
+  @Watch('loading')
+  onLoadingChange() {
+    this.isLoading = this.loading;
+  }
 
   // hooks
+  created() {
+    this.isLoading = this.loading;
+  }
 
   // methods
 

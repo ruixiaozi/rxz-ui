@@ -24,8 +24,8 @@
 | position      | RxzContainerPosition | 默认插槽内容位置               | 见RxzContainerPosition枚举 | RxzContainerPosition.CENTER |     |
 | offsetX       | Number               | 默认插槽内容相对于position的X轴偏移 | -                       | 0                           |     |
 | offsetY       | Number               | 默认插槽内容相对于position的Y轴偏移 | -                       | 0                           |     |
-| contentW      | String               | 内容宽度                   | -                       | undefined                   |     |
-| contentH      | String               | 内容高度                   | -                       | undefined                   |     |
+| width      | String               | 默认插槽内容宽度，默认自适应插槽内容宽度，最大容器大小                  | -                       | undefined                   |     |
+| height      | String               | 默认插槽内容高度，默认自适应插槽内容高度，最大容器大小                   | -                       | undefined                   |     |
 | allowOverflow | Boolean              | 默认插槽是否允许内容溢出边界         | true/false              | false                       |     |
 
 ## Event 事件
@@ -33,6 +33,7 @@
 | 事件名称   | 描述         | 回调参数列表 |
 | ------ | ---------- | ------ |
 | resize | 容器或者内容大小变化 | event  |
+| overflow | allowOverflow为false有效，offset与实际可偏移的出现差值时 | {diffX: number, diffY: number}  |
 
 ## Slot 具名插槽
 

@@ -5,7 +5,13 @@ import { InjectService } from '@/common';
 import { RxzPopupService } from '../common/RxzPopup.service';
 import { RxzModalOptions } from './RxzModal.declare';
 import { RxzDialogCnt } from '@/components/Inner/RxzDialog/RxzDialog.component';
-import { uniqueId as _uniqueId, isString as _isString, omit as _omit } from 'lodash';
+import {
+  uniqueId as _uniqueId,
+  isString as _isString,
+  omit as _omit,
+  extend as _extend,
+  isNil as _isNil,
+} from 'lodash';
 
 /**
  * Service: RxzModalService
@@ -47,10 +53,9 @@ export class RxzModalService {
    * @param key modal的key
    */
   close(key: string) {
-    if (this.modalsMap.has(key)) {
-      // 关闭dialog，并删除modalsMap中的引用
-      const rxzDialogCnt = this.modalsMap.get(key)?.component?.proxy;
-      rxzDialogCnt && ((rxzDialogCnt as RxzDialogCnt).isShow = false);
+    const vnode = this.modalsMap.get(key);
+    if (vnode) {
+      this.closeDialog(vnode);
     }
   }
 
@@ -59,9 +64,18 @@ export class RxzModalService {
    */
   closeAll() {
     this.modalsMap.forEach((item) => {
-      const rxzDialogCnt = item.component?.proxy;
-      rxzDialogCnt && ((rxzDialogCnt as RxzDialogCnt).isShow = false);
+      this.closeDialog(item);
     });
+  }
+
+  private closeDialog(vnode: VNode) {
+    const closeRes = (vnode as any).options?.onClose?.();
+    // 仅返回false不关
+    if (closeRes === false) {
+      return;
+    }
+    const rxzDialogCnt = vnode.component?.proxy;
+    rxzDialogCnt && ((rxzDialogCnt as RxzDialogCnt).isShow = false);
   }
 
   private createModal(key, options?: RxzModalOptions) {
@@ -72,13 +86,12 @@ export class RxzModalService {
       // 非抽屉不能使用move动画
       params.transition = 'bounce';
     }
-    return h(
+    const vnode = h(
       RxzDialog as any,
       {
         ...params,
         zIndex: this.rxzPopupService?.zIndexNext() || 3000,
         onClose: () => {
-          options?.onClose?.();
           this.close(key);
         },
         onDestory: () => {
@@ -89,7 +102,19 @@ export class RxzModalService {
           }
         },
       },
-      {
+      this.factorySlots(options),
+    );
+    // 保存当前options
+    (vnode as any).options = options;
+    return vnode;
+  }
+
+
+  private factorySlots(options?: RxzModalOptions) {
+    const slots: any = {};
+
+    if (!_isNil(options?.content)) {
+      _extend(slots, {
         default: () => {
           if (!options?.content) {
             return '';
@@ -102,9 +127,14 @@ export class RxzModalService {
           }
           return h(options?.content, options?.contentCntProps);
         },
+      });
+    }
+
+    if (!_isNil(options?.title)) {
+      _extend(slots, {
         title: () => {
           if (!options?.title) {
-            return 'Modal';
+            return '';
           }
           if (_isString(options?.title)) {
             return options?.title;
@@ -114,8 +144,27 @@ export class RxzModalService {
           }
           return h(options?.title, options?.titleCntProps);
         },
-      },
-    );
+      });
+    }
+
+    if (!_isNil(options?.footer)) {
+      _extend(slots, {
+        footer: () => {
+          if (!options?.footer) {
+            return '';
+          }
+          if (_isString(options?.footer)) {
+            return options?.footer;
+          }
+          if (isVNode(options?.footer)) {
+            return cloneVNode(options?.footer);
+          }
+          return h(options?.footer, options?.footerCntProps);
+        },
+      });
+    }
+
+    return slots;
   }
 
 }

@@ -42,6 +42,7 @@ module.exports = {
             '/apis/pop/rxzmodal',
             '/apis/pop/rxzloading',
             '/apis/pop/rxztips',
+            '/apis/pop/rxxmessagebox',
           ]
         }
       ],

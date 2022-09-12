@@ -1,5 +1,6 @@
 import { Options, Vue } from 'vue-class-component';
 import { Prop, Watch } from 'vue-property-decorator';
+import { ICON_TYPE_ENUM } from './RxzIcon.declare';
 
 /**
  * Component: RxzIcon
@@ -28,8 +29,12 @@ export class RxzIconCnt extends Vue {
   readonly step!: number;
 
   // 翻转角度
-  @Prop({ type: String, default: 0 })
+  @Prop({ type: Number, default: 0 })
   readonly rotate!: number;
+
+  // 图标类型
+  @Prop({ type: String, default: ICON_TYPE_ENUM.default })
+  readonly type!: ICON_TYPE_ENUM;
 
   // injects
 

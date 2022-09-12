@@ -1,5 +1,16 @@
+@use "~@/themes/themeify";
+
 .rxz-icon {
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  @each $type in "success", "information", "warning", "error" {
+
+    &.rxz-icon-type-#{$type} {
+      @include themeify.themeify {
+        color: themeify.getColor($type, false);
+      }
+    }
+  }
 }
+

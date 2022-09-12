@@ -5,10 +5,11 @@
   &-content {
     position: relative;
     max-width: 400px;
-    word-break: break-all;
+    word-wrap:break-word;
     min-width: 1.25em;
     min-height: 1.25em;
     padding: 8px;
+    box-sizing: border-box;
     background-color: rgba(0, 0, 0, 0.8);
 
     color: white;

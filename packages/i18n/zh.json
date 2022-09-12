@@ -6,5 +6,11 @@
   "validator_range": "输入值为{0}-{1}。",
   "validator_max_length": "输入长度不能超过{0}个字符。",
   "validator_min_length": "输入长度不能少于{0}个字符。",
-  "validator_range_length": "输入长度为{0}-{1}个字符。"
+  "validator_range_length": "输入长度为{0}-{1}个字符。",
+  "messagebox_success": "成功",
+  "messagebox_information": "通知",
+  "messagebox_warning": "警告",
+  "messagebox_error": "错误",
+  "button_confirm": "确认",
+  "button_cancel": "取消"
 }

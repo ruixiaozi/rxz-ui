@@ -6,19 +6,22 @@
         :position="drawer ? 'TOP_RIGHT' : 'TOP_CENTER'"
         :offsetY="drawer ? 0 : offsetY"
         :offsetX="drawer ? 0 : offsetX"
-        :contentH="drawer ? '100%' : undefined"
-        :allowOverflow="true"
+        :height="drawer ? '100%' : undefined"
+        :allowOverflow="false"
+        @overflow="handleOverflow"
         class="rxz-dialog-container"
         >
         <div class="rxz-dialog-content"
           :style="{
             'width':width,
             'opacity': 1,
-            'height': drawer ? '100%' : undefined
+            'height': '100%'
           }"
           @click.stop="() => false"
           >
           <h4
+            v-rxz-resize-observe="handleResize"
+            ref="title"
             @mousedown="handleDragStart"
             v-rxz-overflow="true"
             class="rxz-dialog-content-title"
@@ -26,15 +29,34 @@
               allowDrag
             }"
             >
-            <span @click.stop="handleClose" >
-              <i class="rxz-dialog-content-title-close"  v-show="closable"></i>
-            </span>
             <span class="rxz-dialog-content-title-slot" @mousedown.stop="() => {}">
-              <slot name="title" ></slot>
+              <slot name="title" >Title</slot>
             </span>
           </h4>
-          <div class="rxz-dialog-content-body">
-            <slot></slot>
+          <rxz-icon
+            name="close"
+            :size="14"
+            class="rxz-dialog-content-close"
+            v-show="closable"
+            @click.stop="handleClose"
+          ></rxz-icon>
+          <div
+            class="rxz-dialog-content-body"
+            :style="{
+              marginBottom: footerHeight ? `${footerHeight}px` : undefined,
+              marginTop: titleHeight ? `${titleHeight}px` : undefined,
+              maxHeight: titleHeight || footerHeight? `calc(100% - ${titleHeight + footerHeight}px)` : undefined
+            }"
+          >
+            <slot>Content</slot>
+          </div>
+          <div
+            v-if="$slots.footer"
+            ref="footer"
+            v-rxz-resize-observe="handleResize"
+            class="rxz-dialog-content-footer"
+          >
+            <slot name="footer"></slot>
           </div>
         </div>
       </rxz-container>

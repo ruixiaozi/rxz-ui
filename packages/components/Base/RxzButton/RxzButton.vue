@@ -6,10 +6,10 @@
     @mouseover="isHover = true"
     @mouseout="isHover = false"
     :type="nativeType"
-    :disabled="disabled || loading"
+    :disabled="disabled || isLoading"
     :class="[
       type ? 'rxz-button-' + type : '',
-      { 'rxz-button-is-disabled': disabled || loading },
+      { 'rxz-button-is-disabled': disabled || isLoading },
     ]"
     :style="[
       { width: width },
@@ -22,7 +22,7 @@
       },
     ]"
   >
-    <RxzIcon v-if="loading" class="rxz-button-loading" name="loading" spinner :step="45"></RxzIcon>
+    <RxzIcon v-if="isLoading" class="rxz-button-loading" name="loading" :size="18" spinner :step="45"></RxzIcon>
     <span>
       <slot>RxzButton</slot>
     </span>

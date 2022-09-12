@@ -20,6 +20,7 @@ declare module 'vue' {
   }
 
   interface ComponentCustomProperties {
+    $RxzMessageBox: typeof import('../packages/index')['RxzMessageBox'];
     $RxzTips: typeof import('../packages/index')['RxzTips'];
     $i18n: typeof import('../packages/index')['getI18n'];
     $RxzModal: typeof import('../packages/index')['RxzModal'];

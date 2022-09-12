@@ -15,12 +15,16 @@ export interface RxzModalOptions {
   content?: string | Component | VNode;
   // 组件的props（事件用onXxx）
   contentCntProps?: any;
+  // 底部，可以是字符串、组件、虚拟NODE
+  footer?: string | Component | VNode;
+  // 组件的props（事件用onXxx）
+  footerCntProps?: any;
   // 打开关闭的过度效果 (默认值为bounce，仅普通弹窗有效)
   transition?: 'opacity' | 'bounce';
   // 是否允许拖拽 (默认值为false)
   allowDrag?: boolean;
   // 是否为抽屉， (默认值为false)
   drawer?: boolean;
-  // 窗口关闭回调
-  onClose?: () => void;
+  // 窗口关闭回调，返回false，则不关闭
+  onClose?: () => any;
 }

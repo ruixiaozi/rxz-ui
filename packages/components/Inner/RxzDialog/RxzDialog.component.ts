@@ -1,11 +1,13 @@
 import { RxzContainer } from '../../Layout/RxzContainer/index';
 import { RxzIcon } from '../../Base/RxzIcon';
 import { Options, Vue } from 'vue-class-component';
-import { Emit, Prop } from 'vue-property-decorator';
+import { Emit, Prop, Ref } from 'vue-property-decorator';
 import { RxzOverflowDirective } from '@/directives/RxzOverflowDirective';
 import { getService } from '@/common';
+import { RxzResizeObserveDirective } from '@/directives/RxzResizeObserveDirective';
 
 const rxzOverflowDirective = getService(RxzOverflowDirective);
+const rxzResizeObserveDirective = getService(RxzResizeObserveDirective);
 
 /**
  * Component: RxzDialog
@@ -21,6 +23,7 @@ const rxzOverflowDirective = getService(RxzOverflowDirective);
   },
   directives: {
     [rxzOverflowDirective.name]: rxzOverflowDirective,
+    [rxzResizeObserveDirective.name]: rxzResizeObserveDirective,
   },
 })
 export class RxzDialogCnt extends Vue {
@@ -47,10 +50,14 @@ export class RxzDialogCnt extends Vue {
   @Prop({ type: Boolean, default: false })
   readonly drawer!: boolean;
 
-
   // injects
 
   // refs
+  @Ref('title')
+  readonly title?: HTMLElement;
+
+  @Ref('footer')
+  readonly footer?: HTMLElement;
 
   // injectServices
 
@@ -68,6 +75,12 @@ export class RxzDialogCnt extends Vue {
   startY = 0;
 
   isDrag = false;
+
+  diffInfo: any = null;
+
+  titleHeight = 0;
+
+  footerHeight = 0;
 
   // computes
 
@@ -120,6 +133,14 @@ export class RxzDialogCnt extends Vue {
     }
     this.handleDrag(event);
     this.isDrag = false;
+    // 如果存储overflow出去的差异数据，则需要处理
+    if (this.diffInfo?.diffX) {
+      this.offsetX -= this.diffInfo?.diffX;
+    }
+    if (this.diffInfo?.diffY) {
+      this.offsetY -= this.diffInfo?.diffY;
+    }
+    this.diffInfo = null;
   }
 
   handleDrag = (event: MouseEvent) => {
@@ -132,5 +153,14 @@ export class RxzDialogCnt extends Vue {
     this.startY = event.clientY;
   }
 
+  handleOverflow(diffInfo: any) {
+    this.diffInfo = diffInfo;
+  }
+
+  handleResize() {
+    // 都减去16.是为了去除padding的16px
+    this.titleHeight = this.title?.clientHeight ? (this.title.clientHeight - 16) : 0;
+    this.footerHeight = this.footer?.clientHeight ? (this.footer.clientHeight - 16) : 0;
+  }
 
 }

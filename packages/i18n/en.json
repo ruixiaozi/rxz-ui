@@ -6,5 +6,11 @@
   "validator_range": "The input values are {0}-{1}.",
   "validator_max_length": "The value contains a maximum of {0} characters.",
   "validator_min_length": "The input length cannot be less than {0} characters.",
-  "validator_range_length": "The value contains {0}-{1} characters."
+  "validator_range_length": "The value contains {0}-{1} characters.",
+  "messagebox_success": "Success",
+  "messagebox_information": "Information",
+  "messagebox_warning": "Warning",
+  "messagebox_error": "Error",
+  "button_confirm": "Confirm",
+  "button_cancel": "Cancel"
 }

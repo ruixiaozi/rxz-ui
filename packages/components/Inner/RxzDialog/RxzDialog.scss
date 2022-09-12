@@ -19,20 +19,21 @@
   &-content {
     background-color: white;
     min-height: 100px;
-    overflow-y:auto;
-    overflow-x: hidden;
+    overflow: hidden;
+    box-sizing: border-box;
     padding: 16px;
     opacity: 1 !important;
+    position: relative;
 
     // 标题部分
     &-title {
       margin:0;
-      width: calc(100% + 32px);
+      width: calc(100% - 32px);
       box-sizing: border-box;
-      position: relative;
+      position: absolute;
       padding: 16px;
-      top: -16px;
-      left: -16px;
+      top: 0px;
+      left: 0px;
 
       &.allowDrag {
         cursor: move;
@@ -42,18 +43,29 @@
         cursor: auto;
       }
 
-      // 关闭按钮
-      &-close {
-        position: absolute;
-        right: 16px;
-        top: 16px;
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        background-image: url('~@/images/close.svg');
-        background-size: 100%;
-        cursor: pointer;
-      }
+    }
+
+    // 关闭按钮
+    &-close {
+      position: absolute;
+      right: 16px;
+      top: 16px;
+      cursor: pointer;
+    }
+
+    &-body {
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    &-footer {
+      margin:0;
+      width: 100%;
+      box-sizing: border-box;
+      position: absolute;
+      padding: 16px;
+      bottom: 0px;
+      left: 0px;
     }
 
   }
