@@ -57,6 +57,7 @@ module.exports = {
             '/components/base/rxzcountdownbutton.md',
             '/components/base/rxzicon.md',
             '/components/base/rxztip.md',
+            '/components/base/rxzpagination.md',
           ]
         },
         {
@@ -105,7 +106,7 @@ module.exports = {
           sidebarDepth: 1,
           collapsable: false,
           children: [
-
+            '/components/table/rxztable',
           ]
         },
       ],

@@ -71,6 +71,11 @@ import TestRxzMessageBox from './components/messagebox/TestRxzMessageBox.vue';
 import TestRxzMessageBoxExp1 from './components/messagebox/TestRxzMessageBoxExp1.vue';
 import TestRxzMessageBoxExp2 from './components/messagebox/TestRxzMessageBoxExp2.vue';
 import TestRxzMessageBoxExp3 from './components/messagebox/TestRxzMessageBoxExp3.vue';
+import TestRxzTable from './components/table/TestRxzTable.vue';
+import TestRxzTableExp1 from './components/table/TestRxzTableExp1.vue';
+import TestRxzTableExp2 from './components/table/TestRxzTableExp2.vue';
+import TestRxzPagination from './components/pagination/TestRxzPagination.vue';
+import TestRxzPaginationExp1 from './components/pagination/TestRxzPaginationExp1.vue';
 
 
 export default defineClientConfig({
@@ -157,6 +162,11 @@ export default defineClientConfig({
     app.component('TestRxzMessageBoxExp1', TestRxzMessageBoxExp1);
     app.component('TestRxzMessageBoxExp2', TestRxzMessageBoxExp2);
     app.component('TestRxzMessageBoxExp3', TestRxzMessageBoxExp3);
+    app.component('TestRxzTable', TestRxzTable);
+    app.component('TestRxzTableExp1', TestRxzTableExp1);
+    app.component('TestRxzTableExp2', TestRxzTableExp2);
+    app.component('TestRxzPagination', TestRxzPagination);
+    app.component('TestRxzPaginationExp1', TestRxzPaginationExp1);
 
   },
   setup() {},

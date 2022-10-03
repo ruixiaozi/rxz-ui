@@ -1,0 +1,110 @@
+@use "~@/themes/themeify";
+
+.rxz-table {
+  display: table;
+  width: 100%;
+  margin: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+
+  &-title {
+    position: relative;
+
+    &-sort {
+      position: relative;
+      display: inline-block;
+      height: 1px;
+      width: 16px;
+      margin: 0 8px;
+      cursor: pointer;
+      transition: color 1s;
+
+      @include themeify.themeify {
+        color: themeify.getColor('disabled', false);
+      }
+
+      .enable {
+        @include themeify.themeify {
+          color: themeify.getTextColor('darker', false);
+        }
+      }
+
+      &-up {
+        position: absolute;
+        top: -14px;
+      }
+
+      &-down {
+        position: absolute;
+        top: -6px;
+      }
+    }
+  }
+
+  tr,
+  th,
+  td {
+    border: none;
+  }
+
+  th,
+  td {
+    padding: 16px;
+
+    @include themeify.themeify {
+      border-bottom: 1px solid themeify.getBorderColor('default', false);
+    }
+  }
+
+  tr {
+    background-color: #ffffff;
+
+    &:hover {
+      @include themeify.themeify {
+        background-color: themeify.getColor('trans', false);
+
+      }
+    }
+  }
+
+  th {
+    position: relative;
+
+    @include themeify.themeify {
+      background-color: themeify.getColor('trans', false);
+      color: themeify.getTextColor('darker', false);
+    }
+
+    &:not(:last-child) {
+      .rxz-table-split {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &-t {
+          display: inline-block;
+          height: 50%;
+          width: 0;
+          margin: 0;
+          border-right: 1px solid #000;
+
+          @include themeify.themeify {
+            border-right: 1px solid themeify.getBorderColor('default', false);
+          }
+        }
+      }
+    }
+  }
+
+  td {
+    @include themeify.themeify {
+      color: themeify.getTextColor('darkest', false);
+    }
+  }
+}

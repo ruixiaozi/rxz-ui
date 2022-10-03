@@ -6,7 +6,7 @@ import { uniqueId as _uniqueId } from 'lodash';
 @Injectable({
   provideIn: 'root',
 })
-export class RxzLoadingirective implements ObjectDirective {
+export class RxzLoadingDirective implements ObjectDirective {
 
   private loadingMap = new Map<string, HTMLElement>();
 
