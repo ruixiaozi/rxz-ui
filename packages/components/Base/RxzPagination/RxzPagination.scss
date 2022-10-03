@@ -1,0 +1,44 @@
+@use "~@/themes/themeify";
+
+.rxz-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 4px;
+
+  &-left {
+    display: flex;
+    align-items: center;
+  }
+
+  &-right {
+    display: flex;
+    align-items: center;
+  }
+
+  .rxz-icon {
+    cursor: pointer;
+
+    &.disabled {
+      cursor: not-allowed;
+      @include themeify.themeify {
+        color: themeify.getColor("disabled", true);
+      }
+    }
+  }
+
+
+
+  &-total {
+    margin-right: 16px;
+  }
+
+  &-page {
+    margin: 0px 8px;
+  }
+
+  &-goto {
+    margin-left: 8px;
+  }
+
+}

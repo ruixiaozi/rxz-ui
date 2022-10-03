@@ -12,5 +12,6 @@
   "messagebox_warning": "警告",
   "messagebox_error": "错误",
   "button_confirm": "确认",
-  "button_cancel": "取消"
+  "button_cancel": "取消",
+  "rxz_pagination_total": "总共：{0} 条"
 }

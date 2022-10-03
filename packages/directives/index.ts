@@ -1,7 +1,7 @@
 import { getService, install } from '@/common';
 import { App } from 'vue';
 import { RxzBadgeDirective } from './RxzBadgeDirective';
-import { RxzLoadingirective } from './RxzLoadingirective';
+import { RxzLoadingDirective } from './RxzLoadingDirective';
 import { RxzOverflowDirective } from './RxzOverflowDirective';
 import { RxzResizeObserveDirective } from './RxzResizeObserveDirective';
 import { RxzThemeDirective } from './RxzThemeDirective';
@@ -11,7 +11,7 @@ const directives = [
   getService(RxzOverflowDirective),
   getService(RxzResizeObserveDirective),
   getService(RxzTooltipDirective),
-  getService(RxzLoadingirective),
+  getService(RxzLoadingDirective),
   getService(RxzThemeDirective),
   getService(RxzBadgeDirective),
 ];
