@@ -8,8 +8,6 @@ export default {
       this.$RxzModal.create({
         title: '我是标题',
         content: '我是内容',
-        width: '300px',
-        closable: false
       });
     },
   }

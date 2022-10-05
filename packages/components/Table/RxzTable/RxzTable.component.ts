@@ -3,8 +3,7 @@ import { RxzPagination } from '@/components/Base/RxzPagination/index';
 import { Options, Vue } from 'vue-class-component';
 import { Prop, Watch } from 'vue-property-decorator';
 import { isArray as _isArray, isNumber as _isNumber, omit as _omit } from 'lodash';
-import { getService, InjectService } from '@/common';
-import { RxzUtilsService } from '@/common/RxzUtils.service';
+import { comparator, getService } from '@/common';
 import { COLUMN_DIRECTION_ENUM, RxzTableConfig, RxzTableFilter } from './RxzTable.declare';
 
 const rxzLoadingDirective = getService(RxzLoadingDirective);
@@ -35,8 +34,6 @@ export class RxzTableCnt extends Vue {
   // refs
 
   // injectServices
-  @InjectService(RxzUtilsService)
-  private rxzUtilsService?: RxzUtilsService;
 
   // setup
 
@@ -132,7 +129,7 @@ export class RxzTableCnt extends Vue {
       data = data.sort((dataA, dataB) => {
         let cmpRes = 0;
         for (const [key, direction] of Object.entries(sorts)) {
-          cmpRes = this.rxzUtilsService?.comparator(dataA[key], dataB[key], direction === COLUMN_DIRECTION_ENUM.DESC) ?? 0;
+          cmpRes = comparator(dataA[key], dataB[key], direction === COLUMN_DIRECTION_ENUM.DESC);
           if (cmpRes) {
             return cmpRes;
           }

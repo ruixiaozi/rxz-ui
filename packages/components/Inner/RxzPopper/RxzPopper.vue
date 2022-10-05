@@ -3,10 +3,13 @@
     <rxz-container
       v-show="isShow"
       class="rxz-popper"
+      :class="[type]"
       :position="position"
       v-bind="$attrs"
+      :data-rxz-popper="popperKey"
       >
-        <div class="rxz-popper-content" :class="[pos]">
+        <div class="rxz-popper-content" :class="{radius}">
+          <span v-if="showArrow" class="rxz-popper-content-arrow" :class="[pos]"></span>
           <slot></slot>
         </div>
       </rxz-container>

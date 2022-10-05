@@ -23,6 +23,7 @@ declare module 'vue' {
   }
 
   interface ComponentCustomProperties {
+    $RxzPopover: typeof import('../packages/index')['RxzPopover'];
     $RxzMessageBox: typeof import('../packages/index')['RxzMessageBox'];
     $RxzTips: typeof import('../packages/index')['RxzTips'];
     $i18n: typeof import('../packages/index')['getI18n'];
