@@ -16,7 +16,9 @@ rules:
       /index.ts:
         - file
       /common:
-        - dir
+        /**.ts:
+          - file
+          - (index|utils)
       /components:
         /**:
           - dir

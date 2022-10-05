@@ -35,3 +35,5 @@ export const InjectService = (service: Class) => (target: any, key?: any, descri
   }
 };
 
+
+export * from './utils';

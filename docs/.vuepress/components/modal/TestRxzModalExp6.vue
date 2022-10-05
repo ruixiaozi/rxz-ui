@@ -6,7 +6,7 @@ export default {
   methods: {
     handleOpen() {
       this.$RxzModal.create({
-        title: '我是标题',
+        title: '我是标题11111111111111111111111111111111111111111111111111',
         content: '我是内容',
         allowDrag: true,
       });

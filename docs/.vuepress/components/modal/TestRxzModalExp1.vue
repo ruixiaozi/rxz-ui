@@ -6,10 +6,8 @@ export default {
   methods: {
     handleOpen() {
       this.$RxzModal.create({
-        title: '我是标题',
+        title: '我是标题111111111111111111111111111111111111111111111',
         content: '我是内容',
-        width: '300px',
-        closable: false
       });
     },
   }

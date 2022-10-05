@@ -46,17 +46,19 @@
 ## Description 描述
 
 + 指令名称：v-rxz-tooltip
-+ 参数：RxzToolTipPos，默认值RxzToolTipPos.top，见下方类型对照表
++ 参数：POPOVER_POS_E，默认值POPOVER_POS_E.top，见下方类型对照表
 + 值：tooltip内容，如果没有值，则显示宿主元素的内容
 + 修饰符：
   + click：通过点击显示或隐藏tooltip
+  + outer：通过外部点击隐藏tooltip（搭配click修饰符使用）
+  + white：白色风格
 
 ## 内置数据结构
 
-1. RxzToolTipPos 
+1. POPOVER_POS_E 
    
   ```ts
-  export enum RxzToolTipPos {
+  export enum POPOVER_POS_E {
     topleft='topleft',
     top='top',
     topright='topright',
@@ -96,5 +98,29 @@
 ```vue
 <template>
   <rxz-button v-rxz-tooltip:top="'我是自定义内容'">hover查看</rxz-button>
+</template>
+```
+
+### 3. 白色风格
+
+---
+
+<TestRxzTooltipDirectiveExp3></TestRxzTooltipDirectiveExp3>
+
+```vue
+<template>
+  <rxz-button v-rxz-tooltip:top.white>hover查看</rxz-button>
+</template>
+```
+
+### 4. 外部点击关闭
+
+---
+
+<TestRxzTooltipDirectiveExp4></TestRxzTooltipDirectiveExp4>
+
+```vue
+<template>
+  <rxz-button v-rxz-tooltip:top.click.outer>点击显示/隐藏Tooltip</rxz-button>
 </template>
 ```

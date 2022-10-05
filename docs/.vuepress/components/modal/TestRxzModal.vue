@@ -5,7 +5,9 @@
 export default {
   methods: {
     handleOpen() {
-      this.$RxzModal.create();
+      this.$RxzModal.create({
+        title: '我是标题。。。。。。。。。。。。。。。。。。。。。。。',
+      });
     },
   }
 }

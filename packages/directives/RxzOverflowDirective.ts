@@ -12,10 +12,6 @@ export class RxzOverflowDirective implements ObjectDirective {
   @InjectService(RxzTooltipDirective)
   private toolTip?: RxzTooltipDirective;
 
-  toolTipConfig: any = {
-    arg: 'top',
-  }
-
   mounted = (el: HTMLElement, binding: DirectiveBinding<any>, sourceVnode: VNode) => {
     this.resolveEl(el, binding, sourceVnode);
   }
@@ -29,14 +25,19 @@ export class RxzOverflowDirective implements ObjectDirective {
   }
 
   private resolveEl(el: HTMLElement, binding: DirectiveBinding<any>, sourceVnode: VNode) {
-    if (binding.value === undefined || binding.value) {
+    // 当value为true时，应该显示宿主元素的内容
+    if (binding.value === true) {
+      binding.value = void 0;
+    }
+
+    if (binding.value === void 0 || binding.value) {
       el.style.overflow = 'hidden';
       el.style.whiteSpace = 'nowrap';
       el.style.textOverflow = 'ellipsis';
-    }
-    // 如果出现溢出，则创建或者更新tooltip
-    if (el.clientWidth < el.scrollWidth) {
-      this.toolTip?.updated(el, this.toolTipConfig, sourceVnode);
+      // 如果出现溢出，则创建或者更新tooltip
+      if (el.clientWidth < el.scrollWidth) {
+        this.toolTip?.updated(el, binding, sourceVnode);
+      }
     }
   }
 

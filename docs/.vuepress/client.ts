@@ -56,6 +56,8 @@ import TestRxzModalExp9 from './components/modal/TestRxzModalExp9.vue';
 import TestRxzTooltipDirective from './components/tooltip/TestRxzTooltipDirective.vue';
 import TestRxzTooltipDirectiveExp1 from './components/tooltip/TestRxzTooltipDirectiveExp1.vue';
 import TestRxzTooltipDirectiveExp2 from './components/tooltip/TestRxzTooltipDirectiveExp2.vue';
+import TestRxzTooltipDirectiveExp3 from './components/tooltip/TestRxzTooltipDirectiveExp3.vue';
+import TestRxzTooltipDirectiveExp4 from './components/tooltip/TestRxzTooltipDirectiveExp4.vue';
 import TestRxzLoading from './components/loading/TestRxzLoading.vue';
 import TestRxzLoadingExp1 from './components/loading/TestRxzLoadingExp1.vue';
 import TestRxzLoadingExp2 from './components/loading/TestRxzLoadingExp2.vue';
@@ -76,6 +78,8 @@ import TestRxzTableExp1 from './components/table/TestRxzTableExp1.vue';
 import TestRxzTableExp2 from './components/table/TestRxzTableExp2.vue';
 import TestRxzPagination from './components/pagination/TestRxzPagination.vue';
 import TestRxzPaginationExp1 from './components/pagination/TestRxzPaginationExp1.vue';
+import TestRxzPopover from './components/popover/TestRxzPopover.vue';
+import TestRxzPopoverExp1 from './components/popover/TestRxzPopoverExp1.vue';
 
 
 export default defineClientConfig({
@@ -147,6 +151,8 @@ export default defineClientConfig({
     app.component('TestRxzTooltipDirective', TestRxzTooltipDirective);
     app.component('TestRxzTooltipDirectiveExp1', TestRxzTooltipDirectiveExp1);
     app.component('TestRxzTooltipDirectiveExp2', TestRxzTooltipDirectiveExp2);
+    app.component('TestRxzTooltipDirectiveExp3', TestRxzTooltipDirectiveExp3);
+    app.component('TestRxzTooltipDirectiveExp4', TestRxzTooltipDirectiveExp4);
     app.component('TestRxzLoading', TestRxzLoading);
     app.component('TestRxzLoadingExp1', TestRxzLoadingExp1);
     app.component('TestRxzLoadingExp2', TestRxzLoadingExp2);
@@ -167,6 +173,8 @@ export default defineClientConfig({
     app.component('TestRxzTableExp2', TestRxzTableExp2);
     app.component('TestRxzPagination', TestRxzPagination);
     app.component('TestRxzPaginationExp1', TestRxzPaginationExp1);
+    app.component('TestRxzPopover', TestRxzPopover);
+    app.component('TestRxzPopoverExp1', TestRxzPopoverExp1);
 
   },
   setup() {},
