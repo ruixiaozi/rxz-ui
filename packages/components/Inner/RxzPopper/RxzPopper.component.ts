@@ -1,7 +1,7 @@
 import { RxzContainer } from './../../Layout/RxzContainer/index';
 import { RxzContainerPosition } from './../../Layout/RxzContainer/RxzContainer.declare';
 import { Options, Vue } from 'vue-class-component';
-import { Prop } from 'vue-property-decorator';
+import { Prop, Watch } from 'vue-property-decorator';
 import { POPOVER_TYPE_E, POPOVER_POS_E } from './RxzPopper.declare';
 import { uniqueId as _uniqueId } from 'lodash';
 
@@ -31,6 +31,9 @@ export class RxzPopperCnt extends Vue {
 
   @Prop({ type: Boolean, default: () => true })
   radius!: boolean;
+
+  @Prop({ type: Boolean, default: () => true })
+  padding!: boolean;
 
   @Prop({ type: String, default: () => _uniqueId() })
   popperKey!: string;
@@ -67,6 +70,12 @@ export class RxzPopperCnt extends Vue {
   }
 
   // watchs
+  @Watch('isShow')
+  onIsShowChange(newV: any, oldV: any) {
+    if (newV !== oldV) {
+      this.$emit('showChange', newV);
+    }
+  }
 
   // hooks
 

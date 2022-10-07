@@ -16,7 +16,7 @@
                   :class="{
                     enable: filter.sorts?.[item.key] === 'desc',
                   }"
-                  name="arrow-up"
+                  name="arrow-up-solid"
                   :size="12"
                 ></rxz-icon>
                 <rxz-icon
@@ -24,7 +24,7 @@
                   :class="{
                     enable: filter.sorts?.[item.key] === 'asc',
                   }"
-                  name="arrow-down"
+                  name="arrow-down-solid"
                   :size="12"
                 ></rxz-icon>
               </span>

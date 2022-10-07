@@ -1,0 +1,24 @@
+@use "~@/themes/themeify";
+
+.rxz-select-list {
+  box-sizing: border-box;
+
+  &-option {
+    padding: 8px;
+    cursor: pointer;
+    &:not(:last-child) {
+      border-bottom: 1px solid transparent;
+      @include themeify.themeify {
+        border-color: themeify.getBorderColor("default", false);
+      }
+    }
+
+    &:hover {
+      @include themeify.theme_color("primary", true);
+    }
+
+    &.selected {
+      @include themeify.theme_color("primary", true);
+    }
+  }
+}

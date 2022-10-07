@@ -8,7 +8,9 @@
       v-bind="$attrs"
       :data-rxz-popper="popperKey"
       >
-        <div class="rxz-popper-content" :class="{radius}">
+        <div class="rxz-popper-content" :style="{
+          padding: padding ? '8px' : '0'
+        }" :class="{radius}">
           <span v-if="showArrow" class="rxz-popper-content-arrow" :class="[pos]"></span>
           <slot></slot>
         </div>

@@ -100,6 +100,7 @@ module.exports = {
             '/components/form/rxzswitch',
             '/components/form/rxztextarea',
             '/components/form/rxzcheckbox',
+            '/components/form/rxzselect',
           ]
         },
         {
