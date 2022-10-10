@@ -1,0 +1,42 @@
+@use "~@/themes/themeify";
+
+.rxz-select {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 8px 32px 8px 8px;
+  background-image: none;
+  outline: none;
+  border-width: 1.5px;
+  border-style: solid;
+  border-radius: 5px;
+  transition: border-color .2s;
+  cursor: pointer;
+  position: relative;
+
+  @include themeify.themeify {
+    border-color: themeify.getBorderColor("default", false);
+  }
+
+  &:focus:not(.disabled) {
+    @include themeify.themeify {
+      border-color: themeify.getBorderColor("focus", false) !important;
+    }
+  }
+
+  &.disabled {
+    cursor: not-allowed !important;
+    @include themeify.themeify {
+      background-color: themeify.getColor("disabled", false) !important;
+    }
+  }
+
+  &-arrow {
+    position: absolute;
+    top: 50%;
+    right: 4px;
+    transform: translateY(-50%) !important;
+    @include themeify.themeify {
+      color: themeify.getBorderColor("default", false);
+    }
+  }
+}

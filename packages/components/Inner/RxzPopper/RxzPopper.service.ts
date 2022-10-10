@@ -60,6 +60,7 @@ export class RxzPopperService {
       RxzPopper as any,
       {
         radius: options.radius,
+        padding: options.padding,
         type: options.type,
         showArrow: options.showArrow,
         pos: options.pos,

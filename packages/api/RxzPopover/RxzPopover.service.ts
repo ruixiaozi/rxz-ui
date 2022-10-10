@@ -34,11 +34,15 @@ export class RxzPopoverService {
       type: options.type ?? POPOVER_TYPE_E.WHITE,
       showArrow: options.showArrow ?? false,
       radius: options.radius ?? false,
+      padding: options.padding,
       content: options.content,
       contentCntProps: options.contentCntProps,
       allowOuterClose: options.allowOuterClose,
       // 允许自动回收
       allowAutoRemove: true,
+      events: options.onShowChange
+        ? { onShowChange: options.onShowChange }
+        : {},
     });
 
     // 更新后显示弹出层

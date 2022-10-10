@@ -80,6 +80,9 @@ import TestRxzPagination from './components/pagination/TestRxzPagination.vue';
 import TestRxzPaginationExp1 from './components/pagination/TestRxzPaginationExp1.vue';
 import TestRxzPopover from './components/popover/TestRxzPopover.vue';
 import TestRxzPopoverExp1 from './components/popover/TestRxzPopoverExp1.vue';
+import TestRxzSelect from './components/select/TestRxzSelect.vue';
+import TestRxzSelectExp1 from './components/select/TestRxzSelectExp1.vue';
+import TestRxzSelectExp2 from './components/select/TestRxzSelectExp2.vue';
 
 
 export default defineClientConfig({
@@ -175,6 +178,9 @@ export default defineClientConfig({
     app.component('TestRxzPaginationExp1', TestRxzPaginationExp1);
     app.component('TestRxzPopover', TestRxzPopover);
     app.component('TestRxzPopoverExp1', TestRxzPopoverExp1);
+    app.component('TestRxzSelect', TestRxzSelect);
+    app.component('TestRxzSelectExp1', TestRxzSelectExp1);
+    app.component('TestRxzSelectExp2', TestRxzSelectExp2);
 
   },
   setup() {},

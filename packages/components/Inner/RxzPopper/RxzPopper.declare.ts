@@ -41,6 +41,8 @@ export interface RxzPopperOptions {
   showArrow?: boolean;
   // 是否显示圆角，默认true
   radius?: boolean;
+  // 是否开启内边距，默认true
+  padding?: boolean;
   // 内容，可以是字符串、组件、虚拟NODE、虚拟dom数组
   content?: string | Component | VNode | VNode[];
   // 组件的props（事件用onXxx）
@@ -50,5 +52,5 @@ export interface RxzPopperOptions {
   // 允许自动回收，默认false
   allowAutoRemove?: boolean;
   // 事件处理器
-  events?: { [key: string]: (event: Event) => void };
+  events?: { [key: string]: (...args: any[]) => any };
 }
