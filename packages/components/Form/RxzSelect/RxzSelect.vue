@@ -3,6 +3,7 @@
     class="rxz-select"
     :class="{
       disabled,
+      text: !isButton,
     }"
     :style="{
       width,
@@ -11,10 +12,12 @@
     :tabindex="tabIndex"
     v-bind="$attrs"
   >
-    <span>
-      {{ formValue.value?.label || "" }}</span>
+    <span class="rxz-select-text" v-rxz-overflow>
+      {{ formValue.value?.label || "" }}
+    </span>
     <rxz-icon
       :name="isFold ? 'arrow-down' : 'arrow-up'"
+      :size="isButton ? 24 : 18"
       class="rxz-select-arrow"
     ></rxz-icon>
   </span>

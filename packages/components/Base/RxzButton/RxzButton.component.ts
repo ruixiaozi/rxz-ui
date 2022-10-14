@@ -37,7 +37,7 @@ export class RxzButtonCnt extends Vue {
   @Prop({ type: String, default: 'auto' })
   readonly height!: string;
 
-  @Prop({ type: String, default: '10px 20px' })
+  @Prop({ type: String, default: '8px 16px' })
   readonly padding!: string;
 
   @Prop({ type: String, default: '5px' })

@@ -1,7 +1,7 @@
 import { RxzSelectList } from './../../Inner/RxzSelectList/index';
 import { RxzIcon } from '@/components/Base/RxzIcon';
 import { RxzFocusService } from '@/api/common/RxzFocus.service';
-import { InjectService } from '@/common';
+import { getService, InjectService } from '@/common';
 import { ref } from 'vue';
 import { Options, Vue, setup } from 'vue-class-component';
 import { RxzPopoverService } from '@/api/RxzPopover/RxzPopover.service';
@@ -9,6 +9,9 @@ import { POPOVER_POS_E } from '@/components/Inner/RxzPopper';
 import { Model, Prop } from 'vue-property-decorator';
 import { RxzSelectOptions } from './RxzSelect.declare';
 import { RxzFormService } from '../RxzForm/RxzForm.service';
+import { RxzOverflowDirective } from '@/directives/RxzOverflowDirective';
+
+const rxzOverflowDirective = getService(RxzOverflowDirective);
 
 /**
  * Component: RxzSelect
@@ -20,6 +23,9 @@ import { RxzFormService } from '../RxzForm/RxzForm.service';
   name: 'RxzSelect',
   components: {
     RxzIcon,
+  },
+  directives: {
+    [rxzOverflowDirective.name]: rxzOverflowDirective,
   },
 })
 export class RxzSelectCnt extends Vue {
@@ -36,6 +42,9 @@ export class RxzSelectCnt extends Vue {
 
   @Prop({ type: Boolean, default: false })
   readonly disabled!: boolean;
+
+  @Prop({ type: Boolean, default: true })
+  readonly isButton!: boolean;
 
   // injects
 
@@ -84,7 +93,7 @@ export class RxzSelectCnt extends Vue {
   openSelectList() {
     this.popperKey = this.rxzPopoverService?.open({
       sourceEl: this.$el,
-      pos: POPOVER_POS_E.bottomleft,
+      pos: POPOVER_POS_E.bottomright,
       key: this.popperKey,
       showArrow: false,
       radius: true,
@@ -96,8 +105,9 @@ export class RxzSelectCnt extends Vue {
         'style': {
           width: this.width,
         },
-        'onUpdate:modelValue': (selected) => {
+        'onUpdate:modelValue': (selected: RxzSelectOptions) => {
           this.formValue.value = selected;
+          selected.onClick?.();
           this.rxzPopoverService?.close(this.popperKey);
         },
       },

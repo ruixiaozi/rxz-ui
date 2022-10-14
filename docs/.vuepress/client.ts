@@ -83,6 +83,9 @@ import TestRxzPopoverExp1 from './components/popover/TestRxzPopoverExp1.vue';
 import TestRxzSelect from './components/select/TestRxzSelect.vue';
 import TestRxzSelectExp1 from './components/select/TestRxzSelectExp1.vue';
 import TestRxzSelectExp2 from './components/select/TestRxzSelectExp2.vue';
+import TestRxzSelectExp3 from './components/select/TestRxzSelectExp3.vue';
+import TestButtonGroup from './components/buttongroup/TestButtonGroup.vue';
+import TestButtonGroupExp1 from './components/buttongroup/TestButtonGroupExp1.vue';
 
 
 export default defineClientConfig({
@@ -181,6 +184,9 @@ export default defineClientConfig({
     app.component('TestRxzSelect', TestRxzSelect);
     app.component('TestRxzSelectExp1', TestRxzSelectExp1);
     app.component('TestRxzSelectExp2', TestRxzSelectExp2);
+    app.component('TestRxzSelectExp3', TestRxzSelectExp3);
+    app.component('TestButtonGroup', TestButtonGroup);
+    app.component('TestButtonGroupExp1', TestButtonGroupExp1);
 
   },
   setup() {},

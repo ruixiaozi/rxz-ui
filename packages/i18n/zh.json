@@ -13,5 +13,6 @@
   "messagebox_error": "错误",
   "button_confirm": "确认",
   "button_cancel": "取消",
-  "rxz_pagination_total": "总共：{0} 条"
+  "rxz_pagination_total": "总共：{0} 条",
+  "button_more": "更多"
 }

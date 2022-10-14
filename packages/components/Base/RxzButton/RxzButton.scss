@@ -29,10 +29,15 @@
   // 不同类型的按钮样式（使用主题类型颜色）
   @each $type in "primary", "success", "information" {
     &.rxz-button-#{$type} {
-      border: none;
+      @include themeify.themeify {
+        border-color: themeify.getColor($type, false);
+      }
       @include themeify.theme_color($type, false);
 
       &:not(.rxz-button-is-disabled):hover {
+        @include themeify.themeify {
+          border-color: themeify.getColor($type, true);
+        }
         @include themeify.theme_color($type, true);
       }
     }

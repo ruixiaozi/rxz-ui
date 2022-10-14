@@ -2,6 +2,7 @@ export interface RxzSelectOptions {
   label: string;
   value: any;
   key: string | number;
+  onClick?: (...args: any[]) => any;
 }
 
 export class RxzSelectDeclare {
@@ -16,6 +17,8 @@ export class RxzSelectDeclare {
     // 选项
     options?: RxzSelectOptions[];
     disabled?: boolean;
+    // 是否为按钮，默认true
+    isButton?: boolean;
   };
 
   declare $emit: {

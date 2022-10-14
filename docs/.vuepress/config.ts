@@ -56,6 +56,7 @@ module.exports = {
           children: [
             '/components/base/rxzbutton.md',
             '/components/base/rxzcountdownbutton.md',
+            '/components/base/rxzbuttongroup.md',
             '/components/base/rxzicon.md',
             '/components/base/rxztip.md',
             '/components/base/rxzpagination.md',

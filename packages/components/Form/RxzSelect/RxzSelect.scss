@@ -3,18 +3,24 @@
 .rxz-select {
   display: inline-block;
   box-sizing: border-box;
-  padding: 8px 32px 8px 8px;
+  padding: 8px 32px 8px 12px;
   background-image: none;
   outline: none;
-  border-width: 1.5px;
-  border-style: solid;
+  border: 1px solid #d5e7fc;
   border-radius: 5px;
   transition: border-color .2s;
   cursor: pointer;
   position: relative;
 
-  @include themeify.themeify {
-    border-color: themeify.getBorderColor("default", false);
+
+  &.text {
+    padding: 0 24px 0 0;
+    border: none;
+    border-radius: 0;
+
+    .rxz-select-arrow {
+      color: #000;
+    }
   }
 
   &:focus:not(.disabled) {
@@ -25,9 +31,18 @@
 
   &.disabled {
     cursor: not-allowed !important;
+    color: #fff;
     @include themeify.themeify {
       background-color: themeify.getColor("disabled", false) !important;
     }
+    .rxz-select-arrow {
+      display: none;
+    }
+  }
+
+  &-text {
+    display: inline-block;
+    width: 100%;
   }
 
   &-arrow {
@@ -35,8 +50,7 @@
     top: 50%;
     right: 4px;
     transform: translateY(-50%) !important;
-    @include themeify.themeify {
-      color: themeify.getBorderColor("default", false);
-    }
+    color: #d5e7fc;
   }
+
 }

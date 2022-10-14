@@ -13,5 +13,6 @@
   "messagebox_error": "Error",
   "button_confirm": "Confirm",
   "button_cancel": "Cancel",
-  "rxz_pagination_total": "Total: {0} items"
+  "rxz_pagination_total": "Total: {0} items",
+  "button_more": "More"
 }
