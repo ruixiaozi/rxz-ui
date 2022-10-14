@@ -86,6 +86,8 @@ import TestRxzSelectExp2 from './components/select/TestRxzSelectExp2.vue';
 import TestRxzSelectExp3 from './components/select/TestRxzSelectExp3.vue';
 import TestButtonGroup from './components/buttongroup/TestButtonGroup.vue';
 import TestButtonGroupExp1 from './components/buttongroup/TestButtonGroupExp1.vue';
+import TestRxzSearch from './components/search/TestRxzSearch.vue';
+import TestRxzSearchExp1 from './components/search/TestRxzSearchExp1.vue';
 
 
 export default defineClientConfig({
@@ -187,6 +189,8 @@ export default defineClientConfig({
     app.component('TestRxzSelectExp3', TestRxzSelectExp3);
     app.component('TestButtonGroup', TestButtonGroup);
     app.component('TestButtonGroupExp1', TestButtonGroupExp1);
+    app.component('TestRxzSearch', TestRxzSearch);
+    app.component('TestRxzSearchExp1', TestRxzSearchExp1);
 
   },
   setup() {},
