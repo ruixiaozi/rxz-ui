@@ -1,0 +1,9 @@
+@use "~@/themes/themeify";
+
+.rxz-search {
+  &-icon {
+    @include themeify.themeify {
+      color: themeify.getTextColor('darker', false);
+    }
+  }
+}

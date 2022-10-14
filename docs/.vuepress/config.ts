@@ -60,6 +60,7 @@ module.exports = {
             '/components/base/rxzicon.md',
             '/components/base/rxztip.md',
             '/components/base/rxzpagination.md',
+            '/components/base/rxzsearch.md',
           ]
         },
         {
