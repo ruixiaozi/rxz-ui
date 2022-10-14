@@ -1,16 +1,11 @@
 <template>
-  <rxz-form :form-config="formConfig" v-model="data">
-    <rxz-form-item name="test" :error-tip="{'required': 'error required'}">
-      <rxz-label>Label：</rxz-label>
-      <rxz-select :options="options"></rxz-select>
-    </rxz-form-item>
-  </rxz-form>
+  <rxz-select v-model="data" :options="options" width="fit-content" :isButton="false"></rxz-select>
 </template>
 <script>
-import { RxzValidators } from '@/definition';
 export default {
-  data () {
+  data() {
     return {
+      data: null,
       options: [
         {
           label: "Option1",
@@ -23,18 +18,10 @@ export default {
           key: "2",
         },
       ],
-      formConfig: {
-        test: {
-          validators: [RxzValidators.required],
-          default: {
-            label: "Option2",
-            value: 2,
-            key: "2",
-          },
-        },
-      },
-      data: {}
-    }
+    };
   },
-}
+  created() {
+    this.data = this.options[0];
+  }
+};
 </script>

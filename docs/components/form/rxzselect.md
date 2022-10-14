@@ -43,6 +43,7 @@ export default {
 | width      | String             | 宽度     | -          | '120px' |      |
 | options    | RxzSelectOptions[] | 下拉选项 | -          | []      |      |
 | disabled   | Boolean            | 是否禁用 | true/false | false   |      |
+| isButton   | Boolean            | 是否为按钮 | true/false | true   |      |
 
 ## Event 事件
 
@@ -99,11 +100,47 @@ export default {
 </script>
 ```
 
-### 2. 在form中使用
+### 2. 文本模式
 
 ---
 
 <TestRxzSelectExp2></TestRxzSelectExp2>
+
+```vue
+<template>
+  <rxz-select v-model="data" :options="options" width="fit-content" :isButton="false"></rxz-select>
+</template>
+<script>
+export default {
+  data() {
+    return {
+      data: null,
+      options: [
+        {
+          label: "Option1",
+          value: 1,
+          key: "1",
+        },
+        {
+          label: "Option2",
+          value: 2,
+          key: "2",
+        },
+      ],
+    };
+  },
+  created() {
+    this.data = this.options[0];
+  }
+};
+</script>
+```
+
+### 3. 在form中使用
+
+---
+
+<TestRxzSelectExp3></TestRxzSelectExp3>
 
 ```vue
 <template>

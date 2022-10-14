@@ -31,8 +31,9 @@ export class RxzOverflowDirective implements ObjectDirective {
     }
 
     if (binding.value === void 0 || binding.value) {
-      el.style.overflow = 'hidden';
+      el.style.overflowX = 'hidden';
       el.style.whiteSpace = 'nowrap';
+      el.style.verticalAlign = 'bottom';
       el.style.textOverflow = 'ellipsis';
       // 如果出现溢出，则创建或者更新tooltip
       if (el.clientWidth < el.scrollWidth) {
