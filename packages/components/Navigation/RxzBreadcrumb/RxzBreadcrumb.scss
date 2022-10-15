@@ -1,0 +1,26 @@
+@use "~@/themes/themeify";
+
+.rxz-breadcrumb {
+  a {
+    text-decoration: none;
+    transition: color .2s;
+
+    @include themeify.themeify {
+      color: themeify.getTextColor("dark", false);
+    }
+
+    &.link:hover {
+      @include themeify.themeify {
+        color: themeify.getTextColor("default", false);
+      }
+    }
+
+  }
+
+  &-split {
+    margin: 0 8px;
+    @include themeify.themeify {
+      color: themeify.getTextColor("dark", false);
+    }
+  }
+}

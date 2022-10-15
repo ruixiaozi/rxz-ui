@@ -5,6 +5,7 @@ import { LayoutComponents } from './Layout';
 import { CardComponents } from './Card';
 import { FormComponents } from './Form';
 import { TableComponents } from './Table';
+import { NavigationComponents } from './Navigation';
 import { install } from '@/common';
 
 export * from './Animation';
@@ -13,6 +14,7 @@ export * from './Layout';
 export * from './Card';
 export * from './Form';
 export * from './Table';
+export * from './Navigation';
 
 // 所有组件列表
 const components = [
@@ -22,6 +24,7 @@ const components = [
   CardComponents,
   FormComponents,
   TableComponents,
+  NavigationComponents,
 ];
 
 export const Components = {

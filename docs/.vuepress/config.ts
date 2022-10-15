@@ -89,6 +89,14 @@ module.exports = {
           ]
         },
         {
+          text: '导航',
+          sidebarDepth: 1,
+          collapsable: false,
+          children: [
+            '/components/navigation/rxzbreadcrumb.md',
+          ]
+        },
+        {
           text: '表单组件',
           sidebarDepth: 1,
           collapsable: false,
