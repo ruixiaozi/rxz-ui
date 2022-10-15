@@ -1,21 +1,25 @@
+import { RxzDataMapService } from './../api/RxzDataMap/RxzDataMap.service';
 import { RxzI18n } from '@/i18n';
 import { useReflectiveInjector } from '@tanbo/vue-di-plugin';
 import { App } from 'vue';
+import { RxzDataMap } from '@/api/RxzDataMap/RxzDataMap.declare';
 
 const injector = useReflectiveInjector();
 
 export interface RxzOption {
   i18n?: any;
+  dataMaps?: RxzDataMap;
 }
 
 export function getService<T>(service: Class<T>): T {
   return injector.get(service);
 }
 
-export const install = (cbk: {(app: App):void}) => (app: any, { i18n = {} }: RxzOption = {}) => {
+export const install = (cbk: {(app: App):void}) => (app: any, { i18n = {}, dataMaps = {} }: RxzOption = {}) => {
   if (!app.$rxz) {
     app.$rxz = true;
     app.use(RxzI18n, { i18n });
+    getService(RxzDataMapService).appendMap(dataMaps);
   }
   cbk(app);
 };

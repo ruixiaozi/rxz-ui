@@ -89,6 +89,7 @@ import TestButtonGroupExp1 from './components/buttongroup/TestButtonGroupExp1.vu
 import TestRxzSearch from './components/search/TestRxzSearch.vue';
 import TestRxzSearchExp1 from './components/search/TestRxzSearchExp1.vue';
 import TestRxzBreadcrumb from './components/breadcrumb/TestRxzBreadcrumb.vue';
+import TestRxzDataMap from './components/datamap/TestRxzDataMap.vue';
 
 
 export default defineClientConfig({
@@ -103,6 +104,18 @@ export default defineClientConfig({
           max_custom: 'max value is {0}',
           custom_validator: 'min value is {min}'
         },
+      },
+      dataMaps: {
+        TESK_STATUS: {
+          0: {
+            lable: '成功',
+            value: 0
+          },
+          1: {
+            lable: '失败',
+            value: 1
+          }
+        }
       }
     } as RxzOption);
     app.component('IconDisplay', IconDisplay);
@@ -193,6 +206,7 @@ export default defineClientConfig({
     app.component('TestRxzSearch', TestRxzSearch);
     app.component('TestRxzSearchExp1', TestRxzSearchExp1);
     app.component('TestRxzBreadcrumb', TestRxzBreadcrumb);
+    app.component('TestRxzDataMap', TestRxzDataMap);
 
   },
   setup() {},
