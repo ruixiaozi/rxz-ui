@@ -40,6 +40,7 @@ module.exports = {
           collapsable: false,
           children: [
             '/apis/common/rxzdatamap.md',
+            '/apis/common/i18n.md',
           ]
         },
         {
