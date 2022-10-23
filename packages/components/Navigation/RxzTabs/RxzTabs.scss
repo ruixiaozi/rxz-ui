@@ -1,0 +1,31 @@
+.rxz-tabs {
+  &-tab {
+    padding: 0px 16px;
+    border-bottom: solid 1px #000;
+
+    span {
+      display: inline-block;
+      position: relative;
+      bottom: -2px;
+      padding: 8px;
+      box-sizing: border-box;
+      background-color: #fff;
+      border: solid 1px #000;
+
+      cursor: pointer;
+      user-select: none;
+
+      &:not(:first-child) {
+        border-left: none;
+      }
+
+      &.select {
+        border-bottom: none;
+      }
+    }
+  }
+
+  &-body {
+    padding: 8px 4px;
+  }
+}

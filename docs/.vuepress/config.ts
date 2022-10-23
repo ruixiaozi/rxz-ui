@@ -103,6 +103,7 @@ module.exports = {
           children: [
             '/components/navigation/rxzbreadcrumb.md',
             '/components/navigation/rxzmenu.md',
+            '/components/navigation/rxztabs.md',
           ]
         },
         {
