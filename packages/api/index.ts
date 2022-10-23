@@ -5,15 +5,18 @@ import { RxzLoading } from './RxzLoading';
 import { RxzTips } from './RxzTips';
 import { RxzMessageBox } from './RxzMessageBox';
 import { RxzPopover } from './RxzPopover';
+import { RxzDataMap } from './RxzDataMap';
 
 export * from './RxzModal';
 export * from './RxzLoading';
 export * from './RxzTips';
 export * from './RxzMessageBox';
 export * from './RxzPopover';
+export * from './RxzDataMap';
 
 // 所有api列表
 const apis = [
+  RxzDataMap,
   RxzPopover,
   RxzMessageBox,
   RxzTips,

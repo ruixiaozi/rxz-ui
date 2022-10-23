@@ -35,6 +35,14 @@ module.exports = {
       '/apis/':[
         '/apis/README.md',
         {
+          text: '通用API',
+          sidebarDepth: 1,
+          collapsable: false,
+          children: [
+            '/apis/common/rxzdatamap.md',
+          ]
+        },
+        {
           text: '弹出层API',
           sidebarDepth: 1,
           collapsable: false,
