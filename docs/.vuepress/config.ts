@@ -29,8 +29,6 @@ module.exports = {
     sidebar: {
       '/guide/': [
         '/guide/README.md',
-        '/guide/component.md',
-        '/guide/directive.md',
       ],
       '/apis/':[
         '/apis/README.md',

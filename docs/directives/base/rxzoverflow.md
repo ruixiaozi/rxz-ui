@@ -53,7 +53,7 @@
 </div>
 
 ```vue
-<div style="width: 100px" v-rxz-overflow.white>  
+<div style="width: 100px" v-rxz-overflow:right>  
   我的名字叫rxz-overflow
 </div>
 ```
@@ -67,7 +67,7 @@
 </div>
 
 ```vue
-<div style="width: 100px" v-rxz-overflow.white>  
+<div style="width: 100px" v-rxz-overflow.click>  
   我的名字叫rxz-overflow
 </div>
 ```
