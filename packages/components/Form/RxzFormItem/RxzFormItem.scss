@@ -1,27 +1,41 @@
 .rxz-form-item {
-  padding-bottom: 16px;
-  padding-right: 16px;
   width: 100%;
-  display: flex;
-  align-items: flex-start;
+  padding-right: 16px;
 
-  // 只有label和form-text
-  & > ::v-deep .rxz-label,
-  & > ::v-deep .rxz-form-text {
-    padding-top: 8px;
-  }
+  &-body {
+    padding-bottom: 16px;
 
-  // 只有formValue占具剩余宽度
-  ::v-deep .rxz-form-value {
-    flex: 1;
+    display: flex;
+    align-items: flex-start;
+
+    // 只有label和form-text
+    & > ::v-deep .rxz-label,
+    & > ::v-deep .rxz-form-text {
+      padding-top: 8px;
+    }
+
+    // 只有formValue占具剩余宽度
+    ::v-deep .rxz-form-value {
+      flex: 1;
+    }
   }
 }
 
 .error-tip {
   position: relative;
+  box-sizing: border-box;
+  width: 100%;
   color: red;
   text-align: left;
   margin-top: -10px;
   padding-left: 5px;
   margin-bottom: 5px;
+  &-icon {
+    position: relative;
+    top: 2px;
+  }
+  span {
+    word-wrap: break-word;
+    word-break: break-all;
+  }
 }

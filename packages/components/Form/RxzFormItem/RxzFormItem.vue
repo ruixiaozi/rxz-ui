@@ -1,11 +1,13 @@
 <template>
   <div class="rxz-form-item">
-    <slot :itemData="formData?.[name]"></slot>
-  </div>
-  <div v-if="tip" class="error-tip" :style="{ marginLeft:  labelWidthPx}">
-      <RxzIcon name="exclamation"></RxzIcon>
-      {{ tip }}
+    <div class="rxz-form-item-body">
+      <slot :itemData="formData?.[name]"></slot>
     </div>
+    <div v-if="tip" class="error-tip" :style="{ paddingLeft: labelWidthPx }">
+      <rxz-icon class="error-tip-icon" name="exclamation" :size="16"></rxz-icon>
+      <span>{{ tip }}</span>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
