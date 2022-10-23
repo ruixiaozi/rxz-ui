@@ -2,6 +2,7 @@ import { getService } from '@/common';
 import { RxzIcon } from '@/components/Base/RxzIcon';
 import { RxzValidators } from '@/definition';
 import { RxzOverflowDirective } from '@/directives/RxzOverflowDirective';
+import { getI18n } from '@/i18n';
 import { Options, Vue } from 'vue-class-component';
 import { Inject, Prop, Ref } from 'vue-property-decorator';
 import { RxzFormItemConfig } from '../RxzForm/RxzForm.declare';
@@ -28,6 +29,9 @@ export class RxzLabelCnt extends Vue {
   // props and provide
   @Prop({ type: Boolean, default: false })
   readonly required!: boolean;
+
+  @Prop({ type: Boolean, default: false })
+  readonly showColon!: boolean;
 
   // injects
   @Inject()
@@ -69,6 +73,10 @@ export class RxzLabelCnt extends Vue {
     return validators.some((item) => item === RxzValidators.required);
   }
 
+  get colon() {
+    return getI18n('rxz_colon');
+  }
+
   // watchs
 
   // hooks
@@ -82,7 +90,8 @@ export class RxzLabelCnt extends Vue {
 
   // methods
   updateWidth() {
-    this.updateFormLabelWidth(this.formItemKey, `${this.labelContentSpan.offsetWidth + 15}px`);
+    // 这里的30px是除了label内容的其他宽度，必须加上
+    this.updateFormLabelWidth(this.formItemKey, `${this.labelContentSpan.offsetWidth + 35}px`);
   }
 
 

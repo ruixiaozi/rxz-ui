@@ -38,6 +38,9 @@ export class RxzOverflowDirective implements ObjectDirective {
       // 如果出现溢出，则创建或者更新tooltip
       if (el.clientWidth < el.scrollWidth) {
         this.toolTip?.updated(el, binding, sourceVnode);
+      } else {
+        // 没有的话，需要销毁掉
+        this.toolTip?.beforeUnmount(el);
       }
     }
   }

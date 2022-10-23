@@ -14,5 +14,6 @@
   "button_confirm": "Confirm",
   "button_cancel": "Cancel",
   "rxz_pagination_total": "Total: {0} items",
-  "button_more": "More"
+  "button_more": "More",
+  "rxz_colon": ":"
 }

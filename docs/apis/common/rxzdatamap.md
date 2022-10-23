@@ -35,11 +35,11 @@ app.mount('#app');
   <div>
     <rxz-form :form-config="formConfig" v-model="data">
       <rxz-form-item name="key">
-        <rxz-label>key：</rxz-label>
+        <rxz-label>key</rxz-label>
         <rxz-input></rxz-input>
       </rxz-form-item>
       <rxz-form-item name="value">
-        <rxz-label>value：</rxz-label>
+        <rxz-label>value</rxz-label>
         <rxz-input></rxz-input>
       </rxz-form-item>
     </rxz-form>

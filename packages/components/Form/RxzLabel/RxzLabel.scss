@@ -6,14 +6,18 @@
 
   &-asterisk {
     display: inline-block;
-    width: 14px;
     height: 14px;
+    width: 14px;
+    flex: 0 0 14px;
     background-image: url('~@/images/asterisk.svg');
-    background-size: 100%;
+    background-size: 100% 100%;
     opacity: 1;
   }
 
-  &-content {
-    white-space:nowrap;
+  &-colon {
+    display: inline-block;
+    width: 16px;
+    flex: 0 0 16px;
+    opacity: 1;
   }
 }

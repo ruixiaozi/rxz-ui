@@ -6,11 +6,11 @@
 <template>
   <rxz-form :form-config="formConfig" v-model="data" ref="form">
     <rxz-form-item name="test" :error-tip="{'required': 'error required'}">
-      <rxz-label>Label：</rxz-label>
+      <rxz-label>Label</rxz-label>
       <rxz-input></rxz-input>
     </rxz-form-item>
     <rxz-form-item name="test1" :error-tip="{'required': 'error required'}">
-      <rxz-label>Label1：</rxz-label>
+      <rxz-label>Label1</rxz-label>
       <rxz-input></rxz-input>
     </rxz-form-item>
   </rxz-form>
@@ -101,11 +101,11 @@ export default {
 <template>
   <rxz-form :form-config="formConfig" v-model="data">
     <rxz-form-item name="test" :error-tip="{'required': 'error required'}">
-      <rxz-label>Label：</rxz-label>
+      <rxz-label>Label</rxz-label>
       <rxz-input></rxz-input>
     </rxz-form-item>
     <rxz-form-item name="test1" :error-tip="{'required': 'error required'}">
-      <rxz-label>Label1：</rxz-label>
+      <rxz-label>Label1</rxz-label>
       <rxz-input></rxz-input>
     </rxz-form-item>
   </rxz-form>
@@ -138,11 +138,11 @@ export default {
 <template>
   <rxz-form :form-config="formConfig" v-model="data" direction="horizontal" labelWidth="fit-content">
     <rxz-form-item name="test" :error-tip="{'required': 'error required'}">
-      <rxz-label>Label：</rxz-label>
+      <rxz-label>Label</rxz-label>
       <rxz-input></rxz-input>
     </rxz-form-item>
     <rxz-form-item name="test1" :error-tip="{'required': 'error required'}">
-      <rxz-label>Label1：</rxz-label>
+      <rxz-label>Label1</rxz-label>
       <rxz-input></rxz-input>
     </rxz-form-item>
   </rxz-form>
@@ -179,14 +179,14 @@ export default {
 <template>
   <rxz-form :form-config="formConfig" v-model="data">
     <rxz-form-item name="test" :error-tip="{'required': 'error required'}">
-      <rxz-label>Label：</rxz-label>
+      <rxz-label>Label</rxz-label>
       <rxz-input></rxz-input>
     </rxz-form-item>
     <rxz-form-item>
-      <rxz-label>Label1：</rxz-label>
+      <rxz-label>Label1</rxz-label>
       <rxz-form name="inner">
         <rxz-form-item name="innerTest" :error-tip="{'required': 'error required'}">
-          <rxz-label>innerLabel：</rxz-label>
+          <rxz-label>innerLabel</rxz-label>
           <rxz-input></rxz-input>
         </rxz-form-item>
       </rxz-form>
@@ -231,11 +231,11 @@ export default {
 <template>
   <rxz-form :form-config="formConfig" v-model="data" labelWidth="fit-content">
     <rxz-form-item name="test" :error-tip="{'required': 'error required'}">
-      <rxz-label>testLabel：</rxz-label>
+      <rxz-label>testLabel</rxz-label>
       <rxz-input></rxz-input>
     </rxz-form-item>
     <rxz-form-item name="test1" :error-tip="{'required': 'error required'}">
-      <rxz-label>Label：</rxz-label>
+      <rxz-label>Label</rxz-label>
       <rxz-input></rxz-input>
     </rxz-form-item>
   </rxz-form>
@@ -272,11 +272,11 @@ export default {
 <template>
   <rxz-form :form-config="formConfig" v-model="data" labelWidth="auto">
     <rxz-form-item name="test" :error-tip="{'required': 'error required'}">
-      <rxz-label>testLabel：</rxz-label>
+      <rxz-label>testLabel</rxz-label>
       <rxz-input></rxz-input>
     </rxz-form-item>
     <rxz-form-item name="test1" :error-tip="{'required': 'error required'}">
-      <rxz-label>Label：</rxz-label>
+      <rxz-label>Label</rxz-label>
       <rxz-input></rxz-input>
     </rxz-form-item>
   </rxz-form>
@@ -313,11 +313,11 @@ export default {
 <template>
   <rxz-form :form-config="formConfig" v-model="data" labelWidth="100px">
     <rxz-form-item name="test" :error-tip="{'required': 'error required'}">
-      <rxz-label>testLabel：</rxz-label>
+      <rxz-label>testLabel</rxz-label>
       <rxz-input></rxz-input>
     </rxz-form-item>
     <rxz-form-item name="test1" :error-tip="{'required': 'error required'}">
-      <rxz-label>Label：</rxz-label>
+      <rxz-label>Label</rxz-label>
       <rxz-input></rxz-input>
     </rxz-form-item>
   </rxz-form>

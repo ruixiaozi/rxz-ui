@@ -7,6 +7,8 @@ export class RxzLabelDeclare {
   declare $props: {
     // 是否显示必须的星号，false通过表单的校验判断，默认为false
     required?: boolean,
+    // 是否显示冒号，默认false
+    showColon?: boolean;
   };
 
   declare $emit: {
