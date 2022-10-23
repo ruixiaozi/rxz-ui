@@ -6,7 +6,7 @@
 <template>
   <rxz-form :form-config="formConfig" v-model="data">
     <rxz-form-item name="test" :error-tip="{'required': 'error required'}">
-      <rxz-label>Label：</rxz-label>
+      <rxz-label>Label</rxz-label>
       <rxz-input></rxz-input>
     </rxz-form-item>
   </rxz-form>
@@ -86,7 +86,7 @@ export default {
   <rxz-button @click="add()" style="margin-bottom: 8px">add</rxz-button>
   <rxz-form :form-config="formConfig" v-model="data">
     <rxz-form-item>
-      <rxz-label>sub：</rxz-label>
+      <rxz-label>sub</rxz-label>
       <rxz-form name="arrayTest" v-slot:default="{formData}">
         <rxz-form-item :name="key" v-for="(item, key) in formData" :key="key">
           <rxz-input></rxz-input>
@@ -154,7 +154,7 @@ app.use(RxzUI, {
 <template>
   <rxz-form :form-config="formConfig" v-model="data">
     <rxz-form-item name="test" :error-tip="errorTips">
-      <rxz-label>Label：</rxz-label>
+      <rxz-label>Label</rxz-label>
       <rxz-input></rxz-input>
     </rxz-form-item>
   </rxz-form>

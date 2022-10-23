@@ -1,11 +1,11 @@
 <template>
   <rxz-form :form-config="formConfig" v-model="data" labelWidth="fit-content">
     <rxz-form-item name="test" :error-tip="{'required': 'error required'}">
-      <rxz-label>testLabel：</rxz-label>
+      <rxz-label>testLabel</rxz-label>
       <rxz-input></rxz-input>
     </rxz-form-item>
     <rxz-form-item name="test1" :error-tip="{'required': 'error required'}">
-      <rxz-label>Label：</rxz-label>
+      <rxz-label>Label</rxz-label>
       <rxz-input></rxz-input>
     </rxz-form-item>
   </rxz-form>
