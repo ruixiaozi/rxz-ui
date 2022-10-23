@@ -23,30 +23,6 @@ app.use(RxzUI);
 app.mount('#app');
 ```
 
-## 国际化i18n
-
-在引入的时候添加选项
-
-``` typescript
-import { createApp } from 'vue'
-import { RxzUI, RxzOption } from 'rxz-ui';
-import 'rxz-ui/lib/rxz-ui.css';
-import App from './App.vue';
-
-const app = createApp(App);
-app.use(RxzUI, {
-  i18n: {
-    zh: {
-      hellow: '您好！'
-    },
-    en: {
-      hellow: 'hellow!'
-    }
-  }
-} as RxzOption);
-app.mount('#app');
-```
-
 ## 引入提示（Vetur）
 
 1. vscode安装Vetur扩展

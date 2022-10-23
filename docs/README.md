@@ -2,17 +2,17 @@
 home: true
 heroImage: /img/logo.svg
 heroText: RxzUI 2
-tagline: 一个基于Vue3的UI组件、工具库，兼容多端设备
+tagline: 一个基于Vue3，提供强大API、丰富组件和便捷指令的UI组件库
 actions:
   - text: 开始使用 →
     link: /guide/
     type: primary
 features:
-  - title: 丰富的组件、指令与工具集
-    details: 拥有丰富的组件，适用于各种场景；集成丰富的指令和工具集，快速实现图表、视频播放等功能。
-  - title: 高度自定义
-    details: 丰富的参数以及自定义样式，让您能够快速的复现设计样式。
-  - title: 响应式组件
-    details: 多端响应式组件，能够同时兼容PC，平板，手机。
+  - title: 强大的API
+    details: 提供了功能强大、丰富的API方法，能够轻松实现国际化处理、数据转换和弹出层。
+  - title: 丰富的组件
+    details: 从基础组件到表单、表格组件，覆盖网页设计的所有基本要素。
+  - title: 便捷的指令
+    details: 提供指令形式实现溢出处理等，使用更加便捷。
 footer: MIT Licensed | Copyright © ruixiaozi | Theme is vuepress
 ---
