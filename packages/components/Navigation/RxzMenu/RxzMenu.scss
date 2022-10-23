@@ -1,0 +1,68 @@
+@use "~@/themes/themeify";
+
+.rxz-menu {
+  display: flex;
+  &.horizontal {
+    flex-direction: row;
+  }
+
+  &.vertical {
+    flex-direction: column;
+
+    width: fit-content;
+
+    a.level-0 {
+      font-weight: bold;
+    }
+
+    .rxz-menu-item:not(:last-child) {
+      border-bottom: solid 1px #000;
+    }
+  }
+
+  &-item {
+    &-sub {
+      padding-left: 16px;
+    }
+
+    a {
+      user-select: none;
+      display: inline-flex;
+      padding: 16px;
+      align-items: center;
+      transition: color .2s;
+      cursor: pointer;
+      text-decoration: none;
+      width: 100%;
+      box-sizing: border-box;
+
+      &.level-0 {
+        font-size: 16px;
+      }
+
+      @include themeify.themeify {
+        color: themeify.getTextColor("default", false);
+      }
+
+      &:hover, &.active {
+        @include themeify.themeify {
+          color: themeify.getColor("primary", false);
+        }
+      }
+
+      .rxz-menu-item-icon {
+        margin-right: 8px;
+      }
+
+      .rxz-menu-item-text {
+        display: inline-block;
+        flex: 1;
+      }
+
+      .rxz-menu-item-arrow {
+        margin-left: 8px;
+      }
+    }
+  }
+
+}
