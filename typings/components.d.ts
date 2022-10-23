@@ -1,6 +1,7 @@
 declare module 'vue' {
   // GlobalComponents for Volar
   export interface GlobalComponents {
+    RxzMenu: typeof import('../packages/index')['RxzMenuDeclare'],
     RxzBreadcrumb: typeof import('../packages/index')['RxzBreadcrumbDeclare'],
     RxzSearch: typeof import('../packages/index')['RxzSearchDeclare'],
     RxzButtonGroup: typeof import('../packages/index')['RxzButtonGroupDeclare'],

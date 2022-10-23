@@ -90,6 +90,7 @@ import TestRxzSearch from './components/search/TestRxzSearch.vue';
 import TestRxzSearchExp1 from './components/search/TestRxzSearchExp1.vue';
 import TestRxzBreadcrumb from './components/breadcrumb/TestRxzBreadcrumb.vue';
 import TestRxzDataMap from './components/datamap/TestRxzDataMap.vue';
+import TestRxzMenu from './components/menu/TestRxzMenu.vue';
 
 
 export default defineClientConfig({
@@ -207,6 +208,7 @@ export default defineClientConfig({
     app.component('TestRxzSearchExp1', TestRxzSearchExp1);
     app.component('TestRxzBreadcrumb', TestRxzBreadcrumb);
     app.component('TestRxzDataMap', TestRxzDataMap);
+    app.component('TestRxzMenu', TestRxzMenu);
 
   },
   setup() {},

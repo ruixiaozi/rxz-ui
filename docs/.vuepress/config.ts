@@ -102,6 +102,7 @@ module.exports = {
           collapsable: false,
           children: [
             '/components/navigation/rxzbreadcrumb.md',
+            '/components/navigation/rxzmenu.md',
           ]
         },
         {
