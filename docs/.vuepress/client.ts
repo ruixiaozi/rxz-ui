@@ -92,6 +92,7 @@ import TestRxzBreadcrumb from './components/breadcrumb/TestRxzBreadcrumb.vue';
 import TestRxzDataMap from './components/datamap/TestRxzDataMap.vue';
 import TestRxzMenu from './components/menu/TestRxzMenu.vue';
 import TestRxzTabs from './components/tabs/TestRxzTabs.vue';
+import TestI18n from './components/i18n/TestI18n.vue';
 
 
 export default defineClientConfig({
@@ -100,11 +101,13 @@ export default defineClientConfig({
       i18n: {
         zh: {
           max_custom: '最大值为{0}',
-          custom_validator: '最小值为{min}'
+          custom_validator: '最小值为{min}',
+          custom_message: '我是自定义中文',
         },
         en: {
           max_custom: 'max value is {0}',
-          custom_validator: 'min value is {min}'
+          custom_validator: 'min value is {min}',
+          custom_message: 'I am custom English',
         },
       },
       dataMaps: {
@@ -211,6 +214,7 @@ export default defineClientConfig({
     app.component('TestRxzDataMap', TestRxzDataMap);
     app.component('TestRxzMenu', TestRxzMenu);
     app.component('TestRxzTabs', TestRxzTabs);
+    app.component('TestI18n', TestI18n);
 
   },
   setup() {},
