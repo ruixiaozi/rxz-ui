@@ -7,6 +7,6 @@ export interface RxzDataMapItem {
 export interface RxzDataMap {
   [key: string]: {
     // 此value与item中的value一一对应
-    [value: string | number]: RxzDataMapItem;
+    [value in string | number]: RxzDataMapItem;
   };
 }
