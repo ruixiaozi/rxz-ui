@@ -160,7 +160,7 @@ export class RxzMenuCnt extends Vue {
   }
 
   openPopper(item: RxzMenuItemOption, index: number) {
-    const el = this.$refs[`item-${index}`]?.[0] as HTMLElement | undefined;
+    const el = (this.$refs[`item-${index}`] as any)?.[0] as HTMLElement | undefined;
     if (!el || this.childrenStyleCPT === 'inner' || !item.children) {
       return;
     }
