@@ -9,20 +9,20 @@
   &.vertical {
     flex-direction: column;
 
-    width: fit-content;
+    width: 100%;
 
     a.level-0 {
       font-weight: bold;
     }
 
-    .rxz-menu-item:not(:last-child) {
-      border-bottom: solid 1px #000;
-    }
+
   }
 
   &-item {
+
     &-sub {
       padding-left: 16px;
+      box-sizing: border-box;
     }
 
     a {

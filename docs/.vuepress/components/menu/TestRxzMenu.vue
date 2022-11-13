@@ -1,9 +1,15 @@
 <template>
   <rxz-menu :items="items" active="1-3-2"></rxz-menu>
   <p>---</p>
-  <rxz-menu :items="items" direction="vertical" active="1-3-2"></rxz-menu>
+  <div class="verticle-unflod">
+    <rxz-menu :items="items" direction="vertical" active="1-3-2"></rxz-menu>
+  </div>
+
   <p>---</p>
-  <rxz-menu :items="items" direction="vertical" :isFold="true" active="1-3-2"></rxz-menu>
+  <div class="verticle-flod">
+    <rxz-menu :items="items" direction="vertical" :isFold="true" active="1-3-2"></rxz-menu>
+  </div>
+
 
 </template>
 <script lang="ts">
@@ -94,3 +100,12 @@ export default {
   }
 };
 </script>
+<style>
+.verticle-unflod {
+  width: 300px;
+}
+
+.verticle-flod {
+  width: fit-content;
+}
+</style>

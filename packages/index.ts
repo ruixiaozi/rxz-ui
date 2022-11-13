@@ -4,7 +4,6 @@ import Directives from './directives';
 import { APIs } from './api';
 
 // 全局引入样式
-import '@/style/normalize.css';
 import '@/style/rxz-icon.css';
 import '@/style/global.css';
 import { install } from './common';

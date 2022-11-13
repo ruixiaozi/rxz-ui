@@ -17,6 +17,10 @@ export class RxzBreadcrumbCnt extends Vue {
   @Prop({ type: Array, default: () => [] })
   readonly breadcrumbs!: RxzBreadcrumbItem[];
 
+  // 弹出层不会挂载vue-router，需要传入
+  @Prop({ type: Object, required: false })
+  router?: any;
+
 
   // injects
 
@@ -29,6 +33,10 @@ export class RxzBreadcrumbCnt extends Vue {
   // entity
 
   // computes
+  // 弹出层不会挂载vue-router，需要传入
+  get vueRouter() {
+    return this.router || this.$router;
+  }
 
   // watchs
 
@@ -36,10 +44,10 @@ export class RxzBreadcrumbCnt extends Vue {
 
   // methods
   handleClick(event: Event, path?: string) {
-    if (!this.$router || !path) {
+    if (!this.vueRouter || !path) {
       return true;
     }
-    this.$router.push(path);
+    this.vueRouter.push(path);
     event.preventDefault();
     return false;
   }

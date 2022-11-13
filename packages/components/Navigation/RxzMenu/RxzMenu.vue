@@ -13,6 +13,7 @@
         @click="handleClick($event, item)"
         @mouseover="openPopper(item, index)"
         @mouseleave="closePopper(item)"
+        :target="item.target"
         :class="[
           `level-${level}`,
           currentStyle,
