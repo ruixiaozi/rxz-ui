@@ -56,6 +56,9 @@ export class RxzMenuCnt extends Vue {
   @Prop({ type: Function, required: false })
   parentMouseMove?: any;
 
+  // 弹出层不会挂载vue-router，需要传入
+  @Prop({ type: Object, required: false })
+  router?: any;
 
   // injects
   @InjectService(RxzPopperService)
@@ -95,6 +98,11 @@ export class RxzMenuCnt extends Vue {
     return 'popper';
   }
 
+  // 弹出层不会挂载vue-router，需要传入
+  get vueRouter() {
+    return this.router || this.$router;
+  }
+
   // watchs
 
   // hooks
@@ -106,14 +114,15 @@ export class RxzMenuCnt extends Vue {
       event.preventDefault();
       return false;
     }
+
     if (item.onClick) {
       item.onClick();
       return this.onClickSuccess(event);
     }
-    if (!this.$router || !item.path) {
+    if (!this.vueRouter || !item.path || item.path.startsWith('http')) {
       return true;
     }
-    this.$router.push(item.path);
+    this.vueRouter.push(item.path);
     return this.onClickSuccess(event);
   }
 
@@ -140,6 +149,7 @@ export class RxzMenuCnt extends Vue {
         canFold: false,
         popperKey: key,
         parentMouseMove: this.handleMouseMove,
+        router: this.vueRouter,
       },
       showArrow: false,
       gap: 0,

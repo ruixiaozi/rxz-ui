@@ -23,9 +23,9 @@ app.use(RxzUI);
 app.mount('#app');
 ```
 
-## 引入提示（Vetur）
+## 引入提示（Volar）
 
-1. vscode安装Vetur扩展
+1. vscode安装Volar扩展
 2. 引入类型文件(tsconfig.json)：
 
 ``` json
