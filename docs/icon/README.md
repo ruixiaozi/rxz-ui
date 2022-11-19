@@ -26,6 +26,7 @@
 3. 修改 `webpack` 配置，以下是是 `vue-cli` 的配置方式，修改`vue.config.js` ：
 
    ```javascript
+   const path = require('path');
    module.exports = {
      ...
      // 扩展 webpack 配置
