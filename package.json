@@ -8,17 +8,19 @@
   "email": "admin@ruixiaozi.com",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "docs:dev": "vuepress-webpack dev docs",
-    "docs:build": "vuepress-webpack build docs",
+    "docs:dev": "npm run gensvg && vuepress-webpack dev docs",
+    "docs:build": "npm run gensvg && vuepress-webpack build docs",
     "build": "npm run build:clean && npm run build:lib && npm run build:esm-bundle && rimraf lib/demo.html",
     "build:clean": "rimraf lib",
     "build:lib": "vue-cli-service build --target lib --name rxz-ui --dest lib packages/index.ts",
     "build:esm-bundle": "rollup --config ./build/rollup.config.js",
-    "prebuild": "node ./build/prebuild.js",
+    "prebuild": "npm run gensvg && node ./build/prebuild.js",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "prepare": "husky install",
-    "gen": "node ./script/Generate.js %INIT_CWD%"
+    "gen": "node ./script/Generate.js %INIT_CWD%",
+    "gensvg": "npm run gensvgjson",
+    "gensvgjson": "node ./script/GenerateIcon.js"
   },
   "repository": {
     "type": "git",
@@ -78,6 +80,8 @@
     "rollup-plugin-vue": "^6.0.0",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
+    "svg-sprite-loader": "^6.0.11",
+    "svgo-loader": "^3.0.3",
     "svgtofont": "^3.17.8",
     "ts-node": "^10.8.1",
     "typescript": "~4.1.5",

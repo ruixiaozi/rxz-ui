@@ -76,4 +76,5 @@ exceptions:
   - /packages/icons
   - /script
   - /global.d.ts
+  - /webpack.config.js
 

@@ -1,4 +1,4 @@
-const path = require('path');
+const webpackConfig = require('./webpack.config');
 
 module.exports = {
   // 修改 pages 入口
@@ -13,12 +13,6 @@ module.exports = {
     },
   },
   // 扩展 webpack 配置
-  chainWebpack: (config) => {
-    // 新增一个 @ 指向 packages 目录, 方便示例代码中使用
-    config.resolve.alias.set('@', path.resolve('packages'));
-    return {
-      devtool: 'source-map',
-    };
-  },
+  chainWebpack: webpackConfig.chainWebpack,
 
 };

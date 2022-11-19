@@ -1,6 +1,6 @@
 import { defaultTheme } from 'vuepress-webpack';
 import { webpackBundler } from '@vuepress/bundler-webpack';
-import path from 'path';
+const webpackConfig = require('../../webpack.config.js');
 
 module.exports = {
   title: 'RxzUI 2',
@@ -152,12 +152,6 @@ module.exports = {
   bundler: webpackBundler({
     postcss: {},
     vue: {},
-    chainWebpack: (config) => {
-      // 新增一个 @ 指向 packages 目录, 方便示例代码中使用
-      config.resolve.alias.set('@', path.resolve('packages'));
-      return {
-        devtool: 'source-map',
-      };
-    },
+    chainWebpack: webpackConfig.chainWebpack
   }),
 }
