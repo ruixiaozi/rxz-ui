@@ -4,9 +4,12 @@ import Directives from './directives';
 import { APIs } from './api';
 
 // 全局引入样式
-import '@/style/rxz-icon.css';
 import '@/style/global.css';
 import { install } from './common';
+
+// 引入所有图标
+const request = require.context('./icons', false, /\.svg$/u);
+request.keys().forEach(request);
 
 export * from './components';
 export * from './api';

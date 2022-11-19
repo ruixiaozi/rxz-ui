@@ -2,8 +2,6 @@
 	<desc>
 			Created with Pixso.
 	</desc>
-	<circle cx="44.000000" cy="44.000000" r="32.000000" fill="#000000"/>
-	<path d="M47 23L47 29L41 29L41 23L47 23Z" fill-rule="evenodd" fill="#FFFFFF"/>
-	<path d="M47 37L47 65L41 65L41 37L47 37Z" fill-rule="evenodd" fill="#FFFFFF"/>
+	<path d="M76 44C76 61.6731 61.6731 76 44 76C26.3269 76 12 61.6731 12 44C12 26.3269 26.3269 12 44 12C61.6731 12 76 26.3269 76 44L76 44M47 23L47 29L41 29L41 23L47 23M47 65L47 37L41 37L41 65L47 65Z" fill-rule="evenodd" fill="#000000" fill-opacity="1.000000"/>
 	<defs/>
 </svg>

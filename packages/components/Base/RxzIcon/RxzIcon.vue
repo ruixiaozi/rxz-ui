@@ -1,18 +1,20 @@
 <template>
-  <i
+  <span
     class="rxz-icon"
     :class="[
-      'rxz-icon-' + name,
       'rxz-icon-type-' + type,
     ]"
     :style="{
       width: `${size}px`,
       height: `${size}px`,
-      fontSize: `${size}px`,
       transform: `rotate(${realRotate}deg)`
     }"
     v-bind="$attrs"
-  ></i>
+  >
+    <svg>
+      <use :href="`#${name}`"></use>
+    </svg>
+  </span>
 </template>
 
 <script lang="ts">
