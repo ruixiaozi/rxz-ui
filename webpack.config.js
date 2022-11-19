@@ -4,8 +4,8 @@ module.exports = {
   chainWebpack: (config) => {
     // 新增一个 @ 指向 packages 目录, 方便示例代码中使用
     config.resolve.alias.set('@', path.resolve('packages'));
-    // 内置的svg处理排除指定目录下的文件
     const iconsDir = path.resolve('packages/icons');
+    // 内置的svg处理排除指定目录下的文件
     config.module.rule('svg').exclude.add(iconsDir).end();
     config.module
       .rule('svg-sprite-loader')
@@ -18,13 +18,14 @@ module.exports = {
         symbolId: '[name]',
       })
       .end()
+      .before('svg-sprite-loader')
       .use('svgo-loader')
       .loader('svgo-loader')
       .options({
         plugins: [
           {
             name: 'removeAttrs',
-            params: { attrs: 'fill' },
+            params: { attrs: ['fill', 'stroke'] },
           },
           'removeDesc',
           'removeDoctype',
@@ -34,7 +35,8 @@ module.exports = {
           'removeUselessDefs',
           'removeEmptyContainers',
         ],
-      });
+      })
+      .end();
 
     return {
       devtool: 'source-map',
