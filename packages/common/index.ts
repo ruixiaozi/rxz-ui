@@ -9,17 +9,23 @@ const injector = useReflectiveInjector();
 export interface RxzOption {
   i18n?: any;
   dataMaps?: RxzDataMap;
+  isSSR?: boolean;
 }
 
 export function getService<T>(service: Class<T>): T {
   return injector.get(service);
 }
 
-export const install = (cbk: {(app: App):void}) => (app: any, { i18n = {}, dataMaps = {} }: RxzOption = {}) => {
+export const install = (cbk: {(app: App):void}) => (app: any, { i18n = {}, dataMaps = {}, isSSR = false }: RxzOption = {}) => {
   if (!app.$rxz) {
     app.$rxz = true;
     app.use(RxzI18n, { i18n });
     getService(RxzDataMapService).appendMap(dataMaps);
+    if (!isSSR) {
+      // 引入所有图标
+      const request = require.context('../icons', false, /\.svg$/u);
+      request.keys().forEach(request);
+    }
   }
   cbk(app);
 };
