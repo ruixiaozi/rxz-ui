@@ -14,13 +14,27 @@ npm install rxz-ui --save
 
 ``` typescript
 import { createApp } from 'vue'
-import { RxzUI } from 'rxz-ui';
+import { RxzUI, RxzOption } from 'rxz-ui';
 import 'rxz-ui/lib/rxz-ui.css';
 import App from './App.vue';
 
 const app = createApp(App);
-app.use(RxzUI);
+use(RxzUI, {
+  i18n: {},
+  dataMaps: {},
+  isSSR: false,
+} as RxzOption);
 app.mount('#app');
+```
+
+RxzOption的定义：
+```
+interface RxzOption {
+  i18n?: any;
+  dataMaps?: RxzDataMap;
+  // 默认false，用于兼容服务端渲染，如果为true，需要使用到dom操作的会被屏蔽
+  isSSR?: boolean;
+}
 ```
 
 ## 引入提示（Volar）
