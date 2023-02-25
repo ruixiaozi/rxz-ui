@@ -14,6 +14,7 @@
     "sourceMap": true,
     "declaration": true,
     "noImplicitAny": false,
+    "outDir": "lib",
     "baseUrl": ".",
     "types": [
       "webpack-env",
@@ -29,6 +30,13 @@
       "dom",
       "dom.iterable",
       "scripthost"
+    ],
+    "plugins": [
+      // 转换输出 .d.ts 文件中的路径（如果输出声明文件，请包含此行）
+      {
+        "transform": "typescript-transform-paths",
+        "afterDeclarations": true
+      }
     ]
   },
   "include": [

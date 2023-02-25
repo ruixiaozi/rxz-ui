@@ -1,4 +1,4 @@
-import { RxzPaginations } from '@/components/Base/RxzPagination/RxzPagination.declare';
+import { RxzPaginations } from '@/components/Base/RxzPagination';
 
 export enum COLUMN_DIRECTION_ENUM {
   DESC='desc',
