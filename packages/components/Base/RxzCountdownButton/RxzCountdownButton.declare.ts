@@ -11,6 +11,6 @@ export class RxzCountdownButtonDeclare {
   declare $emit: {
     (e: 'update:modelValue', ...args: any[]): any;
     (e: 'click', event: Event): any;
-  }
+  };
 
 }

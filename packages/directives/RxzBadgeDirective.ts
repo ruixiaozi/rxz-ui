@@ -17,14 +17,14 @@ export class RxzBadgeDirective implements ObjectDirective {
       return;
     }
     this.rederBadge(el, binding.value);
-  }
+  };
 
   updated = (el: HTMLElement, binding: DirectiveBinding<any>) => {
     if ((!_isNumber(binding.value) && !_isString(binding.value))) {
       return;
     }
     this.rederBadge(el, binding.value);
-  }
+  };
 
   beforeUnmount = (el: HTMLElement) => {
     const key = el.dataset.badgeKey;
@@ -32,7 +32,7 @@ export class RxzBadgeDirective implements ObjectDirective {
       return;
     }
     this.badges.delete(key);
-  }
+  };
 
 
   private rederBadge(el: HTMLElement, value: string | number) {

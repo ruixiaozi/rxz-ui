@@ -14,6 +14,6 @@ export class RxzBreadcrumbDeclare {
   };
 
   declare $emit: {
-  }
+  };
 
 }

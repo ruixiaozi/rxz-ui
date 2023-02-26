@@ -18,7 +18,7 @@ export class RxzIframeObserveCnt extends Vue {
 
   // refs
   @Ref('iframe')
-  iframe?: HTMLIFrameElement;
+    iframe?: HTMLIFrameElement;
 
   // injectServices
 

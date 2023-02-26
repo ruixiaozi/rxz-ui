@@ -22,6 +22,6 @@ export class RxzResizeObserveDirective implements ObjectDirective {
     if (div.firstElementChild) {
       el.appendChild(div.firstElementChild);
     }
-  }
+  };
 
 }

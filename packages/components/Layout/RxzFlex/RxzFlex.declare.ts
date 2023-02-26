@@ -11,6 +11,6 @@ export class RxzFlexDeclare {
 
   declare $emit: {
 
-  }
+  };
 
 }

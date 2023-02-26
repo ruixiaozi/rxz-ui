@@ -21,22 +21,22 @@ export class RxzPopperCnt extends Vue {
 
   // props and provide
   @Prop({ type: String, default: () => POPOVER_POS_E.top })
-  pos!: POPOVER_POS_E;
+    pos!: POPOVER_POS_E;
 
   @Prop({ type: String, default: () => POPOVER_TYPE_E.WHITE })
-  type!: POPOVER_TYPE_E;
+    type!: POPOVER_TYPE_E;
 
   @Prop({ type: Boolean, default: () => true })
-  showArrow!: boolean;
+    showArrow!: boolean;
 
   @Prop({ type: Boolean, default: () => true })
-  radius!: boolean;
+    radius!: boolean;
 
   @Prop({ type: Boolean, default: () => true })
-  padding!: boolean;
+    padding!: boolean;
 
   @Prop({ type: String, default: () => _uniqueId() })
-  popperKey!: string;
+    popperKey!: string;
 
   // injects
 
@@ -62,7 +62,7 @@ export class RxzPopperCnt extends Vue {
     [POPOVER_POS_E.right]: RxzContainerPosition.CENTER_LEFT,
     [POPOVER_POS_E.righttop]: RxzContainerPosition.TOP_LEFT,
     [POPOVER_POS_E.rightbottom]: RxzContainerPosition.BOTTOM_LEFT,
-  }
+  };
 
   // computes
   get position() {

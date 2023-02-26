@@ -12,6 +12,6 @@ export class RxzFormItemDeclare {
 
   declare $emit: {
 
-  }
+  };
 
 }

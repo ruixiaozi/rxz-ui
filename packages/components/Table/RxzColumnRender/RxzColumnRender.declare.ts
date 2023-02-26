@@ -8,6 +8,6 @@ export class RxzColumnRenderDeclare {
 
   declare $emit: {
     // example: (e: 'test', ...args: any[]): any;
-  }
+  };
 
 }

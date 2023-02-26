@@ -15,6 +15,6 @@ export class RxzTextareaDeclare {
 
   declare $emit: {
     (e: 'update:modelValue', ...args: any[]): any;
-  }
+  };
 
 }

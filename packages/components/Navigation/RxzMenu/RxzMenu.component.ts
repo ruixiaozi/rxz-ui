@@ -30,35 +30,35 @@ export class RxzMenuCnt extends Vue {
 
   // props and provide
   @Prop({ type: Array, default: () => [] })
-  items!: RxzMenuItemOption[];
+    items!: RxzMenuItemOption[];
 
   @Prop({ type: String, default: '' })
-  active!: string;
+    active!: string;
 
   @Prop({ type: String, default: 'horizontal' })
-  direction!: 'vertical' | 'horizontal';
+    direction!: 'vertical' | 'horizontal';
 
   @Prop({ type: String })
-  childrenStyle?: 'inner' | 'popper';
+    childrenStyle?: 'inner' | 'popper';
 
   @Prop({ type: String, default: 'inner' })
-  currentStyle?: 'inner' | 'popper';
+    currentStyle?: 'inner' | 'popper';
 
   @Prop({ type: Number, default: 0 })
-  level!: number;
+    level!: number;
 
   @Prop({ type: Boolean, default: false })
-  isFold!: boolean;
+    isFold!: boolean;
 
   @Prop({ type: String, required: false })
-  popperKey?: string;
+    popperKey?: string;
 
   @Prop({ type: Function, required: false })
-  parentMouseMove?: any;
+    parentMouseMove?: any;
 
   // 弹出层不会挂载vue-router，需要传入
   @Prop({ type: Object, required: false })
-  router?: any;
+    router?: any;
 
   // injects
   @InjectService(RxzPopperService)

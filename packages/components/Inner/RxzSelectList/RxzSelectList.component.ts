@@ -19,7 +19,7 @@ export class RxzSelectListCnt extends Vue {
   readonly options!: RxzSelectOptions[];
 
   @Model('modelValue')
-  selected!: any;
+    selected!: any;
 
   // injects
 

@@ -19,7 +19,7 @@ export class RxzCountdownButtonCnt extends Vue {
 
   // props and provide
   @Model('modelValue', { type: Boolean })
-  isStart!: boolean;
+    isStart!: boolean;
 
   @Prop({ type: Number, default: 60 })
   readonly seconds!: number;

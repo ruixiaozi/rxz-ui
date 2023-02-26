@@ -28,6 +28,6 @@ export class RxzMenuDeclare {
   };
 
   declare $emit: {
-  }
+  };
 
 }

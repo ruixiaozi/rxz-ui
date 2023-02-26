@@ -20,6 +20,6 @@ export class RxzIconDeclare {
 
   declare $emit: {
 
-  }
+  };
 
 }

@@ -14,16 +14,16 @@ export class RxzFlipCardCnt extends Vue {
 
   // props and provide
   @Prop({ type: String, default: '100px' })
-  width!: string;
+    width!: string;
 
   @Prop({ type: String, default: '100px' })
-  height!: string;
+    height!: string;
 
   @Prop({ type: String, default: 'none' })
-  borderRadius!: string;
+    borderRadius!: string;
 
   @Prop({ type: Boolean, default: true })
-  isFront!: boolean;
+    isFront!: boolean;
 
   // injects
 

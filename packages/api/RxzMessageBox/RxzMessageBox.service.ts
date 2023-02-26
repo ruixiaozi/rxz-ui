@@ -28,7 +28,7 @@ export class RxzMessageBoxService {
   private readonly MODEL_CONFIG: RxzModalOptions = {
     closable: true,
     allowOuterClose: true,
-  }
+  };
 
   // 记录对应的modal在加载过程中的个数
   private modalMap = new Map<string, number>();

@@ -35,7 +35,7 @@ export class RxzPaginationCnt extends Vue {
   readonly displayStart!: number;
 
   @Model('modelValue', { type: Object, required: true })
-  paginations!: RxzPaginations;
+  public paginations!: RxzPaginations;
 
   // injects
 

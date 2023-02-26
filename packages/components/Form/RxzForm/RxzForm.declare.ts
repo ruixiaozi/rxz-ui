@@ -40,7 +40,7 @@ export class RxzFormDeclare {
 
   declare $emit: {
     (e: 'update:modelValue', ...args: any[]): any;
-  }
+  };
 
 }
 

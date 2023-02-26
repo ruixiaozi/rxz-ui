@@ -30,7 +30,7 @@ export class RxzPopperService {
   @InjectService(RxzPopupService)
   private rxzPopupService?: RxzPopupService;
 
-  private popperMap = new Map<string, VNode>()
+  private popperMap = new Map<string, VNode>();
 
   constructor() {
     // 点击其他位置，关闭所有的弹出层

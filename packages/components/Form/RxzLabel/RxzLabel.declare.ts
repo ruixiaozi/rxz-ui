@@ -13,7 +13,7 @@ export class RxzLabelDeclare {
 
   declare $emit: {
 
-  }
+  };
 
 }
 

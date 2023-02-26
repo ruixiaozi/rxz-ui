@@ -14,11 +14,11 @@ export class RxzLoadingDirective implements ObjectDirective {
 
   mounted = (el: HTMLElement, binding: DirectiveBinding<any>) => {
     this.createLoading(el, binding.value ?? true);
-  }
+  };
 
   updated = (el: HTMLElement, binding: DirectiveBinding<any>) => {
     this.createLoading(el, binding.value ?? true);
-  }
+  };
 
   beforeUnmount = (el: HTMLElement) => {
     const key = el.dataset.loadingKey;
@@ -26,7 +26,7 @@ export class RxzLoadingDirective implements ObjectDirective {
       return;
     }
     this.loadingMap.delete(key);
-  }
+  };
 
   private createLoading(el: HTMLElement, isShow: boolean) {
     // 如果没有设置postion，则需要设置为relative

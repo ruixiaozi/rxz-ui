@@ -17,6 +17,6 @@ export class RxzInputDeclare {
 
   declare $emit: {
     (e: 'update:modelValue', ...args: any[]): any;
-  }
+  };
 
 }

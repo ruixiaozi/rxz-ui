@@ -38,6 +38,6 @@ export class RxzContainerDeclare {
 
   declare $emit: {
     (e: 'resize', event: Event): any;
-  }
+  };
 
 }

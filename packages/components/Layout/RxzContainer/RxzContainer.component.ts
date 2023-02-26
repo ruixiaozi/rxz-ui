@@ -22,32 +22,32 @@ export class RxzContainerCnt extends Vue {
 
   // props and provide
   @Prop({ type: String, default: RxzContainerPosition.CENTER })
-  position!: RxzContainerPosition;
+    position!: RxzContainerPosition;
 
   @Prop({ type: Number, default: 0 })
-  offsetX!: number;
+    offsetX!: number;
 
   @Prop({ type: Number, default: 0 })
-  offsetY!: number;
+    offsetY!: number;
 
   // 是否允许内容溢出边界
   @Prop({ type: Boolean, default: false })
-  allowOverflow!: boolean;
+    allowOverflow!: boolean;
 
   @Prop({ type: String })
-  width?: string;
+    width?: string;
 
   @Prop({ type: String })
-  height?: string;
+    height?: string;
 
   // injects
 
   // refs
   @Ref('content')
-  content?: HTMLDivElement;
+    content?: HTMLDivElement;
 
   @Ref('container')
-  container?: HTMLDivElement;
+    container?: HTMLDivElement;
 
   // injectServices
 

@@ -18,7 +18,7 @@ export class RxzTabsCnt extends Vue {
   readonly tabs!: RxzTabsItem[];
 
   @Model('modelValue', { type: Object })
-  value!: RxzTabsItem;
+    value!: RxzTabsItem;
 
   // injects
 

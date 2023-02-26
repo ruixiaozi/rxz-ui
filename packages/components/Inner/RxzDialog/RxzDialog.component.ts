@@ -141,7 +141,7 @@ export class RxzDialogCnt extends Vue {
       this.offsetY -= this.diffInfo?.diffY;
     }
     this.diffInfo = null;
-  }
+  };
 
   handleDrag = (event: MouseEvent) => {
     if (!this.isDrag || !this.allowDrag) {
@@ -151,7 +151,7 @@ export class RxzDialogCnt extends Vue {
     this.offsetY += event.clientY - this.startY;
     this.startX = event.clientX;
     this.startY = event.clientY;
-  }
+  };
 
   handleOverflow(diffInfo: any) {
     this.diffInfo = diffInfo;

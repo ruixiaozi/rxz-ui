@@ -36,7 +36,7 @@ export class RxzFormItemCnt extends Vue {
 
   // formItem唯一值
   @Provide({ reactive: true })
-  formItemKey = _uniqueId('_formItem');
+    formItemKey = _uniqueId('_formItem');
 
   // injects
   @Inject()

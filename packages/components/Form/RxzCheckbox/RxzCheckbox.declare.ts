@@ -17,6 +17,6 @@ export class RxzCheckboxDeclare {
 
   declare $emit: {
     (e: 'update:modelValue', ...args: any[]): any;
-  }
+  };
 
 }

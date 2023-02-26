@@ -11,6 +11,6 @@ export class RxzFlipCardDeclare {
 
   declare $emit: {
 
-  }
+  };
 
 }

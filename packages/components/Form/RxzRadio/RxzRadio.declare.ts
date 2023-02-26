@@ -16,6 +16,6 @@ export class RxzRadioDeclare {
 
   declare $emit: {
     (e: 'update:modelValue', ...args: any[]): any;
-  }
+  };
 
 }

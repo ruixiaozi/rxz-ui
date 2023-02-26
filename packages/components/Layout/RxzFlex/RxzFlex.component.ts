@@ -15,18 +15,18 @@ export class RxzFlexCnt extends Vue {
 
   // props and provide
   @Prop({ type: String, default: DIRECTION_ENUM.horizontal })
-  direction!: DIRECTION_ENUM;
+    direction!: DIRECTION_ENUM;
 
   @Prop({ type: String, default: '0px' })
-  gutter!: string;
+    gutter!: string;
 
   // 另一方向上的对齐方式
   @Prop({ type: String, default: FLEX_ALIGN_ENUM.start })
-  align!: FLEX_ALIGN_ENUM;
+    align!: FLEX_ALIGN_ENUM;
 
   // 当前方向的对齐方式
   @Prop({ type: String, default: FLEX_ALIGN_ENUM.start })
-  justify!: FLEX_ALIGN_ENUM;
+    justify!: FLEX_ALIGN_ENUM;
 
   // injects
 

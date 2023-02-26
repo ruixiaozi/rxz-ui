@@ -24,7 +24,7 @@ export class RxzRadioCnt extends Vue {
 
   // props and provide
   @Model('modelValue', { required: false, default: '' })
-  value!: any;
+    value!: any;
 
   @Prop({ type: Array, default: () => ([]) })
   readonly items!: RxzRadioItem[];

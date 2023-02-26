@@ -8,6 +8,6 @@ export class RxzSearchDeclare {
 
   declare $emit: {
     (e: 'search', searchValue: string): any;
-  }
+  };
 
 }

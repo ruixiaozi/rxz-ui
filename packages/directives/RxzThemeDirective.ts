@@ -9,11 +9,11 @@ export class RxzThemeDirective implements ObjectDirective {
 
   mounted = (el: HTMLElement, binding: DirectiveBinding<any>) => {
     this.resolveEl(el, binding);
-  }
+  };
 
   updated = (el: HTMLElement, binding: DirectiveBinding<any>) => {
     this.resolveEl(el, binding);
-  }
+  };
 
   private resolveEl(el: HTMLElement, binding: DirectiveBinding<any>) {
     el.dataset.theme = binding.value || 'default';

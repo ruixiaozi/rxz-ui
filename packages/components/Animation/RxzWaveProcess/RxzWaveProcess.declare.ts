@@ -17,6 +17,6 @@ export class RxzWaveProcessDeclare {
 
   declare $emit: {
 
-  }
+  };
 
 }

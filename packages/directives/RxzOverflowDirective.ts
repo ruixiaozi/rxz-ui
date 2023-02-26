@@ -14,15 +14,15 @@ export class RxzOverflowDirective implements ObjectDirective {
 
   mounted = (el: HTMLElement, binding: DirectiveBinding<any>, sourceVnode: VNode) => {
     this.resolveEl(el, binding, sourceVnode);
-  }
+  };
 
   updated = (el: HTMLElement, binding: DirectiveBinding<any>, sourceVnode: VNode) => {
     this.resolveEl(el, binding, sourceVnode);
-  }
+  };
 
   beforeUnmount = (el: HTMLElement) => {
     this.toolTip?.beforeUnmount(el);
-  }
+  };
 
   private resolveEl(el: HTMLElement, binding: DirectiveBinding<any>, sourceVnode: VNode) {
     // 当value为true时，应该显示宿主元素的内容

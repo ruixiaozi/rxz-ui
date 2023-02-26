@@ -33,6 +33,6 @@ export class RxzButtonDeclare {
   };
 
   declare $emit: {
-  }
+  };
 
 }

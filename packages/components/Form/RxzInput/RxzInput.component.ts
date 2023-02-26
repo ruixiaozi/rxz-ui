@@ -21,7 +21,7 @@ export class RxzInputCnt extends Vue {
 
   // props and provide
   @Model('modelValue', { required: false, default: '' })
-  value!: any;
+    value!: any;
 
   @Prop({ type: Boolean, default: false })
   readonly disabled!: boolean;

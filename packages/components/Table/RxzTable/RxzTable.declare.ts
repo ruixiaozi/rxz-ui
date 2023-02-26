@@ -46,6 +46,6 @@ export class RxzTableDeclare {
   };
 
   declare $emit: {
-  }
+  };
 
 }

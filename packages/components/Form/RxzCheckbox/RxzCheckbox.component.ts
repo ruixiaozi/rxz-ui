@@ -18,7 +18,7 @@ export class RxzCheckboxCnt extends Vue {
 
   // props and provide
   @Model('modelValue', { required: false, default: '' })
-  value!: any;
+    value!: any;
 
   @Prop({ type: Array, default: () => ([]) })
   readonly items!: RxzCheckboxItem[];

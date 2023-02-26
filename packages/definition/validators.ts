@@ -56,7 +56,7 @@ export class RxzValidators {
       };
     }
     return null;
-  }
+  };
 
   static regexp(regexp: RegExp): Validator {
     return (value) => {

@@ -19,7 +19,7 @@ export class RxzBreadcrumbCnt extends Vue {
 
   // 弹出层不会挂载vue-router，需要传入
   @Prop({ type: Object, required: false })
-  router?: any;
+    router?: any;
 
 
   // injects

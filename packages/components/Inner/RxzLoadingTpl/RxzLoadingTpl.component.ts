@@ -18,13 +18,13 @@ export class RxzLoadingTplCnt extends Vue {
 
   // props and provide
   @Prop({ type: String, default: '' })
-  text!: string;
+    text!: string;
 
   @Prop({ type: String, default: '#00000032' })
-  bgColor!: string;
+    bgColor!: string;
 
   @Prop({ type: String, default: '#ffffff' })
-  color!: string;
+    color!: string;
 
   @Prop({ type: Number })
   readonly zIndex?: number;

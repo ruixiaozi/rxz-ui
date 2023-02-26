@@ -25,6 +25,6 @@ export class RxzButtonGroupDeclare {
   };
 
   declare $emit: {
-  }
+  };
 
 }

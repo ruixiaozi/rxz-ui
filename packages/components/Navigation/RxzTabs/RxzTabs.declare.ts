@@ -14,6 +14,6 @@ export class RxzTabsDeclare {
 
   declare $emit: {
     (e: 'update:modelValue', ...args: any[]): any;
-  }
+  };
 
 }

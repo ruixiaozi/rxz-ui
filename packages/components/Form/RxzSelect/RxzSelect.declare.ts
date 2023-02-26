@@ -23,6 +23,6 @@ export class RxzSelectDeclare {
 
   declare $emit: {
     (e: 'update:modelValue', ...args: any[]): any;
-  }
+  };
 
 }

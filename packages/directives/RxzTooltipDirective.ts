@@ -37,7 +37,7 @@ export class RxzTooltipDirective implements ObjectDirective {
       el.addEventListener('mouseenter', () => this.handleMouseMove(key)('enter'), false);
       el.addEventListener('mouseleave', () => this.handleMouseMove(key)('leave'), false);
     }
-  }
+  };
 
   updated = (el: HTMLElement, binding: DirectiveBinding<any>, sourceVnode: VNode) => {
     const key = el.dataset.tooltipKey;
@@ -48,7 +48,7 @@ export class RxzTooltipDirective implements ObjectDirective {
     }
     // 保存当前的参数，在下一次显示的使用用于更新提示框
     this.previousParam.set(key, { el, binding, sourceVnode });
-  }
+  };
 
   beforeUnmount = (el: HTMLElement) => {
     const key = el.dataset.tooltipKey;
@@ -57,7 +57,7 @@ export class RxzTooltipDirective implements ObjectDirective {
     }
     this.rxzPopperService?.removePopper(key);
     this.previousParam.delete(key);
-  }
+  };
 
   private updateTooltip(key: string) {
     const previousParam = this.previousParam.get(key);
@@ -120,7 +120,7 @@ export class RxzTooltipDirective implements ObjectDirective {
         this.rxzPopperService?.showPopper(key);
       });
     } else {
-        this.rxzPopperService?.hiddenPopper(key);
+      this.rxzPopperService?.hiddenPopper(key);
     }
   }, 40);
 
