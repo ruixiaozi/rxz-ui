@@ -39,7 +39,7 @@ module.exports = {
       .end();
 
     return {
-      devtool: 'source-map',
+      devtool: 'cheap-module-source-map',
     };
   },
 };

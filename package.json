@@ -1,6 +1,6 @@
 {
   "name": "rxz-ui",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "private": false,
   "main": "lib/rxz-ui.common.js",
   "typings": "lib/packages/index.d.ts",
@@ -14,7 +14,7 @@
     "build:clean": "rimraf lib",
     "build:lib": "vue-cli-service build --target lib --name rxz-ui --dest lib packages/index.ts",
     "prebuild": "npm run gensvg && node ./build/prebuild.js",
-    "postbuild": "rimraf lib/docs && rimraf lib/example && rimraf lib/tests",
+    "postbuild": "rimraf lib/docs && rimraf lib/example && rimraf lib/tests && rimraf lib/demo.html",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "prepare": "husky install",
