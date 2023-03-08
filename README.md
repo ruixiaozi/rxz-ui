@@ -1,8 +1,8 @@
 # rxz-ui
 
-rxz-ui 2 is a Vue3 based UI component and tool library, which is compatible with multi terminal device.
+rxz-ui is a combined API based on Vue3 that provides rich components, instructions, and uses
 
-rxz-ui 2 是一个基于Vue3的UI组件、工具库，兼容多端设备。
+rxz-ui 是一个基于Vue3 组合式API，提供丰富的组件、指令、Use。
 
 [![npm version](https://badge.fury.io/js/rxz-ui.svg)](https://badge.fury.io/js/rxz-ui)
 
@@ -22,11 +22,9 @@ Copyright (c) 2021 Ruixiaozi
 # Support
 
 + vue
-+ vue-i18n
-+ axios
-+ font-awesome
-+ dayjs
-+ normalize
-+ echarts
-+ rxjs
++ chroma-js
++ core-js
 + lodash
++ rxjs
+
+...

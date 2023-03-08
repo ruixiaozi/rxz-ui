@@ -2,64 +2,43 @@ const fs = require('fs');
 const path = require('path');
 
 // const __currentDir = process.cwd();
-const [,, __currentDir, cmd, param, ...options] = process.argv;
+const [, , __currentDir, cmd, param, ...options] = process.argv;
 console.log(__currentDir);
-const tsDeclareTpl = (name) => `export class ${name}Declare {
 
-  declare name: '${name}';
-
-  declare $props: {
-
-  };
-
-  declare $emit: {
-    // example: (e: 'test', ...args: any[]): any;
-  }
-
+function toLowerCamelCase(str) {
+  return str.replace(/^[A-Z]/, (first) => first.toLowerCase());
 }
-`;
 
-const tsTpl = (name, version = '2.0.0', des = '') => `import { Options, Vue } from 'vue-class-component';
-
-/**
- * Component: ${name}
+const tsTpl = (name, version = '2.0.0', des = '') =>
+  `/**
+ * ${name}
  * @description: ${des || name}
  * @author: ruixiaozi
  * @since: ${version}
  */
-@Options({
-  name: '${name}',
-})
-export class ${name}Cnt extends Vue {
-  // props and provide
+import { definePropsUtil, defineEmitsUtil } from '@/utils';
 
-  // injects
+export default {
+  ${toLowerCamelCase(name)}Props: definePropsUtil({
 
-  // refs
+  }),
+  ${toLowerCamelCase(name)}Emits: defineEmitsUtil({
 
-  // injectServices
+  }),
+};
 
-  // setup
-
-  // entity
-
-  // computes
-
-  // watchs
-
-  // hooks
-
-  // methods
-}
 `;
 
 const vueTpl = (name) => `<template>
-  <div></div>
+  <div>${name}</div>
 </template>
 
-<script lang="ts">
-import { ${name}Cnt } from './${name}.component';
-export default ${name}Cnt;
+<script setup lang="ts">
+import { defineProps, defineEmits } from 'vue';
+import define from './${name}.define';
+defineProps(define.${toLowerCamelCase(name)}Props);
+defineEmits(define.${toLowerCamelCase(name)}Emits);
+
 </script>
 
 <style lang="scss" scoped>
@@ -67,19 +46,14 @@ export default ${name}Cnt;
 </style>
 `;
 
-const indexTpl = (name) => `import { install } from '@/common';
-import { App } from 'vue';
-import _${name} from './${name}.vue';
+const indexTpl = (name, ) =>
+  `import _${name} from './${name}.vue';
+export const ${name} = _${name};
+export * from './${name}.define';
 
-export * from './${name}.declare';
-
-export const ${name} = {
-  ..._${name},
-  install: install((app: App) => {
-    app.component(_${name}.name, _${name});
-  }),
-};
 `;
+
+
 
 const createFileSuccess = (filePath) => {
   console.log(`create file ${filePath} success.`);
@@ -105,16 +79,16 @@ function insertStrNextLine(source, searchStr, str) {
   return `${source.substring(0, inx) + str}\n${source.substring(inx)}`;
 }
 
-function generateComponent(name, needUpdate = 'true', version = '2.0.0', des = '') {
+
+function generateComponent(name, version = '2.0.0', des = '') {
   const dir = path.join(__currentDir, name);
   const scssPath = path.join(dir, `${name}.scss`);
-  const tsPath = path.join(dir, `${name}.component.ts`);
-  const declarePath = path.join(dir, `${name}.declare.ts`);
+  const tsPath = path.join(dir, `${name}.define.ts`);
   const vuePath = path.join(dir, `${name}.vue`);
   const indexPath = path.join(dir, 'index.ts');
   const parentIndexPath = path.join(__currentDir, 'index.ts');
 
-  if (needUpdate === 'true' && !fs.existsSync(parentIndexPath)) {
+  if (!fs.existsSync(parentIndexPath)) {
     console.log('parent index is not exist');
     return;
   }
@@ -127,8 +101,6 @@ function generateComponent(name, needUpdate = 'true', version = '2.0.0', des = '
   fs.mkdirSync(dir);
   fs.writeFileSync(scssPath, '');
   createFileSuccess(scssPath);
-  fs.writeFileSync(declarePath, tsDeclareTpl(name));
-  createFileSuccess(declarePath);
   fs.writeFileSync(tsPath, tsTpl(name, version, des));
   createFileSuccess(tsPath);
   fs.writeFileSync(vuePath, vueTpl(name));
@@ -136,184 +108,209 @@ function generateComponent(name, needUpdate = 'true', version = '2.0.0', des = '
   fs.writeFileSync(indexPath, indexTpl(name));
   createFileSuccess(indexPath);
 
-  if (needUpdate === 'true') {
-    const res = fs.readFileSync(parentIndexPath).toString();
-    let nRes = insertStrNextLine(res, 'import { ', `import { ${name} } from './${name}';`);
-    nRes = insertStrNextLine(nRes, 'export *', `export * from './${name}';`);
-    nRes = insertStrNextLine(nRes, ' = [', `  ${name},`);
-    fs.writeFileSync(parentIndexPath, nRes);
-    updateFileSuccess(parentIndexPath);
+  // 添加导出到父index
+  const res = fs.readFileSync(parentIndexPath).toString();
+  let nRes = insertStrNextLine(res, 'import { ', `import { ${name} } from './${name}';`);
+  nRes = insertStrNextLine(nRes, 'export *', `export * from './${name}';`);
+  nRes = insertStrNextLine(nRes, ' = [', `  ${name},`);
+  fs.writeFileSync(parentIndexPath, nRes);
+  updateFileSuccess(parentIndexPath);
 
-    const cntDeclarePath = path.join(__dirname, '../typings/components.d.ts');
-    const declareRes = fs.readFileSync(cntDeclarePath).toString();
-    let nDeclareRes = insertStrNextLine(
-      declareRes,
-      'GlobalComponents {',
-      `    ${name}: typeof import('../packages/index')['${name}Declare'],`,
-    );
-    fs.writeFileSync(cntDeclarePath, nDeclareRes);
-    updateFileSuccess(cntDeclarePath);
-  }
+  // 写入声明
+  const cntDeclarePath = path.join(__dirname, '../components.d.ts');
+  const declareRes = fs.readFileSync(cntDeclarePath).toString();
+  let nDeclareRes = insertStrNextLine(
+    declareRes,
+    'GlobalComponents {',
+    `    ${name}: typeof import('./packages/index')['${name}'],`,
+  );
+  fs.writeFileSync(cntDeclarePath, nDeclareRes);
+  updateFileSuccess(cntDeclarePath);
 }
 
 
-const innerIndexTpl = (name) => `import _${name} from './${name}.vue';
+const docVueTpl = (name) => `<template>
+  <div>${name}</div>
+</template>
 
-export const ${name} = _${name};
+<script setup lang="ts">
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+
+</script>
+
+<style lang="scss" scoped>
+
+</style>
 `;
 
 
-function generateInnerComponent(name, version = '2.0.0', des = '') {
-  const dir = path.join(__currentDir, name);
-  const scssPath = path.join(dir, `${name}.scss`);
-  const tsPath = path.join(dir, `${name}.component.ts`);
-  const vuePath = path.join(dir, `${name}.vue`);
-  const indexPath = path.join(dir, 'index.ts');
+function generateDocComponent(name, version = '2.0.0', des = '') {
+  const vuePath = path.join(__currentDir, `${name}.vue`);
+  const docComponentIndex = path.join(__dirname, '../docs/.vuepress/components/index.ts');
 
-  if (fs.existsSync(scssPath)) {
-    console.log('component is exist');
+  if (!fs.existsSync(docComponentIndex)) {
+    console.log('docComponentIndex is not exist');
     return;
   }
 
-  fs.mkdirSync(dir);
-  fs.writeFileSync(scssPath, '');
-  createFileSuccess(scssPath);
-  fs.writeFileSync(tsPath, tsTpl(name, version, des));
-  createFileSuccess(tsPath);
-  fs.writeFileSync(vuePath, vueTpl(name));
+  fs.writeFileSync(vuePath, docVueTpl(name));
   createFileSuccess(vuePath);
-  fs.writeFileSync(indexPath, innerIndexTpl(name));
-  createFileSuccess(indexPath);
+
+  // 添加导出到doc index
+  const res = fs.readFileSync(docComponentIndex).toString();
+  let nRes = insertStrNextLine(res, 'import ', `import ${name} from '${path.relative(docComponentIndex, vuePath).replace(/\\/ug, '/').replace('..', '.')}';`);
+  nRes = insertStrNextLine(nRes, ' = [', `  ${name},`);
+  fs.writeFileSync(docComponentIndex, nRes);
+  updateFileSuccess(docComponentIndex);
 }
 
-
-const serviceTpl = (name, version = '2.0.0', des = '') => `import { Injectable } from '@tanbo/vue-di-plugin';
-
-/**
- * Service: ${name}Service
+const useTsTpl = (name, version = '2.0.0', des = '') =>
+  `/**
+ * use${name}
  * @description: ${des || name}
  * @author: ruixiaozi
  * @since: ${version}
  */
-@Injectable({
-  provideIn: 'root',
-})
-export class ${name}Service{
+
+export function use${name}() {
+  return {
+
+  };
+}
+`;
+
+function generateUse(name, version = '2.0.0', des = '') {
+  const dir = path.join(__currentDir);
+  const usePath = path.join(dir, `use${name}.ts`);
+  const indexPath = path.join(dir, 'index.ts');
+
+  if (fs.existsSync(usePath)) {
+    console.log('use is exist');
+    return;
+  }
+
+  fs.writeFileSync(usePath, useTsTpl(name, version, des));
+  createFileSuccess(usePath);
+
+  const res = fs.readFileSync(indexPath).toString();
+  fs.writeFileSync(indexPath, `${res}export * from './use${name}';\n`);
+  updateFileSuccess(indexPath);
+}
+
+const utilTsTpl = (name, version = '2.0.0', des = '') =>
+  `/**
+ * ${name}
+ * @description: ${des || name}
+ * @author: ruixiaozi
+ * @since: ${version}
+ */
+
+
+`;
+
+function generateUtil(name, version = '2.0.0', des = '') {
+  const dir = path.join(__currentDir);
+  const utilPath = path.join(dir, `${name}.ts`);
+  const indexPath = path.join(dir, 'index.ts');
+
+  if (fs.existsSync(utilPath)) {
+    console.log('utilPath is exist');
+    return;
+  }
+
+  fs.writeFileSync(utilPath, utilTsTpl(name, version, des));
+  createFileSuccess(utilPath);
+
+  const res = fs.readFileSync(indexPath).toString();
+  fs.writeFileSync(indexPath, `${res}export * from './${name}';\n`);
+  updateFileSuccess(indexPath);
+}
+
+const propTsTpl = (name, version = '2.0.0', des = '') =>
+  `/**
+ * $${name}
+ * @description: ${des || name}
+ * @author: ruixiaozi
+ * @since: ${version}
+ */
+
+export const $${name} = null;
+`;
+
+function generateProperty(name, version = '2.0.0', des = '') {
+  const dir = path.join(__currentDir);
+  const propertyPath = path.join(dir, `$${name}.ts`);
+  const indexPath = path.join(dir, 'index.ts');
+
+  if (fs.existsSync(propertyPath)) {
+    console.log('propertyPath is exist');
+    return;
+  }
+
+  fs.writeFileSync(propertyPath, propTsTpl(name, version, des));
+  createFileSuccess(propertyPath);
+
+  // 添加导出到index
+  const res = fs.readFileSync(indexPath).toString();
+  let nRes = insertStrNextLine(res, 'import { ', `import { $${name} } from './$${name}';`);
+  nRes = insertStrNextLine(nRes, 'export *', `export * from './$${name}';`);
+  nRes = insertStrNextLine(nRes, ' = [', `  $${name},`);
+  fs.writeFileSync(indexPath, nRes);
+  updateFileSuccess(indexPath);
+
+  // 写入声明
+  const apiDeclarePath = path.join(__dirname, '../components.d.ts');
+  const declareRes = fs.readFileSync(apiDeclarePath).toString();
+  let nDeclareRes = insertStrNextLine(
+    declareRes,
+    'ComponentCustomProperties {',
+    `    $${name}: typeof import('./packages/index')['$${name}'];`,
+  );
+  fs.writeFileSync(apiDeclarePath, nDeclareRes);
+  updateFileSuccess(apiDeclarePath);
+}
+
+
+const directivesTsTpl = (name, version = '2.0.0', des = '') =>
+  `/**
+ * v${name}
+ * @description: ${des || name}
+ * @author: ruixiaozi
+ * @since: ${version}
+ */
+import { ObjectDirective } from 'vue';
+
+export const v${name}: ObjectDirective<elType, valueType> = {
 
 }
 `;
 
-function generateService(name, version = '2.0.0', des = '') {
+function generateDirectives(name, version = '2.0.0', des = '') {
   const dir = path.join(__currentDir);
-  const servicePath = path.join(dir, `${name}.service.ts`);
-
-  if (fs.existsSync(servicePath)) {
-    console.log('service is exist');
-    return;
-  }
-
-  fs.writeFileSync(servicePath, serviceTpl(name, version, des));
-  createFileSuccess(servicePath);
-}
-
-function generateDeclare(name, needUpdate = 'true') {
-  const dir = path.join(__currentDir);
-  const declarePath = path.join(dir, `${name}.declare.ts`);
+  const directivesPath = path.join(dir, `v${name}.ts`);
   const indexPath = path.join(dir, 'index.ts');
 
-  if (needUpdate === 'true' && !fs.existsSync(indexPath)) {
-    console.log('index is not exist');
+  if (fs.existsSync(directivesPath)) {
+    console.log('directivesPath is exist');
     return;
   }
 
-  if (fs.existsSync(declarePath)) {
-    console.log('declare is exist');
-    return;
-  }
+  fs.writeFileSync(directivesPath, directivesTsTpl(name, version, des));
+  createFileSuccess(directivesPath);
 
-  fs.writeFileSync(declarePath, tsDeclareTpl(name));
-  createFileSuccess(declarePath);
+  // 添加导出到index
+  const res = fs.readFileSync(indexPath).toString();
+  let nRes = insertStrNextLine(res, 'import { ', `import { v${name} } from './v${name}';`);
+  nRes = insertStrNextLine(nRes, 'export *', `export * from './v${name}';`);
+  nRes = insertStrNextLine(nRes, ' = {', `  v${name},`);
+  fs.writeFileSync(indexPath, nRes);
+  updateFileSuccess(indexPath);
 
-  if (needUpdate === 'true') {
-    const indexRes = fs.readFileSync(indexPath).toString();
-    let nIndexRes = insertStrNextLine(indexRes, 'import ', `\nexport * from './${name}.declare';`);
-    fs.writeFileSync(indexPath, nIndexRes);
-    updateFileSuccess(indexPath);
-
-    const cntDeclarePath = path.join(__dirname, '../typings/components.d.ts');
-    const declareRes = fs.readFileSync(cntDeclarePath).toString();
-    let nDeclareRes = insertStrNextLine(
-      declareRes,
-      'GlobalComponents {',
-      `    ${name}: typeof import('../packages/index')['${name}Declare'];`,
-    );
-    fs.writeFileSync(cntDeclarePath, nDeclareRes);
-    updateFileSuccess(cntDeclarePath);
-  }
-}
-
-
-const apiIndexTpl = (name) => `import { getService, install } from '@/common';
-import { App } from 'vue';
-import { ${name}Service } from './${name}.service';
-
-export * from './${name}.declare';
-
-const _${name} = getService(${name}Service);
-
-(_${name} as any).install = install((app: App) => {
-  // 注册全局属性
-  app.config.globalProperties.$${name} = _${name};
-});
-
-export const ${name} = _${name};
-
-`;
-
-function generateApi(name, needUpdate = 'true', version = '2.0.0', des = '') {
-  const dir = path.join(__currentDir, name);
-
-  const declarePath = path.join(dir, `${name}.declare.ts`);
-  const indexPath = path.join(dir, 'index.ts');
-  const servicePath = path.join(dir, `${name}.service.ts`);
-  const parentIndexPath = path.join(__currentDir, 'index.ts');
-
-  if (needUpdate === 'true' && !fs.existsSync(parentIndexPath)) {
-    console.log('parent index is not exist');
-    return;
-  }
-
-  if (fs.existsSync(indexPath)) {
-    console.log('api is exist');
-    return;
-  }
-
-  fs.mkdirSync(dir);
-  fs.writeFileSync(declarePath, 'export {};');
-  createFileSuccess(declarePath);
-  fs.writeFileSync(indexPath, apiIndexTpl(name));
-  createFileSuccess(indexPath);
-  fs.writeFileSync(servicePath, serviceTpl(name, version, des));
-  createFileSuccess(servicePath);
-
-  if (needUpdate === 'true') {
-    const res = fs.readFileSync(parentIndexPath).toString();
-    let nRes = insertStrNextLine(res, 'import { ', `import { ${name} } from './${name}';`);
-    nRes = insertStrNextLine(nRes, 'export *', `export * from './${name}';`);
-    nRes = insertStrNextLine(nRes, ' = [', `  ${name},`);
-    fs.writeFileSync(parentIndexPath, nRes);
-    updateFileSuccess(parentIndexPath);
-
-    const apiDeclarePath = path.join(__dirname, '../typings/components.d.ts');
-    const declareRes = fs.readFileSync(apiDeclarePath).toString();
-    let nDeclareRes = insertStrNextLine(
-      declareRes,
-      'ComponentCustomProperties {',
-      `    $${name}: typeof import('../packages/index')['${name}'];`,
-    );
-    fs.writeFileSync(apiDeclarePath, nDeclareRes);
-    updateFileSuccess(apiDeclarePath);
-  }
 }
 
 switch (cmd) {
@@ -323,30 +320,36 @@ switch (cmd) {
       generateComponent(param, ...options);
     }
     break;
+  case 'doc-c':
+    if (param) {
+      generateDocComponent(param, ...options);
+    }
+    break;
+  case 'view':
+    if (param) {
+      generateView(param, ...options);
+    }
+    break;
+  case 'use':
+    if (param) {
+      generateUse(param, ...options);
+    }
+    break;
+  case 'util':
+    if (param) {
+      generateUtil(param, ...options);
+    }
+    break;
+  case 'prop':
+    if (param) {
+      generateProperty(param, ...options);
+    }
+    break;
   case 'd':
-  case 'declare':
     if (param) {
-      generateDeclare(param, ...options);
-    }
-    break;
-  case 's':
-  case 'service':
-    if (param) {
-      generateService(param, ...options);
-    }
-    break;
-  case 'inc':
-  case 'inner-component':
-    if (param) {
-      generateInnerComponent(param, ...options);
-    }
-    break;
-  case 'api':
-    if (param) {
-      generateApi(param, ...options);
+      generateDirectives(param, ...options);
     }
     break;
   default:
     break;
 }
-

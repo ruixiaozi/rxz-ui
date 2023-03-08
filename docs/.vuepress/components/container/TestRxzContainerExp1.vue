@@ -4,26 +4,28 @@
     test-container
   </rxz-container>
 </template>
-<script>
-import { RxzContainerPosition } from '@/components';
-export default {
-  data () {
-    return {
-      position: RxzContainerPosition.CENTER,
-      index: 0,
-      positions: Object.values(RxzContainerPosition),
-    }
-  },
-  methods: {
-    changePos() {
-      this.position = this.positions[this.index++];
-      if (this.index >= this.positions.length) {
-        this.index = 0;
-      }
-    }
-  },
-};
+
+<script setup lang="ts">
+import { ref } from 'vue';
+import { RXZ_CONTAINER_POSITION_E } from '@/components/layout/RxzContainer';
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+const position = ref(RXZ_CONTAINER_POSITION_E.CENTER);
+let index = 0;
+const positions = Object.values(RXZ_CONTAINER_POSITION_E);
+
+const changePos = () => {
+  position.value = positions[index++];
+  if (index >= positions.length) {
+    index = 0;
+  }
+}
 </script>
+
 <style lang="scss" scoped>
 .container {
   width: 100%;

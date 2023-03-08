@@ -4,17 +4,17 @@
     "module": "esnext",
     "strict": true,
     "jsx": "preserve",
-    "importHelpers": true,
     "moduleResolution": "node",
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "useDefineForClassFields": true,
     "sourceMap": true,
     "declaration": true,
-    "noImplicitAny": false,
+    "outDir": "lib",
     "baseUrl": ".",
+    "resolveJsonModule": true,
     "types": [
       "webpack-env",
       "jest"
@@ -32,20 +32,17 @@
     ]
   },
   "include": [
-    "docs/.vuepress/**/*.ts",
-    "docs/.vuepress/**/*.vue",
-    "example/**/*.ts",
-    "example/**/*.tsx",
-    "example/**/*.vue",
     "packages/**/*.ts",
     "packages/**/*.tsx",
     "packages/**/*.vue",
-    "typings/**/*.ts",
+    "docs/.vuepress/**/*.vue",
+    "docs/.vuepress/**/*.ts",
     "tests/**/*.ts",
-    "tests/**/*.tsx"
+    "tests/**/*.tsx",
+    "./components.d.ts",
+    "./shims-vue.d.ts"
   ],
   "exclude": [
-    "node_modules",
-    "global.d.ts",
+    "node_modules"
   ]
 }

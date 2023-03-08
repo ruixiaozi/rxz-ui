@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const declareComponentsPath = path.join(__dirname, '../typings/components.d.ts');
+const declareComponentsPath = path.join(__dirname, '../components.d.ts');
 const globalComponentsPath = path.join(__dirname, '../global.d.ts');
 
 const fileContent = fs.readFileSync(declareComponentsPath).toString();

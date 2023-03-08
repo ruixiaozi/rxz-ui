@@ -5,7 +5,7 @@
         v-for="(item, index) in tabs"
         :key="index"
         :class="{
-          select: item.key === value?.key,
+          select: item.key === modelValue?.key,
         }"
         @click="handleClick(item)"
       >
@@ -18,9 +18,16 @@
   </div>
 </template>
 
-<script lang="ts">
-import { RxzTabsCnt } from './RxzTabs.component';
-export default RxzTabsCnt;
+<script setup lang="ts">
+import { defineProps, defineEmits } from 'vue';
+import define, { RxzTabsItem } from './RxzTabs.define';
+defineProps(define.rxzTabsProps);
+const emits = defineEmits(define.rxzTabsEmits);
+
+const handleClick = (item: RxzTabsItem) => {
+  emits('update:modelValue', item);
+};
+
 </script>
 
 <style lang="scss" scoped>

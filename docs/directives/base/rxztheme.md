@@ -1,4 +1,4 @@
-# rxz-theme 主题指令
+# v-rxz-theme 主题指令
 <div v-rxz-theme>
   <div v-rxz-theme="'th-red'">
     <rxz-button type="primary">主要按钮</rxz-button>

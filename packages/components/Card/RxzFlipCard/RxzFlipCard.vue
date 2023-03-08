@@ -18,9 +18,12 @@
   </div>
 </template>
 
-<script lang="ts">
-import { RxzFlipCardCnt } from './RxzFlipCard.component';
-export default RxzFlipCardCnt;
+<script setup lang="ts">
+import { defineProps, defineEmits } from 'vue';
+import define from './RxzFlipCard.define';
+defineProps(define.rxzFlipCardProps);
+defineEmits(define.rxzFlipCardEmits);
+
 </script>
 
 <style lang="scss" scoped>

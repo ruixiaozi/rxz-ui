@@ -1,4 +1,4 @@
-# rxz-badge 标记指令
+# v-rxz-badge 标记指令
 
 <rxz-button v-rxz-badge="9">Test</rxz-button>
 <br /><br />

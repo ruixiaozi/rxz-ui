@@ -1,26 +1,22 @@
-import { getService, install } from '@/common';
-import { App } from 'vue';
-import { RxzBadgeDirective } from './RxzBadgeDirective';
-import { RxzLoadingDirective } from './RxzLoadingDirective';
-import { RxzOverflowDirective } from './RxzOverflowDirective';
-import { RxzResizeObserveDirective } from './RxzResizeObserveDirective';
-import { RxzThemeDirective } from './RxzThemeDirective';
-import { RxzTooltipDirective } from './RxzTooltipDirective';
+import { vRxzResizeObserve } from './vRxzResizeObserve';
+import { vRxzOverflow } from './vRxzOverflow';
+import { vRxzTooltip } from './vRxzTooltip';
+import { vRxzLoading } from './vRxzLoading';
+import { vRxzBadge } from './vRxzBadge';
+import { vRxzTheme } from './vRxzTheme';
 
-const directives = [
-  getService(RxzOverflowDirective),
-  getService(RxzResizeObserveDirective),
-  getService(RxzTooltipDirective),
-  getService(RxzLoadingDirective),
-  getService(RxzThemeDirective),
-  getService(RxzBadgeDirective),
-];
+export * from './vRxzResizeObserve';
+export * from './vRxzOverflow';
+export * from './vRxzTooltip';
+export * from './vRxzLoading';
+export * from './vRxzBadge';
+export * from './vRxzTheme';
 
-export default {
-  install: install((app: App) => {
-    // 遍历注册所有组件
-    directives.forEach((directive) => {
-      app.directive(directive.name, directive);
-    });
-  }),
+export const RxzDirectives = {
+  vRxzTheme,
+  vRxzBadge,
+  vRxzLoading,
+  vRxzTooltip,
+  vRxzOverflow,
+  vRxzResizeObserve,
 };

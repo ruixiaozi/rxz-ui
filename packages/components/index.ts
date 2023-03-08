@@ -1,37 +1,29 @@
-import { App } from 'vue';
-import { AnimationComponents } from './Animation';
-import { BaseComponents } from './Base';
-import { LayoutComponents } from './Layout';
-import { CardComponents } from './Card';
-import { FormComponents } from './Form';
-import { TableComponents } from './Table';
-import { NavigationComponents } from './Navigation';
-import { install } from '@/common';
+import { RxzBaseComponents } from './base';
+import { RxzProcessComponents } from './process';
+import { RxzAdvanceComponents } from './advance';
+import { RxzCardComponents } from './card';
+import { RxzLayoutComponents } from './layout';
+import { RxzNavigationComponents } from './navigation';
+import { RxzFormComponents } from './form';
+import { RxzTableComponents } from './table';
 
-export * from './Animation';
-export * from './Base';
-export * from './Layout';
-export * from './Card';
-export * from './Form';
-export * from './Table';
-export * from './Navigation';
+export * from './base';
+export * from './process';
+export * from './advance';
+export * from './card';
+export * from './layout';
+export * from './navigation';
+export * from './form';
+export * from './table';
 
-// 所有组件列表
-const components = [
-  AnimationComponents,
-  BaseComponents,
-  LayoutComponents,
-  CardComponents,
-  FormComponents,
-  TableComponents,
-  NavigationComponents,
+// 组件列表
+export const RxzComponents = [
+  ...RxzTableComponents,
+  ...RxzFormComponents,
+  ...RxzNavigationComponents,
+  ...RxzLayoutComponents,
+  ...RxzCardComponents,
+  ...RxzAdvanceComponents,
+  ...RxzProcessComponents,
+  ...RxzBaseComponents,
 ];
-
-export const Components = {
-  install: install((app: App) => {
-    // 遍历注册所有组件
-    components.forEach((component) => {
-      app.use(component);
-    });
-  }),
-};

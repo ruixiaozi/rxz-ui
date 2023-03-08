@@ -5,46 +5,54 @@
       <rxz-input></rxz-input>
     </rxz-form-item>
   </rxz-form>
+  <p>表单值：{{ data }}</p>
 </template>
-<script>
-import { RxzValidators } from '@/definition';
-export default {
-  data () {
-    return {
-      errorTips: {
-        required: '不能为空',
-        max: {
-          isI18N: true,
-          label: 'max_custom'
-        },
+
+<script setup lang="ts">
+import { RxzValidator, useRxzValidator } from '@/use';
+import { ref } from 'vue';
+
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+const customValidator = (min: number): RxzValidator => {
+  return (value: any) => {
+    if (value < min) {
+      return {
         customValidator: {
-          isI18N: true,
-          label: 'custom_validator'
+          min: min
         }
-      },
-      formConfig: {
-        test: {
-          validators: [RxzValidators.required, RxzValidators.max(10), this.customValidator(1)],
-          default: 0,
-        },
-      },
-      data: {
       }
     }
+    return null;
+  };
+}
+
+const formConfig = {
+  test: {
+    validators: [useRxzValidator().required, useRxzValidator().max(10), customValidator(1)],
+    default: '',
   },
-  methods: {
-    customValidator(min) {
-      return (value) => {
-        if (value < min) {
-          return {
-            customValidator: {
-              min: min
-            }
-          }
-        }
-        return null;
-      };
-    }
+};
+const data = ref({
+  test: ''
+});
+const errorTips = {
+  required: '不能为空',
+  max: {
+    isI18N: true,
+    label: 'max_custom'
+  },
+  customValidator: {
+    isI18N: true,
+    label: 'custom_validator'
   }
 }
 </script>
+
+<style lang="scss" scoped>
+
+</style>

@@ -8,6 +8,17 @@
     test-container
   </rxz-container>
 </template>
+
+<script setup lang="ts">
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+
+</script>
+
 <style lang="scss" scoped>
 .container {
   width: 100%;
@@ -21,7 +32,7 @@
 
 | 参数            | 类型                   | 描述                     | 可选值                     | 默认值                         | 必须  |
 | ------------- | -------------------- | ---------------------- | ----------------------- | --------------------------- | --- |
-| position      | RxzContainerPosition | 默认插槽内容位置               | 见RxzContainerPosition枚举 | RxzContainerPosition.CENTER |     |
+| position      | RXZ_CONTAINER_POSITION_E | 默认插槽内容位置               | 见RXZ_CONTAINER_POSITION_E枚举 | RXZ_CONTAINER_POSITION_E.CENTER |     |
 | offsetX       | Number               | 默认插槽内容相对于position的X轴偏移 | -                       | 0                           |     |
 | offsetY       | Number               | 默认插槽内容相对于position的Y轴偏移 | -                       | 0                           |     |
 | width      | String               | 默认插槽内容宽度，默认自适应插槽内容宽度，最大容器大小                  | -                       | undefined                   |     |
@@ -52,10 +63,10 @@
 
 ## 内置数据结构
 
-1. RxzContainerPosition 
+1. RXZ_CONTAINER_POSITION_E 
    
    ```ts
-   enum RxzContainerPosition = {
+   enum RXZ_CONTAINER_POSITION_E = {
     TOP_LEFT='TOP_LEFT',
     TOP_CENTER='TOP_CENTER',
     TOP_RIGHT='TOP_RIGHT',
@@ -68,10 +79,10 @@
    }
    ```
 
-2. RxzContainerSlotEnum
+2. RXZ_CONTAINER_SLOT_E
    
    ```ts
-   export enum RxzContainerSlotEnum {
+   export enum RXZ_CONTAINER_SLOT_E {
     topleft='topleft',
     topcenter='topcenter',
     topright='topright',
@@ -99,26 +110,28 @@
     test-container
   </rxz-container>
 </template>
-<script>
-import { RxzContainerPosition } from '@/components';
-export default {
-  data () {
-    return {
-      position: RxzContainerPosition.CENTER,
-      index: 0,
-      positions: Object.values(RxzContainerPosition),
-    }
-  },
-  methods: {
-    changePos() {
-      this.position = this.positions[this.index++];
-      if (this.index >= this.positions.length) {
-        this.index = 0;
-      }
-    }
-  },
-};
+
+<script setup lang="ts">
+import { ref } from 'vue';
+import { RXZ_CONTAINER_POSITION_E } from '@/components/layout/RxzContainer';
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+const position = ref(RXZ_CONTAINER_POSITION_E.CENTER);
+let index = 0;
+const positions = Object.values(RXZ_CONTAINER_POSITION_E);
+
+const changePos = () => {
+  position.value = positions[index++];
+  if (index >= positions.length) {
+    index = 0;
+  }
+}
 </script>
+
 <style lang="scss" scoped>
 .container {
   width: 100%;
@@ -126,6 +139,7 @@ export default {
   background-color: grey;
 }
 </style>
+
 ```
 
 ### 2. 偏移
@@ -140,6 +154,17 @@ export default {
     test-container
   </rxz-container>
 </template>
+
+<script setup lang="ts">
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+
+</script>
+
 <style lang="scss" scoped>
 .container {
   width: 100%;
@@ -147,6 +172,7 @@ export default {
   background-color: grey;
 }
 </style>
+
 ```
 
 ### 3. 插槽
@@ -161,16 +187,19 @@ export default {
     <template v-for="slotName in slotNames" v-slot:[slotName]>test-container</template>
   </rxz-container>
 </template>
-<script>
-import { RxzContainerSlotEnum } from 'rxz-ui'
-export default {
-  data() {
-    return {
-      slotNames: Object.values(RxzContainerSlotEnum)
-    }
-  }
-}
+
+<script setup lang="ts">
+import { RXZ_CONTAINER_SLOT_E } from '@/components';
+
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+const slotNames = Object.values(RXZ_CONTAINER_SLOT_E);
 </script>
+
 <style lang="scss" scoped>
 .container {
   width: 100%;

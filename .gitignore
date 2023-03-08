@@ -20,8 +20,9 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
-global.d.ts
 docs/.vuepress/.cache
 docs/.vuepress/.temp
 docs/.vuepress/dist
 package-lock.json
+.obsidian
+global.d.ts

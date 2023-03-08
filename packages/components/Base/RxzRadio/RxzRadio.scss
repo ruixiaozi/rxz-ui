@@ -1,0 +1,36 @@
+@use "~@/themes/themeify";
+
+.rxz-radio {
+  &.rxz-radio-form {
+    margin-top: 5px;
+  }
+
+  &-item {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+
+    &:not(:last-child) {
+      padding-right: 8px;
+    }
+
+    &.disabled {
+      cursor: not-allowed !important;
+      @include themeify.themeify {
+        color: themeify.getColor("disabled", true);
+      }
+    }
+
+    &.selected:not(.disabled) {
+      @include themeify.themeify {
+        color: themeify.getColor("primary", false);
+      }
+    }
+
+    &-label {
+      display: inline-block;
+      padding: 4px;
+    }
+
+  }
+}

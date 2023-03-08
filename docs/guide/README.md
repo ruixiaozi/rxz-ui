@@ -46,7 +46,8 @@ interface RxzOption {
 {
   ...
   "types": [
-    "webpack-env", "rxz-ui/global"
+    "webpack-env", 
+    "rxz-ui/global"
   ],
   ...
 }

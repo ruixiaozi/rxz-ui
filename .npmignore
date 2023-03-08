@@ -26,7 +26,10 @@ tslint.json
 vue.config.js
 .gitignore
 .browserslistrc
-*.map
 .husky
 package-lock.json
 webpack.config.js
+.obsidian
+.eslintignore
+components.d.ts
+shims-vue.d.ts

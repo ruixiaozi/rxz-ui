@@ -1,36 +1,33 @@
-import { App } from 'vue';
-import { RxzIcon } from './RxzIcon';
 import { RxzButton } from './RxzButton';
-import { RxzCountdownButton } from './RxzCountdownButton';
-import { install } from '@/common';
+import { RxzIcon } from './RxzIcon';
 import { RxzTip } from './RxzTip';
-import { RxzPagination } from './RxzPagination';
-import { RxzButtonGroup } from './RxzButtonGroup';
-import { RxzSearch } from './RxzSearch';
+import { RxzInput } from './RxzInput';
+import { RxzSelect } from './RxzSelect';
+import { RxzSwitch } from './RxzSwitch';
+import { RxzRadio } from './RxzRadio';
+import { RxzTextarea } from './RxzTextarea';
+import { RxzCheckbox } from './RxzCheckbox';
 
-export * from './RxzIcon';
 export * from './RxzButton';
-export * from './RxzCountdownButton';
+export * from './RxzIcon';
 export * from './RxzTip';
-export * from './RxzPagination';
-export * from './RxzButtonGroup';
-export * from './RxzSearch';
+export * from './RxzInput';
+export * from './RxzSelect';
+export * from './RxzSwitch';
+export * from './RxzRadio';
+export * from './RxzTextarea';
+export * from './RxzCheckbox';
 
 // Base组件列表
-const baseComponents = [
-  RxzSearch,
-  RxzButtonGroup,
-  RxzPagination,
+export const RxzBaseComponents = [
+  RxzCheckbox,
+  RxzTextarea,
+  RxzRadio,
+  RxzSwitch,
+  RxzSelect,
+  RxzInput,
   RxzTip,
   RxzIcon,
   RxzButton,
-  RxzCountdownButton,
 ];
 
-export const BaseComponents = {
-  install: install((app: App) => {
-    baseComponents.forEach((component) => {
-      app.use(component);
-    });
-  }),
-};

@@ -4,29 +4,38 @@
 
 ```vue
 <template>
-  <rxz-breadcrumb :breadcrumbs="breadcrumbs"></rxz-breadcrumb>
+  <rxz-breadcrumb :breadcrumbs="breadcrumbs" :router="router"></rxz-breadcrumb>
 </template>
-<script>
-export default {
-  data () {
-    return {
-      breadcrumbs: [
-        {
-          text: '首页',
-          path: '/'
-        },
-        {
-          text: '组件',
-          path: '/components'
-        },
-        {
-          text: '面包屑',
-        },
-      ]
-    }
+
+<script setup lang="ts">
+import { useRouter } from 'vue-router';
+
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+const breadcrumbs = [
+  {
+    text: '首页',
+    path: '/'
   },
-}
+  {
+    text: '组件',
+    path: '/components/'
+  },
+  {
+    text: '面包屑',
+  },
+];
+const router = useRouter();
 </script>
+
+<style lang="scss" scoped>
+
+</style>
+
 ```
 
 ## Attribute 属性
@@ -34,7 +43,7 @@ export default {
 | 参数             | 类型                                | 描述                             | 可选值                             | 默认值         | 必须  |
 | -------------- | --------------------------------- | ------------------------------ | ------------------------------- | ----------- | --- |
 | breadcrumbs           | RxzBreadcrumbItem[]           | 面包屑数组                          | -                     | []    |     |
-| router | Object | vueRouter实例；如果当前组件需要在弹出层中渲染，弹出层不会挂载vue-router，需要传入 | - | - | |
+| router | Router | vueRouter实例；如果不传入router，默认走a连接跳转 | - | - | |
 
 ## 内置数据结构
 

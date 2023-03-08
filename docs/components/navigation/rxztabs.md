@@ -10,32 +10,36 @@
     <div v-if="active?.key === items[2].key">我是tab3</div>
   </rxz-tabs>
 </template>
-<script lang="ts">
-export default {
-  data () {
-    return {
-      active: null as any,
-      items: [
-        {
-          name: '标签1',
-          key: '1',
-        },
-        {
-          name: '标签2',
-          key: '2',
-        },
-        {
-          name: '标签3',
-          key: '3',
-        },
-      ]
-    }
+
+<script setup lang="ts">import { ref } from 'vue';
+
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+const items = [
+  {
+    name: '标签1',
+    key: '1',
   },
-  created() {
-    this.active = this.items[0] as any;
-  }
-};
+  {
+    name: '标签2',
+    key: '2',
+  },
+  {
+    name: '标签3',
+    key: '3',
+  },
+];
+const active = ref(items[0]);
 </script>
+
+<style lang="scss" scoped>
+
+</style>
+
 ```
 
 ## v-model
@@ -49,7 +53,7 @@ export default {
 | 参数             | 类型                                | 描述                             | 可选值                             | 默认值         | 必须  |
 | -------------- | --------------------------------- | ------------------------------ | ------------------------------- | ----------- | --- |
 | tabs       | RxzTabsItem[] | 标签页数组               | -                     | []    |     |
-| modelValue | RxzTabsItem | 当前选中的标签页 | - | null | 是 |
+| modelValue | RxzTabsItem | 当前选中的标签页 | - | - |  |
 
 ## Event 事件
 

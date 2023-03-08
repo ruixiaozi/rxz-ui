@@ -13,8 +13,8 @@
 | link           | Boolean                           | 是否为链接                          | true/false                      | false       |     |
 | disabled       | Boolean                           | 是否禁用                           | true/false                      | false       |     |
 | loading        | Boolean                           | 是否加载状态（仅按钮）                    | true/false                      | false       |     |
-| type           | String \| BUTTON_TYPE_ENUM        | 按钮类型                           | 参见内置数据结构BUTTON_TYPE_ENUM        | default     |     |
-| nativeType     | String \| NATIVE_BUTTON_TYPE_ENUM | 原生按钮类型（仅按钮）                    | 参见内置数据结构NATIVE_BUTTON_TYPE_ENUM | button      |     |
+| type           | String \| RXZ_BUTTON_TYPE_ENUM        | 按钮类型                           | 参见内置数据结构RXZ_BUTTON_TYPE_ENUM        | default     |     |
+| nativeType     | String \| RXZ_BUTTON_NATIVE_TYPE_ENUM | 原生按钮类型（仅按钮）                    | 参见内置数据结构RXZ_BUTTON_NATIVE_TYPE_ENUM | button      |     |
 | width          | String                            | 宽度（仅按钮）                        | -                               | fit-content |     |
 | height         | String                            | 高度（仅按钮）                        | -                               | auto        |     |
 | padding        | String                            | 内边距（仅按钮）                       | -                               | 10px 20px   |     |
@@ -31,10 +31,10 @@
 
 ## 内置数据结构
 
-1. BUTTON_TYPE_ENUM 
+1. RXZ_BUTTON_TYPE_ENUM 
 
 ```ts
-enum BUTTON_TYPE_ENUM {
+export enum RXZ_BUTTON_TYPE_ENUM {
   default='default',
   primary='primary',
   success='success',
@@ -42,10 +42,10 @@ enum BUTTON_TYPE_ENUM {
 }
 ```
 
-2. NATIVE_BUTTON_TYPE_ENUM 
+2. RXZ_BUTTON_NATIVE_TYPE_ENUM 
 
 ```ts
-enum NATIVE_BUTTON_TYPE_ENUM {
+export enum RXZ_BUTTON_NATIVE_TYPE_ENUM {
   button='button',
   reset='reset',
   submit='submit',

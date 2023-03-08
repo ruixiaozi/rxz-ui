@@ -1,21 +1,12 @@
-import { install } from '@/common';
-import { App } from 'vue';
-import { RxzFlex } from './RxzFlex';
 import { RxzContainer } from './RxzContainer';
+import { RxzFlex } from './RxzFlex';
+
+export * from './RxzContainer';
+export * from './RxzFlex';
 
 // Layout组件列表
-const layoutComponents = [
-  RxzContainer,
+export const RxzLayoutComponents = [
   RxzFlex,
+  RxzContainer,
 ];
 
-export * from './RxzFlex';
-export * from './RxzContainer';
-
-export const LayoutComponents = {
-  install: install((app: App) => {
-    layoutComponents.forEach((component) => {
-      app.use(component);
-    });
-  }),
-};

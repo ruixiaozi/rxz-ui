@@ -4,105 +4,122 @@
 
 ```vue
 <template>
-  <rxz-breadcrumb :breadcrumbs="breadcrumbs"></rxz-breadcrumb>
-</template>
-<script>
-<template>
-  <rxz-menu :items="items" active="1-3-2"></rxz-menu>
+  <rxz-menu :items="items" active="1-3-2" :router="router"></rxz-menu>
   <p>---</p>
-  <rxz-menu :items="items" direction="vertical" active="1-3-2"></rxz-menu>
-  <p>---</p>
-  <rxz-menu :items="items" direction="vertical" :isFold="true" active="1-3-2"></rxz-menu>
+  <div class="verticle-unflod">
+    <rxz-menu :items="items" :direction="RXZ_MENU_DIRECTION_E.vertical" active="1-3-2" :router="router"></rxz-menu>
+  </div>
 
+  <p>---</p>
+  <div class="verticle-flod">
+    <rxz-menu :items="items" :direction="RXZ_MENU_DIRECTION_E.vertical" :isFold="true" active="1-3-2" :router="router"></rxz-menu>
+  </div>
 </template>
-<script lang="ts">
-export default {
-  data () {
-    return {
-      items: [
-        {
-          name: '父菜单1',
-          key: '1',
-          icon: 'edit',
-          onClick: () => {
-            console.log(1);
-          }
-        },
-        {
-          name: '父菜单21111',
-          children: [
-            {
-              name: '子菜单122222222222222222222222',
-              key: '1-1',
-            },
-            {
-              name: '子菜单222222222222222222222222',
-              key: '1-2',
-              onClick: () => {
-                console.log(1);
-              }
-            },
-            {
-              name: '子菜单3',
-              children: [
-                {
-                  name: '子子菜单1',
-                  key: '1-3-1'
-                },
-                {
-                  name: '子子菜单2',
-                  children: [
-                    {
-                      name: '子子2菜单1',
-                      key: '1-3-2-1'
-                    },
-                    {
-                      name: '子子2菜单2',
-                      key: '1-3-2-1'
-                    },
-                    {
-                      name: '子子2菜单3',
-                      key: '1-3-2-1'
-                    },
-                    {
-                      name: '子子2菜单4',
-                      key: '1-3-2-1'
-                    },
-                  ],
-                  key: '1-3-2'
-                },
-                {
-                  name: '子子菜单3',
-                  key: '1-3-3'
-                },
-                {
-                  name: '子子菜单4',
-                  key: '1-3-4'
-                },
-              ],
-              key: '1-3'
-            },
-            {
-              name: '子菜单4',
-            },
-          ],
-          key: '2',
-          icon: 'edit'
-        },
-        {
-          name: '父菜单3',
-          key: '3',
-          icon: 'edit'
-        },
-        {
-          name: '父菜单4',
-          key: '4'
-        },
-      ]
+
+<script setup lang="ts">
+import { RxzMenuItemOption, RXZ_MENU_DIRECTION_E } from '@/components';
+import { useRouter } from 'vue-router';
+
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+const items: RxzMenuItemOption[] = [
+  {
+    name: '父菜单1',
+    key: '1',
+    icon: 'edit',
+    onClick: () => {
+      console.log(1);
     }
-  }
-};
+  },
+  {
+    name: '父菜单21111',
+    children: [
+      {
+        name: '子菜单122222222222222222222222',
+        key: '1-1',
+      },
+      {
+        name: '子菜单222222222222222222222222',
+        key: '1-2',
+        onClick: () => {
+          console.log(1);
+        }
+      },
+      {
+        name: '子菜单3',
+        children: [
+          {
+            name: '子子菜单1',
+            key: '1-3-1'
+          },
+          {
+            name: '子子菜单2',
+            children: [
+              {
+                name: '子子2菜单1',
+                key: '1-3-2-1'
+              },
+              {
+                name: '子子2菜单2',
+                key: '1-3-2-1'
+              },
+              {
+                name: '子子2菜单3',
+                key: '1-3-2-1'
+              },
+              {
+                name: '子子2菜单4',
+                key: '1-3-2-1'
+              },
+            ],
+            key: '1-3-2'
+          },
+          {
+            name: '子子菜单3',
+            key: '1-3-3'
+          },
+          {
+            name: '子子菜单4',
+            key: '1-3-4'
+          },
+        ],
+        key: '1-3'
+      },
+      {
+        name: '子菜单4',
+        key: '1-4'
+      },
+    ],
+    key: '2',
+    icon: 'edit'
+  },
+  {
+    name: '父菜单3',
+    key: '3',
+    icon: 'edit'
+  },
+  {
+    name: '父菜单4',
+    key: '4'
+  },
+];
+const router = useRouter();
 </script>
+
+<style lang="scss" scoped>
+.verticle-unflod {
+  width: 300px;
+}
+
+.verticle-flod {
+  width: fit-content;
+}
+</style>
+
 ```
 
 ## Attribute 属性
@@ -111,9 +128,9 @@ export default {
 | -------------- | --------------------------------- | ------------------------------ | ------------------------------- | ----------- | --- |
 | items           | RxzMenuItemOption[]           | 菜单数组                          | -                     | []    |     |
 | active | string | 当前激活的菜单key | - | '' | |
-| direction | string | 方向 | 'vertical' \| 'horizontal' | 'horizontal' | |
+| direction | RXZ_MENU_DIRECTION_E | 方向 | 参考RXZ_MENU_DIRECTION_E | RXZ_MENU_DIRECTION_E.horizontal | |
 | isFold | Boolean | 是否折叠（仅对vertical有效） | true/false | false | |
-| router | Object | vueRouter实例；如果当前组件需要在弹出层中渲染，弹出层不会挂载vue-router，需要传入 | - | - | |
+| router | Router | vueRouter实例；如果不传入router，默认走a连接跳转 | - | - | |
 
 ## 内置数据结构
 
@@ -132,5 +149,23 @@ interface RxzMenuItemOption {
   onClick?: (...args: any[]) => any;
   children?: RxzMenuItemOption[];
   isFold?: boolean;
+}
+```
+
+2. RXZ_MENU_DIRECTION_E
+
+```ts
+enum RXZ_MENU_DIRECTION_E {
+  vertical='vertical',
+  horizontal='horizontal',
+}
+```
+
+3. RXZ_MENU_STYLE_E
+
+```ts
+enum RXZ_MENU_STYLE_E {
+  inner='inner',
+  popover='popover',
 }
 ```

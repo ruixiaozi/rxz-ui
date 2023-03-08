@@ -1,6 +1,6 @@
-# rxz-tooltip 提示指令
+# v-rxz-tooltip 提示指令
 
-<TestRxzTooltipDirective></TestRxzTooltipDirective>
+<TestvRxzTooltip></TestvRxzTooltip>
 
 ``` vue
 <template>
@@ -31,7 +31,18 @@
     </template>
   </rxz-container>
 </template>
-<style scoped>
+
+<script setup lang="ts">
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+
+</script>
+
+<style lang="scss" scoped>
 .container {
   width: 400px;
   height: 210px;
@@ -41,12 +52,13 @@
   margin-right: 20px;
 }
 </style>
+
 ```
 
 ## Description 描述
 
 + 指令名称：v-rxz-tooltip
-+ 参数：POPOVER_POS_E，默认值POPOVER_POS_E.top，见下方类型对照表
++ 参数：RXZ_POPOVER_POS_E，默认值RXZ_POPOVER_POS_E.top，见下方类型对照表
 + 值：tooltip内容，如果没有值，则显示宿主元素的内容
 + 修饰符：
   + click：通过点击显示或隐藏tooltip
@@ -55,10 +67,10 @@
 
 ## 内置数据结构
 
-1. POPOVER_POS_E 
+1. RXZ_POPOVER_POS_E 
    
   ```ts
-  export enum POPOVER_POS_E {
+  export enum RXZ_POPOVER_POS_E {
     topleft='topleft',
     top='top',
     topright='topright',
@@ -81,7 +93,7 @@
 
 ---
 
-<TestRxzTooltipDirectiveExp1></TestRxzTooltipDirectiveExp1>
+<TestvRxzTooltipExp1></TestvRxzTooltipExp1>
 
 ```vue
 <template>
@@ -93,7 +105,7 @@
 
 ---
 
-<TestRxzTooltipDirectiveExp2></TestRxzTooltipDirectiveExp2>
+<TestvRxzTooltipExp2></TestvRxzTooltipExp2>
 
 ```vue
 <template>
@@ -105,7 +117,7 @@
 
 ---
 
-<TestRxzTooltipDirectiveExp3></TestRxzTooltipDirectiveExp3>
+<TestvRxzTooltipExp3></TestvRxzTooltipExp3>
 
 ```vue
 <template>
@@ -117,7 +129,7 @@
 
 ---
 
-<TestRxzTooltipDirectiveExp4></TestRxzTooltipDirectiveExp4>
+<TestvRxzTooltipExp4></TestvRxzTooltipExp4>
 
 ```vue
 <template>

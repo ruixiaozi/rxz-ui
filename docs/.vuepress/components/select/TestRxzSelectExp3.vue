@@ -1,40 +1,34 @@
 <template>
-  <rxz-form :form-config="formConfig" v-model="data">
-    <rxz-form-item name="test" :error-tip="{'required': 'error required'}">
-      <rxz-label>Label</rxz-label>
-      <rxz-select :options="options"></rxz-select>
-    </rxz-form-item>
-  </rxz-form>
+  <div>
+    <rxz-select :options="options"></rxz-select>
+  </div>
 </template>
-<script>
-import { RxzValidators } from '@/definition';
-export default {
-  data () {
-    return {
-      options: [
-        {
-          label: "Option1",
-          value: 1,
-          key: "1",
-        },
-        {
-          label: "Option2",
-          value: 2,
-          key: "2",
-        },
-      ],
-      formConfig: {
-        test: {
-          validators: [RxzValidators.required],
-          default: {
-            label: "Option2",
-            value: 2,
-            key: "2",
-          },
-        },
-      },
-      data: {}
-    }
+
+<script setup lang="ts">
+import { useRxzBindingWithinSetup } from '@/use';
+import { ref } from 'vue';
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+const options = [
+  {
+    label: "Option1",
+    value: 1,
+    key: "1",
   },
-}
+  {
+    label: "Option2",
+    value: 2,
+    key: "2",
+  },
+];
+const data = ref(options[0]);
+useRxzBindingWithinSetup().registerBindingValue(data);
 </script>
+
+<style lang="scss" scoped>
+
+</style>

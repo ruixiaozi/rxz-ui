@@ -1,9 +1,10 @@
-
 <template>
   <rxz-table :tableConfig="tableConfig"></rxz-table>
 </template>
-<script lang="ts">
-import { RxzTableFilter } from '@/components/Table';
+
+<script setup lang="ts">
+import { RxzTableData, RxzTableFilter } from '@/components/table';
+
 const data = {
   total: 11,
   datas: [
@@ -75,51 +76,54 @@ const data = {
     },
   ],
 };
+defineProps<{
 
-export default {
-  data() {
-    return {
-      tableConfig: {
-        columns: [
-          {
-            key: "name",
-            label: "名称",
-          },
-          {
-            key: "price",
-            label: "价格",
-          },
-          {
-            key: "owner",
-            label: "所有者",
-          },
-          {
-            key: "operation",
-            label: "操作",
-          },
-        ],
-        getData(filter: RxzTableFilter) {
-          const { paginations, sorts } = filter;
-          return new Promise((resolve) => {
-            setTimeout(() => {
-              let newDatas = [...data.datas];
-              if (paginations) {
-                const startIndex = paginations.page * paginations.pageSize;
-                const endIndex = startIndex + paginations.pageSize;
-                newDatas = newDatas.slice(startIndex, endIndex);
-              }
-              resolve({
-                total: data.total,
-                datas: newDatas,
-              });
-            }, 1000);
-          })
-        },
-        paginations: {
-          pageSize: 5,
-        },
-      },
-    };
+}>();
+defineEmits<{
+
+}>();
+const tableConfig = {
+  columns: [
+    {
+      key: "name",
+      label: "名称",
+    },
+    {
+      key: "price",
+      label: "价格",
+    },
+    {
+      key: "owner",
+      label: "所有者",
+    },
+    {
+      key: "operation",
+      label: "说明",
+    },
+  ],
+  getData(filter: RxzTableFilter) {
+    const { paginations, sorts } = filter;
+    return new Promise<RxzTableData>((resolve) => {
+      setTimeout(() => {
+        let newDatas = [...data.datas];
+        if (paginations) {
+          const startIndex = paginations.page * paginations.pageSize;
+          const endIndex = startIndex + paginations.pageSize;
+          newDatas = newDatas.slice(startIndex, endIndex);
+        }
+        resolve({
+          total: data.total,
+          datas: newDatas,
+        });
+      }, 1000);
+    })
+  },
+  paginations: {
+    pageSize: 5,
   },
 };
 </script>
+
+<style lang="scss" scoped>
+
+</style>

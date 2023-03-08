@@ -10,3 +10,17 @@
     </rxz-form-item>
   </rxz-form>
 </template>
+
+<script setup lang="ts">
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+
+</script>
+
+<style lang="scss" scoped>
+
+</style>

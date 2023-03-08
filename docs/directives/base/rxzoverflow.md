@@ -1,4 +1,4 @@
-# rxz-overflow 溢出指令
+# v-rxz-overflow 溢出指令
 
 <div style="width: 100px" v-rxz-overflow>  
   我的名字叫rxz-overflow

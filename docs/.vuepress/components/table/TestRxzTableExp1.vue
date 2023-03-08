@@ -1,7 +1,8 @@
 <template>
   <rxz-table :tableConfig="tableConfig"></rxz-table>
 </template>
-<script lang="ts">
+
+<script setup lang="ts">
 const data = {
   total: 11,
   datas: [
@@ -73,39 +74,41 @@ const data = {
     },
   ],
 };
+defineProps<{
 
-export default {
-  data() {
-    return {
-      tableConfig: {
-        columns: [
-          {
-            key: "name",
-            label: "名称",
-            sort: true,
-          },
-          {
-            key: "price",
-            label: "价格",
-          },
-          {
-            key: "owner",
-            label: "所有者",
-          },
-          {
-            key: "operation",
-            label: "操作",
-          },
-        ],
-        getData() {
-          return data;
-        },
-        paginations: {
-          pageSize: 5,
-        },
-        innerFilter: true,
-      },
-    };
+}>();
+defineEmits<{
+
+}>();
+const tableConfig = {
+  columns: [
+    {
+      key: "name",
+      label: "名称",
+    },
+    {
+      key: "price",
+      label: "价格",
+    },
+    {
+      key: "owner",
+      label: "所有者",
+    },
+    {
+      key: "operation",
+      label: "说明",
+    },
+  ],
+  getData() {
+    return data;
   },
+  paginations: {
+    pageSize: 5,
+  },
+  innerFilter: true,
 };
 </script>
+
+<style lang="scss" scoped>
+
+</style>

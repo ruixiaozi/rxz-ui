@@ -11,8 +11,7 @@
 
   &.horizontal {
     flex-direction: row;
-
-    ::v-deep > *:not(:last-child) {
+    :deep(> *:not(:last-child)) {
       margin-right: var(--gutter);
     }
   }

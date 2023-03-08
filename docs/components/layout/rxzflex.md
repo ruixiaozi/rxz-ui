@@ -16,10 +16,31 @@
 
 | 参数       | 类型    | 描述                 | 可选值     | 默认值 | 必须 |
 | ---------- | ------- | -------------------- | ---------- | ------ | ---- |
-| direction   | String \| DIRECTION_ENUM | 布局方向 | vertical/horizontal | horizontal   |      |
+| direction   | String \| RXZ_FLEX_DIRECTION_ENUM | 布局方向 | vertical/horizontal | horizontal   |      |
 | gutter | String | 间距         | - | '0px'  |      |
-| align | String \| FLEX_ALIGN_ENUM | 另一方向的对齐方式   | flex-start/flex-end/center | start  |      |
-| justify | String \| FLEX_ALIGN_ENUM | 当前方向的对齐方式   | flex-start/flex-end/center | start  |      |
+| align | String \| RXZ_FLEX_JUST_ALIGN_ENUM | 另一方向的对齐方式   | flex-start/flex-end/center | start  |      |
+| justify | String \| RXZ_FLEX_JUST_ALIGN_ENUM | 当前方向的对齐方式   | flex-start/flex-end/center | start  |      |
+
+## 内置数据结构
+
+1. RXZ_FLEX_DIRECTION_ENUM 
+   
+   ```ts
+   export enum RXZ_FLEX_DIRECTION_ENUM {
+     vertical='vertical',
+     horizontal='horizontal',
+   }
+   ```
+
+2. RXZ_FLEX_JUST_ALIGN_ENUM
+   
+   ```ts
+   export enum RXZ_FLEX_JUST_ALIGN_ENUM {
+    start='flex-start',
+    end='flex-end',
+    center='center',
+   }
+   ```
 
 ## Example 案例
 

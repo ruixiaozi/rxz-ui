@@ -10,30 +10,38 @@
       </rxz-form>
     </rxz-form-item>
   </rxz-form>
+  <p>表单值：{{ data }}</p>
 </template>
-<script>
-import { RxzValidators } from '@/definition';
-export default {
-  data () {
-    return {
-      formConfig: {
-        arrayTest: [
-          {
-            validators: [RxzValidators.required],
-            default: '0',
-          },
-        ]
-      },
-      data: {}
+
+<script setup lang="ts">
+import { RxzFormItemConfig } from '@/components';
+import { RxzFormConfig } from '@/components/form/RxzForm';
+import { useRxzValidator } from '@/use';
+import { reactive, ref } from 'vue';
+
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+const formConfig: RxzFormConfig = reactive({
+  arrayTest: [
+    {
+      validators: [useRxzValidator().required],
+      default: '',
     }
-  },
-  methods: {
-    add() {
-      this.formConfig.arrayTest.push({
-        validators: [RxzValidators.required],
-        default: this.formConfig.arrayTest.length,
-      },)
-    }
-  }
+  ],
+});
+const data = ref();
+const add = () => {
+  (formConfig.arrayTest as RxzFormItemConfig[]).push({
+    validators: [useRxzValidator().required],
+    default: (formConfig.arrayTest as RxzFormItemConfig[]).length,
+  })
 }
 </script>
+
+<style lang="scss" scoped>
+
+</style>

@@ -3,6 +3,17 @@
     test-container
   </rxz-container>
 </template>
+
+<script setup lang="ts">
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+
+</script>
+
 <style lang="scss" scoped>
 .container {
   width: 100%;

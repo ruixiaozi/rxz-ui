@@ -5,22 +5,30 @@
       <rxz-input></rxz-input>
     </rxz-form-item>
   </rxz-form>
+  <p>表单值：{{ data }}</p>
 </template>
-<script>
-import { RxzValidators } from '@/definition';
-export default {
-  data () {
-    return {
-      formConfig: {
-        test: {
-          validators: [RxzValidators.required],
-          default: '',
-        },
-      },
-      data: {
-        test: ''
-      }
-    }
+
+<script setup lang="ts">
+import { useRxzValidator } from '@/use';
+import { ref } from 'vue';
+
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+const formConfig = {
+  test: {
+    validators: [useRxzValidator().required],
+    default: '',
   },
-}
+};
+const data = ref({
+  test: ''
+})
 </script>
+
+<style lang="scss" scoped>
+
+</style>

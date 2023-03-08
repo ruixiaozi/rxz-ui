@@ -7,9 +7,12 @@
   </div>
 </template>
 
-<script lang="ts">
-import { RxzFlexCnt } from './RxzFlex.component';
-export default RxzFlexCnt;
+<script setup lang="ts">
+import { defineProps, defineEmits } from 'vue';
+import define from './RxzFlex.define';
+defineProps(define.rxzFlexProps);
+defineEmits(define.rxzFlexEmits);
+
 </script>
 
 <style lang="scss" scoped>

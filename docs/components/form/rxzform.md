@@ -14,35 +14,43 @@
       <rxz-input></rxz-input>
     </rxz-form-item>
   </rxz-form>
-  <rxz-button type="primary" @click="handleCheck()">Check</rxz-button>
+  <rxz-button :type="RXZ_BUTTON_TYPE_ENUM.primary" @click="handleCheck()">Check</rxz-button>
+  <p>表单值：{{ data }}</p>
 </template>
-<script>
-import { RxzValidators } from 'rxz-ui';
-export default {
-  data () {
-    return {
-      formConfig: {
-        test: {
-          validators: [RxzValidators.required],
-          default: '',
-        },
-        test1: {
-          validators: [RxzValidators.required],
-          default: 'test1',
-        },
-      },
-      data: {
-        test: 'test'
-      }
-    }
+
+<script setup lang="ts">
+import { RxzForm, RXZ_BUTTON_TYPE_ENUM } from '@/components';
+import { useRxzValidator } from '@/use';
+import { ref } from 'vue';
+
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+const formConfig = {
+  test: {
+    validators: [useRxzValidator().required],
+    default: '',
   },
-  methods: {
-    handleCheck() {
-      console.log(this.$refs.form.check());
-    }
-  }
+  test1: {
+    validators: [useRxzValidator().required],
+    default: 'test1',
+  },
+}
+const data = ref({
+  test: ''
+});
+const form = ref<InstanceType<typeof RxzForm>>();
+const handleCheck = () => {
+  console.log(form.value?.check());
 }
 </script>
+
+<style lang="scss" scoped>
+
+</style>
 ```
 
 ## v-model
@@ -57,9 +65,9 @@ export default {
 | ---------- | --------------------------------- | --------------- | ------------------- | -------- | --- |
 | modelValue | Object                            | 表单数据对象          | -                   | {}       |     |
 | formConfig | RxzFormConfig                     | 表单的配置对象         | -                   | {}       |     |
-| labelWidth | String \| 'auto' \| 'fit-contnet' | 表单下面的labelwidth | -                   | ''       |     |
+| labelWidth | RxzLabelWidth                     | 表单下面的labelwidth | -                   | 'auto'       |     |
 | name       | String                            | 子表单对应的字段名称      | -                   | ''       |     |
-| direction  | String                            | 表单内item的排列方向    | vertical/horizontal | vertical |     |
+| direction  | RXZ_FLEX_DIRECTION_ENUM           | 表单内item的排列方向    | RXZ_FLEX_DIRECTION_ENUM | RXZ_FLEX_DIRECTION_ENUM.vertical |     |
 
 ## Event 事件
 
@@ -75,19 +83,45 @@ export default {
 
 ## 内置数据结构
 
-1. RxzCheckRes = { tip: RxzErrorTip; param: any; } | null | { [key: string]:RxzCheckRes};
+1. RxzValidatorCheckRes 
 
-2. RxzFormConfig = { [key: string ]: RxzFormItemConfig | RxzFormConfig; };
+  ```ts
+  type RxzValidatorErrorTip = string | { isI18N: boolean; label: string; };
 
-3. RxzFormItemConfig = { default?: any; validators: Validator[];};  （内置校验器：[RxzValidators](./rxzvalidators.html)）
+  type RxzValidatorCheckRes = {
+    tip: RxzValidatorErrorTip;
+    param: any;
+  } | null | { [key: string]: RxzValidatorCheckRes };
+  ```
 
-4. Validator = (value: any) => { [key: string]: any | null } | null;
+2. RxzFormConfig
 
-5. RxzLabelWidth = string | 'auto' | 'fit-content';
+  ```ts
+  type RxzValidator = (value: any) => { [key: string]: any | null } | null;
+
+  interface RxzFormItemConfig {
+    default?: any;
+    validators: RxzValidator[];
+  }
+  interface RxzFormConfig {
+    [key: string ]: RxzFormItemConfig | RxzFormConfig;
+  }
+  ```
+
+3. RxzLabelWidth = string | 'auto' | 'fit-content';
+
+4. RXZ_FLEX_DIRECTION_ENUM
+
+  ```ts
+  export enum RXZ_FLEX_DIRECTION_ENUM {
+    vertical='vertical',
+    horizontal='horizontal',
+  }
+  ```
 
 ## API
 
-1. check(): RxzCheckRes 表单校验
+1. check(): RxzValidatorCheckRes 表单校验
 
 ## Example 案例
 
@@ -109,34 +143,46 @@ export default {
       <rxz-input></rxz-input>
     </rxz-form-item>
   </rxz-form>
+  <p>表单值：{{ data }}</p>
 </template>
-<script>
-import { RxzValidators } from 'rxz-ui';
-export default {
-  data () {
-    return {
-      formConfig: {
-        test: {
-          validators: [RxzValidators.required],
-          default: '',
-        },
-        test1: {
-          validators: [RxzValidators.required],
-          default: 'test1',
-        },
-      },
-      data: {}
-    }
+
+<script setup lang="ts">
+import { RxzForm } from '@/components';
+import { useRxzValidator } from '@/use';
+import { ref } from 'vue';
+
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+const formConfig = {
+  test: {
+    validators: [useRxzValidator().required],
+    default: '',
+  },
+  test1: {
+    validators: [useRxzValidator().required],
+    default: 'test1',
   },
 }
+const data = ref({
+  test: ''
+});
 </script>
+
+<style lang="scss" scoped>
+
+</style>
+
 ```
 
 <TestRxzFormExp2></TestRxzFormExp2>
 
 ```vue
 <template>
-  <rxz-form :form-config="formConfig" v-model="data" direction="horizontal" labelWidth="fit-content">
+  <rxz-form :form-config="formConfig" v-model="data" :direction="RXZ_FLEX_DIRECTION_ENUM.horizontal" labelWidth="fit-content">
     <rxz-form-item name="test" :error-tip="{'required': 'error required'}">
       <rxz-label>Label</rxz-label>
       <rxz-input></rxz-input>
@@ -146,27 +192,39 @@ export default {
       <rxz-input></rxz-input>
     </rxz-form-item>
   </rxz-form>
+  <p>表单值：{{ data }}</p>
 </template>
-<script>
-import { RxzValidators } from 'rxz-ui';
-export default {
-  data () {
-    return {
-      formConfig: {
-        test: {
-          validators: [RxzValidators.required],
-          default: '',
-        },
-        test1: {
-          validators: [RxzValidators.required],
-          default: 'test1',
-        },
-      },
-      data: {}
-    }
+
+<script setup lang="ts">
+import { RxzForm, RXZ_FLEX_DIRECTION_ENUM } from '@/components';
+import { useRxzValidator } from '@/use';
+import { ref } from 'vue';
+
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+const formConfig = {
+  test: {
+    validators: [useRxzValidator().required],
+    default: '',
+  },
+  test1: {
+    validators: [useRxzValidator().required],
+    default: 'test1',
   },
 }
+const data = ref({
+  test: ''
+});
 </script>
+
+<style lang="scss" scoped>
+
+</style>
+
 ```
 
 ### 2. 子表单
@@ -192,29 +250,39 @@ export default {
       </rxz-form>
     </rxz-form-item>
   </rxz-form>
+  <p>表单值：{{ data }}</p>
 </template>
-<script>
-import { RxzValidators } from 'rxz-ui';
-export default {
-  data () {
-    return {
-      formConfig: {
-        test: {
-          validators: [RxzValidators.required],
-          default: '',
-        },
-        inner: {
-          innerTest:  {
-            validators: [RxzValidators.required],
-            default: 'test1',
-          },
-        }
-      },
-      data: {}
-    }
+
+<script setup lang="ts">
+import { RxzForm } from '@/components';
+import { useRxzValidator } from '@/use';
+import { ref } from 'vue';
+
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+const formConfig = {
+  test: {
+    validators: [useRxzValidator().required],
+    default: '',
   },
+  inner: {
+    innerTest: {
+      validators: [useRxzValidator().required],
+      default: 'test1',
+    },
+  }
 }
+const data = ref({});
 </script>
+
+<style lang="scss" scoped>
+
+</style>
+
 ```
 
 ### 3. labelWidth
@@ -239,27 +307,39 @@ export default {
       <rxz-input></rxz-input>
     </rxz-form-item>
   </rxz-form>
+  <p>表单值：{{ data }}</p>
 </template>
-<script>
-import { RxzValidators } from 'rxz-ui';
-export default {
-  data () {
-    return {
-      formConfig: {
-        test: {
-          validators: [RxzValidators.required],
-          default: '',
-        },
-        test1: {
-          validators: [RxzValidators.required],
-          default: 'test1',
-        },
-      },
-      data: {}
-    }
+
+<script setup lang="ts">
+import { RxzForm } from '@/components';
+import { useRxzValidator } from '@/use';
+import { ref } from 'vue';
+
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+const formConfig = {
+  test: {
+    validators: [useRxzValidator().required],
+    default: '',
+  },
+  test1: {
+    validators: [useRxzValidator().required],
+    default: 'test1',
   },
 }
+const data = ref({
+  test: ''
+});
 </script>
+
+<style lang="scss" scoped>
+
+</style>
+
 ```
 
 2. auto
@@ -280,27 +360,39 @@ export default {
       <rxz-input></rxz-input>
     </rxz-form-item>
   </rxz-form>
+  <p>表单值：{{ data }}</p>
 </template>
-<script>
-import { RxzValidators } from 'rxz-ui';
-export default {
-  data () {
-    return {
-      formConfig: {
-        test: {
-          validators: [RxzValidators.required],
-          default: '',
-        },
-        test1: {
-          validators: [RxzValidators.required],
-          default: 'test1',
-        },
-      },
-      data: {}
-    }
+
+<script setup lang="ts">
+import { RxzForm } from '@/components';
+import { useRxzValidator } from '@/use';
+import { ref } from 'vue';
+
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+const formConfig = {
+  test: {
+    validators: [useRxzValidator().required],
+    default: '',
+  },
+  test1: {
+    validators: [useRxzValidator().required],
+    default: 'test1',
   },
 }
+const data = ref({
+  test: ''
+});
 </script>
+
+<style lang="scss" scoped>
+
+</style>
+
 ```
 
 3. 实际像素
@@ -313,7 +405,7 @@ export default {
 <template>
   <rxz-form :form-config="formConfig" v-model="data" labelWidth="100px">
     <rxz-form-item name="test" :error-tip="{'required': 'error required'}">
-      <rxz-label>testLabel</rxz-label>
+      <rxz-label>testLabel1111</rxz-label>
       <rxz-input></rxz-input>
     </rxz-form-item>
     <rxz-form-item name="test1" :error-tip="{'required': 'error required'}">
@@ -321,25 +413,37 @@ export default {
       <rxz-input></rxz-input>
     </rxz-form-item>
   </rxz-form>
+  <p>表单值：{{ data }}</p>
 </template>
-<script>
-import { RxzValidators } from 'rxz-ui';
-export default {
-  data () {
-    return {
-      formConfig: {
-        test: {
-          validators: [RxzValidators.required],
-          default: '',
-        },
-        test1: {
-          validators: [RxzValidators.required],
-          default: 'test1',
-        },
-      },
-      data: {}
-    }
+
+<script setup lang="ts">
+import { RxzForm } from '@/components';
+import { useRxzValidator } from '@/use';
+import { ref } from 'vue';
+
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+const formConfig = {
+  test: {
+    validators: [useRxzValidator().required],
+    default: '',
+  },
+  test1: {
+    validators: [useRxzValidator().required],
+    default: 'test1',
   },
 }
+const data = ref({
+  test: ''
+});
 </script>
+
+<style lang="scss" scoped>
+
+</style>
+
 ```

@@ -1,0 +1,8 @@
+lib/**
+node_modules/**
+.vscode/**
+.husky/**
+script/**
+vue.config.js
+.eslintrc.js
+example/**

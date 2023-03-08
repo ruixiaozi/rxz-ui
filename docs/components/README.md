@@ -1,23 +1,33 @@
 # 总览
 
-+ 基础组件
-  
-  + [RxzButton 按钮](./base/rxzbutton.html)
-  + [RxzCountDownButton 倒计时按钮](./base/rxzcountdownbutton.html)
-  + [RxzButtonGroup 按钮组](./base/rxzbuttongroup.html)
-  + [RxzIcon 图标](./base/rxzicon.html)
-  + [RxzTip 提示条](./base/rxztip.html)
-  + [RxzPagination 分页](./base/rxzpagination.html)
-  + [RxzSearch 搜索](./base/rxzsearch.html)
-
 + 视图组件
   
   + [RxzContainer 容器](./layout/rxzcontainer.html)
   + [RxzFlex 弹性布局](./layout/rxzflex.html)
 
-+ 动画组件
+
++ 基础组件
   
-  + [RxzWaveProcess 水波进度](./animation/rxzwaveprocess.html)
+  + [RxzButton 按钮](./base/rxzbutton.html)
+  + [RxzIcon 图标](./base/rxzicon.html)
+  + [RxzTip 提示条](./base/rxztip.html)
+  + [RxzInput 输入框](./base/rxzinput.html)
+  + [RxzSelect 下拉选择器](./base/rxzselect.html)
+  + [RxzSwitch 开关按钮](./base/rxzswitch.html)
+  + [RxzRadio 单选按钮](./base/rxzradio.html)
+  + [RxzTextarea 文本域](./base/rxztextarea.html)
+  + [RxzCheckbox 复选按钮](./base/rxzcheckbox.html)
+
++ 进阶组件
+
+  + [RxzCountDownButton 倒计时按钮](./advance/rxzcountdownbutton.html)
+  + [RxzButtonGroup 按钮组](./advance/rxzbuttongroup.html)
+  + [RxzSearch 搜索](./advance/rxzsearch.html)
+  + [RxzPagination 分页](./advance/rxzpagination.html)
+
++ 进度条
+  
+  + [RxzWaveProcess 水波进度](./process/rxzwaveprocess.html)
 
 + 卡片组件
   
@@ -34,13 +44,7 @@
   + [RxzForm 表单](./form/rxzform.html)
   + [RxzFormItem 表单项](./form/rxzformitem.html)
   + [RxzLabel 标签](./form/rxzlabel.html)
-  + [RxzValidators 校验器](./form/rxzvalidators.html)
-  + [RxzInput 输入框](./form/rxzinput.html)
-  + [RxzRadio 单选按钮](./form/rxzradio.html)
-  + [RxzSwitch 开关按钮](./form/rxzswitch.html)
-  + [RxzTextarea 文本域](./form/rxztextarea.html)
-  + [RxzCheckbox 复选按钮](./form/rxzcheckbox.html)
-  + [RxzSelect 下拉选择器](./form/rxzselect.html)
+  
 
 + 表格组件
 

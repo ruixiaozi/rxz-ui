@@ -1,18 +1,39 @@
 <template>
   <transition :name="`move-anim`" appear>
     <div v-if="display" class="rxz-tip" :class="[`rxz-tip-${type}`]" v-bind="$attrs">
-      <rxz-icon :name="type" :size="16"></rxz-icon>
+      <RxzIcon :name="type" :size="16"></RxzIcon>
       <span class="rxz-tip-content">
         <slot>{{ type }}</slot>
       </span>
-      <rxz-icon v-if="closable" @click="hidden" class="rxz-tip-close" name="close" :size="12"></rxz-icon>
+      <RxzIcon v-if="closable" @click="hidden" class="rxz-tip-close" name="close" :size="12"></RxzIcon>
     </div>
   </transition>
 </template>
 
-<script lang="ts">
-import { RxzTipCnt } from './RxzTip.component';
-export default RxzTipCnt;
+<script setup lang="ts">
+import { defineProps, defineEmits, defineExpose, ref } from 'vue';
+import { RxzIcon } from '@/components/base/RxzIcon';
+import define from './RxzTip.define';
+defineProps(define.rxzTipProps);
+const emits = defineEmits(define.rxzTipEmits);
+
+const display = ref(true);
+
+const show = () => {
+  display.value = true;
+  emits('show');
+};
+
+const hidden = () => {
+  display.value = false;
+  emits('hidden');
+};
+
+defineExpose({
+  show,
+  hidden,
+});
+
 </script>
 
 <style lang="scss" scoped>

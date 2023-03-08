@@ -3,16 +3,19 @@
     <template v-for="slotName in slotNames" v-slot:[slotName]>test-container</template>
   </rxz-container>
 </template>
-<script>
-import { RxzContainerSlotEnum } from '@/components'
-export default {
-  data() {
-    return {
-      slotNames: Object.values(RxzContainerSlotEnum)
-    }
-  }
-}
+
+<script setup lang="ts">
+import { RXZ_CONTAINER_SLOT_E } from '@/components';
+
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+const slotNames = Object.values(RXZ_CONTAINER_SLOT_E);
 </script>
+
 <style lang="scss" scoped>
 .container {
   width: 100%;

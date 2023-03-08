@@ -1,21 +1,13 @@
-import { install } from '@/common';
-import { App } from 'vue';
 import { RxzTable } from './RxzTable';
-import { RxzColumnRender } from './RxzColumnRender';
+import { RxzTableCellRender } from './RxzTableCellRender';
+
 
 export * from './RxzTable';
-export * from './RxzColumnRender';
+export * from './RxzTableCellRender';
 
 // Table组件列表
-const tableComponents = [
-  RxzColumnRender,
+export const RxzTableComponents = [
+  RxzTableCellRender,
   RxzTable,
 ];
 
-export const TableComponents = {
-  install: install((app: App) => {
-    tableComponents.forEach((component) => {
-      app.use(component);
-    });
-  }),
-};

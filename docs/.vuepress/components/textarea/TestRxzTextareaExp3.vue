@@ -1,24 +1,24 @@
 <template>
-  <rxz-form :form-config="formConfig" v-model="data">
-    <rxz-form-item name="test" :error-tip="{'required': 'error required'}">
-      <rxz-label>Label</rxz-label>
-      <rxz-textarea></rxz-textarea>
-    </rxz-form-item>
-  </rxz-form>
+  <div>
+    <rxz-textarea></rxz-textarea>
+    <p>输入：</p>
+    <pre>{{ data }}</pre>
+  </div>
 </template>
-<script>
-import { RxzValidators } from '@/definition';
-export default {
-  data () {
-    return {
-      formConfig: {
-        test: {
-          validators: [RxzValidators.required],
-          default: '',
-        },
-      },
-      data: {}
-    }
-  },
-}
+
+<script setup lang="ts">
+import { useRxzBindingWithinSetup } from '@/use';
+import { ref } from 'vue';
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+const data = ref('');
+useRxzBindingWithinSetup().registerBindingValue(data);
 </script>
+
+<style lang="scss" scoped>
+
+</style>

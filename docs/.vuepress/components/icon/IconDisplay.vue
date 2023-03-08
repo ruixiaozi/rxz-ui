@@ -7,21 +7,16 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      icons: []
-    }
-  },
-  created() {
-    import('./rxz-icon.json').then((res) => {
+<script setup lang="ts">
+import { onMounted, ref } from 'vue';
+const icons = ref([] as string[]);
+onMounted(() => {
+  import('./rxz-icon.json').then((res) => {
       if (res?.default) {
-        this.icons = res.default;
+        icons.value = res.default;
       }
     })
-  }
-}
+});
 </script>
 
 <style scoped>

@@ -15,15 +15,19 @@
     </template>
   </rxz-flip-card>
 </template>
-<script>
-export default {
-  data () {
-    return {
-      isFront: true
-    }
-  }
-};
+
+<script setup lang="ts">
+import { ref } from 'vue';
+
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+const isFront = ref(true);
 </script>
+
 <style lang="scss" scoped>
 .front{
   background-color: green;
@@ -37,6 +41,7 @@ export default {
   height: 100%;
 }
 </style>
+
 ```
 
 

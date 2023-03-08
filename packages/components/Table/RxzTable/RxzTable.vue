@@ -38,21 +38,132 @@
       <tbody>
         <tr v-for="(item, index) in datas" :key="index">
           <td v-for="col in tableConfig.columns" :key="col.key + index">
-            {{ item[col.key] }}
+            <span v-if="col.cellRender">
+              <RxzTableCellRender :row-data="item" :column-key="col.key" :config="col.cellRender"></RxzTableCellRender>
+            </span>
+            <span v-else>{{ item[col.key] }}</span>
           </td>
         </tr>
       </tbody>
     </table>
-    <rxz-pagination
+    <RxzPagination
       v-if="tableConfig.paginations && filter.paginations"
       v-model="filter.paginations"
-    ></rxz-pagination>
+    ></RxzPagination>
   </div>
 </template>
 
-<script lang="ts">
-import { RxzTableCnt } from './RxzTable.component';
-export default RxzTableCnt;
+<script setup lang="ts">
+import { RxzPagination } from '@/components/advance';
+import { vRxzLoading } from '@/directives';
+import { comparator } from '@/utils';
+import { isArray, isNumber, omit } from 'lodash';
+import { defineProps, defineEmits, reactive, ref, watch } from 'vue';
+import { RxzTableCellRender } from '../RxzTableCellRender';
+import define, { RxzTableFilter, RXZ_TABLE_COLUMN_DIRECTION_ENUM } from './RxzTable.define';
+const props = defineProps(define.rxzTableProps);
+defineEmits(define.rxzTableEmits);
+
+const filter = reactive<RxzTableFilter>({
+  sorts: {},
+  paginations: {
+    page: 0,
+    pageSize: 0,
+    total: 0,
+  },
+});
+
+const datas = ref<any[]>([]);
+
+// 用于缓存前端分页的所有数据
+const cacheDatas = ref<any[]>([]);
+
+const showLoading = ref(false);
+
+watch(() => props.tableConfig.paginations?.pageSize, () => {
+  if (filter.paginations && props.tableConfig.paginations) {
+    filter.paginations.pageSize = props.tableConfig.paginations.pageSize;
+  }
+}, { immediate: true });
+
+// 前端过滤
+const innerResolveData = () => {
+  const { paginations, sorts } = filter;
+  const sortsEntities = Object.entries(sorts);
+  let data = [...cacheDatas.value];
+  if (sortsEntities.length > 0) {
+    data = data.sort((dataA, dataB) => {
+      let cmpRes = 0;
+      for (const [key, direction] of Object.entries(sorts)) {
+        cmpRes = comparator(dataA[key], dataB[key], direction === RXZ_TABLE_COLUMN_DIRECTION_ENUM.DESC);
+        if (cmpRes) {
+          return cmpRes;
+        }
+      }
+      return cmpRes;
+    });
+  }
+  // 仅开启分页才处理
+  if (props.tableConfig.paginations && paginations) {
+    const startIndex = paginations.page * paginations.pageSize;
+    const endIndex = startIndex + paginations.pageSize;
+    data = data.slice(startIndex, endIndex);
+  }
+  datas.value = data;
+};
+
+const resolveData = (first?: boolean) => {
+  // 非第一次获取数据，且是内部过滤，不触发数据的获取
+  if (!first && props.tableConfig.innerFilter) {
+    innerResolveData();
+    return;
+  }
+  // 开启分页才传入分页的参数
+  const _filter = props.tableConfig.paginations
+    ? { ...filter }
+    : omit(filter, 'paginations');
+  showLoading.value = true;
+  Promise.resolve(props.tableConfig.getData(_filter))
+    .then((tableData) => {
+      if (isNumber(tableData.total) && isArray(tableData.datas)) {
+        if (filter.paginations) {
+          filter.paginations.total = tableData.total;
+        }
+        if (props.tableConfig.innerFilter) {
+          cacheDatas.value = tableData.datas;
+          innerResolveData();
+        } else {
+          datas.value = tableData.datas;
+        }
+      }
+    })
+    .finally(() => {
+      showLoading.value = false;
+    });
+};
+
+const handleSort = (key: string) => {
+  if (!filter.sorts) {
+    filter.sorts = {};
+  }
+  const direction = filter.sorts[key];
+  if (direction === RXZ_TABLE_COLUMN_DIRECTION_ENUM.ASC) {
+    filter.sorts[key] = RXZ_TABLE_COLUMN_DIRECTION_ENUM.DESC;
+  } else if (direction === RXZ_TABLE_COLUMN_DIRECTION_ENUM.DESC) {
+    delete filter.sorts[key];
+  } else {
+    filter.sorts[key] = RXZ_TABLE_COLUMN_DIRECTION_ENUM.ASC;
+  }
+  resolveData();
+};
+
+watch(() => filter.paginations?.page, () => {
+  resolveData();
+});
+
+
+resolveData(true);
+
 </script>
 
 <style lang="scss" scoped>
