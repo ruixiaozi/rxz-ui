@@ -40,15 +40,17 @@ const { /* 你要引入的API或者属性 */ } = useRxzMessageBox();
     transition?: 'opacity' | 'bounce';
     // 是否允许拖拽 (默认值为false)
     allowDrag?: boolean;
-    // 窗口关闭回调，返回false，则不关闭
-    onClose?: (content: string | VNode) => any;
+    // 窗口关闭回调，抛出异常不关闭窗口
+    onClose?: (content: string | VNode) => void;
     // 确认按钮
     hiddenConfirm?: boolean;
-    onConfirm?: (content: string | VNode) => any;
+    // 确认回调，抛出异常不关闭窗口
+    onConfirm?: (content: string | VNode) => void;
     confirmText?: string;
     // 取消按钮
     hiddenCancel?: boolean;
-    onCancel?: (content: string | VNode) => any;
+    // 取消回调，抛出异常不关闭窗口
+    onCancel?: (content: string | VNode) => void;
     cancelText?: string;
   }
 

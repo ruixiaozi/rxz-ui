@@ -12,7 +12,7 @@
       </a>
     </span>
     <span v-else-if="config.type === RXZ_TABLE_CELL_RENDER_TYPE_E.OPERATOR">
-      <RxzButtonGroup :buttons="config.config.buttons" :max="config.config.max" :link="true"></RxzButtonGroup>
+      <RxzButtonGroup :buttons="config.config.buttons" :max="config.config.max" :link="true" :data="rowData"></RxzButtonGroup>
     </span>
     <span v-else-if="config.type === RXZ_TABLE_CELL_RENDER_TYPE_E.COMPONENT">
       <component :is="config.config.cnt" :value="rowData?.[columnKey]"></component>
