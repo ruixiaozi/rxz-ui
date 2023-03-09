@@ -2,10 +2,6 @@
   <RxzFlex
     :direction="direction"
     class="rxz-checkbox"
-    :class="{
-      // todo：待处理
-      /* 'rxz-checkbox-form': formValue.isFormValue, */
-    }"
   >
     <div v-for="(item, index) in items" :key="index"
       class="rxz-checkbox-item"

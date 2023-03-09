@@ -204,7 +204,7 @@ function getPopoverKey(el: HTMLElement) {
 
 // 全局监听，启动时注册
 registeClientInitNoSSR(() => {
-  // 点击其他位置，关闭所有的弹出层 TODO
+  // 点击其他位置，关闭所有的弹出层
   document.addEventListener('click', (event: Event) => {
     const target = event.target as HTMLElement;
     const popoverKey = getPopoverKey(target);

@@ -5,8 +5,6 @@
       'width': width,
     }"
     :class="{
-      // todo: 需要处理这个类
-      'rxz-form-value': false /* formValue.isFormValue */,
       'is-disabled': disabled,
     }"
   >
@@ -105,8 +103,6 @@ const handlePaste = (event: ClipboardEvent) => {
 };
 
 const handleBlur = (event: any) => {
-  // todo: 待处理
-  /*  this.formValue.valueChange(); */
   emits('blur', event);
 };
 
