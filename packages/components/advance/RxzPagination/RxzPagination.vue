@@ -11,7 +11,7 @@
           >
           {{ typeof page === 'number' ?  (page + diffStart) : '...' }}
         </RxzButton>
-      </template>,
+      </template>
       <RxzIcon @click="forward" :class="{ 'disabled': pageEnd === modelValue.page }" name="arrow-right" ></RxzIcon>
     </div>
     <div class="rxz-pagination-right">

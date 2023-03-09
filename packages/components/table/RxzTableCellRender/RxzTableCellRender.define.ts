@@ -4,6 +4,7 @@
  * @author: ruixiaozi
  * @since: 2.0.0
  */
+import { RxzButtonGroupItem } from '@/components/advance/RxzButtonGroup';
 import { definePropsUtil, defineEmitsUtil } from '@/utils';
 import { Component, PropType } from 'vue';
 
@@ -11,6 +12,7 @@ export enum RXZ_TABLE_CELL_RENDER_TYPE_E {
   DATAMAP='datamap',
   I18N='i18n',
   LINK='link',
+  OPERATOR='operator',
   COMPONENT='component',
 }
 
@@ -32,6 +34,14 @@ export type RxzTableCellRenderConfig = {
     text?: string;
     // 是否新窗口打开，默认当前窗口
     isBlank?: boolean;
+  };
+} | {
+  type: RXZ_TABLE_CELL_RENDER_TYPE_E.OPERATOR,
+  config: {
+    // 操作按钮组
+    buttons?: RxzButtonGroupItem[];
+    // 同时显示个数，默认3
+    max?: number;
   };
 } | {
   type: RXZ_TABLE_CELL_RENDER_TYPE_E.COMPONENT,

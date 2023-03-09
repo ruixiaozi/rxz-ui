@@ -11,6 +11,9 @@
         {{ config.config.text || rowData?.[columnKey] }}
       </a>
     </span>
+    <span v-else-if="config.type === RXZ_TABLE_CELL_RENDER_TYPE_E.OPERATOR">
+      <RxzButtonGroup :buttons="config.config.buttons" :max="config.config.max" :link="true"></RxzButtonGroup>
+    </span>
     <span v-else-if="config.type === RXZ_TABLE_CELL_RENDER_TYPE_E.COMPONENT">
       <component :is="config.config.cnt" :value="rowData?.[columnKey]"></component>
     </span>
@@ -18,12 +21,12 @@
 </template>
 
 <script setup lang="ts">
+import { RxzButtonGroup } from '@/components/advance/RxzButtonGroup';
 import { useRxzDataMap } from '@/use';
 import { defineProps, defineEmits } from 'vue';
 import define, { RXZ_TABLE_CELL_RENDER_TYPE_E } from './RxzTableCellRender.define';
 defineProps(define.rxzTableCellRenderProps);
 defineEmits(define.rxzTableCellRenderEmits);
-
 const { getDataMapLabel } = useRxzDataMap();
 
 </script>
