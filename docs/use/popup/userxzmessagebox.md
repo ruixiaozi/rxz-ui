@@ -41,14 +41,14 @@ const { /* 你要引入的API或者属性 */ } = useRxzMessageBox();
     // 是否允许拖拽 (默认值为false)
     allowDrag?: boolean;
     // 窗口关闭回调，返回false，则不关闭
-    onClose?: () => any;
+    onClose?: (content: string | VNode) => any;
     // 确认按钮
     hiddenConfirm?: boolean;
-    onConfirm?: () => void;
+    onConfirm?: (content: string | VNode) => any;
     confirmText?: string;
     // 取消按钮
     hiddenCancel?: boolean;
-    onCancel?: () => void;
+    onCancel?: (content: string | VNode) => any;
     cancelText?: string;
   }
 
@@ -236,6 +236,51 @@ const handleOpen = () => {
           reject(null);
         }, 1000)
       })
+    }
+  });
+}
+</script>
+
+<style lang="scss" scoped>
+
+</style>
+
+```
+
+### 4. 回调中访问内容组件实例
+
+<TestRxzMessageBoxExp4></TestRxzMessageBoxExp4>
+
+---
+
+```vue
+<template>
+  <rxz-button ref="bt" @click="handleOpen()">打开MessageBox</rxz-button>
+</template>
+
+<script setup lang="ts">
+import { RxzButton } from '@/components/base/RxzButton';
+import { useRxzMessageBox } from '@/use';
+import { isVNode } from 'vue';
+
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+const handleOpen = () => {
+  useRxzMessageBox().success({
+    content: RxzButton,
+    contentCntProps: {
+      onClick: () => {
+        console.log(123);
+      }
+    },
+    onConfirm: (content) => {
+      if (isVNode(content)) {
+        console.log(content);
+      }
     }
   });
 }

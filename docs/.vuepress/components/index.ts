@@ -93,8 +93,10 @@ import TestRxzModalExp9 from './use/modal/TestRxzModalExp9.vue';
 import TestRxzPopover from './use/popover/TestRxzPopover.vue';
 import TestRxzPopoverExp1 from './use/popover/TestRxzPopoverExp1.vue';
 import TestRxzTableExp4 from './table/TestRxzTableExp4.vue';
+import TestRxzMessageBoxExp4 from './use/messagebox/TestRxzMessageBoxExp4.vue';
 
 export const components = [
+  TestRxzMessageBoxExp4,
   TestRxzTableExp4,
   TestRxzPopoverExp1,
   TestRxzPopover,

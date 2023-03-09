@@ -4,11 +4,12 @@
  * @author: ruixiaozi
  * @since: 2.0.0
  */
-import { isString, omit } from 'lodash';
-import { cloneVNode, Component, h, isVNode, VNode } from 'vue';
+import { omit } from 'lodash';
+import { Component, h, VNode } from 'vue';
 import { RxzLoadingTpl } from '../components/template';
 import { useRxzPopup } from './useRxzPopup';
 import { useRxzSSR } from './useRxzSSR';
+import { isComponent } from '@/utils';
 
 export interface RxzLoadingOptions {
   // loading文本
@@ -44,21 +45,14 @@ function createLoading(options?: RxzLoadingOptions) {
       ...omit(options, 'content', 'contentCntProps'),
       zIndex: zIndexNext(),
     },
-    options?.content
-      ? {
-        default: () => {
-          if (!options?.content) {
-            return '';
-          }
-          if (isString(options?.content)) {
-            return options?.content;
-          }
-          if (isVNode(options?.content)) {
-            return cloneVNode(options?.content);
-          }
-          return h(options?.content, options?.contentCntProps);
-        },
-      } : {},
+    {
+      default: () => {
+        if (options?.content && isComponent(options?.content)) {
+          return h(options.content, options?.contentCntProps);
+        }
+        return options?.content;
+      },
+    },
   );
 }
 
