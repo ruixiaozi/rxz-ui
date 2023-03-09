@@ -5,9 +5,13 @@
  * @author: ruixiaozi
  * @since: 2.0.0
  */
-import { debounce, uniqueId } from 'lodash';
-import { h, render, VNode } from 'vue';
+import { RxzPopupTpl } from '@/components/template';
+import { uniqueId } from 'lodash';
+import { createApp, reactive, VNode } from 'vue';
 import { useRxzSSR } from './useRxzSSR';
+import { RxzComponents } from '@/components';
+import { RxzProperties } from '@/properties';
+import { RxzDirectives } from '@/directives';
 
 const { isSSR } = useRxzSSR();
 
@@ -17,20 +21,7 @@ let zIndex = 3000;
 // 弹出层的容器
 let container: HTMLElement | undefined;
 
-const vnodeMap = new Map<string, VNode>();
-
-const reRender = debounce(() => {
-  if (isSSR.value || !container) {
-    return;
-  }
-  render(h(
-    'div',
-    {
-      class: ['rxz-popup-container'],
-    },
-    [...vnodeMap.values()],
-  ), container);
-}, 0);
+const vnodeMap = reactive(new Map<string, VNode>());
 
 /**
  * 获取popup下一个zindex
@@ -55,11 +46,31 @@ function appendPopup(vnode: VNode, key?: string) {
     container = document.createElement('div');
     container.className = 'rxz-popup-wrap';
     document.body.appendChild(container);
+    const containerCnt = createApp(RxzPopupTpl, {
+      vnodeMap,
+    });
+    // 注册组件
+    RxzComponents.forEach((item) => {
+      containerCnt.component(item.__name || item.name, item);
+    });
+    // 注册properties
+    Object.entries(RxzProperties).forEach(([_key, value]) => {
+      containerCnt.config.globalProperties[_key] = value;
+    });
+    // 注册指令
+    Object.entries(RxzDirectives).forEach(([_key, value]) => {
+      containerCnt.directive(
+        _key.slice(1)
+          .replace(/(?<k1>[a-z])(?<k2>[A-Z])/ug, '$1-$2')
+          .toLowerCase(),
+        value,
+      );
+    });
+    containerCnt.mount(container);
   }
   // 渲染
   const vNodeKey = key || uniqueId();
   vnodeMap.set(vNodeKey, vnode);
-  reRender();
   return vNodeKey;
 }
 
@@ -72,7 +83,6 @@ function removePopup(key: string) {
     return;
   }
   vnodeMap.delete(key);
-  reRender();
 }
 
 /**
@@ -83,7 +93,6 @@ function clearPopup() {
     return;
   }
   vnodeMap.clear();
-  render(null, container);
 }
 
 export function useRxzPopup() {
