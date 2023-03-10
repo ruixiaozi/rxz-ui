@@ -1,0 +1,27 @@
+.rxz-tree {
+  &-item {
+    &-label {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 4px;
+      cursor: pointer;
+
+      &.disabled {
+        cursor: not-allowed;
+        * {
+          color: #d4d4d4 !important;
+        }
+      }
+
+      &-content {
+        margin: 0px 4px;
+        user-select: none;
+      }
+
+      &:hover, &.selected {
+        background-color: #f3f3f3;
+      }
+    }
+  }
+}

@@ -99,6 +99,7 @@ module.exports = {
             '/components/navigation/rxzbreadcrumb.md',
             '/components/navigation/rxzmenu.md',
             '/components/navigation/rxztabs.md',
+            '/components/navigation/rxztree.md',
           ]
         },
         {
