@@ -27,7 +27,7 @@
         }"
         v-if="item.children && !item.isFold"
         >
-        <RxzTree :ref="(cnt: any) => subTrees[item.key] = cnt" v-model="item.children"></RxzTree>
+        <RxzTree :ref="(cnt: any) => subTrees[item.key] = cnt" v-model="item.children" @selected="(key) => emits('selected', key)"></RxzTree>
       </div>
     </div>
   </div>

@@ -19,7 +19,7 @@ export function isComponentInstance(sourceEl: Element | ComponentPublicInstance)
  * @returns 是否为组件
  */
 export function isComponent(component: any): component is Component {
-  if (component?.props && component?.render && !component?.__v_isVNode) {
+  if (component?.props && !component?.__v_isVNode) {
     return true;
   }
   return false;

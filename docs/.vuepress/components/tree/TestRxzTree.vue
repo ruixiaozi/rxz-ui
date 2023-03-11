@@ -1,11 +1,12 @@
 <template>
-  <RxzTree v-model="data"></RxzTree>
+  <RxzTree v-model="data" @selected="(key) => selected = key"></RxzTree>
   <p>菜单数据：</p>
   <p>{{ data }}</p>
+  <p>{{ selected }}</p>
 </template>
 
 <script setup lang="ts">import { RxzTreeItem } from '@/components/navigation/RxzTree';
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 
 defineProps<{
 
@@ -67,6 +68,7 @@ const data = reactive<RxzTreeItem[]>([
     label: 'tree2',
   },
 ])
+const selected = ref<string>('');
 </script>
 
 <style lang="scss" scoped>
