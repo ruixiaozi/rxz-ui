@@ -1,6 +1,7 @@
 .rxz-tree {
   &-item {
     &-label {
+      width: fit-content;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -15,8 +16,10 @@
       }
 
       &-content {
+        flex-shrink: 0;
         margin: 0px 4px;
         user-select: none;
+        white-space: nowrap;
       }
 
       &:hover, &.selected {

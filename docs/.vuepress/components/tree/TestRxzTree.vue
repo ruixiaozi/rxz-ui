@@ -1,5 +1,7 @@
 <template>
-  <RxzTree v-model="data" @selected="(key) => selected = key"></RxzTree>
+  <div class="container">
+    <RxzTree v-model="data" @selected="(key) => selected = key"></RxzTree>
+  </div>
   <p>菜单数据：</p>
   <p>{{ data }}</p>
   <p>{{ selected }}</p>
@@ -35,7 +37,7 @@ const data = reactive<RxzTreeItem[]>([
                   resolve([
                     {
                       key: '1-1-1-1',
-                      label: 'tree1-1-1-1',
+                      label: 'tree1-1-1-111111111111111111111111111111111111111111111111111111111111111111111111111111111111111',
                     },
                     {
                       key: '1-1-1-2',
@@ -72,5 +74,8 @@ const selected = ref<string>('');
 </script>
 
 <style lang="scss" scoped>
-
+.container {
+  width: 100%;
+  overflow: auto;
+}
 </style>
