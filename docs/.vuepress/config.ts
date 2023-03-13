@@ -62,6 +62,7 @@ module.exports = {
             '/components/base/rxzradio.md',
             '/components/base/rxztextarea.md',
             '/components/base/rxzcheckbox.md',
+            '/components/base/rxzlist.md',
           ]
         },
         {

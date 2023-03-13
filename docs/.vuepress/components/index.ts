@@ -95,8 +95,10 @@ import TestRxzPopoverExp1 from './use/popover/TestRxzPopoverExp1.vue';
 import TestRxzTableExp4 from './table/TestRxzTableExp4.vue';
 import TestRxzMessageBoxExp4 from './use/messagebox/TestRxzMessageBoxExp4.vue';
 import TestRxzTree from './tree/TestRxzTree.vue';
+import TestRxzList from './list/TestRxzList.vue';
 
 export const components = [
+  TestRxzList,
   TestRxzTree,
   TestRxzMessageBoxExp4,
   TestRxzTableExp4,

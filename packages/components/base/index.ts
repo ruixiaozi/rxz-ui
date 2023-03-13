@@ -7,6 +7,7 @@ import { RxzSwitch } from './RxzSwitch';
 import { RxzRadio } from './RxzRadio';
 import { RxzTextarea } from './RxzTextarea';
 import { RxzCheckbox } from './RxzCheckbox';
+import { RxzList } from './RxzList';
 
 export * from './RxzButton';
 export * from './RxzIcon';
@@ -17,9 +18,11 @@ export * from './RxzSwitch';
 export * from './RxzRadio';
 export * from './RxzTextarea';
 export * from './RxzCheckbox';
+export * from './RxzList';
 
 // Base组件列表
 export const RxzBaseComponents = [
+  RxzList,
   RxzCheckbox,
   RxzTextarea,
   RxzRadio,
