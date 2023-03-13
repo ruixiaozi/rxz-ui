@@ -17,6 +17,7 @@
   + [RxzRadio 单选按钮](./base/rxzradio.html)
   + [RxzTextarea 文本域](./base/rxztextarea.html)
   + [RxzCheckbox 复选按钮](./base/rxzcheckbox.html)
+  + [RxzList 列表](./base/rxzlist.html)
 
 + 进阶组件
 

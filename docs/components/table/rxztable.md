@@ -140,6 +140,14 @@ export type RxzTableCellRenderConfig = {
     isBlank?: boolean;
   };
 } | {
+  type: RXZ_TABLE_CELL_RENDER_TYPE_E.OPERATOR,
+  config: {
+    // 操作按钮组
+    buttons?: RxzButtonGroupItem[];
+    // 同时显示个数，默认3
+    max?: number;
+  };
+} | {
   type: RXZ_TABLE_CELL_RENDER_TYPE_E.COMPONENT,
   config: {
     // 需要暴露value prop用于接收当前单元的值
