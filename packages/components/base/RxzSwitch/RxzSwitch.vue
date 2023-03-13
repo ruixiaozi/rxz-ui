@@ -4,8 +4,6 @@
     :class="{
       on: displayValue,
       disabled,
-      // todo: 待处理
-      // 'rxz-switch-form': formValue.isFormValue
     }"
     @click="handleChange"
   >

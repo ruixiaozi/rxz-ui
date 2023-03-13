@@ -6,9 +6,9 @@
  * @since: 2.0.0
  */
 import { RxzPopoverTpl, RXZ_POPOVER_POS_E, RXZ_POPOVER_TYPE_E } from '@/components/template/RxzPopoverTpl';
-import { debounceByKey, isComponent, transformPos } from '@/utils';
-import { isEqual, isString, uniqueId } from 'lodash';
-import { cloneVNode, Component, ComponentPublicInstance, h, isVNode, Ref, VNode } from 'vue';
+import { debounceByKey, isComponent, isComponentInstance, transformPos } from '@/utils';
+import { isEqual, uniqueId } from 'lodash';
+import { Component, ComponentPublicInstance, h, Ref, VNode } from 'vue';
 import { useRxzPopup } from './useRxzPopup';
 import { useRxzSSR } from './useRxzSSR';
 
@@ -57,7 +57,7 @@ function createPopover(sourceEl: Element | ComponentPublicInstance, pos: RXZ_POP
     return '';
   }
   const popoverKey = options?.key || uniqueId();
-  const el = isComponent(sourceEl) ? sourceEl.$el : sourceEl;
+  const el = isComponentInstance(sourceEl) ? sourceEl.$el : sourceEl;
   let vnode: any = popoverMap.get(popoverKey);
   if (vnode) {
     // 判断参数是否相同，如果相同则直接返回对应的key
@@ -83,19 +83,10 @@ function createPopover(sourceEl: Element | ComponentPublicInstance, pos: RXZ_POP
     },
     {
       default: () => {
-        if (!options?.content) {
-          return '';
+        if (options?.content && isComponent(options?.content)) {
+          return h(options?.content, options?.contentCntProps);
         }
-        if (isString(options.content)) {
-          return options.content;
-        }
-        if (isVNode(options.content)) {
-          return cloneVNode(options.content);
-        }
-        if (Array.isArray(options.content) && options.content.every((item) => isVNode(item))) {
-          return options.content.map((item) => cloneVNode(item));
-        }
-        return h(options.content, options.contentCntProps);
+        return options?.content;
       },
     },
   );
@@ -204,7 +195,7 @@ function getPopoverKey(el: HTMLElement) {
 
 // 全局监听，启动时注册
 registeClientInitNoSSR(() => {
-  // 点击其他位置，关闭所有的弹出层 TODO
+  // 点击其他位置，关闭所有的弹出层
   document.addEventListener('click', (event: Event) => {
     const target = event.target as HTMLElement;
     const popoverKey = getPopoverKey(target);

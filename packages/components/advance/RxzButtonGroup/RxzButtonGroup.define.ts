@@ -26,6 +26,7 @@ export default {
     buttons: { type: Array as PropType<RxzButtonGroupItem[]>, default: () => [] },
     max: { type: Number, default: 3 },
     link: { type: Boolean, default: false },
+    data: { type: Object },
   }),
   rxzButtonGroupEmits: defineEmitsUtil({
 

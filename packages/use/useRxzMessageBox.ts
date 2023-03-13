@@ -8,6 +8,7 @@
 import { RxzButton } from '@/components/base/RxzButton';
 import { RxzIcon } from '@/components/base/RxzIcon';
 import { RxzFlex } from '@/components/layout/RxzFlex';
+import { isComponent } from '@/utils';
 import { isBoolean, omit } from 'lodash';
 import { Component, h, Ref, VNode } from 'vue';
 import { useRxzI18n } from './useRxzI18n';
@@ -36,15 +37,17 @@ export interface RxzMessageBoxOptions {
   transition?: 'opacity' | 'bounce';
   // 是否允许拖拽 (默认值为false)
   allowDrag?: boolean;
-  // 窗口关闭回调，返回false，则不关闭
-  onClose?: () => any;
+  // 窗口关闭回调，抛出异常不关闭窗口
+  onClose?: (content: string | VNode) => void;
   // 确认按钮
   hiddenConfirm?: boolean;
-  onConfirm?: () => void;
+  // 确认回调，抛出异常不关闭窗口
+  onConfirm?: (content: string | VNode) => void;
   confirmText?: string;
   // 取消按钮
   hiddenCancel?: boolean;
-  onCancel?: () => void;
+  // 取消回调，抛出异常不关闭窗口
+  onCancel?: (content: string | VNode) => void;
   cancelText?: string;
 }
 
@@ -64,7 +67,7 @@ const { isSSR } = useRxzSSR();
 function createButton(type: string, text: string, modalKey?: string, onClick?: () => void) {
   const buttonVnode = h(RxzButton as any, {
     type,
-    onClick: () => {
+    onClick: async() => {
       const isLoading: Ref<boolean> | undefined = buttonVnode.component?.exposed?.isLoading;
       if (isLoading) {
         isLoading.value = true;
@@ -73,41 +76,38 @@ function createButton(type: string, text: string, modalKey?: string, onClick?: (
       if (modalKey) {
         modalMap.set(modalKey, (modalMap.get(modalKey) || 0) + 1);
       }
-      const clickRes = onClick?.();
-      Promise.resolve(clickRes)
-        .then(() => {
-          if (modalKey) {
-            // 下一次宏任务时，执行关闭，主要是为了finally能够执行
-            setTimeout(() => close(modalKey));
-          }
-        })
-        .catch(() => {
-          // 异常状态不处理
-        })
-        .finally(() => {
-          if (isLoading) {
-            isLoading.value = false;
-          }
-          if (modalKey) {
-            modalMap.set(modalKey, (modalMap.get(modalKey) || 1) - 1);
-          }
-        });
+      try {
+        await onClick?.();
+        if (modalKey) {
+          // 下一次宏任务时，执行关闭，主要是为了finally能够执行
+          setTimeout(() => close(modalKey));
+        }
+      } catch (err) {
+        // 不处理错误
+      } finally {
+        if (isLoading) {
+          isLoading.value = false;
+        }
+        if (modalKey) {
+          modalMap.set(modalKey, (modalMap.get(modalKey) || 1) - 1);
+        }
+      }
     },
   }, () => text);
   return buttonVnode;
 }
 
-function createFooter(modalKey?: string, options?: RxzMessageBoxOptions) {
+function createFooter(content: string | VNode, modalKey?: string, options?: RxzMessageBoxOptions) {
   const footer: any[] = [];
 
   // undefined 或者 为false
   if (!isBoolean(options?.hiddenConfirm) || !options?.hiddenConfirm) {
-    footer.push(createButton('primary', options?.confirmText || i18n('button_confirm'), modalKey, options?.onConfirm));
+    footer.push(createButton('primary', options?.confirmText || i18n('button_confirm'), modalKey, () => options?.onConfirm?.(content)));
   }
 
   // undefined 或者 为false
   if (!isBoolean(options?.hiddenCancel) || !options?.hiddenCancel) {
-    footer.push(createButton('default', options?.cancelText || i18n('button_cancel'), modalKey, options?.onCancel));
+    footer.push(createButton('default', options?.cancelText || i18n('button_cancel'), modalKey, () => options?.onCancel?.(content)));
   }
 
   return footer;
@@ -142,6 +142,20 @@ function createTitle(
   return title;
 }
 
+function createContent(
+  type: 'success' | 'information' | 'warning' | 'error',
+  options?: RxzMessageBoxOptions,
+) {
+  if (!options?.content) {
+    return type;
+  }
+
+  if (isComponent(options?.content)) {
+    return h(options?.content, options?.contentCntProps);
+  }
+  return options?.content;
+}
+
 function createMessageBox(
   type: 'success' | 'information' | 'warning' | 'error',
   options?: RxzMessageBoxOptions,
@@ -151,11 +165,12 @@ function createMessageBox(
   }
   const params = omit(
     options,
-    'title', 'onClose',
+    'title', 'content', 'contentCntProps', 'onClose',
     'hiddenIcon', 'icon', 'iconColor',
     'hiddenConfirm', 'onConfirm', 'confirmText',
     'hiddenCancel', 'onCancel', 'cancelText',
   );
+  const content = createContent(type, options);
   const key = create({
     ...MODEL_CONFIG,
     ...params,
@@ -163,17 +178,18 @@ function createMessageBox(
       align: 'center',
       gutter: '0px',
     }, () => createTitle(type, options)),
+    content,
     footer: h(RxzFlex as any, {
       justify: 'flex-end',
       gutter: '8px',
-    }, () => createFooter(key, options)),
+    }, () => createFooter(content, key, options)),
     onClose: () => {
       if (key && modalMap.get(key)) {
         // 还有在加载的状态， 返回false，不关闭弹窗
         return false;
       }
       // 只有真正要关闭，才调用onclose的回调
-      return options?.onClose?.();
+      return options?.onClose?.(content);
     },
   });
 

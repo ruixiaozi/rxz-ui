@@ -4,6 +4,6 @@
  * @author: ruixiaozi
  * @since: 2.0.0
  */
-import { useRxzI18n } from '../use';
+import { useRxzI18n } from '@/use/useRxzI18n';
 
 export const $i18n = useRxzI18n().i18n;

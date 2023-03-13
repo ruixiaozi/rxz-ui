@@ -58,7 +58,7 @@ import { RxzPagination } from '@/components/advance';
 import { vRxzLoading } from '@/directives';
 import { comparator } from '@/utils';
 import { isArray, isNumber, omit } from 'lodash';
-import { defineProps, defineEmits, reactive, ref, watch } from 'vue';
+import { defineProps, defineEmits, defineExpose, reactive, ref, watch } from 'vue';
 import { RxzTableCellRender } from '../RxzTableCellRender';
 import define, { RxzTableFilter, RXZ_TABLE_COLUMN_DIRECTION_ENUM } from './RxzTable.define';
 const props = defineProps(define.rxzTableProps);
@@ -163,6 +163,13 @@ watch(() => filter.paginations?.page, () => {
 
 
 resolveData(true);
+
+defineExpose({
+  // 暴露刷新api
+  refresh: () => {
+    resolveData();
+  },
+});
 
 </script>
 

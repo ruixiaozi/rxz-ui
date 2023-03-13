@@ -1,13 +1,25 @@
 import { debounce } from 'lodash';
-import { ComponentPublicInstance } from 'vue';
+import { Component, ComponentPublicInstance } from 'vue';
 
 /**
  * 判断原元素是否为组件元素
  * @param sourceEl 原元素
  * @returns 是否为组件元素
  */
-export function isComponent(sourceEl: Element | ComponentPublicInstance): sourceEl is ComponentPublicInstance {
-  if ((sourceEl as any).$el) {
+export function isComponentInstance(sourceEl: Element | ComponentPublicInstance): sourceEl is ComponentPublicInstance {
+  if ((sourceEl as any)?.$el) {
+    return true;
+  }
+  return false;
+}
+
+/**
+ * 判断原是否为组件定义
+ * @param component 组件定义对象
+ * @returns 是否为组件
+ */
+export function isComponent(component: any): component is Component {
+  if (component?.props && !component?.__v_isVNode) {
     return true;
   }
   return false;

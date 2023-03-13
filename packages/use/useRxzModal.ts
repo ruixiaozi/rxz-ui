@@ -1,5 +1,3 @@
-import { useRxzSSR } from '@/use';
-
 /**
  * useRxzModal
  * @description: RxzModal
@@ -8,9 +6,11 @@ import { useRxzSSR } from '@/use';
  */
 
 import { RxzDialogTpl } from '@/components/template';
-import { extend, isNil, isString, omit, uniqueId } from 'lodash';
-import { cloneVNode, Component, h, isVNode, Ref, VNode } from 'vue';
+import { omit, uniqueId } from 'lodash';
+import { Component, h, Ref, VNode } from 'vue';
 import { useRxzPopup } from './useRxzPopup';
+import { isComponent } from '@/utils';
+import { useRxzSSR } from '@/use';
 
 export interface RxzModalOptions {
   // 内容宽度
@@ -48,58 +48,26 @@ const { zIndexNext, removePopup, appendPopup } = useRxzPopup();
 const { isSSR } = useRxzSSR();
 
 function factorySlots(options?: RxzModalOptions) {
-  const slots: any = {};
-
-  if (!isNil(options?.content)) {
-    extend(slots, {
-      default: () => {
-        if (!options?.content) {
-          return '';
-        }
-        if (isString(options?.content)) {
-          return options?.content;
-        }
-        if (isVNode(options?.content)) {
-          return cloneVNode(options?.content);
-        }
+  const slots: any = {
+    default: () => {
+      if (options?.content && isComponent(options?.content)) {
         return h(options?.content, options?.contentCntProps);
-      },
-    });
-  }
-
-  if (!isNil(options?.title)) {
-    extend(slots, {
-      title: () => {
-        if (!options?.title) {
-          return '';
-        }
-        if (isString(options?.title)) {
-          return options?.title;
-        }
-        if (isVNode(options?.title)) {
-          return cloneVNode(options?.title);
-        }
+      }
+      return options?.content;
+    },
+    title: () => {
+      if (options?.title && isComponent(options?.title)) {
         return h(options?.title, options?.titleCntProps);
-      },
-    });
-  }
-
-  if (!isNil(options?.footer)) {
-    extend(slots, {
-      footer: () => {
-        if (!options?.footer) {
-          return '';
-        }
-        if (isString(options?.footer)) {
-          return options?.footer;
-        }
-        if (isVNode(options?.footer)) {
-          return cloneVNode(options?.footer);
-        }
+      }
+      return options?.title;
+    },
+    footer: () => {
+      if (options?.footer && isComponent(options?.footer)) {
         return h(options?.footer, options?.footerCntProps);
-      },
-    });
-  }
+      }
+      return options?.footer;
+    },
+  };
 
   return slots;
 }

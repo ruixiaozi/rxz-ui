@@ -1,0 +1,29 @@
+.rxz-list {
+  position: relative;
+  // 默认百分百
+  height: 100%;
+  overflow: auto;
+
+  &-empty {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
+
+  .wrap {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    text-align: center;
+
+  }
+
+}
+
+
+
+
+
+

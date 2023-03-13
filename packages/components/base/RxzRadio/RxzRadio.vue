@@ -2,10 +2,6 @@
   <RxzFlex
     :direction="direction"
     class="rxz-radio"
-    :class="{
-      // todo：待处理
-      /* 'rxz-radio-form': formValue.isFormValue, */
-    }"
   >
     <div v-for="(item, index) in items" :key="index"
       class="rxz-radio-item"

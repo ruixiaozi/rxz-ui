@@ -53,6 +53,7 @@ const buttons: RxzButtonGroupItem[] = [
 | buttons           | RxzButtonGroupItem[]           | 按钮数组                          | -                     | []    |     |
 | max    | Number                     | 最大显示按钮数                      | -                      | 3      |     |
 | link    | Boolean                           | 是否为链接              | true/false                      | false       |     |
+| data    | Object                           | onClick时，第二个参数传入此值              | -                      | -       |     |
 
 ## 内置数据结构
 
