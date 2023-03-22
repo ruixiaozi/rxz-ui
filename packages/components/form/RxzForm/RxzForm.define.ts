@@ -12,7 +12,7 @@ import { RxzLabelWidth } from './useRxzFormLabelWidth';
 
 
 export interface RxzFormConfig {
-  [key: string ]: RxzFormItemConfig | RxzFormItemConfig[] | RxzFormConfig;
+  [key: string ]: RxzFormItemConfig | RxzFormItemConfig[] | RxzFormConfig | RxzFormConfig[];
 }
 
 

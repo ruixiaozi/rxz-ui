@@ -5,6 +5,7 @@
  * @since: 2.0.0
  */
 import { RxzButtonGroupItem } from '@/components/advance/RxzButtonGroup';
+import { RxzValidatorErrorTips } from '@/use/useRxzValidator';
 import { definePropsUtil, defineEmitsUtil } from '@/utils';
 import { Component, PropType } from 'vue';
 
@@ -14,6 +15,7 @@ export enum RXZ_TABLE_CELL_RENDER_TYPE_E {
   LINK='link',
   OPERATOR='operator',
   COMPONENT='component',
+  FORM_ITEM='formItem',
 }
 
 export type RxzTableCellRenderConfig = {
@@ -48,6 +50,15 @@ export type RxzTableCellRenderConfig = {
   config: {
     // 需要暴露value prop用于接收当前单元的值
     cnt: Component,
+    props?: any,
+  };
+} | {
+  type: RXZ_TABLE_CELL_RENDER_TYPE_E.FORM_ITEM,
+  config: {
+    // formItem的默认插槽使用一个组件，如果为空，则默认显示当前formitem的值
+    slotCnt?: Component,
+    props?: any,
+    errorTip: RxzValidatorErrorTips,
   };
 };
 
@@ -55,6 +66,7 @@ export default {
   rxzTableCellRenderProps: definePropsUtil({
     rowData: { type: Object, required: true },
     columnKey: { type: String, required: true },
+    index: { type: Number, required: true },
     config: { type: Object as PropType<RxzTableCellRenderConfig>, required: true },
   }),
   rxzTableCellRenderEmits: defineEmitsUtil({

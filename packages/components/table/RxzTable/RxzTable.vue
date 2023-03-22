@@ -1,5 +1,5 @@
 <template>
-  <div v-rxz-loading="!tableConfig.disableLoading && showLoading">
+  <div class="rxz-table-container" v-rxz-loading="!tableConfig.disableLoading && showLoading">
     <table class="rxz-table">
       <thead>
         <tr>
@@ -39,7 +39,7 @@
         <tr v-for="(item, index) in datas" :key="index">
           <td v-for="col in tableConfig.columns" :key="col.key + index">
             <span v-if="col.cellRender">
-              <RxzTableCellRender :row-data="item" :column-key="col.key" :config="col.cellRender"></RxzTableCellRender>
+              <RxzTableCellRender :index="index" :row-data="item" :column-key="col.key" :config="col.cellRender"></RxzTableCellRender>
             </span>
             <span v-else>{{ item[col.key] }}</span>
           </td>
