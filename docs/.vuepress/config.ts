@@ -74,6 +74,7 @@ module.exports = {
             '/components/advance/rxzbuttongroup.md',
             '/components/advance/rxzsearch.md',
             '/components/advance/rxzpagination.md',
+            '/components/advance/rxztableform.md',
           ]
         },
         {

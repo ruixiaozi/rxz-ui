@@ -58,7 +58,7 @@ export type RxzTableCellRenderConfig = {
     // formItem的默认插槽使用一个组件，如果为空，则默认显示当前formitem的值
     slotCnt?: Component,
     props?: any,
-    errorTip: RxzValidatorErrorTips,
+    errorTip?: RxzValidatorErrorTips,
   };
 };
 

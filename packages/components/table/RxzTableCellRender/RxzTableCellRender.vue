@@ -15,7 +15,7 @@
       <RxzButtonGroup :buttons="config.config.buttons" :max="config.config.max" :link="true" :data="rowData"></RxzButtonGroup>
     </span>
     <span v-else-if="config.type === RXZ_TABLE_CELL_RENDER_TYPE_E.FORM_ITEM">
-      <RxzFormItem :name="columnKey" :errorTip="config.config.errorTip">
+      <RxzFormItem :name="columnKey" :errorTip="config.config.errorTip || {}">
         <RxzLabel></RxzLabel>
         <component v-if="config.config.slotCnt" :is="config.config.slotCnt" :index="index" v-bind="config.config.props || {}"></component>
         <span v-else>{{ getClosedBindingValue()?.value }}</span>
