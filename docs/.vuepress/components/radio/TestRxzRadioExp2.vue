@@ -1,6 +1,7 @@
 <template>
   <p>当前选择：{{ data }}</p>
   <rxz-radio :items="items" v-model="data" disabled></rxz-radio>
+  <rxz-radio :items="items" v-model="data"></rxz-radio>
 </template>
 
 <script setup lang="ts">
@@ -20,6 +21,11 @@ const items = [
   {
     label: '选项B',
     value: 2,
+  },
+  {
+    label: '选项C',
+    value: 3,
+    disabled: true,
   }
 ];
 const data = ref(items[0]);

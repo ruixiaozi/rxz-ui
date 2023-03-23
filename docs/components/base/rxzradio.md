@@ -59,7 +59,16 @@ const data = ref(items[0]);
 
 ## 内置数据结构
 
-1. RxzRadioItem = { label: string; value: any; }
+1. RxzRadioItem 
+
+```ts
+interface RxzRadioItem {
+  label: string;
+  value: any;
+  // 对单个选项进行禁用
+  disabled?: boolean;
+}
+```
 
 ## Example 案例
 
@@ -108,6 +117,8 @@ const data = ref(items[0]);
 
 ### 2. 禁用
 
+全禁用和局部禁用。
+
 ---
 
 <TestRxzRadioExp2></TestRxzRadioExp2>
@@ -116,29 +127,40 @@ const data = ref(items[0]);
 <template>
   <p>当前选择：{{ data }}</p>
   <rxz-radio :items="items" v-model="data" disabled></rxz-radio>
+  <rxz-radio :items="items" v-model="data"></rxz-radio>
 </template>
-<script>
-export default {
-  data () {
-    return {
-      data: null,
-      items: [
-        {
-          label: '选项A',
-          value: 1,
-        },
-        {
-          label: '选项B',
-          value: 2,
-        }
-      ]
-    }
+
+<script setup lang="ts">
+import { ref } from 'vue';
+
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+const items = [
+  {
+    label: '选项A',
+    value: 1,
   },
-  created() {
-    this.data = this.items[0];
+  {
+    label: '选项B',
+    value: 2,
+  },
+  {
+    label: '选项C',
+    value: 3,
+    disabled: true,
   }
-}
+];
+const data = ref(items[0]);
 </script>
+
+<style lang="scss" scoped>
+
+</style>
+
 ```
 
 ### 3. 使用bindingValue

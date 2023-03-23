@@ -11,6 +11,8 @@ import { PropType } from 'vue';
 export interface RxzRadioItem {
   label: string;
   value: any;
+  // 对单个选项进行禁用
+  disabled?: boolean;
 }
 
 export default {
