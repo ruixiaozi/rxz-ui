@@ -2,7 +2,8 @@
   <div>
     <RxzTableForm :row-config="rowConfig" v-model="data"></RxzTableForm>
   </div>
-  <div><RxzButton @click="addRow">添加一行</RxzButton></div>
+  <div><RxzButton @click="addRowFront">在前端添加一行</RxzButton></div>
+  <div><RxzButton @click="addRowRear">在尾部添加一行</RxzButton></div>
   <p>绑定数据：</p>
   <p>{{ data }}</p>
 </template>
@@ -22,7 +23,7 @@ defineEmits<{
 const rowConfig: RxzTableFormRowConfig = {
   test: {
     label: '测试',
-    validators: [useRxzValidator().required],
+    validators: [],
     slotCnt: RxzInput,
     errorTip: {},
   },
@@ -42,7 +43,10 @@ const data = ref<any>([
 ]);
 
 let index = 2;
-const addRow = () => {
+const addRowFront = () => {
+  data.value.unshift({})
+}
+const addRowRear = () => {
   data.value.push({
     test: index,
     test2: index,

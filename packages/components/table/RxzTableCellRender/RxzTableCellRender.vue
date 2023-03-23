@@ -16,8 +16,10 @@
     </span>
     <span v-else-if="config.type === RXZ_TABLE_CELL_RENDER_TYPE_E.FORM_ITEM">
       <RxzFormItem :name="columnKey" :errorTip="config.config.errorTip || {}">
-        <RxzLabel></RxzLabel>
-        <component v-if="config.config.slotCnt" :is="config.config.slotCnt" :index="index" v-bind="config.config.props || {}"></component>
+        <div class="rxz-table-cell-form-item" v-if="config.config.slotCnt">
+          <RequiredCnt class="rxz-table-cell-form-item-required"></RequiredCnt>
+          <component :is="config.config.slotCnt" :index="index" v-bind="config.config.props || {}"></component>
+        </div>
         <span v-else>{{ getClosedBindingValue()?.value }}</span>
       </RxzFormItem>
     </span>
@@ -36,9 +38,10 @@
 
 <script setup lang="ts">
 import { RxzButtonGroup } from '@/components/advance/RxzButtonGroup';
-import { RxzFormItem, RxzLabel } from '@/components/form';
-import { useRxzBindingWithinSetup, useRxzDataMap } from '@/use';
-import { defineProps, defineEmits, inject, Ref, computed, provide } from 'vue';
+import { RxzIcon } from '@/components/base';
+import { RxzFormConfig, RxzFormItem, RxzFormItemConfig } from '@/components/form';
+import { useRxzBindingWithinSetup, useRxzDataMap, useRxzValidator } from '@/use';
+import { defineProps, defineEmits, inject, Ref, computed, provide, h } from 'vue';
 import define, { RXZ_TABLE_CELL_RENDER_TYPE_E } from './RxzTableCellRender.define';
 const props = defineProps(define.rxzTableCellRenderProps);
 defineEmits(define.rxzTableCellRenderEmits);
@@ -69,6 +72,29 @@ if (props.config.type === RXZ_TABLE_CELL_RENDER_TYPE_E.FORM_ITEM) {
 
   provide('formData', formData);
   provide('formConfig', formConfig);
+}
+
+function RequiredCnt() {
+  const parentFormConfig = inject<Ref<RxzFormConfig>>('formConfig');
+  const name = inject<Ref<string>>('name');
+
+  const formItemConfig = computed<RxzFormItemConfig>(() => parentFormConfig?.value?.[name?.value || ''] as RxzFormItemConfig);
+
+  const isRequired = computed(() => {
+    if (!formItemConfig?.value || !formItemConfig.value.validators) {
+      return false;
+    }
+    const { validators } = formItemConfig.value;
+    return validators.some((item) => item === useRxzValidator().required);
+  });
+
+  return h(RxzIcon, {
+    size: 14,
+    name: 'asterisk',
+    style: {
+      display: isRequired.value ? 'inline-block' : 'none',
+    },
+  });
 }
 
 </script>

@@ -25,7 +25,7 @@ export default {
     // 子表单formConfig无效
     formConfig: { type: Object as PropType<RxzFormConfig>, default: () => ({}) },
     // 表单数据，v-model绑定，绑定的值可以覆盖formConfig中初始默认值，子表单modelValue无效
-    modelValue: { type: Object, default: () => ({}) },
+    modelValue: { type: Object as PropType<any>, default: () => ({}) },
     direction: { type: String as PropType<RXZ_FLEX_DIRECTION_ENUM>, default: RXZ_FLEX_DIRECTION_ENUM.vertical },
   }),
   rxzFormEmits: defineEmitsUtil({

@@ -21,7 +21,7 @@ const formConfigs = computed<RxzFormConfig>(() => ({
   })),
 }));
 
-const data = computed({
+const data = computed<any>({
   get() {
     return {
       configs: props.modelValue,

@@ -36,10 +36,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in datas" :key="index">
-          <td v-for="col in tableConfig.columns" :key="col.key + index">
+        <tr v-for="(item, index) in datas" :key="startIndex + index">
+          <td v-for="col in tableConfig.columns" :key="col.key + (startIndex + index)">
             <span v-if="col.cellRender">
-              <RxzTableCellRender :index="index" :row-data="item" :column-key="col.key" :config="col.cellRender"></RxzTableCellRender>
+              <RxzTableCellRender :index="startIndex + index" :row-data="item" :column-key="col.key" :config="col.cellRender"></RxzTableCellRender>
             </span>
             <span v-else>{{ item[col.key] }}</span>
           </td>
@@ -58,7 +58,7 @@ import { RxzPagination } from '@/components/advance';
 import { vRxzLoading } from '@/directives';
 import { comparator } from '@/utils';
 import { isArray, isNumber, omit } from 'lodash';
-import { defineProps, defineEmits, defineExpose, reactive, ref, watch } from 'vue';
+import { defineProps, defineEmits, defineExpose, reactive, ref, watch, computed } from 'vue';
 import { RxzTableCellRender } from '../RxzTableCellRender';
 import define, { RxzTableFilter, RXZ_TABLE_COLUMN_DIRECTION_ENUM } from './RxzTable.define';
 const props = defineProps(define.rxzTableProps);
@@ -72,6 +72,8 @@ const filter = reactive<RxzTableFilter>({
     total: 0,
   },
 });
+
+const startIndex = computed(() => (filter.paginations?.page || 0) * (filter.paginations?.pageSize || 10));
 
 const datas = ref<any[]>([]);
 
@@ -105,9 +107,8 @@ const innerResolveData = () => {
   }
   // 仅开启分页才处理
   if (props.tableConfig.paginations && paginations) {
-    const startIndex = paginations.page * paginations.pageSize;
-    const endIndex = startIndex + paginations.pageSize;
-    data = data.slice(startIndex, endIndex);
+    const endIndex = startIndex.value + paginations.pageSize;
+    data = data.slice(startIndex.value, endIndex);
   }
   datas.value = data;
 };

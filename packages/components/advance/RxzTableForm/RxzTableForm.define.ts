@@ -25,7 +25,7 @@ export interface RxzTableFormRowConfig {
 
 export default {
   rxzTableFormProps: definePropsUtil({
-    modelValue: { type: Array, required: true },
+    modelValue: { type: Array as PropType<Array<any>>, required: true },
     rowConfig: { type: Object as PropType<RxzTableFormRowConfig>, required: true },
     pageSize: { type: Number, default: 5 },
   }),
