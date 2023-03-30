@@ -162,6 +162,8 @@ export type RxzTableCellRenderConfig = {
     props?: any,
     errorTip?: RxzValidatorErrorTips,
   };
+} | {
+  type: RXZ_TABLE_CELL_RENDER_TYPE_E.DATE,
 };
 
 ```

@@ -16,6 +16,7 @@ export enum RXZ_TABLE_CELL_RENDER_TYPE_E {
   OPERATOR='operator',
   COMPONENT='component',
   FORM_ITEM='formItem',
+  DATE='date',
 }
 
 export type RxzTableCellRenderConfig = {
@@ -60,6 +61,8 @@ export type RxzTableCellRenderConfig = {
     props?: any,
     errorTip?: RxzValidatorErrorTips,
   };
+} | {
+  type: RXZ_TABLE_CELL_RENDER_TYPE_E.DATE,
 };
 
 export default {

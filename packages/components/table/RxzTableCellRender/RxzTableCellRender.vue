@@ -1,7 +1,12 @@
 <template>
   <div class="rxz-table-cell-render">
     <span v-if="config.type === RXZ_TABLE_CELL_RENDER_TYPE_E.DATAMAP">
-      {{ getDataMapLabel(config.config, rowData?.[columnKey]) }}
+      {{
+        getDataMapLabel(
+          config.config,
+          ['string', 'number'].includes(typeof rowData?.[columnKey]) ? rowData?.[columnKey] : String(rowData?.[columnKey])
+        )
+      }}
     </span>
     <span v-else-if="config.type === RXZ_TABLE_CELL_RENDER_TYPE_E.I18N">
       {{ $i18n(rowData?.[columnKey]) }}
@@ -23,6 +28,9 @@
         <span v-else>{{ getClosedBindingValue()?.value }}</span>
       </RxzFormItem>
     </span>
+    <span v-else-if="config.type === RXZ_TABLE_CELL_RENDER_TYPE_E.DATE">
+      {{ formatDate(local, rowData?.[columnKey]) }}
+    </span>
     <span v-else-if="config.type === RXZ_TABLE_CELL_RENDER_TYPE_E.COMPONENT">
       <component
         :is="config.config.cnt"
@@ -40,9 +48,13 @@
 import { RxzButtonGroup } from '@/components/advance/RxzButtonGroup';
 import { RxzIcon } from '@/components/base';
 import { RxzFormConfig, RxzFormItem, RxzFormItemConfig } from '@/components/form';
-import { useRxzBindingWithinSetup, useRxzDataMap, useRxzValidator } from '@/use';
+import { useRxzBindingWithinSetup, useRxzDataMap, useRxzI18n, useRxzValidator } from '@/use';
 import { defineProps, defineEmits, inject, Ref, computed, provide, h } from 'vue';
 import define, { RXZ_TABLE_CELL_RENDER_TYPE_E } from './RxzTableCellRender.define';
+import { formatDate } from '@/utils';
+
+const { local } = useRxzI18n();
+
 const props = defineProps(define.rxzTableCellRenderProps);
 defineEmits(define.rxzTableCellRenderEmits);
 const { getDataMapLabel } = useRxzDataMap();

@@ -26,6 +26,17 @@ import { useRxzI18n } from '@/use';
 const { /* 你要引入的API或者属性 */ } = useRxzI18n();
 ```
 
+## 属性
+
+### 1. local
+
+  属性类型：
+
+  ```ts
+  // 当前语言环境，en 或者 zh
+  const local: Ref<string>
+  ```
+
 ## API
 
 ### 1. i18n
