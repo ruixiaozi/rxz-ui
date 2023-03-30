@@ -37,10 +37,15 @@ let formData = computed({
     // 子表单的话，直接修改修改父data值进行响应
     if (props.name) {
       if (parentFormData?.value && typeof parentFormData?.value === 'object') {
-        parentFormData.value = {
-          ...parentFormData.value,
-          [props.name]: newV,
-        };
+        if (Array.isArray(parentFormData?.value)) {
+          parentFormData.value[props.name as any] = newV;
+          parentFormData.value = [...parentFormData.value];
+        } else {
+          parentFormData.value = {
+            ...parentFormData.value,
+            [props.name]: newV,
+          };
+        }
       }
     } else {
       emits('update:modelValue', newV);
@@ -56,7 +61,13 @@ const createFormData = (rxzFormConfig: RxzFormConfig): any => {
   const re = Object.entries(rxzFormConfig).reduce(
     (data, [key, value]) => {
       if (Array.isArray(value)) {
-        data[key] = value.map((item) => item.default ?? null);
+        if (value.length === 0) {
+          data[key] = [];
+        } else if (value[0]?.validators) {
+          data[key] = value.map((item) => item.default ?? null);
+        } else {
+          data[key] = value.map((item) => createFormData(item as RxzFormConfig));
+        }
         return data;
       }
       if (value?.validators) {

@@ -103,8 +103,8 @@ const handleCheck = () => {
     default?: any;
     validators: RxzValidator[];
   }
-  interface RxzFormConfig {
-    [key: string ]: RxzFormItemConfig | RxzFormConfig;
+  export interface RxzFormConfig {
+    [key: string ]: RxzFormItemConfig | RxzFormItemConfig[] | RxzFormConfig | RxzFormConfig[];
   }
   ```
 

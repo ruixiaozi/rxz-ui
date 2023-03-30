@@ -14,7 +14,7 @@
     ref="el"
   >
     <span class="rxz-select-text" v-rxz-overflow>
-      {{ displayValue.label || "" }}
+      {{ displayValue?.label || "" }}
     </span>
     <RxzIcon
       :name="isFold ? 'arrow-down' : 'arrow-up'"

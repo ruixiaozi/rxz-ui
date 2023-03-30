@@ -9,20 +9,27 @@
       {{ item }}
     </div>
   </RxzList>
+  <rxz-button @click="handleChange">改变数据</rxz-button>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { ref } from 'vue';
+
 defineProps<{
 
 }>();
 defineEmits<{
 
 }>();
-const items: any[] = [];
-for (let i = 1; i <= 1000; i++) {
-  items.push({id: i, value: i + '字符内容'.repeat(Math.random() * 20) })
+let items = ref<any[]>([]);
+const handleChange = () => {
+  const len = (Math.random() * 20000) + 20000;
+  const newItems = [];
+  for (let i = 1; i <= len; i++) {
+    newItems.push({id: i, value: i + '字符内容'.repeat(Math.random() * 20) })
+  }
+  items.value = newItems;
 }
-
+handleChange();
 </script>
 
 <style lang="scss" scoped>

@@ -33,13 +33,23 @@ defineEmits(define.rxzButtonGroupEmits);
 const hasMore = computed(() => props.buttons.length > props.max);
 const displayButtons = computed(() => ((hasMore.value ? props.buttons.slice(0, 2) : props.buttons).map((item) => ({
   ...item,
-  onClick: (event: Event) => item.onClick?.(event, props.data),
+  onClick: (event: Event) => {
+    if (item.disabled) {
+      return;
+    }
+    return item.onClick?.(event, props.data);
+  },
 }))));
 const moreOptions = computed(() => (hasMore.value ? props.buttons.slice(2).map((item) => ({
   label: item.text,
   value: item.text,
   key: item.text,
-  onClick: (event: Event) => item.onClick?.(event, props.data),
+  onClick: (event: Event) => {
+    if (item.disabled) {
+      return;
+    }
+    return item.onClick?.(event, props.data);
+  },
 })) : []));
 
 </script>

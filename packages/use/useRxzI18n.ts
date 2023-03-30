@@ -8,6 +8,7 @@ import { merge as _merge } from 'lodash';
 import { useRxzSSR } from './useRxzSSR';
 import en from '../i18n/en.json';
 import zh from '../i18n/zh.json';
+import { ref } from 'vue';
 
 export interface RxzI18nOption {
   i18n: any;
@@ -25,7 +26,7 @@ let messages: any = {
   zh,
 };
 
-let local = 'en';
+const local = ref('en');
 
 /**
  * 获取
@@ -55,8 +56,8 @@ function getLocal() {
  * @returns 转换后的值
  */
 function i18n(value: string, params?: Record<string | number, any>): string {
-  if (messages[local]?.[value]) {
-    let res = String(messages[local][value]);
+  if (messages[local.value]?.[value]) {
+    let res = String(messages[local.value][value]);
     if (params && typeof params === 'object') {
       res = Object.entries(params).reduce((re, [key, param]) => re.replace(`{${key}}`, param), res);
     }
@@ -70,7 +71,7 @@ function i18n(value: string, params?: Record<string | number, any>): string {
  * @param option 选项
  */
 function configI18n(option: RxzI18nOption) {
-  local = option.local || getLocal();
+  local.value = option.local || getLocal();
   messages = typeof option.i18n === 'object' ? _merge(messages, option.i18n) : messages;
 }
 
@@ -79,5 +80,6 @@ export function useRxzI18n() {
   return {
     i18n,
     configI18n,
+    local,
   };
 }

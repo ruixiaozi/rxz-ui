@@ -140,11 +140,30 @@ export type RxzTableCellRenderConfig = {
     isBlank?: boolean;
   };
 } | {
+  type: RXZ_TABLE_CELL_RENDER_TYPE_E.OPERATOR,
+  config: {
+    // 操作按钮组
+    buttons?: RxzButtonGroupItem[];
+    // 同时显示个数，默认3
+    max?: number;
+  };
+} | {
   type: RXZ_TABLE_CELL_RENDER_TYPE_E.COMPONENT,
   config: {
     // 需要暴露value prop用于接收当前单元的值
     cnt: Component,
+    props?: any,
   };
+} | {
+  type: RXZ_TABLE_CELL_RENDER_TYPE_E.FORM_ITEM,
+  config: {
+    // formItem的默认插槽使用一个组件，如果为空，则默认显示当前formitem的值
+    slotCnt?: Component,
+    props?: any,
+    errorTip?: RxzValidatorErrorTips,
+  };
+} | {
+  type: RXZ_TABLE_CELL_RENDER_TYPE_E.DATE,
 };
 
 ```

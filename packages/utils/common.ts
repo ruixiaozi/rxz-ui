@@ -60,3 +60,20 @@ export function comparator(cmpA: any, cmpB: any, isReverse?: boolean) {
   return -1;
 }
 
+/**
+ * 根据语言格式化日期
+ * @param local 本地语言
+ * @param _date 日期
+ * @returns 格式化字符串
+ */
+export function formatDate(local: string, _date: string | number | Date) {
+  try {
+    const date = new Date(_date);
+    if (local === 'zh') {
+      return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+    }
+    return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+  } catch (error) {
+    return '-';
+  }
+}

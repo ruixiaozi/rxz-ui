@@ -7,7 +7,7 @@
       class="rxz-radio-item"
       :class="{
         'selected': displayValue?.value === item.value,
-        disabled
+        disabled: disabled || item.disabled
       }"
       @click="handleSelect(item)"
     >
@@ -37,7 +37,7 @@ const displayValue = useRxzBindingWithinSetup()
   .mixinModelValueClosedBindingValue(props, emits, defaultValue);
 
 const handleSelect = (item: RxzRadioItem) => {
-  if (props.disabled) {
+  if (props.disabled || item.disabled) {
     return;
   }
   displayValue.value = item;

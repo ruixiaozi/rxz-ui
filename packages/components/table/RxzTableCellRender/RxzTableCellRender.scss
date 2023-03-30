@@ -1,0 +1,12 @@
+.rxz-table-cell-form-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-column-gap: 4px;
+  align-items: start;
+
+  &-required {
+    color: red;
+    height: 100%;
+    margin-top: 8px;
+  }
+}

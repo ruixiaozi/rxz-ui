@@ -1,6 +1,6 @@
 {
   "name": "rxz-ui",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "private": false,
   "main": "lib/rxz-ui.common.js",
   "typings": "lib/packages/index.d.ts",

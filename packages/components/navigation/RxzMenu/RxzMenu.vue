@@ -59,7 +59,7 @@ import { vRxzOverflow } from '@/directives';
 import { useRxzPopover } from '@/use';
 import { debounceByKey } from '@/utils';
 import { isNil, uniqueId } from 'lodash';
-import { defineProps, defineEmits, computed, ref, ComponentPublicInstance } from 'vue';
+import { defineProps, defineEmits, computed, ref, ComponentPublicInstance, reactive } from 'vue';
 import { RxzMenu } from '.';
 import define, { RxzMenuItemOption, RXZ_MENU_DIRECTION_E, RXZ_MENU_STYLE_E } from './RxzMenu.define';
 const props = defineProps(define.rxzMenuProps);
@@ -83,7 +83,7 @@ const setActive = (items: RxzMenuItemOption[]) => {
   if (!items.some((item) => isNil(item.active) || isNil(item.isFold))) {
     return items;
   }
-  return items.map((item) => {
+  return reactive(items.map((item) => {
     let children: RxzMenuItemOption[] = [];
     if (item.children) {
       children = setActive(item.children);
@@ -94,7 +94,7 @@ const setActive = (items: RxzMenuItemOption[]) => {
       active: props.active === item.key || children.some((child) => child.active),
       children: children.length ? children : undefined,
     };
-  });
+  }));
 };
 
 const menuItems = computed(() => setActive(props.items));
