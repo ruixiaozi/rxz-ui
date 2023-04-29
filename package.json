@@ -40,6 +40,7 @@
   },
   "homepage": "https://github.com/ruixiaozi/rxz-ui#readme",
   "dependencies": {
+    "@vueuse/core": "^10.1.0",
     "chroma-js": "^2.4.2",
     "core-js": "^3.8.3",
     "lodash": "^4.17.21",
@@ -47,6 +48,8 @@
     "vue": "^3.2.13"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.21.4",
+    "@babel/preset-typescript": "^7.21.4",
     "@commitlint/cli": "16.2.1",
     "@commitlint/config-conventional": "16.2.1",
     "@types/chroma-js": "^2.4.0",
@@ -55,6 +58,7 @@
     "@types/node": "^18.14.2",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
+    "@vue/babel-plugin-jsx": "^1.1.1",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-plugin-typescript": "~5.0.0",

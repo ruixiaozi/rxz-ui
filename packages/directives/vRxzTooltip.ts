@@ -7,7 +7,7 @@
 import { RXZ_POPOVER_POS_E, RXZ_POPOVER_TYPE_E } from '@/components/template/RxzPopoverTpl';
 import { debounceByKey } from '@/utils';
 import { uniqueId } from 'lodash';
-import { DirectiveBinding, ObjectDirective, Ref, VNode } from 'vue';
+import { DirectiveBinding, ObjectDirective, VNode } from 'vue';
 import { useRxzPopover } from '@/use';
 
 interface DirectiveParam {
@@ -16,7 +16,7 @@ interface DirectiveParam {
   sourceVnode: VNode;
 }
 
-const { createPopover, showPopover, hiddenPopover, removePopover, getPopoverVNode } = useRxzPopover();
+const { createPopover, showPopover, hiddenPopover, removePopover, isShowPopover } = useRxzPopover();
 
 const previousParamMap = new Map<string, DirectiveParam>();
 
@@ -33,15 +33,11 @@ function updateTooltip(key: string) {
 }
 
 const handleMouseMove = debounceByKey((key: string, pos: 'enter' | 'leave') => {
-  const rxzPopoverVNode = getPopoverVNode(key);
-  const isShow: Ref<boolean> | undefined = rxzPopoverVNode?.component?.exposed?.isShow;
-  if (!isShow) {
-    return;
-  }
+  const isShow = isShowPopover(key);
 
   if (pos === 'enter') {
     // 显示的时候更新
-    if (!isShow.value) {
+    if (!isShow) {
       updateTooltip(key);
     }
     setTimeout(() => {
@@ -88,12 +84,9 @@ function createTooltip(el: HTMLElement, binding: DirectiveBinding<any>, sourceVn
 }
 
 function handleClick(key: string) {
-  const rxzPopoverVNode = getPopoverVNode(key);
-  const isShow: Ref<boolean> | undefined = rxzPopoverVNode?.component?.exposed?.isShow;
-  if (isShow) {
-    const pos = isShow.value ? 'leave' : 'enter';
-    handleMouseMove(key)(pos);
-  }
+  const isShow = isShowPopover(key);
+  const pos = isShow ? 'leave' : 'enter';
+  handleMouseMove(key)(pos);
 }
 
 export const vRxzTooltip: ObjectDirective<HTMLElement, any> = {

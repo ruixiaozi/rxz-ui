@@ -18,6 +18,7 @@ module.exports = {
     'no-warning-comments': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
     '@typescript-eslint/no-explicit-any': 'off',
     'id-length': 'off',
+    'no-nested-ternary': 'off',
   },
   overrides: [
     {

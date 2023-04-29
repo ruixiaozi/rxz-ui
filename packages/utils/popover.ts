@@ -3,6 +3,7 @@
  * 存在bug：document获取的问题
  */
 import { RXZ_POPOVER_POS_E } from '@/components/template/RxzPopoverTpl';
+import { useRxzDom } from '@/use/useRxzDom';
 import { useRxzSSR } from '@/use/useRxzSSR';
 
 interface ElementPos {
@@ -20,6 +21,9 @@ interface ElementSize {
 const GAP = 4;
 // 三角形箭头的大小
 const TRIANGLE_W = 4;
+
+// 预留像素，防止滚动条出现
+const PRE_PX = 2;
 
 function getElementPagePosition(el: HTMLElement) {
   // position默认为绝对定位，当宿主元素的dom树结构中找到fixed定位，应该也跟随fixed定位
@@ -54,20 +58,20 @@ function transformPosTopLeft(elPos: ElementPos, gap: number, triangleW: number) 
     top: '0px',
     left: `${elPos.offsetLeft}px`,
     // -1避免滚动条
-    width: `${document.body.offsetWidth - elPos.offsetLeft - 1}px`,
+    width: `${useRxzDom().documentWidth() - elPos.offsetLeft - PRE_PX}px`,
     height: `${elPos.offsetTop - triangleW - gap}px`,
   };
 }
 
 function getMinW(elPos: ElementPos, elSize: ElementSize) {
   const leftW = elPos.offsetLeft;
-  const rightW = document.body.offsetWidth - elSize.width - elPos.offsetLeft;
+  const rightW = useRxzDom().documentWidth() - elSize.width - elPos.offsetLeft;
   return Math.min(leftW, rightW);
 }
 
 function getminH(elPos: ElementPos, elSize: ElementSize) {
   const topH = elPos.offsetTop;
-  const bottomH = document.body.offsetHeight - elSize.height - elPos.offsetTop;
+  const bottomH = useRxzDom().documentHeight() - elSize.height - elPos.offsetTop;
   return Math.min(topH, bottomH);
 }
 
@@ -77,7 +81,7 @@ function transformPosTop(elPos: ElementPos, elSize: ElementSize, gap: number, tr
     top: '0px',
     left: `${elPos.offsetLeft - minW}px`,
     // -1避免滚动条
-    width: `${(minW * 2) + elSize.width - 1}px`,
+    width: `${(minW * 2) + elSize.width - PRE_PX}px`,
     height: `${elPos.offsetTop - triangleW - gap}px`,
   };
 }
@@ -87,7 +91,7 @@ function transformPosTopRight(elPos: ElementPos, elSize: ElementSize, gap: numbe
     top: '0px',
     left: '0px',
     // -1避免滚动条
-    width: `${elPos.offsetLeft + elSize.width - 1}px`,
+    width: `${elPos.offsetLeft + elSize.width - PRE_PX}px`,
     height: `${elPos.offsetTop - triangleW - gap}px`,
   };
 }
@@ -97,7 +101,7 @@ function transformPosLeftTop(elPos: ElementPos, gap: number, triangleW: number) 
     top: `${elPos.offsetTop}px`,
     left: '0px',
     width: `${elPos.offsetLeft - triangleW - gap}px`,
-    height: `${document.body.offsetHeight - elPos.offsetTop - 1}px`,
+    height: `${useRxzDom().documentHeight() - elPos.offsetTop - PRE_PX}px`,
   };
 }
 
@@ -107,7 +111,7 @@ function transformPosLeft(elPos: ElementPos, elSize: ElementSize, gap: number, t
     top: `${elPos.offsetTop - minH}px`,
     left: '0px',
     width: `${elPos.offsetLeft - triangleW - gap}px`,
-    height: `${(minH * 2) + elSize.height - 1}px`,
+    height: `${(minH * 2) + elSize.height - PRE_PX}px`,
   };
 }
 
@@ -116,7 +120,7 @@ function transformPosLeftBottom(elPos: ElementPos, elSize: ElementSize, gap: num
     top: '0px',
     left: '0px',
     width: `${elPos.offsetLeft - triangleW - gap}px`,
-    height: `${elPos.offsetTop + elSize.height - 1}px`,
+    height: `${elPos.offsetTop + elSize.height - PRE_PX}px`,
   };
 }
 
@@ -125,8 +129,8 @@ function transformPosBottomLeft(elPos: ElementPos, elSize: ElementSize, gap: num
   return {
     top: `${elPos.offsetTop + elSize.height + triangleW + gap}px`,
     left: `${elPos.offsetLeft}px`,
-    width: `${document.body.offsetWidth - elPos.offsetLeft - 1}px`,
-    height: `${document.body.offsetHeight - elSize.height - elPos.offsetTop - triangleW - gap}px`,
+    width: `${useRxzDom().documentWidth() - elPos.offsetLeft - PRE_PX}px`,
+    height: `${useRxzDom().documentHeight() - elSize.height - elPos.offsetTop - triangleW - gap - PRE_PX}px`,
   };
 }
 
@@ -136,8 +140,8 @@ function transformPosBottom(elPos: ElementPos, elSize: ElementSize, gap: number,
     top: `${elSize.height + elPos.offsetTop + triangleW + gap}px`,
     left: `${elPos.offsetLeft - minW}px`,
     // -1避免滚动条
-    width: `${(minW * 2) + elSize.width - 1}px`,
-    height: `${document.body.offsetHeight - elSize.height - elPos.offsetTop - triangleW - gap}px`,
+    width: `${(minW * 2) + elSize.width - PRE_PX}px`,
+    height: `${useRxzDom().documentHeight() - elSize.height - elPos.offsetTop - triangleW - gap - PRE_PX}px`,
   };
 }
 
@@ -145,8 +149,8 @@ function transformPosBottomRight(elPos: ElementPos, elSize: ElementSize, gap: nu
   return {
     top: `${elPos.offsetTop + elSize.height + triangleW + gap}px`,
     left: '0px',
-    width: `${elPos.offsetLeft + elSize.width - 1}px`,
-    height: `${document.body.offsetHeight - elSize.height - elPos.offsetTop - triangleW - gap}px`,
+    width: `${elPos.offsetLeft + elSize.width - PRE_PX}px`,
+    height: `${useRxzDom().documentHeight() - elSize.height - elPos.offsetTop - triangleW - gap - PRE_PX}px`,
   };
 }
 
@@ -154,8 +158,8 @@ function transformPosRightTop(elPos: ElementPos, elSize: ElementSize, gap: numbe
   return {
     top: `${elPos.offsetTop}px`,
     left: `${elPos.offsetLeft + elSize.width + triangleW + gap}px`,
-    width: `${document.body.offsetWidth - elPos.offsetLeft - elSize.width - triangleW - gap - 1}px`,
-    height: `${document.body.offsetHeight - elPos.offsetTop - 1}px`,
+    width: `${useRxzDom().documentWidth() - elPos.offsetLeft - elSize.width - triangleW - gap - PRE_PX}px`,
+    height: `${useRxzDom().documentHeight() - elPos.offsetTop - PRE_PX}px`,
   };
 }
 
@@ -164,8 +168,8 @@ function transformPosRight(elPos: ElementPos, elSize: ElementSize, gap: number, 
   return {
     top: `${elPos.offsetTop - minH}px`,
     left: `${elPos.offsetLeft + elSize.width + triangleW + gap}px`,
-    width: `${document.body.offsetWidth - elPos.offsetLeft - elSize.width - triangleW - gap - 1}px`,
-    height: `${(minH * 2) + elSize.height - 1}px`,
+    width: `${useRxzDom().documentWidth() - elPos.offsetLeft - elSize.width - triangleW - gap - PRE_PX}px`,
+    height: `${(minH * 2) + elSize.height - PRE_PX}px`,
   };
 }
 
@@ -173,8 +177,8 @@ function transformPosRightBottom(elPos: ElementPos, elSize: ElementSize, gap: nu
   return {
     top: '0px',
     left: `${elPos.offsetLeft + elSize.width + triangleW + gap}px`,
-    width: `${document.body.offsetWidth - elPos.offsetLeft - elSize.width - triangleW - gap - 1}px`,
-    height: `${elPos.offsetTop + elSize.height - 1}px`,
+    width: `${useRxzDom().documentWidth() - elPos.offsetLeft - elSize.width - triangleW - gap - PRE_PX}px`,
+    height: `${elPos.offsetTop + elSize.height - PRE_PX}px`,
   };
 }
 
@@ -195,7 +199,7 @@ export function transformPos(el: HTMLElement, pos: RXZ_POPOVER_POS_E, showArrow?
   const triangleW = showArrow === false ? 0 : TRIANGLE_W;
   const elPos = getElementPagePosition(el);
   const elSize = getElementSize(el);
-  let res = {};
+  let res: any = {};
   switch (pos) {
     case RXZ_POPOVER_POS_E.topleft:
       res = transformPosTopLeft(elPos, gap, triangleW);
@@ -239,6 +243,14 @@ export function transformPos(el: HTMLElement, pos: RXZ_POPOVER_POS_E, showArrow?
         const neverV: never = pos; return neverV;
       })();
   }
+
+  // 除去负值
+  Object.keys(res).forEach((key) => {
+    if (res[key].startsWith('-')) {
+      res[key] = '0px';
+    }
+  });
+
   res = {
     ...res,
     position: elPos.position,

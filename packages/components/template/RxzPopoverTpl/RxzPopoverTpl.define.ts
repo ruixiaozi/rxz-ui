@@ -52,6 +52,7 @@ export default {
     radius: { type: Boolean, default: () => true },
     padding: { type: Boolean, default: () => true },
     popoverKey: { type: String, default: () => uniqueId() },
+    isShow: { type: Boolean, default: () => false },
   }),
   rxzPopoverTplEmits: defineEmitsUtil({
     'showChange': null,

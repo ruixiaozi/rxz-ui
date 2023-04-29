@@ -1,14 +1,25 @@
 /**
  * useRxzPopover
- * 弹出框
+ * 弹出框，相对定位的弹出层
  * @description: RxzPopover
  * @author: ruixiaozi
  * @since: 2.0.0
  */
 import { RxzPopoverTpl, RXZ_POPOVER_POS_E, RXZ_POPOVER_TYPE_E } from '@/components/template/RxzPopoverTpl';
-import { debounceByKey, isComponent, isComponentInstance, transformPos } from '@/utils';
-import { isEqual, uniqueId } from 'lodash';
-import { Component, ComponentPublicInstance, h, Ref, VNode } from 'vue';
+import { debounceByKey, isComponentInstance, transformPos } from '@/utils';
+import { useElementBounding } from '@vueuse/core';
+import { uniqueId } from 'lodash';
+import {
+  Component,
+  ComponentPublicInstance,
+  defineComponent,
+  h,
+  isVNode,
+  reactive,
+  ref,
+  VNode,
+  watch,
+} from 'vue';
 import { useRxzPopup } from './useRxzPopup';
 import { useRxzSSR } from './useRxzSSR';
 
@@ -37,10 +48,20 @@ export interface RxzPopoverOptions {
   events?: { [key: string]: (...args: any[]) => any };
 }
 
+interface PopoverProp {
+  pos: RXZ_POPOVER_POS_E;
+  popoverKey: string;
+  zIndex: number;
+  isShow: boolean;
+  lastUpdateTime: Date;
+  hostEl: Element;
+  options?: RxzPopoverOptions;
+}
+
 // 回收超过30秒没有显示的popover
 const AUTO_REMOVE_TIMEOUT = 30000;
 
-const popoverMap = new Map<string, VNode>();
+const popoverMap = new Map<string, PopoverProp>();
 
 const { zIndexNext, appendPopup, removePopup } = useRxzPopup();
 const { registeClientInitNoSSR, isSSR } = useRxzSSR();
@@ -52,69 +73,90 @@ const { registeClientInitNoSSR, isSSR } = useRxzSSR();
  * @param options 选项
  * @returns
  */
+// eslint-disable-next-line max-lines-per-function
 function createPopover(sourceEl: Element | ComponentPublicInstance, pos: RXZ_POPOVER_POS_E, options?: RxzPopoverOptions) {
   if (isSSR.value) {
     return '';
   }
   const popoverKey = options?.key || uniqueId();
   const el = isComponentInstance(sourceEl) ? sourceEl.$el : sourceEl;
-  let vnode: any = popoverMap.get(popoverKey);
-  if (vnode) {
-    // 判断参数是否相同，如果相同则直接返回对应的key
-    if (isEqual(vnode.popoverHostEl, el) && isEqual(vnode.popoverPos, pos) && isEqual(vnode.popoverOptions, options)) {
-      // showPopover(popoverKey);
-      return popoverKey;
-    }
+  let props: PopoverProp = popoverMap.get(popoverKey) as PopoverProp;
+  // 如果已经存在，则更新信息
+  if (props) {
+    props.options = options;
+    props.pos = pos;
+    props.hostEl = el;
+    return popoverKey;
   }
-  vnode = h(
-    RxzPopoverTpl as any,
-    {
-      radius: options?.radius,
-      padding: options?.padding,
-      type: options?.type,
-      showArrow: options?.showArrow,
-      pos,
-      popoverKey,
-      style: {
-        zIndex: zIndexNext(),
-        ...(transformPos(el, pos, options?.showArrow, options?.gap) || {}),
-      },
-      ...(options?.events || {}),
+
+  props = reactive({
+    pos,
+    popoverKey,
+    zIndex: zIndexNext(),
+    isShow: false,
+    lastUpdateTime: new Date(),
+    hostEl: el,
+    options,
+  });
+
+  const popover = defineComponent({
+    setup() {
+      const { left, top, width, height } = useElementBounding(el);
+      const styles = ref({});
+      watch(() => [left.value, top.value, width.value, height.value, props.pos, props.options], () => {
+        styles.value = {
+          zIndex: props.zIndex,
+          ...(transformPos(el, props.pos, props.options?.showArrow, props.options?.gap) || {}),
+        };
+      }, { immediate: true });
+      return {
+        styles,
+      };
     },
-    {
-      default: () => {
-        if (options?.content && isComponent(options?.content)) {
-          return h(options?.content, options?.contentCntProps);
-        }
-        return options?.content;
-      },
+    render() {
+      const { styles } = this;
+      return (
+        <>
+          <RxzPopoverTpl
+            isShow={props.isShow}
+            radius={props.options?.radius}
+            padding={props.options?.padding}
+            type={props.options?.type}
+            showArrow={props.options?.showArrow}
+            pos={props.pos}
+            popoverKey={props.popoverKey}
+            style={styles}
+            {...props.options?.events}
+          >
+            {
+              !props.options?.content || typeof props.options?.content === 'string' || isVNode(props.options?.content)
+                ? props.options?.content
+                : (
+                  Array.isArray(props.options?.content)
+                    ? props.options?.content.map((item) => item)
+                    : h(props.options?.content, props.options?.contentCntProps)
+                )
+            }
+          </RxzPopoverTpl>
+        </>
+      );
     },
-  );
-  vnode.popoverHostEl = el;
-  vnode.popoverPos = pos;
-  vnode.popoverOptions = options;
-  vnode.allowOuterClose = options?.allowOuterClose ?? true;
-  vnode.allowAutoRemove = options?.allowAutoRemove ?? false;
-  vnode.lastUpdateTime = new Date().getTime();
-  const resKey = appendPopup(vnode, popoverKey);
+  });
+  const resKey = appendPopup(popover, popoverKey);
   if (!resKey) {
     return;
   }
-  popoverMap.set(resKey, vnode);
+  popoverMap.set(resKey, props);
   return resKey;
 }
 
 
 // 防抖方法，颗粒度在单个指令进行防抖，防止快速改变popover的状态，出现闪动
 const changePopoverState = debounceByKey((key: string, _isShow: boolean) => {
-  const vnode = popoverMap.get(key);
-  const isShow: Ref<boolean> | undefined = vnode?.component?.exposed?.isShow;
-  if (isShow) {
-    if (isShow.value !== _isShow) {
-      // 记录上次改变的时间
-      (vnode as any).lastUpdateTime = new Date().getTime();
-      isShow.value = _isShow;
-    }
+  const popover = popoverMap.get(key);
+  if (popover) {
+    popover.isShow = _isShow;
+    popover.lastUpdateTime = new Date();
   }
 }, 10);
 
@@ -199,35 +241,34 @@ registeClientInitNoSSR(() => {
   document.addEventListener('click', (event: Event) => {
     const target = event.target as HTMLElement;
     const popoverKey = getPopoverKey(target);
-    [...popoverMap.entries()].forEach(([key, vnode]) => {
-      if (key !== popoverKey && (vnode as any).allowOuterClose) {
+    [...popoverMap.entries()].forEach(([key, popover]) => {
+      if (key !== popoverKey && (popover.options?.allowOuterClose ?? true)) {
         hiddenPopover(key);
       }
     });
   }, true);
+
+
   // 每隔5秒，回收一次超过30秒未打开的弹出层
   setInterval(() => {
     const nowDate = new Date().getTime();
-    [...popoverMap.entries()].forEach(([key, vnode]) => {
-      const isShow: Ref<boolean> | undefined = vnode?.component?.exposed?.isShow;
-      if (isShow) {
-        const { lastUpdateTime, allowAutoRemove } = vnode as any;
-        if (!isShow.value && allowAutoRemove && lastUpdateTime && nowDate - lastUpdateTime > AUTO_REMOVE_TIMEOUT) {
-          removePopover(key);
-        }
+    [...popoverMap.entries()].forEach(([key, popover]) => {
+      if (!popover.isShow
+        && (popover.options?.allowAutoRemove ?? false)
+        && popover.lastUpdateTime
+        && nowDate - popover.lastUpdateTime.getTime() > AUTO_REMOVE_TIMEOUT
+      ) {
+        removePopover(key);
       }
     });
   }, 5000);
 });
 
-/**
- * 根据key获取popover的虚拟node
- * @param key 唯一标识
- * @returns
- */
-function getPopoverVNode(key: string) {
-  return popoverMap.get(key);
+function isShowPopover(key: string) {
+  const popover = popoverMap.get(key);
+  return popover?.isShow || false;
 }
+
 
 export function useRxzPopover() {
   return {
@@ -236,6 +277,6 @@ export function useRxzPopover() {
     removePopover,
     showPopover,
     hiddenPopover,
-    getPopoverVNode,
+    isShowPopover,
   };
 }

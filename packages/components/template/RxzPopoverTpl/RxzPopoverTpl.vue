@@ -20,23 +20,20 @@
 
 <script setup lang="ts">
 import { RXZ_CONTAINER_POSITION_E, RxzContainer } from '@/components/layout';
-import { defineProps, defineEmits, defineExpose, ref, computed, watch } from 'vue';
+import { defineProps, defineEmits, computed, watch } from 'vue';
 import define, { rxzPopoverPosMap } from './RxzPopoverTpl.define';
 const props = defineProps(define.rxzPopoverTplProps);
 const emits = defineEmits(define.rxzPopoverTplEmits);
 
-const isShow = ref(false);
+
 const position = computed(() => rxzPopoverPosMap[props.pos] || RXZ_CONTAINER_POSITION_E.BOTTOM_CENTER);
 
-watch(isShow, (newV, oldV) => {
+watch(() => props.isShow, (newV, oldV) => {
   if (newV !== oldV) {
     emits('showChange', newV);
   }
 });
 
-defineExpose({
-  isShow,
-});
 
 </script>
 

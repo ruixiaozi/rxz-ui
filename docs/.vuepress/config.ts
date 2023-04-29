@@ -1,4 +1,4 @@
-import { defaultTheme } from 'vuepress-webpack';
+import { defaultTheme, WebpackConfiguration } from 'vuepress-webpack';
 import { webpackBundler } from '@vuepress/bundler-webpack';
 import webpackConfig from './webpack.config';
 
@@ -16,37 +16,29 @@ module.exports = {
       { text: '组件', link: '/components/' },
       { text: '指令', link: '/directives/' },
       { text: 'Use', link: '/use/' },
-      { text: 'NPM', link: 'https://www.npmjs.com/package/rxz-ui', target:'_blank' },
-      { text: 'GitHub', link: 'https://github.com/ruixiaozi/rxz-ui', target:'_blank' },
-      { text: 'Ruixiaozi', link: 'https://www.ruixiaozi.com', target:'_blank' },
+      { text: 'NPM', link: 'https://www.npmjs.com/package/rxz-ui', target: '_blank' },
+      { text: 'GitHub', link: 'https://github.com/ruixiaozi/rxz-ui', target: '_blank' },
+      { text: 'Ruixiaozi', link: 'https://www.ruixiaozi.com', target: '_blank' },
     ],
     displayAllHeaders: true,
     sidebar: {
-      '/guide/': [
-        '/guide/README.md',
-      ],
-      '/properties/':[
+      '/guide/': ['/guide/README.md'],
+      '/properties/': [
         '/properties/README.md',
         {
           text: '实例属性',
           sidebarDepth: 1,
           collapsable: false,
-          children: [
-            '/properties/i18n.md',
-            '/properties/datamap.md',
-          ]
-        }
+          children: ['/properties/i18n.md', '/properties/datamap.md'],
+        },
       ],
-      '/components/':[
+      '/components/': [
         '/components/README.md',
         {
           text: '视图组件',
           sidebarDepth: 1,
           collapsable: false,
-          children: [
-            '/components/layout/rxzcontainer.md',
-            '/components/layout/rxzflex.md',
-          ]
+          children: ['/components/layout/rxzcontainer.md', '/components/layout/rxzflex.md'],
         },
         {
           text: '基础组件',
@@ -63,7 +55,7 @@ module.exports = {
             '/components/base/rxztextarea.md',
             '/components/base/rxzcheckbox.md',
             '/components/base/rxzlist.md',
-          ]
+          ],
         },
         {
           text: '进阶组件',
@@ -75,23 +67,19 @@ module.exports = {
             '/components/advance/rxzsearch.md',
             '/components/advance/rxzpagination.md',
             '/components/advance/rxztableform.md',
-          ]
+          ],
         },
         {
           text: '进度条',
           sidebarDepth: 1,
           collapsable: false,
-          children: [
-            '/components/process/rxzwaveprocess.md',
-          ]
+          children: ['/components/process/rxzwaveprocess.md'],
         },
         {
           text: '卡片组件',
           sidebarDepth: 1,
           collapsable: false,
-          children: [
-            '/components/card/rxzflipcard.md',
-          ]
+          children: ['/components/card/rxzflipcard.md'],
         },
         {
           text: '导航',
@@ -102,28 +90,22 @@ module.exports = {
             '/components/navigation/rxzmenu.md',
             '/components/navigation/rxztabs.md',
             '/components/navigation/rxztree.md',
-          ]
+          ],
         },
         {
           text: '表单组件',
           sidebarDepth: 1,
           collapsable: false,
-          children: [
-            '/components/form/rxzform.md',
-            '/components/form/rxzformitem.md',
-            '/components/form/rxzlabel.md',
-          ]
+          children: ['/components/form/rxzform.md', '/components/form/rxzformitem.md', '/components/form/rxzlabel.md'],
         },
         {
           text: '表格组件',
           sidebarDepth: 1,
           collapsable: false,
-          children: [
-            '/components/table/rxztable.md',
-          ]
+          children: ['/components/table/rxztable.md'],
         },
       ],
-      '/directives/':[
+      '/directives/': [
         '/directives/README.md',
         {
           text: '基础指令',
@@ -136,10 +118,10 @@ module.exports = {
             '/directives/base/rxzloading.md',
             '/directives/base/rxztheme.md',
             '/directives/base/rxzbadge.md',
-          ]
-        }
+          ],
+        },
       ],
-      '/use/':[
+      '/use/': [
         '/use/README.md',
         {
           text: '基础',
@@ -151,16 +133,13 @@ module.exports = {
             '/use/base/userxzfocus.md',
             '/use/base/userxzssr.md',
             '/use/base/userxzvalidator.md',
-          ]
+          ],
         },
         {
           text: 'Setup [仅用于setup中]',
           sidebarDepth: 1,
           collapsable: false,
-          children: [
-            '/use/setup/userxzbindingwithinsetup.md',
-            '/use/setup/userxzrelativevalidatorwithinsetup.md',
-          ]
+          children: ['/use/setup/userxzbindingwithinsetup.md', '/use/setup/userxzrelativevalidatorwithinsetup.md'],
         },
         {
           text: '弹出层',
@@ -173,7 +152,7 @@ module.exports = {
             '/use/popup/userxzmessagebox.md',
             '/use/popup/userxzalert.md',
             '/use/popup/userxzloading.md',
-          ]
+          ],
         },
       ],
     },
@@ -181,6 +160,31 @@ module.exports = {
   bundler: webpackBundler({
     postcss: {},
     vue: {},
-    chainWebpack: webpackConfig.chainWebpack
+    chainWebpack: webpackConfig.chainWebpack,
+    configureWebpack(config, isServer, isBuild) {
+      return {
+        module: {
+          rules: [
+            {
+              test: /\.tsx$/,
+              exclude: /node_modules/,
+              use: [
+                {
+                  loader: 'babel-loader',
+                  options: {
+                    babelrc: false,
+                    configFile: false,
+                    plugins: ['@vue/babel-plugin-jsx'],
+                  },
+                },
+                {
+                  loader: 'ts-loader',
+                },
+              ],
+            },
+          ],
+        },
+      };
+    },
   }),
-}
+};
