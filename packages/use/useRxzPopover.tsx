@@ -264,6 +264,12 @@ registeClientInitNoSSR(() => {
   }, 5000);
 });
 
+
+/**
+ * 获取当前弹出框是否显示
+ * @param key 唯一标识
+ * @returns
+ */
 function isShowPopover(key: string) {
   const popover = popoverMap.get(key);
   return popover?.isShow || false;

@@ -126,17 +126,17 @@ const { /* 你要引入的API或者属性 */ } = useRxzPopover();
   function removePopover(key: string): void;
   ```
 
-### 6. getPopoverVNode
+### 6. isShowPopover
 
   方法签名：
 
   ```ts
   /**
-   * 根据key获取popover的虚拟node
+   * 获取当前弹出框是否显示
    * @param key 唯一标识
    * @returns
    */
-  function getPopoverVNode(key: string): VNode;
+  function isShowPopover(key: string): boolean;
   ```
 
 ## 使用案例

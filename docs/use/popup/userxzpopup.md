@@ -32,11 +32,11 @@ const { /* 你要引入的API或者属性 */ } = useRxzPopup();
   ```ts
   /**
    * 添加popup
-   * @param vnode 虚拟node
+   * @param popup 弹出层本身内容
    * @param key 指定唯一标识，默认随机
    * @returns 唯一标识
    */
-  function appendPopup(vnode: VNode, key?: string): string;
+  function appendPopup(popup: VNode | Component, key?: string) 
   ```
 
 ### 3. removePopup
