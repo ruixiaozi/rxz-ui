@@ -46,26 +46,31 @@ function mixinModelValueClosedBindingValue< PT extends ModelValueProp, ET extend
   defaultValue: T,
 ): Ref<T> {
   const bindingValue = getClosedBindingValue();
-  // 没有绑定值
-  if (isNil(props.modelValue) && isNil(bindingValue)) {
-    return ref(defaultValue) as Ref<T>;
-  }
 
-  // modelValue存在使用modelValue，否则使用最近的绑定值
-  const mixinValue = computed({
+  const defaultV = ref<T>(defaultValue) as Ref<T>;
+
+  // 如果存在绑定值，则使用绑定值，否则使用modelvalue或者默认值
+  const mixinValue = computed<T>({
     get() {
-      return props.modelValue || bindingValue?.value;
+      if (isNil(bindingValue)) {
+        // 如果传下来的任然是一个空值，则使用默认值
+        return isNil(props.modelValue) ? defaultV.value : props.modelValue;
+      }
+      return bindingValue.value;
     },
     set(newV) {
+      // 抛出更新事件
       emits('update:modelValue', newV);
-      // 如果没有传入modelValue，且bingdingValue存在
-      if (isNil(props.modelValue) && bindingValue) {
+      // 更新默认值
+      defaultV.value = newV;
+      // bingdingValue存在
+      if (!isNil(bindingValue)) {
         bindingValue.value = newV;
       }
     },
   });
 
-  return mixinValue as Ref<T>;
+  return mixinValue;
 }
 
 /**
