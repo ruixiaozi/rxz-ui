@@ -22,11 +22,11 @@ import define, { RxzFormItemConfig } from './RxzFormItem.define';
 const props = defineProps(define.rxzFormItemProps);
 defineEmits(define.rxzFormItemEmits);
 
-const labelWidthPx = inject<Ref<RxzLabelWidth>>('labelWidth');
+const labelWidthPx = inject<Ref<RxzLabelWidth> | undefined>('labelWidth', undefined);
 
 
 // 注入父亲表单的data
-const parentFormData = inject<Ref<any>>('formData');
+const parentFormData = inject<Ref<any> | undefined>('formData', undefined);
 const formData = computed({
   get() {
     return parentFormData?.value?.[props.name];
@@ -49,7 +49,7 @@ const formData = computed({
 useRxzBindingWithinSetup().registerBindingValue(formData);
 
 // 注入父亲表单的config
-const parentFormConfig = inject<Ref<RxzFormConfig>>('formConfig');
+const parentFormConfig = inject<Ref<RxzFormConfig> | undefined>('formConfig', undefined);
 const formItemConfig = computed<RxzFormItemConfig>(() => parentFormConfig?.value?.[props.name] as RxzFormItemConfig);
 
 // 提供name，label组件使用

@@ -33,11 +33,11 @@ const props = defineProps(define.rxzLabelProps);
 defineEmits(define.rxzLabelEmits);
 
 // const formLabelWidth = '100px';
-const labelWidthPx = inject<Ref<RxzLabelWidth>>('labelWidth');
+const labelWidthPx = inject<Ref<RxzLabelWidth> | undefined>('labelWidth', undefined);
 const labelKey = uniqueId('__labelkey');
 
-const parentFormConfig = inject<Ref<RxzFormConfig>>('formConfig');
-const name = inject<Ref<string>>('name');
+const parentFormConfig = inject<Ref<RxzFormConfig> | undefined>('formConfig', undefined);
+const name = inject<Ref<string> | undefined>('name', undefined);
 const formItemConfig = computed<RxzFormItemConfig>(() => parentFormConfig?.value?.[name?.value || ''] as RxzFormItemConfig);
 
 const labelContentSpan = ref<HTMLSpanElement>();
@@ -56,7 +56,7 @@ const isRequired = computed(() => {
 
 const colon = useRxzI18n().i18n('rxz_colon');
 
-const registerLabelWidth = inject<RxzRegisterLabelWidth>('registerLabelWidth');
+const registerLabelWidth = inject<RxzRegisterLabelWidth | undefined>('registerLabelWidth', undefined);
 
 const updateWidth = () => {
   const currentWidht = `${(labelContentSpan.value?.offsetWidth || 0) + 35}px`;

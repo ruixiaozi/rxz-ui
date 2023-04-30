@@ -64,9 +64,9 @@ const { getClosedBindingValue } = useRxzBindingWithinSetup();
 // 需要先注入行输入
 if (props.config.type === RXZ_TABLE_CELL_RENDER_TYPE_E.FORM_ITEM) {
   // 注入父亲表单的data
-  const parentFormData = inject<Ref<any>>('formData');
+  const parentFormData = inject<Ref<any> | undefined>('formData', undefined);
   // 注入父亲表单的config
-  const parentFormConfig = inject<Ref<any>>('formConfig');
+  const parentFormConfig = inject<Ref<any> | undefined>('formConfig', undefined);
   // 实际的表单值
   let formData = computed({
     get() {
@@ -87,8 +87,8 @@ if (props.config.type === RXZ_TABLE_CELL_RENDER_TYPE_E.FORM_ITEM) {
 }
 
 function RequiredCnt() {
-  const parentFormConfig = inject<Ref<RxzFormConfig>>('formConfig');
-  const name = inject<Ref<string>>('name');
+  const parentFormConfig = inject<Ref<RxzFormConfig> | undefined>('formConfig', undefined);
+  const name = inject<Ref<string> | undefined>('name', undefined);
 
   const formItemConfig = computed<RxzFormItemConfig>(() => parentFormConfig?.value?.[name?.value || ''] as RxzFormItemConfig);
 

@@ -39,7 +39,7 @@ function generateRelativeCheck(
   // 如果传入了name，表示子层级
   if (name?.value) {
     // 注入父检查器数组，将当前生成的检查器，附加到父检查器上
-    const parentChecks = inject<Ref<RxzValidatorChecks>>('checks');
+    const parentChecks = inject<Ref<RxzValidatorChecks> | undefined>('checks', undefined);
     const check: RxzValidatorCheck = () => checkError(data?.value, validators?.value || [], _errorTips?.value, onCheck);
     if (parentChecks?.value) {
       parentChecks.value[name.value] = check;

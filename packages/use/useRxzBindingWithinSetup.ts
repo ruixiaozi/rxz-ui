@@ -21,7 +21,7 @@ type ModelValueEmits = (emitName: 'update:modelValue', ...args: any[]) => void;
  * @returns
  */
 function getBindingValues(): Ref<any>[] {
-  return inject<Ref<any>[]>(RXZ_BINDING_VALUE_KEY) || [];
+  return inject<Ref<any>[]>(RXZ_BINDING_VALUE_KEY, []);
 }
 
 /**

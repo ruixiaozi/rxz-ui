@@ -57,7 +57,7 @@ watch(() => config.items, (newV, oldV) => {
   emits('update:modelValue', newV);
 }, { deep: true });
 
-const parentSelectedKey = inject<Ref<string>>('selectedKey');
+const parentSelectedKey = inject<Ref<string> | undefined>('selectedKey', undefined);
 
 const selectedKey = computed<Ref<string>>(() => parentSelectedKey || ref(''));
 
