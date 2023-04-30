@@ -103,6 +103,8 @@ interface RxzTableConfig {
   paginations?: {
     pageSize: number;
   };
+  // 初始化过滤信息
+  initFilter?: Partial<RxzTableFilter>;
   // 如果启用内部过滤，过滤条件变化，不会触发getData
   getData: (filter: RxzTableFilter) => Promise<RxzTableData> | RxzTableData;
 }
@@ -168,13 +170,15 @@ export type RxzTableCellRenderConfig = {
 
 ```
 
-3. RxzColumn 
+3. RxzTableFilter 
 
 ```ts
 interface RxzTableFilter {
   sorts: {[key: string]: RXZ_TABLE_COLUMN_DIRECTION_ENUM};
   // 分页信息，见RxzPagination组件
   paginations?: RxzPaginations;
+  // 过滤条件
+  conditions: any;
 }
 ```
 
@@ -199,6 +203,7 @@ interface RxzTableData {
 ## API
 
 1. refresh(): void 刷新表格
+2. query: (_conditions?: any): void 设置条件并查询数据
 
 
 ## Example 案例

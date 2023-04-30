@@ -58,19 +58,20 @@ import { RxzPagination } from '@/components/advance';
 import { vRxzLoading } from '@/directives';
 import { comparator } from '@/utils';
 import { isArray, isNumber, omit } from 'lodash';
-import { defineProps, defineEmits, defineExpose, reactive, ref, watch, computed } from 'vue';
+import { defineProps, defineEmits, defineExpose, reactive, ref, watch, computed, onMounted } from 'vue';
 import { RxzTableCellRender } from '../RxzTableCellRender';
 import define, { RxzTableFilter, RXZ_TABLE_COLUMN_DIRECTION_ENUM } from './RxzTable.define';
 const props = defineProps(define.rxzTableProps);
 defineEmits(define.rxzTableEmits);
 
 const filter = reactive<RxzTableFilter>({
-  sorts: {},
-  paginations: {
+  sorts: props.tableConfig.initFilter?.sorts || {},
+  paginations: props.tableConfig.initFilter?.paginations || {
     page: 0,
     pageSize: 0,
     total: 0,
   },
+  conditions: props.tableConfig.initFilter?.conditions || {},
 });
 
 const startIndex = computed(() => (filter.paginations?.page || 0) * (filter.paginations?.pageSize || 10));
@@ -90,9 +91,10 @@ watch(() => props.tableConfig.paginations?.pageSize, () => {
 
 // 前端过滤
 const innerResolveData = () => {
-  const { paginations, sorts } = filter;
+  const { paginations, sorts, conditions } = filter;
   const sortsEntities = Object.entries(sorts);
-  let data = [...cacheDatas.value];
+  // 内部过滤简单的全部条件相等处理
+  let data = cacheDatas.value.filter((item) => Object.entries(conditions).every(([key, value]) => item[key] === value));
   if (sortsEntities.length > 0) {
     data = data.sort((dataA, dataB) => {
       let cmpRes = 0;
@@ -163,11 +165,20 @@ watch(() => filter.paginations?.page, () => {
 });
 
 
-resolveData(true);
+onMounted(() => {
+  resolveData(true);
+});
 
 defineExpose({
   // 暴露刷新api
   refresh: () => {
+    resolveData();
+  },
+  // 暴露查询api
+  query: (_conditions?: any) => {
+    if (_conditions) {
+      filter.conditions = _conditions;
+    }
     resolveData();
   },
 });

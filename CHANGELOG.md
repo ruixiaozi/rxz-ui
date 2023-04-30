@@ -10,6 +10,7 @@
 + 引入tsx
 + 引入vueuse
 + 使用tsx模式重写popup和popover
++ table增加过滤 
 
 ## 2.1.2 
 ###### 发布日期：2023.3.30
