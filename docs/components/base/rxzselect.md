@@ -5,6 +5,7 @@
 ```vue
 <template>
   <rxz-select v-model="data" :options="options"></rxz-select>
+  <p>{{ data }}</p>
 </template>
 
 <script setup lang="ts">
@@ -51,6 +52,9 @@ const data = ref(options[0]);
 | options    | RxzSelectOption[] | 下拉选项 | -          | []      |      |
 | disabled   | Boolean            | 是否禁用 | true/false | false   |      |
 | isButton   | Boolean            | 是否为按钮 | true/false | true   |      |
+| placeholder   | String            | 提示内容 | - | ''   |      |
+| bindProperty   | String            | 值绑定的属性，默认绑定整个选项对象 | - | -   |      |
+| clear   | Boolean            | 是否可清除 | true/false | false   |      |
 
 ## Event 事件
 
@@ -84,6 +88,7 @@ interface RxzSelectOption {
 ```vue
 <template>
   <rxz-select v-model="data" :options="options" disabled></rxz-select>
+  <p>{{ data }}</p>
 </template>
 
 <script setup lang="ts">
@@ -123,6 +128,7 @@ const data = ref(options[0]);
 ```vue
 <template>
   <rxz-select v-model="data" :options="options" width="fit-content" :isButton="false"></rxz-select>
+  <p>{{ data }}</p>
 </template>
 
 <script setup lang="ts">
@@ -165,6 +171,7 @@ const data = ref(options[0]);
 <template>
   <div>
     <rxz-select :options="options"></rxz-select>
+    <p>{{ data }}</p>
   </div>
 </template>
 
@@ -196,4 +203,88 @@ useRxzBindingWithinSetup().registerBindingValue(data);
 <style lang="scss" scoped>
 
 </style>
+```
+
+### 4. bindProperty绑定值
+
+可以指定绑定选项的某个属性，例如绑定value
+
+---
+
+<TestRxzSelectExp4></TestRxzSelectExp4>
+
+```vue
+<template>
+  <rxz-select v-model="data" bind-property="value" :options="options"></rxz-select>
+  <p>{{ data }}</p>
+</template>
+
+<script setup lang="ts">
+import { ref } from 'vue';
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+const options = [
+  {
+    label: "Option1",
+    value: 1,
+    key: "1",
+  },
+  {
+    label: "Option2",
+    value: 2,
+    key: "2",
+  },
+];
+const data = ref(2);
+</script>
+
+<style lang="scss" scoped>
+
+</style>
+
+```
+
+### 5. 可清除
+
+---
+
+<TestRxzSelectExp5></TestRxzSelectExp5>
+
+```vue
+<template>
+  <rxz-select v-model="data" :clear="true" :options="options"></rxz-select>
+  <p>{{ data }}</p>
+</template>
+
+<script setup lang="ts">
+import { ref } from 'vue';
+defineProps<{
+
+}>();
+defineEmits<{
+
+}>();
+const options = [
+  {
+    label: "Option1",
+    value: 1,
+    key: "1",
+  },
+  {
+    label: "Option2",
+    value: 2,
+    key: "2",
+  },
+];
+const data = ref(options[0]);
+</script>
+
+<style lang="scss" scoped>
+
+</style>
+
 ```

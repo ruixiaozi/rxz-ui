@@ -6,7 +6,7 @@
  * @since: 2.0.0
  */
 import { uniqueId } from 'lodash';
-import { createApp, reactive, VNode, isVNode, Component, h } from 'vue';
+import { createApp, VNode, isVNode, Component, h, ref, markRaw } from 'vue';
 import { useRxzSSR } from './useRxzSSR';
 import { RxzComponents } from '@/components';
 import { RxzProperties } from '@/properties';
@@ -20,7 +20,7 @@ let zIndex = 3000;
 // 弹出层的容器
 let container: HTMLElement | undefined;
 
-const popupMap = reactive(new Map<string, VNode | Component>());
+const popupMap = ref(new Map<string, VNode | Component>());
 
 /**
  * 获取popup下一个zindex
@@ -34,11 +34,11 @@ function RxzPopupContainerRender() {
   return (
     <div class="rxz-popup-container">
       {
-        [...popupMap.entries()].map(([key, value]) => {
+        [...popupMap.value.entries()].map(([key, value]) => {
           if (isVNode(value)) {
             return value;
           }
-          return h(value, { key });
+          return h(markRaw(value), { key });
         })
       }
     </div>
@@ -82,7 +82,7 @@ function appendPopup(popup: VNode | Component, key?: string) {
   }
   // 渲染
   const popupKey = key || uniqueId();
-  popupMap.set(popupKey, popup);
+  popupMap.value.set(popupKey, popup);
   return popupKey;
 }
 
@@ -94,7 +94,7 @@ function removePopup(key: string) {
   if (isSSR.value) {
     return;
   }
-  popupMap.delete(key);
+  popupMap.value.delete(key);
 }
 
 /**
@@ -104,7 +104,7 @@ function clearPopup() {
   if (isSSR.value || !container) {
     return;
   }
-  popupMap.clear();
+  popupMap.value.clear();
 }
 
 export function useRxzPopup() {

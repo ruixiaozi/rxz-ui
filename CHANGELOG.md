@@ -13,6 +13,7 @@
 + table增加过滤 
 + 修复inject默认值问题
 + 修复绑定值的逻辑，优化空值判定和处理
++ select组件添加placeholder、bindProperty、clear属性
 
 ## 2.1.2 
 ###### 发布日期：2023.3.30

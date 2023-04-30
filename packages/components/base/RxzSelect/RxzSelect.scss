@@ -43,6 +43,9 @@
   &-text {
     display: inline-block;
     width: 100%;
+    &-placeholder {
+      color: #757575;
+    }
   }
 
   &-arrow {

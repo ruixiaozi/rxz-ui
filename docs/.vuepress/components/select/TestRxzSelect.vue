@@ -1,5 +1,6 @@
 <template>
   <rxz-select v-model="data" :options="options"></rxz-select>
+  <p>{{ data }}</p>
 </template>
 
 <script setup lang="ts">

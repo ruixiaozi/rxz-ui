@@ -1,5 +1,5 @@
 <template>
-  <rxz-select v-model="data" :options="options" disabled></rxz-select>
+  <rxz-select v-model="data" :clear="true" :options="options"></rxz-select>
   <p>{{ data }}</p>
 </template>
 

@@ -1,6 +1,7 @@
 <template>
   <div>
     <rxz-select :options="options"></rxz-select>
+    <p>{{ data }}</p>
   </div>
 </template>
 

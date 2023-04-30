@@ -1,5 +1,5 @@
 <template>
-  <rxz-select v-model="data" :options="options" disabled></rxz-select>
+  <rxz-select v-model="data" bind-property="value" :options="options"></rxz-select>
   <p>{{ data }}</p>
 </template>
 
@@ -23,7 +23,7 @@ const options = [
     key: "2",
   },
 ];
-const data = ref(options[0]);
+const data = ref(2);
 </script>
 
 <style lang="scss" scoped>

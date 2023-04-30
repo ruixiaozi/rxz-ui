@@ -97,8 +97,12 @@ import TestRxzMessageBoxExp4 from './use/messagebox/TestRxzMessageBoxExp4.vue';
 import TestRxzTree from './tree/TestRxzTree.vue';
 import TestRxzList from './list/TestRxzList.vue';
 import TestTableForm from './tableform/TestTableForm.vue';
+import TestRxzSelectExp4 from './select/TestRxzSelectExp4.vue';
+import TestRxzSelectExp5 from './select/TestRxzSelectExp5.vue';
 
 export const components = [
+  TestRxzSelectExp5,
+  TestRxzSelectExp4,
   TestTableForm,
   TestRxzList,
   TestRxzTree,
